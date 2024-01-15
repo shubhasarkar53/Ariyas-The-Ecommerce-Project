@@ -3,13 +3,13 @@ const app = express();
 const cookieParser = require('cookie-parser');
 
 // * route import 
-const product = require("./routes/productRoute");
+const productRoute = require("./routes/productRoute");
 
 // * middleware
 app.use(express.json());
 app.use(cookieParser());
 
 // * route
-app.use("/api/v1",product);
+app.use("/api/v1",productRoute);
 
 module.exports=app;

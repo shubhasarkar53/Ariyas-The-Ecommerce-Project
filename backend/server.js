@@ -1,15 +1,43 @@
-const app = require("./app");
-const dotenv = require("dotenv");
-const connectDatabase = require('./config/database');
+// ----------------------------------Code By Shubha start here---------------------------------------
+// Whole code is changed.Do merge only my part.
+// New agian
 
+require("dotenv").config({path:"backend/config/config.env"}); 
 
-// uncaught exceptions handeling 
+//<------- uncaught ref err ------->
 
 process.on("uncaughtException",(err)=>{
-    console.log(`ERROR: ${err.message}`);
-    console.log("Shutting down the server due to uncaught exceptions");
-    process.exit(1);
+   console.log("Server is closing due to uncaughtException");
+   console.log(`Error: ${err.message}`);
+   process.exit(1);
 })
+
+// <------- end of uncaught ref err ------->
+
+const dbConnect = require("./config/database");
+
+const app = require("./app");
+const port = process.env.PORT;
+
+dbConnect();
+
+const server = app.listen(port,()=>{
+   console.log(`Listning to the port : ${port}`) 
+})
+
+// Unhandled promise rejection
+
+process.on("unhandledRejection",(err)=>{
+   console.log("Server is closing due to unhandledRejection");
+   console.log(`Error: ${err.message}`);
+
+   server.close(()=>{
+      process.exit(1);
+   });//now no need to use the catch block in mongodb connection.
+
+})
+
+// ----------------------------------Code By Shubha ends here---------------------------------------
 
 //Explanation for uncaughtException
 
@@ -48,30 +76,6 @@ process.on("uncaughtException",(err)=>{
 
 
 
-// config 
-
-dotenv.config({path:"backend/config/config.env"});
-
-
-// connect to the database 
-
-connectDatabase();
-
-const server = app.listen(process.env.PORT,()=>{
-    console.log(`Server is running on port http://localhost:${process.env.PORT}`);
-})
-
-
-
-// unhandled promise rejection 
-
-process.on("unhandledRejection",err=>{
-    console.log(`ERROR: ${err.message}`);
-    console.log("Shutting down the server due to unhandled promise rejection");
-    server.close(()=>{
-        process.exit(1);
-    })
-})
 
 
 //Explanation for unhandledRejection
