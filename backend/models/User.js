@@ -52,4 +52,52 @@ const userSchema = new mongoose.Schema({
   resetPasswordExpire: String,
 });
 
+//  This function takes a next parameter, which is a function that should be called when the middleware is done. If an error occurs, you can pass the error to next, and Mongoose will stop the save operation and invoke the error handler.
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) {
+    next();
+  }
+
+  this.password = await bcrypt.hash(this.password, 10);
+});
+
+// After register we let user to log in autometically so we need to use token here
+
+// JWT token generation
+userSchema.methods.generateJWTToken = function () {
+  const token = jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRE,
+  });
+  return token;
+};
+
+
+// Compare Password function
+userSchema.methods.comparePassword = async function (enteredPass) {
+  return await bcrypt.compare(enteredPass, this.password);
+};
+
+// Forgot Password
+
+userSchema.methods.getResetPasswordToken = function () {
+  // generate token
+
+  // generate random token
+  const resetToken = crypto.randomBytes(20).toString("hex");
+
+  // creating hash of that token and adding to db
+  this.resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+
+  // set expire time of token
+
+  this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
+
+  // return token
+  return resetToken;
+};
+
+
 module.exports = mongoose.model("User", userSchema);
