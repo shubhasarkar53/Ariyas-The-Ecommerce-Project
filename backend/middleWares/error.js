@@ -6,7 +6,7 @@ module.exports = (err, req, res, next) => {
 
   // MOngoDB cast error
   if (err.name === "CastError") {
-    const message = `Resource not found. Invalid Path :${err.path}`;
+    const message = `Resource not found. Invalid Path :${err.path}  ${err}`;
     err = new ErrorHandler(400, message);
   }
 
