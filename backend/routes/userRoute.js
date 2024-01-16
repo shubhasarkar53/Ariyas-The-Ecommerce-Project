@@ -1,5 +1,6 @@
 const express = require("express");
-const { registerUser, loginUser, logoutUser, forgotPassword, resetPassword } = require("../controllers/userController");
+const { registerUser, loginUser, logoutUser, forgotPassword, resetPassword,updateProfile } = require("../controllers/userController");
+const { isAuthenticated } = require("../middleWares/auth");
 const router = express.Router();
 
 // Register new user
@@ -12,5 +13,7 @@ router.route("/logout").get(logoutUser);
 router.route("/password/forgot").post(forgotPassword);
 // reset password
 router.route("/password/reset/:token").put(resetPassword);
+//update profile info
+router.route("/profile/update").put(isAuthenticated, updateProfile);
 
 module.exports = router;

@@ -34,6 +34,53 @@ exports.registerUser = catchAsyncErr(async (req, res, next) => {
   // });
 });
 
+// create a Controller for user to update Credentials like email,username,firstname,last name,gender 
+// exports.updateProfile = catchAsyncErr(async (req, res, next) => {
+//   try {
+//     const fieldToUpdate = Object.keys(req.body);
+    
+//     fieldToUpdate.forEach((field) => {
+//       req.user[field] = req.body[field];
+//     });
+
+//     await req.user.save();
+
+//     res.status(200).json({
+//       status: 'success',
+//       message: 'Profile updated successfully',
+//       user: req.user,
+//     });
+//   } catch (err) {
+//     res.status(500).json({
+//       status: 'error',
+//       message: 'Internal Server Error',
+//     });
+//   }
+// });
+
+exports.updateProfile = catchAsyncErr(async (req, res, next) => {
+  const newUserData = {
+    name : req.body.name,
+    // will be updated 
+    // userName: req.body.userNameame,
+    // firstName: req.body.firstName,
+    // lastName: req.body.lastName,
+    // gender: req.body.gender,
+    email: req.body.email,
+  };
+
+  const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
+
+  res.status(200).json({
+    success: true,
+    user
+  });
+});
+
 // Login  User
 
 exports.loginUser = catchAsyncErr(async (req, res, next) => {
@@ -179,3 +226,4 @@ exports.logoutUser = catchAsyncErr(async (req, res, next) => {
     message: "Logged Out !!",
   });
 });
+
