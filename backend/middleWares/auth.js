@@ -2,7 +2,9 @@ const ErrorHandler = require("../utills/errorHandler");
 const { catchAsyncErr } = require("./catchAsyncError");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const Product = require("../models/Product");
 
+// Middleware to check if the user is authenticated or not
 exports.isAuthenticated = catchAsyncErr(async (req, res, next) => {
   const { token } = req.cookies;
 
@@ -20,6 +22,7 @@ exports.isAuthenticated = catchAsyncErr(async (req, res, next) => {
   next();
 });
 
+// Middleware to check if the user is authorized to access the route
 exports.authRole = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
@@ -34,3 +37,4 @@ exports.authRole = (...roles) => {
     next();
   };
 };
+
