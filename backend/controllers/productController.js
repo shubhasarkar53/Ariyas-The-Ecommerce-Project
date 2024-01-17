@@ -3,6 +3,7 @@ const Product = require("../models/Product");
 const {catchAsyncErr }= require("../middleWares/catchAsyncError");
 const ErrorHandler = require("../utills/errorHandler");
 const apiFeatures = require("../utills/apifeatures");
+const User = require("../models/User");
 
 
 //Controller for Get All products
@@ -68,22 +69,22 @@ exports.updateProduct = catchAsyncErr(async(req,res,next)=>{
 
 });
 
-//Controller for delete a product --Admin --Seller
+//Controller for delete a product --Admin --Seller ✅
 exports.deleteProduct = catchAsyncErr(async(req,res,next)=>{
     let product = await Product.findById(req.params.id);
 
     if(!product){
       return next(new ErrorHandler(404,"product Not Found"));
-    }
-    //Checking user is admin or seller of the product
-    const isProductOwner = product.populate('user')
-      .then((u) => u.user.toString() === req.user._id.toString());
+    } 
+    // console.log(isProductOwner);
+    console.log(req.user.id.toString() !== product.user.toString() );
+    console.log(req.user.role !== "admin");
 
-    if(!isProductOwner || req.user.role !== "admin"){
+    if(req.user.id.toString() !== product.user.toString() && req.user.role !== "admin"){
       return next(new ErrorHandler(401,"You are not authorized to delete this product"));
     }
     // await Product.findOneAndDelete({ _id: req.params.id });
-     product = await Product.findByIdAndRemove(req.params.id,req.body);
+    product = await Product.findByIdAndDelete(req.params.id);
     res.status(200).json({
         success:true,
         message:"Product Deleted Successfully"
@@ -198,3 +199,51 @@ exports.productRatingReview = catchAsyncErr(async (req, res, next) => {
       message:"review deleted."
     });
   });
+
+
+
+  // see your all created products -- SELLER ✅
+
+  exports.myProducts =catchAsyncErr(async(req,res,next)=>{
+    //seller
+    // const seller = await User.findById(req.user.id);
+    // find all the products which are cretaed by the given userid
+
+      const products = await Product.find();
+      const sellerAllProducts = products.filter((product)=> (product.user.toString()===req.user.id.toString()));
+      res.status(200).json({
+        success:true,
+        seller:req.user.name,
+        sellerAllProducts
+       })
+
+  })
+
+  // see  all seller's created products -- ADMIN ✅
+
+  exports.getProductsOfSeller =catchAsyncErr(async(req,res,next)=>{
+    //seller
+    const seller = await User.findById(req.params.id);
+
+    if(!seller){
+      return next(new ErrorHandler(404,"User not found."))
+    }
+    // find all the products which are cretaed by the given userid
+
+      const products = await Product.find();
+      const sellerAllProducts = products.filter((product)=> (product.user.toString()===req.params.id.toString()));
+      res.status(200).json({
+        success:true,
+        seller:seller.name,
+        sellerAllProducts
+       })
+    }
+
+  )
+
+
+
+
+  // get all seller 
+
+  // get one seller details
