@@ -26,7 +26,7 @@ router.route("/product/:id").get(getSingleProduct);
 router.route("/product/new").post(isAuthenticated, authRole("seller","admin"), createNewProducts);
 
 // Update and Delete prodcut----ADMIN ---SELLER
-router.route("/product/:id").put(isAuthenticated, authRole("admin"), updateProduct)
+router.route("/product/:id").put(isAuthenticated, authRole("admin","seller"), updateProduct)
                             .delete(isAuthenticated, authRole("seller","admin"), deleteProduct);
 
 // create rating and review
