@@ -29,6 +29,7 @@ const addressSchema = new mongoose.Schema({
       country: {
         type: String,
         required:[true, "Please fill all the fields"],
+        default:"IN"
       },
 });
 module.exports = mongoose.model('Address', addressSchema);
