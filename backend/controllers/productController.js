@@ -204,7 +204,7 @@ exports.deleteReview = catchAsyncErr(async (req, res, next) => {
   });
 });
 
-// see your all created products -- SELLER ✅
+// See your all created products -- SELLER ✅
 
 exports.myProducts = catchAsyncErr(async (req, res, next) => {
   //seller
@@ -222,7 +222,7 @@ exports.myProducts = catchAsyncErr(async (req, res, next) => {
   });
 });
 
-// see  all seller's created products -- ADMIN ✅
+// See  all seller's created products -- ADMIN ✅
 
 exports.getProductsOfSeller = catchAsyncErr(async (req, res, next) => {
   //seller
