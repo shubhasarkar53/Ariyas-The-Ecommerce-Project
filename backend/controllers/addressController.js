@@ -35,7 +35,7 @@ console.log(updatedUser);
   });
 });
 
-//Controller for get User All Address  *******
+//Controller for get User's All Addresses  
 exports.getUserAllAddress = catchAsyncErr(async (req, res, next) => {
 
   // const address = await User.findById(req.user._id).populate(
@@ -59,7 +59,7 @@ exports.getUserAllAddress = catchAsyncErr(async (req, res, next) => {
   });
 });
 
-//Controller for update address
+//Controller for update address (Updated with specific condition ✅)
 exports.updateAddress = catchAsyncErr(async(req,res,next)=>{
 
   let add = await Address.findById(req.params.id);
@@ -69,6 +69,11 @@ exports.updateAddress = catchAsyncErr(async(req,res,next)=>{
   }
   const {address, city,phoneNo,postalCode, state} = req.body;
 
+  if (req.user.id.toString() !== add.user.toString()) {
+    return next(
+      new ErrorHandler(401, "You are not authorized to update this product")
+    );
+  }
     const updatedAddress = await Address.findByIdAndUpdate(
       req.params.id,
       { address, city,phoneNo,postalCode, state},
@@ -81,12 +86,18 @@ exports.updateAddress = catchAsyncErr(async(req,res,next)=>{
   });
 });
 
-//Controller for delete address
+//Controller for delete address (Updated with specific condition ✅)
 exports.deleteAddress = catchAsyncErr(async(req,res,next)=>{
   let address = await Address.findById(req.params.id);
 
   if(!address){
     return next(new ErrorHandler(404,"Address Not Found"));
+  }
+
+  if (req.user.id.toString() !== address.user.toString()) {
+    return next(
+      new ErrorHandler(401, "You are not authorized to update this product")
+    );
   }
   await Address.findByIdAndRemove(req.params.id);
   res.status(200).json({
