@@ -20,7 +20,7 @@ exports.createNewOrder = catchAsyncErr(async (req, res, next) => {
   const userAddress = await Address.findById({user:req.user._id});
 
   const order = await Order.create({
-    user:req.user._id,
+    user:req.user._id, 
     orderItems,
     shippingInfo:userAddress,
     itemsPrice,
