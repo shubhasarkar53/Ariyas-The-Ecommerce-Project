@@ -1,0 +1,60 @@
+//Controller for create new order
+exports.createNewOrder = catchAsyncErr(async (req, res, next) => {
+  const {
+    usrId,
+    orderItems,
+    itemsPrice,
+    shippingPrice,
+    totalPrice,
+    paymentInfo,
+  } = req.body;
+
+     // Retrieve the user
+     const user = await User.findById(req.user._id)
+      console.log(user);
+     // Retrieve the user's saved address
+      const userAddress = await Address.findById(user.address);
+      console.log(userAddress);
+
+
+    // Create an array of Product objects from the orderItems array
+    const products = await Promise.all(orderItems.map(async (item) => {
+      const product = await Product.findById(item.product);
+      return {
+        name: product.name,
+        quantity: item.quantity,
+        image: product.image,
+        price: product.price,
+        product: product._id
+      };
+    }));
+    console.log(products);
+
+    //Create a new Order object and save it to the database
+  const newOrder = await Order.create({
+    user:user,  
+    orderItems:products,
+    shippingInfo:userAddress,
+    itemsPrice,
+    shippingPrice,
+    totalPrice,
+    paymentInfo,
+    paidAt: Date.now(),
+  });
+
+  if (!newOrder || !userAddress) {
+    return next(new ErrorHandler(404, "Order not created"));
+  }
+  // Update the product schema
+      await Promise.all(orderItems.map(async (item) => {
+        const product = await Product.findById(item.product);
+        product.countInStock -= item.quantity;
+        await product.save();
+      }));
+
+
+  res.status(201).json({
+    success: true,
+    newOrder,
+  });
+});
