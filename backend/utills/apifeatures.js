@@ -22,7 +22,7 @@ class ApiFeatures {
     filter() {
       const queryCopy = { ...this.queryStr };
       //   Removing some fields for category
-      const removeFields = ["keyword", "page", "limit"];
+      const removeFields = ["keyword", "page", "limit","location"];
   
       removeFields.forEach((key) => delete queryCopy[key]);
   
@@ -31,6 +31,11 @@ class ApiFeatures {
       let queryStr = JSON.stringify(queryCopy);
       queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
   
+      // for location based filtering ✅
+      if (this.queryStr.location) {
+        queryStr = JSON.stringify({ ...JSON.parse(queryStr), location: this.queryStr.location });
+      }
+
       this.query = this.query.find(JSON.parse(queryStr));
   
       return this;

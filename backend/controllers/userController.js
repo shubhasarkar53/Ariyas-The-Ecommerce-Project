@@ -4,6 +4,8 @@ const sendToken = require("../utills/jwtToken");
 const ErrorHandler = require("../utills/errorHandler");
 const { sendMail } = require("../utills/sendMail");
 const crypto = require("crypto");
+const SellerInfo = require("../models/SellerInfo");
+const { sendContactUsMail } = require("../utills/sendContactUsMail");
 
 // Register User
 
@@ -289,5 +291,119 @@ exports.deleteUser = catchAsyncErr(async(req,res,next)=>{
     success:true,
     message:"User Deleted successfully."
   })
+})
+
+// Become a seller 
+exports.sendBecomeSellerMessage = catchAsyncErr(async(req,res,next)=>{
+
+  const { shopName,
+    dob,
+    firstName,
+    middleName,
+    lastName,
+    phoneNumber,
+    email,
+    addharNumber,
+    addharImg,
+    PAN,
+    PANImg,
+    pincode,
+    postOffice,
+    policeStation,
+    flat,
+    area,
+    landmark,
+    city,
+    state,
+    addressProof,
+    bankDetails,
+    GSTCertificate,
+    country} = req.body;
+
+  const  newinfoByUser = new SellerInfo ({
+  shopName,
+  dob,
+  firstName,
+  middleName,
+  lastName,
+  phoneNumber,
+  email,
+  addharNumber,
+  addharImg,
+  PAN,
+  PANImg,
+  pincode,
+  postOffice,
+  policeStation,
+  flat,
+  area,
+  landmark,
+  city,
+  state,
+  addressProof,
+  bankDetails,
+  GSTCertificate,
+  country,
+  user: req.user._id,
+  });
+  
+// Save the new Address object to the Address collection
+ const infoByUser = await newinfoByUser.save();
+
+  // const sellerInfo = await SellerInfo.create(infoByUser);
+  // console.log(sellerInfo);
+  const message = `${req.user.name} with user id ${req.user.id} is requesting to become a seller. His/her details are given below , please checkout carefully and  make seller only the trusted ones. -->\n\n${infoByUser}\n\n.`;
+
+  try {
+    await sendContactUsMail({
+      email: req.user.email,
+      subject: `Become a Seller Request from User #${req.user.id}`,
+      message: message,
+    });
+
+    res.status(200).json({
+      success: true,
+      message: `Mail send successfully to us`,
+    });
+  } catch (error) {
+    return next(new ErrorHandler(400, error.message));
+  }
+
+})
+
+
+// Contact us
+exports.contactUsMessage = catchAsyncErr(async(req,res,next)=>{
+
+  const { firstName, lastName,phoneNumber,email,message} = req.body;
+
+  const  mailContent = new SellerInfo ({
+    firstName,
+    lastName,
+    phoneNumber,
+    email,
+    message
+  });
+  
+
+  // const sellerInfo = await SellerInfo.create(infoByUser);
+  // console.log(sellerInfo);
+  const mail = `${firstName} ${lastName} is requesting to contact. His/her Details and query is listed below -->\n\n${mailContent}\n\n.`;
+
+  try {
+    await sendContactUsMail({
+      email: email,
+      subject: `Contact Us Form `,
+      message: mail,
+    });
+
+    res.status(200).json({
+      success: true,
+      message: `Mail successfully sent to Us.`,
+    });
+  } catch (error) {
+    return next(new ErrorHandler(400, error.message));
+  }
+
 })
 
