@@ -6,7 +6,7 @@ const { catchAsyncErr } = require("../middleWares/catchAsyncError");
 const User = require("../models/User");
 
 
-//controller for create new order
+//controller for create new order ✌ Done
 exports.createNewOrder = catchAsyncErr(async (req, res, next) => {
   const {
     orderItems,
@@ -19,7 +19,7 @@ exports.createNewOrder = catchAsyncErr(async (req, res, next) => {
   // Retrieve the user
   const user = await User.findById(req.user._id)
   console.log(user);
- // Retrieve the user's saved address
+ // Retrieve the user's saved address 
   const userAddress = await Address.findById(user.address);
   console.log(userAddress);
 
@@ -50,7 +50,7 @@ exports.createNewOrder = catchAsyncErr(async (req, res, next) => {
 
 
 
-//Controller for get single order
+//Controller for get single order  ✌ Done
 exports.getSingleOrder = catchAsyncErr(async (req, res, next) => {
   const order = await Order.findById(req.params.id).populate(
     "user"," name email"
@@ -66,7 +66,7 @@ exports.getSingleOrder = catchAsyncErr(async (req, res, next) => {
   });
 });
 
-//Controller for get logged in user orders
+//Controller for get logged in user orders  ✌ Done
 exports.getLoggedInUserOrders = catchAsyncErr(async (req, res, next) => {
   const orders = await Order.find({ user: req.user._id });
 
@@ -76,7 +76,7 @@ exports.getLoggedInUserOrders = catchAsyncErr(async (req, res, next) => {
   });
 });
 
-//Controller for get all orders --Admin
+//Controller for get all orders --Admin --Seller
 exports.getAllOrders = catchAsyncErr(async (req, res, next) => {  
   const orders = await Order.find();
 
@@ -137,7 +137,7 @@ async function updateStock(id, quantity){
 
 
 
-//Controller for delete order
+//Controller for delete order ✌ Done
 exports.deleteOrder = catchAsyncErr(async (req, res, next) => {
   let order = await Order.findById(req.params.id);
 
@@ -188,6 +188,81 @@ exports.updateStock = catchAsyncErr(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+  });
+});
+
+// create a controller for product sellers to see all incoming orders  Not Solved Yet
+exports.getAllIncomingOrders = catchAsyncErr(async (req, res, next) => {
+
+  const sellerId = req.user._id;
+
+    // Step 1: Find orders where a product related to the current logged-in seller
+    const orders = await Order.find({ seller: sellerId }).populate('product');
+
+    // Step 2: Filter orders where the ordered product is created by the logged-in seller
+    const incomingOrders = orders.filter(order => order.orderItems.product.user.toString() === sellerId);
+    console.log(incomingOrders);
+
+    // Step 3: Store all the new incoming orders in an array
+    // You can modify this logic based on your requirements
+    const newIncomingOrders = incomingOrders.filter(order => !order.isProcessed);
+
+
+    // Send response back with status code and data
+    res.status(200).json({
+        success: true,
+        count: newIncomingOrders.length,
+        seller:req.user._id,
+        incomingOrders: newIncomingOrders
+    });
+   
+
+  });
+
+
+// * ---------------Optional--functions------------Routes not added---------📍
+
+// create a controller for product sellers to see all delivered orders
+exports.getAllDeliveredOrders = catchAsyncErr(async (req, res, next) => {
+  const { sellerId } = req.params;
+  const orders = await Order.find({ 'orderItems.product.user': sellerId, orderStatus: 'Delivered' });
+
+  res.status(200).json({
+    success: true,
+    orders,
+  });
+});
+
+// create a controller for product sellers to see all pending orders
+exports.getAllPendingOrders = catchAsyncErr(async (req, res, next) => {
+  const { sellerId } = req.params;
+  const orders = await Order.find({ 'orderItems.product.user': sellerId, orderStatus: 'Pending' });
+
+  res.status(200).json({
+    success: true,
+    orders,
+  });
+});
+
+// create a controller for product sellers to see all cancelled orders
+exports.getAllCancelledOrders = catchAsyncErr(async (req, res, next) => {
+  const { sellerId } = req.params;
+  const orders = await Order.find({ 'orderItems.product.user': sellerId, orderStatus: 'Cancelled' });
+
+  res.status(200).json({
+    success: true,
+    orders,
+  });
+});
+
+// create a controller for product sellers to see all shipped orders
+exports.getAllShippedOrders = catchAsyncErr(async (req, res, next) => {
+  const { sellerId } = req.params;
+  const orders = await Order.find({ 'orderItems.product.user': sellerId, orderStatus: 'Shipped' });
+
+  res.status(200).json({
+    success: true,
+    orders,
   });
 });
 

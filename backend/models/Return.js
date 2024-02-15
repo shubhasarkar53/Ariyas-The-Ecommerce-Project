@@ -18,11 +18,17 @@ const returnSchema = new mongoose.Schema({
   },
   status: {
     type: String,
+    enum: ['Pending', 'Approved', 'Rejected'],
     default: 'Pending', // Possible statuses: 'Pending', 'Approved', 'Rejected'
   },
   createdAt: {
     type: Date,
     default: Date.now,
+  },
+  productCreatorId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
   },
 });
 

@@ -43,7 +43,7 @@ exports.createNewProducts = catchAsyncErr(async (req, res, next) => {
 });
 
 //Controller for update product --Admin ---SELLER(updated)  ✅
-exports.updateProduct = catchAsyncErr(async (req, res, next) => {
+exports.updateProduct = catchAsyncErr(async (req, res, next) => { 
   let product = await Product.findById(req.params.id);
   if (!product) {
     return next(new ErrorHandler(404, "product Not Found"));
@@ -243,3 +243,4 @@ exports.getProductsOfSeller = catchAsyncErr(async (req, res, next) => {
     sellerAllProducts,
   });
 });
+
