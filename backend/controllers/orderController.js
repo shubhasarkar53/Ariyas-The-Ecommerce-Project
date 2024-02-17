@@ -9,7 +9,6 @@ const { catchAsyncErr } = require("../middleWares/catchAsyncError");
 exports.createNewOrder = catchAsyncErr(async (req, res, next) => {
   const {
     orderItems,
-    shippingInfo,
     itemsPrice,
     shippingPrice,
     totalPrice,
@@ -17,19 +16,20 @@ exports.createNewOrder = catchAsyncErr(async (req, res, next) => {
   } = req.body;
 
   //fetch user address
-  const userAddress = await Address.findById({user:req.user._id});
+  // const userAddress = await Address.findById(req.user.id);
 
   const order = await Order.create({
-    user:req.user._id, 
+    user:req.user.id, 
     orderItems,
-    shippingInfo:userAddress,
+    shippingInfo: req.user.shippingInfo,
     itemsPrice,
     shippingPrice,
     totalPrice,
     paymentInfo,
     paidAt: Date.now(),
-    user: req.user._id,
   });
+  await order.populate("shippingInfo");
+  
   if (!order || !userAddress) {
     return next(new ErrorHandler(404, "Order not created"));
   }
