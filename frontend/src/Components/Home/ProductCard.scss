@@ -1,0 +1,45 @@
+$textColor:#212121;
+$textWhite:#FAFAFA;
+$secondaryTextColor:#4D4D4D;
+$orangeTextColor:#D47F00;
+
+.card{
+    color: $textColor;
+    width: 400px;
+    height: 400px;
+    // border: 2px solid red;
+    padding: 1.8em 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+    .imgContainer{
+        width: 317px;
+        height: 317px;
+        margin-top: .2em;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+    .imgContainer:hover{
+        transform: scale(102%);
+    }
+    img{
+        width: 100%;
+    }
+
+    .prices-continer{
+        width: 35%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 20px;
+    }
+    .price-2{
+        color: #4D4D4D;
+        text-decoration: line-through;
+    }
+}
