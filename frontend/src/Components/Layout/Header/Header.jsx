@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import paperplane from "../../../assets/Images/Navbar/papperplane1.png"
 import cart from "../../../assets/Images/Navbar/cart1.png"
@@ -14,7 +15,7 @@ const Header = () => {
                 </div>
                 <div className="mid-nav">
                     {
-                        ["Home","Sale","Shop","Contact","About"].map((item,index)=>{
+                        ["Home","Sale","Shop","Contact","About","Blog"].map((item,index)=>{
                             return(
                                 <a href="#" key={index}>{item}</a>
                             )
@@ -23,17 +24,15 @@ const Header = () => {
                 </div>
                 <div className="right-nav">
                     <div className="icon-btns-container">
-                            {
-                                [paperplane,cart,search].map((imgUrl,index)=>{
-                                    return(
-                                        <div className="icon-btn">
-                                            <img key={index} src={imgUrl} alt="icon" />
-                                        </div>      
-                                    )
-                                })
-                                
-                            
-                            }
+                        {
+                            [paperplane,cart,search].map((imgUrl,index)=>{
+                                return(
+                                    <div className="icon-btn" key={index}>
+                                        <img src={imgUrl} alt="icon" />
+                                    </div>      
+                                )
+                            }) 
+                        }
                     </div>
                     <div className="auth-btns-container">
                         <div className="auth-btn">Sign Up</div>
