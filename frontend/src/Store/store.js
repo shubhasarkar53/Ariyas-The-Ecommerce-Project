@@ -8,7 +8,8 @@ const reducer = combineReducers({
 });
 let initialState = {};
 const middleWare = [thunk];
-const store = createStore(reducer,initialState,composeWithDevTools(applyMiddleware(...middleWare)));
+const store = createStore(reducer,
+    initialState,composeWithDevTools(applyMiddleware(...middleWare)));
 export default store;
 
 //This code is written in JavaScript and is using the Redux library to manage state. Here is an explanation of each part of the code:
