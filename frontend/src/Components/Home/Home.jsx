@@ -2,23 +2,32 @@
 import React from 'react'
 import ProductCard from './ProductCard'
 import "./Home.scss"
+import { getProduct } from '../../actions/productActions';
+import {useSelector,useDispatch} from 'react-redux'
+import { useEffect } from 'react';
 const Home = () => {
 
-    const arr = [1,2,3,4,5,6,7,8,9,10,11,12]
-  return (
+const dispatch = useDispatch();
+const {products,loading,productsCount,error} = useSelector((state)=>state.products);
+console.log(products)
+useEffect(()=>{
+    dispatch(getProduct())
+},[dispatch]);
+
+return (
     <div>
-        <div className="othes"></div>
-        <div className="container">
-            <div className="allProductContainer">
-                {
-                    arr.map((item,index)=>(<ProductCard key={index}/>))
-                }
-                
+            <div className="othes"></div>
+            <div className="container">
+                    <div className="allProductContainer">
+                            {products && products.map(product => (
+                                <ProductCard key={product._id} product={product}/> 
+                            ))}
+                            
+                    </div>
             </div>
-        </div>
-        
+            
     </div>
-  )
+)
 }
 
 export default Home
