@@ -135,15 +135,19 @@
 
 .heading-4 {
   position: absolute;
+  display: flex;
+  flex-direction: column;
   height: 4.48%;
-  width: 3.83%;
+  width: 15.83%;
   top: 36.15%;
   left: 20.83%;
   font-size: var(--font-size-5xl);
   line-height: 1.8rem;
   color: var(--color-gray-200);
-  display: flex;
   align-items: center;
+  p{
+    margin: 5px;
+  }
 }
 
 .aenean-convallis-velit,
@@ -282,24 +286,20 @@
   left: 26.77%;
 }
 
-.heading-5,
-.nav-list,
-.nav-list1,
-.nav-list2 {
+.heading-shop{
   position: absolute;
-  left: 35.98%;
   display: flex;
-  align-items: center;
-}
-
-.heading-5 {
+  flex-direction: column;
   height: 4.48%;
-  width: 3.2%;
+  width: 3.76%;
   top: 36.09%;
+  left: 40.42%;
   font-size: var(--font-size-5xl);
   line-height: 1.8rem;
-  color: var(--color-gray-200);
+  cursor: pointer;
 }
+
+
 
 .nav-list,
 .nav-list1,
@@ -328,10 +328,12 @@
   align-items: center;
 }
 
-.heading-51 {
+.heading-about {
   position: absolute;
+  display: flex;
+  flex-direction: column;
   height: 4.48%;
-  width: 3.76%;
+  width: 6.76%;
   top: 36.09%;
   left: 51.42%;
   font-size: var(--font-size-5xl);
@@ -377,13 +379,17 @@
   align-items: center;
 }
 
-.heading-52 {
+.heading-needHelp {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
   height: 4.48%;
-  width: 7.07%;
+  width: 6.76%;
   top: 36.09%;
+  left: 68.42%;
   font-size: var(--font-size-5xl);
   line-height: 1.8rem;
-  color: var(--color-gray-200);
+  cursor: pointer;
 }
 
 .nav-list6,

@@ -26,11 +26,9 @@ const Footer = () => {
         <div className="symbol2"><FaUndo/></div>
       </div>
     </div>
-    <div className="heading-4">Ariyas</div>
-    <div className="lorem-ipsum-dolor">Lorem ipsum dolor sit amet,</div>
-    <div className="sed-efficitur-ex">Sed efficitur ex purus.</div>
-    <div className="aenean-convallis-velit">Aenean convallis velit vel</div>
-    <div className="nisi-tempus-pulvinar">nisi tempus pulvinar.</div>
+    <div className="heading-4">Ariyas
+    <p>Crafting Dreams, Empowering Artists: Discover Handmade Treasures at Ariyas</p>
+    </div>
     <div className="link">
       <div className="symbol3"></div>
     </div>
@@ -43,27 +41,36 @@ const Footer = () => {
     <div className="link3">
       <div className="symbol5"></div>
     </div>
-    <div className="heading-5">Shop</div>
-    <div className="nav-list">Dress</div>
-    <div className="nav-list1">Handmade Trinkets:</div>
-    <div className="nav-list2">bags</div>
-    <div className="heading-51" >
+    <div className="heading-shop">Shop
+    {
+                        ["Bags","Dress","Clay Items","Wooden Items"].map((item,index)=>{
+                            return(
+                                <a href="#" key={index}>{item}</a>
+                            )
+                        })
+                    }
+    </div>
+    <div className="heading-about" >
       About
+      {
+                        ["Home","Sale","Shop","Contact","Become a Seller"].map((item,index)=>{
+                            return(
+                                <a href="#" key={index}>{item}</a>
+                            )
+                        })
+                    }
     </div>
-    <div className="nav-list3">
-      Home
+
+   
+    <div className="heading-needHelp">Need Help?
+      {
+                        ["FAQ","Shipping & Returns"].map((item,index)=>{
+                            return(
+                                <a href="#" key={index}>{item}</a>
+                            )
+                        })
+      }
     </div>
-    <div className="nav-list4" >
-      Contact
-    </div>
-    <div className="nav-list5">
-      Become a Seller
-    </div>
-    <div className="heading-52">Need Help?</div>
-    <div className="nav-list6">Shop</div>
-    <div className="nav-list7">My account</div>
-    <div className="nav-list8">Cart</div>
-    <div className="nav-list9">Checkout</div>
     <div className="divelementor-element3">
      
     </div>
