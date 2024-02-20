@@ -3,7 +3,7 @@ import React from 'react'
 // import { BrowserRouter as Router} from "react-router-dom";
 import Header from './Components/Layout/Header/Header'
 import "./App.css"
-import Footer from './Components/Layout/Footer/Footer'
+import Footer from './Components/Layout/Footer/Footer.jsx'
 import Home from './Components/Home/Home'
 import { BrowserRouter, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 const App = () => {
