@@ -2,44 +2,57 @@ $textColor:#212121;
 $textWhite:#FAFAFA;
 $secondaryTextColor:#4D4D4D;
 $orangeTextColor:#D47F00;
-
+a{
+    text-decoration: none;
+}
 .card{
     color: $textColor;
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
     // border: 2px solid red;
     padding: 1.8em 0;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25) ;
 
     .imgContainer{
-        width: 317px;
-        height: 317px;
+        width: 280px;
+        height: 280px;
         margin-top: .2em;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
+        
     }
-    .imgContainer:hover{
-        transform: scale(102%);
-    }
+   
     img{
         width: 100%;
     }
 
+    .product-title{
+        font-weight: 500;
+        margin: 0.5em 0;
+        font-size: 15px;
+    }
     .prices-continer{
-        width: 35%;
+        width: 45%;
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
         font-size: 15px;
         font-weight: 400;
         line-height: 20px;
     }
+    .price-1{
+        font-weight: 500;
+    }
     .price-2{
-        color: #4D4D4D;
+        color: #777777;
         text-decoration: line-through;
     }
+}
+.card:hover{
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transform: translateY(-1vmax);
 }

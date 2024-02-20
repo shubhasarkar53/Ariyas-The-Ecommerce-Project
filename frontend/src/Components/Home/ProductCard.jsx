@@ -1,20 +1,22 @@
 import React from 'react'
-import product from "../../assets/Images/Home/product1.png"
 import "./ProductCard.scss"
-const ProductCard = () => {
+import {Link} from 'react-router-dom'
+const ProductCard = ({product}) => {
+  console.log(product);
+
   return (
-    <div>
-        <div className="card">
+  
+    <Link className="card" to={product._id}>
             <div className='imgContainer'>
-                <img src={product} alt="" />
+                <img src={product.image[0].url} alt="" />
             </div>
-            <p>BRASS BALA KRISHNA DANCING 12"</p>
+            <p className='product-title'>{product.name}</p>
+            {/* <p className='product-des'>{product.description}</p> */}
             <div className='prices-continer'>
-                <span className='price-1'>$123</span>
-                <span className='price-2'>$2223</span>
+                <span className='price-1'>RS. {product.price}</span>
+                <span className='price-2'>Rs. 2223</span>
             </div>
-        </div>
-    </div>
+    </Link>
   )
 }
 
