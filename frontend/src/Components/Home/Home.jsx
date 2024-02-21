@@ -15,7 +15,7 @@ const Home = () => {
     
   return (
     <div>
-        <div className="carosoul"></div>
+        <div className="carosoul">Carousel Here</div>
          
                 <Row products={products} loading={loading} error={error}/>
                 <Row products={products} loading={loading} error={error}/>
