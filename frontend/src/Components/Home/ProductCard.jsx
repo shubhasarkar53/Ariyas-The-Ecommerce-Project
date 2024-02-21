@@ -2,7 +2,8 @@
 import React from 'react'
 import "./ProductCard.scss"
 import {Link} from 'react-router-dom'
-const ProductCard = ({product}) => {
+
+const ProductCard = ({ product }) => {
   console.log(product);
 
   return (

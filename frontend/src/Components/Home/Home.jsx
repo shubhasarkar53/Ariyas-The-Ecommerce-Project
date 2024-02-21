@@ -4,6 +4,7 @@ import ProductCard from './ProductCard'
 import "./Home.scss"
 import {useSelector,useDispatch } from 'react-redux'
 import { getProducts } from '../../Redux/Actions/productAction'
+import Row from '../Row/Row'
 const Home = () => {
     const dispatch = useDispatch();
     const {products,error,loading,productCount} = useSelector((state)=>state.products);
@@ -14,23 +15,12 @@ const Home = () => {
     
   return (
     <div>
-        <div className="othes"></div>
-        <div className="container">
-            <div className="allProductContainer">
-                {
-                    
-                    products && products.map((product)=>{
-                        return(
-                                  <ProductCard key={product._id}  product = {product} />
-                         
-                        )
-                    })
-                    
-                }
+        <div className="carosoul"></div>
+         
+                <Row products={products} loading={loading} error={error}/>
+                <Row products={products} loading={loading} error={error}/>
+                <Row products={products} loading={loading} error={error}/>
                 
-            </div>
-        </div>
-        
     </div>
 )
 }
