@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import ProductCard from './ProductCard'
 import "./Home.scss"
 import {useSelector,useDispatch } from 'react-redux'
 import { getProducts } from '../../Redux/Actions/productAction'
 import Row from '../Row/Row'
+import Loader from '../Loader/Loader'
 const Home = () => {
     const dispatch = useDispatch();
     const {products,error,loading,productCount} = useSelector((state)=>state.products);
@@ -12,17 +13,20 @@ const Home = () => {
     useEffect(() => {
         dispatch(getProducts());
     }, [dispatch])
-    
-  return (
-    <div>
-        <div className="carosoul">Carousel Here</div>
-         
-                <Row products={products} loading={loading} error={error}/>
-                <Row products={products} loading={loading} error={error}/>
-                <Row products={products} loading={loading} error={error}/>
+
+    return (
+        <Fragment>
+            {loading ? (<Loader/>) : (
+                <div>
+                    <div className="carosoul">Carousel Here</div>
+                    <Row products={products} loading={loading} error={error} />
+                    <Row products={products} loading={loading} error={error} />
+                    <Row products={products} loading={loading} error={error} />
+                </div>
+            )}
+        </Fragment>
+    )
                 
-    </div>
-)
 }
 
 export default Home

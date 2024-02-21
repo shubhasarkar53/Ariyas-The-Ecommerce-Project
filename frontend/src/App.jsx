@@ -6,6 +6,8 @@ import "./App.css"
 import Footer from './Components/Layout/Footer/Footer.jsx'
 import Home from './Components/Home/Home'
 import { BrowserRouter, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
+
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -14,6 +16,7 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={Home} />
           </Switch>
+
          
           <Footer/>
       </div>
