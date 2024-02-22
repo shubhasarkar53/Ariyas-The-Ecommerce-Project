@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 
-import {ALL_PRODUCT_SUCCESS,ALL_PRODUCT_REQUEST,ALL_PRODUCT_FAIL,CLEAR_ERROR,
+import {ALL_PRODUCT_SUCCESS,ALL_PRODUCT_REQUEST,ALL_PRODUCT_FAIL,CLEAR_ERRORS,
     PRODUCT_DETAILS_REQUEST,
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_DETAILS_FAIL,} from "../Constants/productConstants";
@@ -55,6 +55,6 @@ export const getProductDetails = (id) => async(dispatch) => {
 
 // only for clearing error 
 export const clearError = () => async(dispatch) =>{
-    dispatch({type:CLEAR_ERROR});
+    dispatch({type:CLEAR_ERRORS});
 
 }
