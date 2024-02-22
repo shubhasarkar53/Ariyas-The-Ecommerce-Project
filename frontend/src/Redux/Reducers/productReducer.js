@@ -77,29 +77,3 @@ export const productReducer = (state = { products: [] }, action) => {
 // Overall, this code defines a reducer that manages the state of products in a web application, including 
 //loading, success, and failure states, as well as clearing any errors that may occur.
 
-export const productDetailsReducer = (state = { product: {} }, action) => {
-    switch (action.type) {
-        case PRODUCT_DETAILS_REQUEST:
-            return {
-                loading: true,
-                ...state
-            };
-        case PRODUCT_DETAILS_SUCCESS:
-            return {
-                loading: false,
-                product: action.payload,
-            };
-        case PRODUCT_DETAILS_FAIL:
-            return {
-                loading: false,
-                error: action.payload
-            };
-        case CLEAR_ERRORS:
-            return {
-                ...state,
-                error: null 
-            };
-        default:
-            return state;
-    }
-};

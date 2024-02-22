@@ -3,11 +3,10 @@ import thunk from "redux-thunk";
 // import { composeWithDevTools } from '@redux-devtools/extension';
 import { composeWithDevTools } from '@redux-devtools/extension';
 
-import { productDetailsReducer, productRedcuer } from '../Reducers/productReducer';
+import { productRedcuer } from '../Reducers/productReducer';
 
 const reducer = combineReducers({
     products:productRedcuer,
-    productDetails:productDetailsReducer
 });
 let initialState = {};
 const middleWare = [thunk];
@@ -15,6 +14,7 @@ const store = createStore(reducer,initialState,composeWithDevTools(applyMiddlewa
 export default store;
 
 //This code is written in JavaScript and is using the Redux library to manage state. Here is an explanation of each part of the code:
+
 
 // The first line imports the createStore function from Redux library. 
 //The createStore is used to create new Redux store.
