@@ -1,6 +1,10 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 
-import {ALL_PRODUCT_SUCCESS,ALL_PRODUCT_REQUEST,ALL_PRODUCT_FAIL,CLEAR_ERROR} from "../Constants/productConstants";
+import {ALL_PRODUCT_SUCCESS,ALL_PRODUCT_REQUEST,ALL_PRODUCT_FAIL,CLEAR_ERROR,
+    PRODUCT_DETAILS_REQUEST,
+    PRODUCT_DETAILS_SUCCESS,
+    PRODUCT_DETAILS_FAIL,} from "../Constants/productConstants";
 
 export const getProducts = () => async(dispatch) => {
     try{
@@ -24,6 +28,30 @@ export const getProducts = () => async(dispatch) => {
         });
     }
 };
+
+export const getProductDetails = (id) => async(dispatch) => {
+    try{
+        dispatch({type:PRODUCT_DETAILS_REQUEST});
+        const {data} = await axios.get(`/api/v1/product/${id}`,{
+            headers:{
+                "Content-type":"application/json"
+            },
+            withCredentials:true,
+        });
+        console.log(data);
+
+        dispatch({
+            type:PRODUCT_DETAILS_SUCCESS,
+            payload:data.product
+        })
+    }
+    catch(error){
+        dispatch({
+            type:PRODUCT_DETAILS_FAIL,
+            payload: error.response.data.message,
+        });
+    }
+}
 
 // only for clearing error 
 export const clearError = () => async(dispatch) =>{

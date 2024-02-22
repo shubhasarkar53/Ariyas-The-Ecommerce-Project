@@ -12,6 +12,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className='wrapper'>
+        
           <Header/>
           <Switch>
             <Route exact path="/" component={Home} />
