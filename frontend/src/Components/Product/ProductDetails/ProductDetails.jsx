@@ -1,25 +1,28 @@
 /* eslint-disable no-unused-vars */
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import Carousel from 'react-material-ui-carousel'
 import {useSelector,useDispatch} from 'react-redux'
 import { getProductDetails } from '../../../Redux/Actions/productAction'
-import Cod from '../../assets/Images/Icons/cod.png'
-import Fast from '../../assets/Images/Icons/fast.png'
-import Secure from '../../assets/Images/Icons/secure.png'
-import Share from '../../assets/Images/Icons/share.png'
+import Cod from '../../../assets/Images/Icons/cod.png'
+import Fast from '../../../assets/Images/Icons/fast.png'
+import Secure from '../../../assets/Images/Icons/secure.png'
+import Share from '../../../assets/Images/Icons/share.png'
 import PropTypes from 'prop-types';
 import { Rating } from '@mui/material'
 import './ProductDetails.scss'
 import ReviewCard from '../ReviewCard/ReviewCard'
 import Loader from '../../Loader/Loader'
 import ReviewForm from '../CreateReview/CreateReview'
+
  
 // import ProductShare from './Share'
 
 
 
 const ProductDetails = ({ match }) => {
+
   const dispatch = useDispatch();
+
   const [itemCount, setItemCount] = React.useState(1);
   const [quantity, setQuantity] = React.useState(1);
 
@@ -28,7 +31,8 @@ const ProductDetails = ({ match }) => {
     dispatch(getProductDetails(match.params.id));
   }, [dispatch, match.params.id]);
 
-  const { product, error, loading } = useSelector((state) => state.productDetails);
+  const { product, error, loading } = useSelector(
+    (state) => state.productDetails);
 
   const options = {
     size: "large",
