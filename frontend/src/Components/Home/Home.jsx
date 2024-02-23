@@ -5,6 +5,7 @@ import {useSelector,useDispatch } from 'react-redux'
 import { getProducts } from '../../Redux/Actions/productAction'
 import Row from '../Row/Row'
 import Loader from '../Loader/Loader'
+import ImageCarousel from '../Carousel/Carousel'
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const Home = () => {
         <Fragment>
             {loading ? (<Loader/>) : (
                 <div>
-                    <div className="carosoul">Carousel Here</div>
+                    <ImageCarousel/>
                     <Row products={products} loading={loading} error={error} />
                     <Row products={products} loading={loading} error={error} />
                     <Row products={products} loading={loading} error={error} />
