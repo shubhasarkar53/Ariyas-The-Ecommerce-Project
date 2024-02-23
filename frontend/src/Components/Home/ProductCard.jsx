@@ -4,7 +4,7 @@ import "./ProductCard.scss"
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types';
 const ProductCard = ({ product }) => {
-  // console.log(product);
+  console.log(product);
 
   return (
   
