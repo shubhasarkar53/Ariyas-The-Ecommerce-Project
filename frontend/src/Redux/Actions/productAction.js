@@ -15,7 +15,7 @@ export const getProducts = () => async(dispatch) => {
             },
             withCredentials:true,
         });
-        console.log(data);
+        // console.log(data);
 
         dispatch({
             type:ALL_PRODUCT_SUCCESS,

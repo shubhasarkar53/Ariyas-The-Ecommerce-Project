@@ -3,10 +3,10 @@ import thunk from "redux-thunk";
 // import { composeWithDevTools } from '@redux-devtools/extension';
 import { composeWithDevTools } from '@redux-devtools/extension';
 
-import { productRedcuer } from '../Reducers/productReducer';
+import { productReducer } from '../Reducers/productReducer';
 
 const reducer = combineReducers({
-    products:productRedcuer,
+    products:productReducer,
 });
 let initialState = {};
 const middleWare = [thunk];
