@@ -5,6 +5,7 @@ import cart from "../../../assets/Images/Navbar/cart1.png"
 import search from "../../../assets/Images/Navbar/search1.png"
 import logo from "../../../assets/Images/Navbar/logo1.png"
 import "./Header.scss"
+import { Link } from 'react-router-dom'
 const Header = () => {
   return (
     <div>
@@ -16,8 +17,16 @@ const Header = () => {
                 <div className="mid-nav">
                     {
                         ["Home","Sale","Shop","Contact","About","Blog"].map((item,index)=>{
+                            const routes = {
+                                Home: '/',
+                                Sale: '/sale',
+                                Shop: '/shop',
+                                Contact: '/contact',
+                                About: '/about',
+                                Blog: '/blog'
+                            };
                             return(
-                                <a href="#" key={index}>{item}</a>
+                                <Link to={routes[item]} key={index}>{item}</Link>
                             )
                         })
                     }

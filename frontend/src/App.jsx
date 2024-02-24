@@ -7,6 +7,7 @@ import Footer from './Components/Layout/Footer/Footer.jsx'
 import Home from './Components/Home/Home'
 import { BrowserRouter, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import ProductDetails from './Components/Product/ProductDetails/ProductDetails.jsx'
+import Shop from './Components/Shop/Shop.jsx'
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
           <Header/>
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/Shop" component={Shop} />
             <Route exact path="/product/:id" component={ProductDetails} />
           </Switch>
 
