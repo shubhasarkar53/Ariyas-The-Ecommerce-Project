@@ -30,6 +30,13 @@ const ProductDetails = ({ match }) => {
 
   const { product, error, loading } = useSelector((state) => state.productDetails);
 
+  if (loading) {
+    console.log("loading")
+  }else{
+    console.log("product:",product);
+  }
+
+
   const options = {
     size: "large",
     value: product.ratings,
