@@ -9,7 +9,7 @@ import {ALL_PRODUCT_SUCCESS,ALL_PRODUCT_REQUEST,ALL_PRODUCT_FAIL,CLEAR_ERRORS,
 export const getProducts = () => async(dispatch) => {
     try{
         dispatch({type:ALL_PRODUCT_REQUEST});
-        const {data} = await axios.get("api/v1/products",{
+        const {data} = await axios.get("/api/v1/products",{
             headers:{
                 "Content-type":"application/json"
             },

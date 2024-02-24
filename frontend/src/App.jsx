@@ -6,6 +6,7 @@ import "./App.css"
 import Footer from './Components/Layout/Footer/Footer.jsx'
 import Home from './Components/Home/Home'
 import { BrowserRouter, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
+import Login from './Components/User/Login.jsx'
 
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
           <Header/>
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
           </Switch>
 
          

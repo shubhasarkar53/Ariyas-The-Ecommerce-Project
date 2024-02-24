@@ -4,6 +4,7 @@ import paperplane from "../../../assets/Images/Navbar/papperplane1.png"
 import cart from "../../../assets/Images/Navbar/cart1.png"
 import search from "../../../assets/Images/Navbar/search1.png"
 import logo from "../../../assets/Images/Navbar/logo1.png"
+import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import "./Header.scss"
 const Header = () => {
   return (
@@ -35,8 +36,8 @@ const Header = () => {
                         }
                     </div>
                     <div className="auth-btns-container">
-                        <div className="auth-btn">Sign Up</div>
-                        <div className="auth-btn">Login</div>
+                        <Link className="auth-btn">Sign Up</Link>
+                        <Link to = {`/login`} className="auth-btn">Login</Link>
                     </div>
                 </div>
             </nav>
