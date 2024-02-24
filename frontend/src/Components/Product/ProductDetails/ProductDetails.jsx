@@ -36,7 +36,7 @@ const ProductDetails = ({ match }) => {
 
   const options = {
     size: "large",
-    value: product.ratings,
+    value: product ? product.ratings : 0,
     readOnly: true,
     precision: 0.5,
   };
