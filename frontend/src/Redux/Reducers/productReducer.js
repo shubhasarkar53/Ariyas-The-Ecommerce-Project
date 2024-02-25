@@ -64,6 +64,7 @@ export const productDetailsReducer = (state = { product: {} }, action) => {
     }
 }
 
+
 //Explanation 
 // This code is a Redux reducer for managing the state of products in a web application. 
 // A reducer is a function Redux that determines how the state of the application changes 

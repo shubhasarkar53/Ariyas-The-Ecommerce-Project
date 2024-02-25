@@ -32,17 +32,25 @@ const Header = () => {
                     }
                 </div>
                 <div className="right-nav">
-                    <div className="icon-btns-container">
-                        {
-                            [paperplane,cart,search].map((imgUrl,index)=>{
-                                return(
-                                    <div className="icon-btn" key={index}>
-                                        <img src={imgUrl} alt="icon" />
-                                    </div>      
+
+                <div className="icon-btns-container">
+                    {
+                        [
+                             { icon: paperplane, path: '/paperplane' },
+                             { icon: cart, path: '/cart' },
+                             { icon: search, path: '/search' }
+                        ].map((item, index) => {
+                          return (
+                                <div className="icon-btn" key={index}>
+                                   <Link to={item.path}>
+                                       <img src={item.icon} alt="icon" />
+                                   </Link>
+                                </div>
                                 )
-                            }) 
-                        }
-                    </div>
+                            })
+                    }
+                </div>
+                    
                     <div className="auth-btns-container">
                         <div className="auth-btn">Sign Up</div>
                         <div className="auth-btn">Login</div>
