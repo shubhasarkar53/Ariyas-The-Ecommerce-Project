@@ -6,7 +6,7 @@ import search from "../../../assets/Images/Navbar/search1.png"
 import logo from "../../../assets/Images/Navbar/logo1.png"
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import "./Header.scss"
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 const Header = () => {
   return (
     <div>
