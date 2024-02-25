@@ -32,7 +32,7 @@ const Login = ({history}) => {
     }
 
     if (isAuthenticated) {
-        history.push("/me");
+        history.push("/account");
     }
   }, [dispatch, error,toast,history,isAuthenticated]);
 

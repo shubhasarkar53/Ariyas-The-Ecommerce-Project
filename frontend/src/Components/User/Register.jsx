@@ -74,7 +74,7 @@ const Register = ({history}) => {
                 position: "bottom-center",
                 autoClose: 3000,
               });
-            history.push("/me");
+            history.push("/account");
         }
     },[dispatch,toast,error,history,isAuthenticated])
 
@@ -94,8 +94,7 @@ const Register = ({history}) => {
                 </div>
                 <div className="login-lower">
                   <h2>New User Register</h2>
-
-{/*  */}
+                  
                 <form onSubmit={registerSubmit}>
 
                   <label htmlFor="fullName">Full Name</label>
