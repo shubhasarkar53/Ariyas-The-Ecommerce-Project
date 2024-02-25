@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Login.scss";
-import subLoginImg from "../../assets/Images/Login page/rightLogin.png";
+import subLoginImg from "../../assets/Images/Login-Signup-page/rightLogin.png";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin, clearError } from "../../Redux/Actions/userAction";
 import Loader from "../Loader/Loader";

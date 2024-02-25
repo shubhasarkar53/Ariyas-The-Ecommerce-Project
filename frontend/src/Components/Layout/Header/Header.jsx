@@ -36,7 +36,7 @@ const Header = () => {
                         }
                     </div>
                     <div className="auth-btns-container">
-                        <Link className="auth-btn">Sign Up</Link>
+                        <Link  to = {`/register/new`} className="auth-btn">Sign Up</Link>
                         <Link to = {`/login`} className="auth-btn">Login</Link>
                     </div>
                 </div>
