@@ -7,7 +7,7 @@ const User = require("../models/User");
 
 //Controller for Get All products
 exports.getAllProducts = catchAsyncErr(async (req, res, next) => {
-  const resultPerPage = 10;
+  const resultPerPage = 20;
   const productCount = await Product.countDocuments();
   const apiFeature = new apiFeatures(Product.find(), req.query)
     .search()

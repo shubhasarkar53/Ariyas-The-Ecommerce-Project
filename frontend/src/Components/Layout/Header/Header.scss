@@ -43,6 +43,10 @@ header{
     .right-nav{
         // width: 25vmax;
         // border: 1px solid pink;
+        img{
+            background-color: transparent;
+            background-image: none;
+        }
     }
     .right-nav,.icon-btns-container,.auth-btns-container{
         display: flex;
