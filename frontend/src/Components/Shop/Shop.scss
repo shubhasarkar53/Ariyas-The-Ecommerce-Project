@@ -28,4 +28,13 @@
         margin-top: 1rem;
         gap: 2rem;
     }
+    
+}
+.paginationBox{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin: 6vmax 0 2rem 0;
 }
