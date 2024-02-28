@@ -2,7 +2,7 @@
 import React from 'react';
 import { Pagination, PaginationItem } from '@mui/material';
 import PropTypes from 'prop-types';
-
+import './productPagination.scss'
 const ProductPagination = ({ totalPages, currentPage, onPageChange }) => {
   const handleChange = (event, value) => {
     onPageChange(value);
@@ -10,8 +10,13 @@ const ProductPagination = ({ totalPages, currentPage, onPageChange }) => {
 
   return (
     <Pagination
-      sx={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}
-      color="primary"
+    className={'pagination-div'}
+      sx={{ display: 'flex',
+       justifyContent: 'center', 
+       margin: '1rem 0' ,
+       gap: '10.5rem',
+      }}
+      color="secondary"
       size="large"
       shape="rounded"
       defaultPage={1}
