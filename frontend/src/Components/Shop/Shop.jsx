@@ -18,19 +18,15 @@ const Shop = ({match}) => {
 
     const keyword = match.params.keyword;
 
-    const {products,error,loading,productCount,resultPerPage} = useSelector((state)=>state.products);
+    const {products,error,loading,productCount,resultPerPage,totalPages} = useSelector((state)=>state.products);
 
 
-    ///
+    /// pagination
     const [currentPage, setCurrentPage] = useState(1); // Current page
-    // const[totalPages,setTotalPages] = useState(1); // Total pages
-    // const totalPages = Math.ceil(productCount / resultPerPage);
-    const totalPages = 5;
+
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
-
-    ///
 
 
 

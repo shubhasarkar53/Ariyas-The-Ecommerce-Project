@@ -7,8 +7,10 @@ const User = require("../models/User");
 
 //Controller for Get All products
 exports.getAllProducts = catchAsyncErr(async (req, res, next) => {
-  const resultPerPage = 8;
+  const resultPerPage = 12;
   const productCount = await Product.countDocuments();
+  const totalPage = Math.ceil(productCount / resultPerPage);
+  
   const apiFeature = new apiFeatures(Product.find(), req.query)
     .search()
     .filter()
@@ -19,6 +21,7 @@ exports.getAllProducts = catchAsyncErr(async (req, res, next) => {
     productCount,
     products,
     resultPerPage,
+    totalPage,
   });
 });
 
