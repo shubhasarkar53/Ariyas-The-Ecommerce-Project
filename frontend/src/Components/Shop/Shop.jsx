@@ -50,7 +50,7 @@ const Shop = ({match}) => {
   return (
    <Fragment>
     {loading?<Loader/>:(<Fragment>
-        <div className='shop'>
+        <div className='shop-section'>
           <p className='title'>Shop</p>
           <div className='bar'></div>
           {/* <Row products={products}  loading={loading} error={error} /> */}
