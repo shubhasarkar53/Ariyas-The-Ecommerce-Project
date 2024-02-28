@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import "./Login.scss";
 import subLoginImg from "../../assets/Images/Login-Signup-page/rightLogin.png";
@@ -48,9 +49,8 @@ const Login = ({history}) => {
             <div className="login-upper">
               <h1 className="login-heading">Welcome Back</h1>
               <p className="login-txt">
-                Lorem ipsum dolor sit amet consectetur{" "}
-                <span className="login-highligt">adipisicing elit</span> facilis
-                nisi.
+                Buy & Sell today,tommorow and bayond{" "}
+                <span className="login-highligt">Empower Local Artician's</span>
               </p>
             </div>
             <div className="login-lower">

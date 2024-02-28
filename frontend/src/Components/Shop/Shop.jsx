@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { Fragment, useEffect, useState } from 'react'
 import './Shop.scss'
@@ -7,7 +8,7 @@ import Loader from '../Loader/Loader'
 import Row from '../Row/Row'
 import { keyframes } from '@emotion/react'
 import PropTypes from 'prop-types';
-import { Pagination } from '@mui/material'
+// import { Pagination } from '@mui/material'
 import ProductCard from '../Home/ProductCard'
 import ProductPagination from './productPagination'
 
@@ -17,25 +18,30 @@ const Shop = ({match}) => {
 
     const keyword = match.params.keyword;
 
+    const {products,error,loading,productCount,resultPerPage} = useSelector((state)=>state.products);
+
 
     ///
     const [currentPage, setCurrentPage] = useState(1); // Current page
-    const totalPages = 10; // Total number of pages 
-
-    // fetchData function fetches data based on the currentPage
+    // const[totalPages,setTotalPages] = useState(1); // Total pages
+    // const totalPages = Math.ceil(productCount / resultPerPage);
+    const totalPages = 5;
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
     ///
 
-    const {products,error,loading,productCount,resultPerPage} = useSelector((state)=>state.products);
+
+
 
     useEffect(() => {
       dispatch(getProducts(keyword,currentPage));
+
       if(error){
         dispatch(clearError());
       }
+
     }, [dispatch, error, keyword, currentPage])
 
 

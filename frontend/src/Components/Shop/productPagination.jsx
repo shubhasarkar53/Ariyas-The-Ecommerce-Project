@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { Pagination, PaginationItem } from '@mui/material';
+import PropTypes from 'prop-types';
 
 const ProductPagination = ({ totalPages, currentPage, onPageChange }) => {
   const handleChange = (event, value) => {
@@ -25,6 +26,7 @@ const ProductPagination = ({ totalPages, currentPage, onPageChange }) => {
       )}
     />
   );
+  
 };
 
 export default ProductPagination;
