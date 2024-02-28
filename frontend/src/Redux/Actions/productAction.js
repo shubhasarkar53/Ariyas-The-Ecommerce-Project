@@ -6,10 +6,14 @@ import {ALL_PRODUCT_SUCCESS,ALL_PRODUCT_REQUEST,ALL_PRODUCT_FAIL,CLEAR_ERRORS,
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_DETAILS_FAIL,} from "../Constants/productConstants";
 
-export const getProducts = () => async(dispatch) => {
+export const getProducts = (keyword="",currentPage=1) => async(dispatch) => {
     try{
+
         dispatch({type:ALL_PRODUCT_REQUEST});
-        const {data} = await axios.get("/api/v1/products",{
+
+        let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}`;
+        
+        const {data} = await axios.get(link,{
             headers:{
                 "Content-type":"application/json"
             },
@@ -62,6 +66,22 @@ export const searchProducts = (keyword) => async(dispatch) => {
         });
     }
 }
+// export const searchProducts = (keyword) => async(dispatch) => {
+//     try{
+//         dispatch({type:ALL_PRODUCT_REQUEST});
+//         const {data} = await axios.get(`/api/v1/products/search?keyword=${keyword}`);
+//         console.log(data);
+//         dispatch({
+//             type:ALL_PRODUCT_SUCCESS,
+//             payload:data
+//         });
+//     } catch(error){
+//         dispatch({
+//             type:ALL_PRODUCT_FAIL,
+//             payload: error.response.data.message,
+//         });
+//     }
+// }
 
 export const clearError = () => async(dispatch) =>{
     dispatch({type:CLEAR_ERRORS});

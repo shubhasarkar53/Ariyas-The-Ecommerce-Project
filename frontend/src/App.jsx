@@ -31,7 +31,8 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/shop" component={Shop} />
-            <Route path="/search" component={Search} />
+            <Route path="/products/:keyword" component={Shop} />
+            <Route exact path="/search" component={Search} />
             <Route exact path="/product/:id" component={ProductDetails} />
 
             <Route exact path="/login" component={Login} />
@@ -40,6 +41,7 @@ const App = () => {
           </Switch>
 
           <Footer/>
+         
       </div>
     </BrowserRouter>
   )
