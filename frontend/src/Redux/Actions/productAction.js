@@ -15,7 +15,7 @@ export const getProducts = () => async(dispatch) => {
             },
             withCredentials:true,
         });
-        console.log(data);
+        // console.log(data);
 
         dispatch({
             type:ALL_PRODUCT_SUCCESS,
@@ -33,7 +33,7 @@ export const getProductDetails = (id) => async(dispatch) => {
     try{
         dispatch({type:PRODUCT_DETAILS_REQUEST});
         const {data} = await axios.get(`/api/v1/product/${id}`);
-        console.log(data);
+        // console.log(data);
         dispatch({
             type:PRODUCT_DETAILS_SUCCESS,
             payload:data.product
@@ -50,7 +50,7 @@ export const searchProducts = (keyword) => async(dispatch) => {
     try{
         dispatch({type:ALL_PRODUCT_REQUEST});
         const {data} = await axios.get(`/api/v1/products/search?keyword=${keyword}`);
-        console.log(data);
+        // console.log(data);
         dispatch({
             type:ALL_PRODUCT_SUCCESS,
             payload:data

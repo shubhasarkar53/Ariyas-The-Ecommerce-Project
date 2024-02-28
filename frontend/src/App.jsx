@@ -13,18 +13,21 @@ import store from "./Redux/Store/store.js";
 import { loadUser } from './Redux/Actions/userAction.js';
 import Shop from './Components/Shop/Shop.jsx'
 import Search from './Components/Search/Search.jsx'
-
+import { useDispatch, useSelector } from "react-redux";
+import Account from './Components/User/Account.jsx'
 
 const App = () => {
+
+ 
   useEffect(() => {
-    store.dispatch(loadUser());
+    store.dispatch(loadUser())
   }, [])
+
   
   return (
     <BrowserRouter>
       <div className='wrapper'>
-        
-          <Header/>
+        <Header/>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/shop" component={Shop} />
@@ -33,9 +36,9 @@ const App = () => {
 
             <Route exact path="/login" component={Login} />
             <Route exact path="/register/new" component={Register}/>
+            <Route exact path="/account" component={Account}/>
           </Switch>
 
-         
           <Footer/>
       </div>
     </BrowserRouter>

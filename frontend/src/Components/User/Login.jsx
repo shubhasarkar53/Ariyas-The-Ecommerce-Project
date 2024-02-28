@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Login = ({history}) => {
   const dispatch = useDispatch();
-  const { loading, isAuthenticated, error } = useSelector(
+  const { loading, isAuthenticated, error ,token } = useSelector(
     (state) => state.user
   );
   const [loginEmail, setLoginEmail] = useState("");
@@ -30,6 +30,12 @@ const Login = ({history}) => {
       });
       dispatch(clearError());
     }
+    // if(!token){
+    //   toast.success("Welcome To Ariyas !",{
+    //     position: "bottom-center",
+    //     autoClose: 3000,
+    //   });
+    // }
 
     if (isAuthenticated) {
         history.push("/account");
@@ -85,7 +91,7 @@ const Login = ({history}) => {
           <div className="pic-login">
             <img src={subLoginImg} alt="" />
           </div>
-          <ToastContainer/>
+             <ToastContainer/>
         </div>
       )}
     </>

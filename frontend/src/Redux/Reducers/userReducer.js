@@ -17,7 +17,8 @@ export const userReducer = (state={user:{}},action) =>{
                 ...state,
                 loading:false,
                 isAuthenticated:true,
-                user:action.payload                  //why not LOGIN:action.payload.user
+                user:action.payload,              //why not LOGIN:action.payload.user
+                // token:action.payload.token
             }
         case LOGIN_FAIL:
         case REGISTER_FAIL:

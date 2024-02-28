@@ -8,11 +8,12 @@ export const userLogin = (email,password) => async(dispatch) => {
         dispatch({type:LOGIN_REQUEST});
         const config = {headers:{"Content-type":"application/json"},withCredentials:true,};
         const {data} = await axios.post("/api/v1/login",{email,password},config);
-        // console.log(data);
+        console.log(data);
 
         dispatch({
             type:LOGIN_SUCCESS,
-            payload:data.user
+            // payload:data.user
+            payload:data
         })
     }catch(error){
         dispatch({
@@ -32,7 +33,8 @@ export const userRegister = (userData) => async(dispatch) => { //distrub
 
         dispatch({
             type:REGISTER_SUCCESS,
-            payload:data.user
+            // payload:data.user
+            payload:data
         })
     }catch(error){
         dispatch({
@@ -48,7 +50,7 @@ export const loadUser = () => async(dispatch) => {
         dispatch({type:LOAD_USER_REQUEST});
 
         const {data} = await axios.get("/api/v1/me")
-        // console.log(data);
+        console.log( "Load user data",data);
 
         dispatch({
             type:LOAD_USER_SUCCESS,

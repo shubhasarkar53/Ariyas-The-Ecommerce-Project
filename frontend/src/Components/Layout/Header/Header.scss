@@ -50,12 +50,30 @@ header{
         justify-content: space-between;
     }
     .icon-btns-container{
-        gap: 1.5em;
-        margin-right: 1.6em;
+        gap:2em;
+        margin-right: 4.5em;
         img{
             width: 40px;
             cursor: pointer;
         }
+    }
+
+    .avatar-img{
+        width: 4em;
+        height: 4em;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+        overflow: hidden;
+        transition: all 0.2s ease-in-out;
+        border: 1px solid $secondaryTextColor;
+    }
+    .avatar-img:hover{
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+    .avatarPlaceholder{
+        width: 4em;
+        height: 4em;
     }
     .auth-btns-container{
         gap: 2em; 
