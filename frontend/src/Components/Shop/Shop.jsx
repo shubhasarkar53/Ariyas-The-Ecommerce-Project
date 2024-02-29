@@ -10,7 +10,10 @@ import { keyframes } from '@emotion/react'
 import PropTypes from 'prop-types';
 // import { Pagination } from '@mui/material'
 import ProductCard from '../Home/ProductCard'
-import ProductPagination from './productPagination'
+import ProductPagination from './PaginationComponent/productPagination'
+import { Slider, Typography } from '@mui/material'
+// import PriceFilterSlider from './priceFilterComponent/priceFilter'
+ 
 
 const Shop = ({match}) => {
 
@@ -24,11 +27,12 @@ const Shop = ({match}) => {
     /// pagination
     const [currentPage, setCurrentPage] = useState(1); // Current page
 
-  const handlePageChange = (page) => {
+
+
+
+    const handlePageChange = (page) => {
     setCurrentPage(page);
   };
-
-
 
 
     useEffect(() => {
@@ -60,14 +64,24 @@ const Shop = ({match}) => {
         }
           </div>
         </div>
-        <div className="paginationBox">
+
+
+
+
+      <div className="filterbox">
+       
+      </div>
+
+     <div className="paginationBox">
          
-      <ProductPagination
-        totalPages={totalPages}
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
-      />
-        </div>
+            <ProductPagination
+              totalPages={totalPages}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            />
+
+      </div>
+
     </Fragment>)}
    </Fragment>
 
