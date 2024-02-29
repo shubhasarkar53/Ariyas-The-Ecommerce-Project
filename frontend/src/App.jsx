@@ -40,7 +40,7 @@ const App = () => {
             <Route exact path="/account" component={Account}/>
           </Switch>
 
-          {/* <Footer/> */}
+          <Footer/>
          
       </div>
     </BrowserRouter>
