@@ -1,0 +1,12 @@
+.loader-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    img{
+        width: 30%; 
+        height: 30%;
+        object-fit: contain;
+    }
+}

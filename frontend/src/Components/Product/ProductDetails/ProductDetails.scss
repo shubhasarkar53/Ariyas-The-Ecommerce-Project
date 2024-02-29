@@ -1,0 +1,262 @@
+$green:#248A00;
+$yellow:#F4CD00;
+$yellowhover:#c2a308;
+$safron:#FF9D0A;
+$safronhover:#bc7305;
+$gray:#A5A5A5;
+
+// *{
+//     border: 1px solid red;
+// }
+
+.ProductDetailsContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.top-div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: auto;
+    max-width: 100%;
+    padding: 1vmax;
+    box-sizing: border-box;
+
+    .left-div{
+        margin-left: 5rem;
+        width: 40%;
+        height: 500px;
+        
+        img{
+            // width: 565px;
+            // height: 400;
+            height: 500px;
+            width: 600px;
+            object-fit: cover;
+            border-radius: 2rem;
+            padding: 1rem;
+            margin: 1rem;
+        }
+    }
+    
+    .right-div{
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+        // justify-content: center;
+        margin: 1rem;
+        gap: 2em;
+        width: 50%;
+        .name{
+            display: flex;
+            gap: 5rem;
+        }
+        img{
+            width: 40px;
+            height: 40px;
+        }
+        .ratings{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.3rem;
+            margin-left: 4rem;
+            
+            span{
+                font-size: 1.5rem;
+            }
+        }
+        .price{
+            display: flex;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-left: 4rem;
+            .available{
+                color: $green;
+                
+            }
+        }
+    
+        .buttondiv{
+            display: flex;
+            gap: 1rem;
+            margin-left: 4rem;
+            button{
+                padding: 1rem 2rem;
+                border: none;
+                border-radius: 3rem;
+                font-size: 1.2rem;
+                font-family: inherit;
+                padding:0.5rem 2rem 0.5rem 2rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+    
+            }
+            .addtocart{
+                background-color: $yellow;
+                color: white;
+                &:hover{
+                 background-color: $yellowhover;
+                 transition: all 0.3s ease-in-out;
+                
+                }
+
+            }
+            .buynow{
+                background-color: $safron;
+                color: rgb(255, 255, 255);
+                &:hover{
+                    background-color: $safronhover;
+                }
+            }
+            .quantity {
+                display: flex;
+                align-items: center;
+              
+                button {
+                    border-radius: 8px;
+                    border: 1px solid transparent;
+                    padding: 0.6em 1.2em;
+                    font-size: 1em;
+                    font-weight: 500;
+                    font-family: inherit;
+                    background-color: #dbc81a;
+                    cursor: pointer;
+                  transition: background-color 0.3s;
+              
+                  &:hover {
+                    background-color: #e0e0e0;
+                  }
+                }
+              
+                input {
+                  width: 3rem;
+                  text-align: center;
+                  border: 1px solid #ccc;
+                  border-radius: 4px;
+                  margin: 0 0.5rem;
+                  padding: 0.5rem;
+                  font-size: 1rem;
+                  background-color: #fff;
+                  color: #333;
+                }
+              }
+              
+        }
+    
+        .icons{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 40%;
+            margin-left: 4rem;
+            gap: 2rem;
+            .first{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 0.5rem;
+                img{
+                    width: 70px;
+                    height: 70px;
+                }
+                p{
+                    font-size: 0.8rem;
+                }
+            }
+            .second{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                img{
+                    width: 70px;
+                    height: 70px;
+                }
+                p{
+                    font-size: 0.8rem;
+                }
+            }
+            .third{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                img{
+                    width: 70px;
+                    height: 70px;
+                }
+                p{
+                    font-size: 0.8rem;
+                }
+            }
+        }
+    }
+}
+
+.downdiv{
+    display: flex;
+    width: 80vw;
+    height: auto;
+    max-width: 100%;
+    padding: 1vmax;
+    box-sizing: border-box;
+    margin-top: 2rem;
+    .description{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 100%;
+        font-size:1.5rem ;
+        margin: 4rem;
+    }
+    .reviews{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 90%;
+        .review{
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 1rem;
+            .user{
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+                img{
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                }
+                .name{
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                }
+            }
+            .reviewtext{
+                font-size: 1.2rem;
+                line-height: 1.5;
+            }
+
+        }
+    }
+}
+.noreview{
+    font-size: 1.8rem;
+    text-align: center;
+    opacity: 0.7;
+    margin-top: 2rem;
+
+}
+
