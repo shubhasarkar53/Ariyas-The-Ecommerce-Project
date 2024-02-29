@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Pagination, PaginationItem } from '@mui/material';
 import PropTypes from 'prop-types';
 import './productPagination.scss'
@@ -9,27 +9,34 @@ const ProductPagination = ({ totalPages, currentPage, onPageChange }) => {
   };
 
   return (
-    <Pagination
-    className={'pagination-div'}
-      sx={{ display: 'flex',
-       justifyContent: 'center', 
-       margin: '1rem 0' ,
-       gap: '10.5rem',
-      }}
-      color="secondary"
-      size="large"
-      shape="rounded"
-      defaultPage={1}
-      count={totalPages}
-      page={currentPage}
-      onChange={handleChange}
-      renderItem={(item) => (
-        <PaginationItem
-          component="a"
-          {...item}
-        />
-      )}
-    />
+    <Fragment >
+
+      <div className='pagination-container'>
+        <Pagination
+              className={'pagination-div'}
+                sx={{ display: 'flex',
+                justifyContent: 'center', 
+                margin: '1rem 0' ,
+                gap: '10.5rem',
+                }}
+                color="secondary"
+                size="large"
+                shape="rounded"
+                defaultPage={1}
+                count={totalPages}
+                page={currentPage}
+                onChange={handleChange}
+                renderItem={(item) => (
+                  <PaginationItem
+                    component="a"
+                    {...item}
+                  />
+                )}
+              />
+      </div>
+       
+    </Fragment>
+    
   );
   
 };
