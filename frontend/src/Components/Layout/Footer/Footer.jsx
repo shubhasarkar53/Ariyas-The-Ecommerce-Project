@@ -24,40 +24,39 @@ const Footer = () => {
         <div className="footer-container">
           <div className="footer-top">
             <div className="element">
-              <div className="list-item1">Secure Payment</div>
               <div className="symbol1">
                 <RiSecurePaymentFill />
               </div>
+              <div className="list-item1">Secure Payment</div>
             </div>
 
             <div className="sline"></div>
 
             <div className="element">
-              <div className="list-item2">Express Shipping</div>
               <div className="symbol2">
                 <FaShippingFast />
               </div>
+              <div className="list-item2">Express Shipping</div>
             </div>
 
             <div className="sline"></div>
 
             <div className="element">
-              <div className="list-item3">Free Return</div>
               <div className="symbol3">
                 <TbTruckReturn />
               </div>
+              <div className="list-item3">Free Return</div>
             </div>
           </div>
           <div className="line"></div>
 
           <div className="footer-middle">
-            
+
             <div className="ariyas">
               <h3>Ariyas</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-                reiciendis commodi incidunt obcaecati id nisi iure quisquam
-                doloribus quia, adipisci sed, fuga nam explicabo.
+
+                Ariyas: Preserving Heritage, Crafting Elegance. Explore premium quality traditional goods that celebrate our rich cultural heritage. Embrace the essence of tradition with every purchase. Unveil the beauty of our heritage at Ariyas - Your Gateway to Timeless Elegance.
               </p>
 
               <div className="social-media">
