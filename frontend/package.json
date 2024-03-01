@@ -10,10 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.3",
+    "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.10",
-    "@mui/material": "^5.15.10",
+    "@mui/material": "^5.15.11",
     "@redux-devtools/extension": "^3.3.0",
     "axios": "^1.6.7",
     "http-proxy-middleware": "^2.0.6",
@@ -25,10 +25,12 @@
     "react-material-ui-carousel": "^3.4.2",
     "react-redux": "^7.2.9",
     "react-router-dom": "^5.3.4",
+    "react-slick": "^0.30.2",
     "react-toastify": "^10.0.4",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",
