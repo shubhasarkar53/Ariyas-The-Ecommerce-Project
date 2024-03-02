@@ -6,7 +6,8 @@ import {
     PRODUCT_DETAILS_REQUEST,
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_DETAILS_FAIL,
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+    PRODUCT_FILTER
 } from '../Constants/productConstants';
 
 export const productReducer = (state = { products: [] }, action) => {
@@ -22,7 +23,7 @@ export const productReducer = (state = { products: [] }, action) => {
                 products: action.payload.products,
                 productsCount: action.payload.productsCount,
                 resultPerPage: action.payload.resultPerPage,
-                totalPages: action.payload.totalPage
+                totalPages: action.payload.totalPage,
             };
         case ALL_PRODUCT_FAIL:
             return {
@@ -66,6 +67,17 @@ export const productDetailsReducer = (state = { product: {} }, action) => {
     }
 }
 
+//filter reducer
+export const productFilterReducer = (state = { products: [] }, action) => {
+    switch (action.type) {
+        case PRODUCT_FILTER:
+            return {
+                products: action.payload
+            };
+        default:
+            return state;
+    }
+};
 
 //Explanation 
 // This code is a Redux reducer for managing the state of products in a web application. 

@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Paper, Typography } from '@mui/material';
+import { Button } from '@mui/material';
 import PropTypes from 'prop-types';
 import './Carousel.scss'
 
@@ -32,16 +33,17 @@ const ImageCarousel = ({ images }) => {
     <Slider {...settings}>
       {images.map((image, index) => (
         <div key={index}>
-          <Paper>
-            <img
-             src={image.url} 
-             alt={`slide-${index}`} 
-             className='carousel-image-div'
-             />
 
-             <Typography className='carousel-caption' variant="caption">{image.caption}</Typography>
-                
-          </Paper>
+                    <Paper>
+                      <img
+                       src={image.url} 
+                       alt={`slide-${index}`} 
+                       className='carousel-image-div'
+                       />
+
+                       <Typography className='carousel-caption' variant="caption">{image.caption}</Typography>
+                          
+                    </Paper>
         </div>
       ))}
     </Slider>

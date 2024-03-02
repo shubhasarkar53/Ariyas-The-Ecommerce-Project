@@ -5,15 +5,14 @@ import "./Shop.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts, clearError } from "../../Redux/Actions/productAction";
 import Loader from "../Loader/Loader";
-import Row from "../Row/Row";
-import { keyframes } from "@emotion/react";
 import PropTypes from "prop-types";
-// import { Pagination } from '@mui/material'
 import ProductCard from "../Home/ProductCard";
 import ProductPagination from "./PaginationComponent/productPagination";
-import { Slider, Typography } from '@mui/material'
-// import PriceFilterSlider from './priceFilterComponent/priceFilter'
- 
+import Slider from "@mui/material/Slider";
+import Typography from "@mui/material/Typography";
+import { Rating } from '@mui/material'
+
+
 
 const Shop = ({ match }) => {
   const dispatch = useDispatch();
@@ -23,24 +22,46 @@ const Shop = ({ match }) => {
   const { products, error, loading, productCount, resultPerPage, totalPages } =
     useSelector((state) => state.products);
 
-    /// pagination
-    const [currentPage, setCurrentPage] = useState(1); // Current page
+
+    const categories = [
+      "All",
+      "Bags",
+      "Shoes",
+      "Sharees",
+      "Kurttys",
+      "Jewelry",
+      "Wooden",
+      "Ceramic",
+      
+    ]
+
+  /// pagination
+  const [currentPage, setCurrentPage] = useState(1); // Current page
+  const [price, setPrice] = useState([0, 30000]); // Price range
+  const [category, setCategory] = useState(""); // Category selected
+  const [ratings, setRatings] = useState(0); // Ratings
 
 
 
-
-    const handlePageChange = (page) => {
+  const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
 
+  const priceHandler = (e, newPrice) => {
+    setPrice(newPrice);
+    const [minPrice, maxPrice] = newPrice;
+    dispatch(getProducts(keyword, currentPage, [minPrice, maxPrice]));
+  };
+
+
   useEffect(() => {
-    dispatch(getProducts(keyword, currentPage));
+    dispatch(getProducts(keyword, currentPage, price, category, ratings));
 
     if (error) {
       dispatch(clearError());
     }
-  }, [dispatch, error, keyword, currentPage]);
+  }, [dispatch, error, keyword, currentPage, price, category, ratings]);
 
   return (
     <Fragment>
@@ -59,30 +80,69 @@ const Shop = ({ match }) => {
                 })}
             </div>
 
+            <div className="price-filter-container ">
 
+             {/* Price Filter */}
+            <Typography className="price-header">Price</Typography>
+            <Slider
+            className="main-slider"
+              value={price}
+              onChange={priceHandler}
+              valueLabelDisplay="auto"
+              aria-labelledby="range-slider"
+              min={0}
+              max={30000}
+            />
 
+            {/* categori filter */}
 
+            <Typography className="category-header">Categories</Typography>
+            <ul className="categoryBox">
+              {categories.map((category) => (
+                <li
+                  className="category-link"
+                  key={category}
+                  onClick={() => setCategory(category)}
+                >
+                  {category}
+                </li>
+              ))}
+            </ul>
 
-      <div className="filterbox">
-       
-      </div>
+            {/* Ratings Filter */}
+            <div className="rating-filter">
+              <Typography component="legend" className="rating-header">Ratings</Typography>
+              <Slider
+                className="rating-slider"
+                value={ratings}
+                onChange={(e, newRating) => {
+                  setRatings(newRating);
+                }}
+                aria-labelledby="continuous-slider"
+                valueLabelDisplay="auto"
+                min={0}
+                max={5}
+              />
+            </div>
 
-         <div className="paginationBox">
-                    <ProductPagination
-                      totalPages={totalPages}
-                      currentPage={currentPage}
-                      onPageChange={handlePageChange}
-                    />
+      
+            </div>
 
-          </div>
+            <div className="paginationBox">
+              <ProductPagination
+                totalPages={totalPages}
+                currentPage={currentPage}
+                onPageChange={handlePageChange}
+              />
+            </div>
 
-            
           </div>
         </Fragment>
       )}
     </Fragment>
   );
 };
+
 
 Shop.propTypes = {
   match: PropTypes.shape({
