@@ -32,23 +32,22 @@ const ImageCarousel = ({ images }) => {
   return (
     <Slider {...settings}>
       {images.map((image, index) => (
-        <div key={index}>
+        <div key={index} className="carouselImgStyle">
+          <Paper>
+            <img
+              src={image.url}
+              alt={`slide-${index}`}
+              className='carousel-image-div'
+            />
 
-                    <Paper>
-                      <img
-                       src={image.url} 
-                       alt={`slide-${index}`} 
-                       className='carousel-image-div'
-                       />
+            <Typography className='carousel-caption' variant="caption">{image.caption}</Typography>
 
-                       <Typography className='carousel-caption' variant="caption">{image.caption}</Typography>
-                          
-                    </Paper>
+          </Paper>
         </div>
       ))}
     </Slider>
   );
-  
+
 };
 
 ImageCarousel.propTypes = {
