@@ -1,20 +1,31 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import SaleCards from './SaleCard';
 import './SaleStyle.scss';
 import { getProducts as listProducts } from '../../Redux/Actions/productAction';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../Loader/Loader';
 import { FaGifts } from "react-icons/fa6";
+import { useHistory } from 'react-router-dom';
 
 const Sale = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector(state => state.products);
+  const history = useHistory();
+  const [isButtonClicked, setButtonClicked] = useState(false);
 
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
 
+  const handleButtonClick = () => {
+    setButtonClicked(true);
+
+    setTimeout(() => {
+      setButtonClicked(false);
+      history.push('/shop');
+    }, 1000);
+  };
   return (
     <>
       <div className="sales-container">
@@ -26,7 +37,7 @@ const Sale = () => {
           <>
             <div className="sale-container">
               <h1 className="sale-h1">Sale</h1>
-              <SaleCards products={products} />
+              <SaleCards products={products} isButtonClicked={isButtonClicked} onButtonClick={handleButtonClick} />
             </div>
 
             <div className="gift-container">
@@ -62,7 +73,7 @@ const Sale = () => {
             </div>
           </>
         )}
-      </div>
+      </div >
     </>
   )
 }

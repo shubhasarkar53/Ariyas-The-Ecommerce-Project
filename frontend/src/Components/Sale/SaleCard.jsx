@@ -1,22 +1,40 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-const SaleCards = ({ products }) => {
+const SaleCards = ({ products, isButtonClicked, onButtonClick }) => {
+
+  const [loadingButtonId, setLoadingButtonId] = useState(null);
+
+  const handleButtonClick = async (buttonId) => {
+    // If the button is already loading, prevent additional clicks
+    if (loadingButtonId) {
+      return;
+    }
+
+    setLoadingButtonId(buttonId);
+
+    // It simulates an asynchronous operation (e.g., API call)
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
+    // After the operation, it stops the loading animation and performs other actions
+    setLoadingButtonId(null);
+    onButtonClick();
+  };
 
   return (
     <>
-      <div className="sales-view">
+      <div className={`sales-view${isButtonClicked}`}>
         <div className="sale-view-container">
           <div className="sale-division">
             <div id="sale-div-img1">
               <div className="sale-title-div">
                 <p>New Customer Offer</p>
                 <h2>Get 10% off</h2>
-                <button className="btn-div-sale">
-                  Learn more
+                <button className={`btn-div-sale`} onClick={() => handleButtonClick(1)}>
+                  {loadingButtonId === 1 ? 'Loading...' : 'Learn more'}
                 </button>
               </div>
             </div>
@@ -26,8 +44,8 @@ const SaleCards = ({ products }) => {
               <div className="sale-title-div">
                 <p>Festive Offer</p>
                 <h2>Flat 20% off</h2>
-                <button className="btn-div-sale">
-                  Learn more
+                <button className={`btn-div-sale`} onClick={() => handleButtonClick(2)}>
+                  {loadingButtonId === 2 ? 'Loading...' : 'Learn more'}
                 </button>
               </div>
             </div>
