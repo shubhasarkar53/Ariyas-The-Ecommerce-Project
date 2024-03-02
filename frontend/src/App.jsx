@@ -19,6 +19,7 @@ import Account from './Components/User/Account.jsx'
 import Sale from './Components/Sale/Sale.jsx'
 import About from './Components/About/About';
 import PageNotFound from './Components/404error/PageNotFound.jsx'
+import BecomeSeller from './Components/Seller/BecomeSeller.jsx'
 
 const App = () => {
   useEffect(() => {
@@ -43,6 +44,8 @@ const App = () => {
             <Route exact path="/login" component={Login} />
             <Route exact path="/register/new" component={Register} />
             <Route exact path="/account" component={Account} />
+
+            <Route exact path="/become-seller" component={BecomeSeller} />
 
             {/* This will catch all the routes that do not exist */}
             <Route component={PageNotFound} />

@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import { TbTruckReturn } from "react-icons/tb";
 import "./Footer.scss";
+import { Link } from "react-router-dom";
 const Footer = () => {
   const socialIcons = [
     { icon: FaInstagram, url: "https://www.instagram.com/" },
@@ -89,15 +90,15 @@ const Footer = () => {
             <div className="about">
               <h3>About</h3>
               {[
-                "About Us",
-                "Privacy Policy",
-                "Terms & Conditions",
-                "Become a Seller",
+                { label: "About Us", path: "/about" },
+                { label: "Privacy Policy", path: "/privacy-policy" },
+                { label: "Terms & Conditions", path: "/terms-and-conditions" },
+                { label: "Become a Seller", path: "/become-seller" },
               ].map((item, index) => {
                 return (
-                  <a href="#" key={index}>
-                    {item}
-                  </a>
+                  <Link to={item.path} key={index}>
+                    {item.label}
+                  </Link>
                 );
               })}
             </div>
