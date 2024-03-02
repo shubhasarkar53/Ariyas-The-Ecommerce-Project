@@ -58,7 +58,7 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick }) => {
         <div className="sales-card-view">
           <div className="sales-title-section">
             <h1>Sales</h1>
-            <p><Link to="/sale" className='sellers-link'>VIEW ALL</Link></p>
+            <p><Link to="/shop" className='sellers-link'>VIEW ALL</Link></p>
           </div>
           <div className="details-container">
             <div className="details">
