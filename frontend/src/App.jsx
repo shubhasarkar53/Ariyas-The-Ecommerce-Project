@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+
 import React from 'react'
 import { useEffect } from 'react'
 import Header from './Components/Layout/Header/Header'
@@ -17,37 +18,41 @@ import { useDispatch, useSelector } from "react-redux";
 import Account from './Components/User/Account.jsx'
 import Sale from './Components/Sale/Sale.jsx'
 import About from './Components/About/About';
+import PageNotFound from './Components/404error/PageNotFound.jsx'
 
 const App = () => {
-
-
   useEffect(() => {
     store.dispatch(loadUser())
   }, [])
 
-
   return (
-    <BrowserRouter>
-      <div className='wrapper'>
-        <Header />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/sale" component={Sale} />
-          <Route exact path="/shop" component={Shop} />
-          <Route path="/products/:keyword" component={Shop} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/search" component={Search} />
-          <Route exact path="/product/:id" component={ProductDetails} />
+    <>
+      <BrowserRouter>
+        <div className='wrapper'>
+          <Header />
 
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register/new" component={Register} />
-          <Route exact path="/account" component={Account} />
-        </Switch>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/sale" component={Sale} />
+            <Route exact path="/shop" component={Shop} />
+            <Route path="/products/:keyword" component={Shop} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/search" component={Search} />
+            <Route exact path="/product/:id" component={ProductDetails} />
 
-        <Footer />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register/new" component={Register} />
+            <Route exact path="/account" component={Account} />
 
-      </div>
-    </BrowserRouter>
+            {/* This will catch all the routes that do not exist */}
+            <Route component={PageNotFound} />
+          </Switch>
+
+          <Footer />
+
+        </div>
+      </BrowserRouter>
+    </>
   )
 }
 
