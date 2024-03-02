@@ -1,7 +1,7 @@
 $textColor: #212121;
 $textWhite: #fafafa;
 $secondaryTextColor: #4d4d4d;
-$orangeTextColor: #d47f00;
+$orangeTextColor: #d47f0092;
 
 .become-seller-container {
   width: 100%;
@@ -25,11 +25,14 @@ $orangeTextColor: #d47f00;
     color: white;
     border-radius: 10px;
     margin-top: 5rem;
-    box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.218),
-      0.5rem 0.7rem 0.4rem rgba(0, 0, 0, 0.075),
-      0.8rem 0.3rem 0.6rem rgba(0, 0, 0, 0.256),
-      0.9rem 0.1rem 0.2rem rgba(0, 0, 0, 0.159),
-      0.8rem 0.5rem 0.4rem rgba(0, 0, 0, 0.155);
+    box-shadow:
+    9.7px 15.4px 3.1px -12px rgba(0, 0, 0, 0.021),
+    16.8px 26.6px 7.4px -12px rgba(0, 0, 0, 0.03),
+    22.5px 35.6px 14px -12px rgba(0, 0, 0, 0.037),
+    28.3px 44.9px 25px -12px rgba(0, 0, 0, 0.044),
+    37.4px 59.2px 46.8px -12px rgba(0, 0, 0, 0.053),
+    65px 103px 112px -12px rgba(0, 0, 0, 0.07)
+  ;
     h2 {
       font-size: 1.6rem;
     }
@@ -55,7 +58,7 @@ $orangeTextColor: #d47f00;
         cursor: pointer;
         transition: all 0.4s ease-in-out;
         &:hover {
-          background-color: orange;
+          background-color: rgba(255, 166, 0, 0.793);
           border: 1px solid orange;
         }
         .loading-spinner {
