@@ -1,0 +1,161 @@
+$textColor: #212121;
+$textWhite: #fafafa;
+$secondaryTextColor: #4d4d4d;
+$orangeTextColor: #d47f00;
+
+.contact-container {
+  width: 100vmax;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .contact-form {
+    width: 50%;
+    margin: 4rem 0;
+    box-shadow: 9.7px 15.4px 3.1px -12px rgba(0, 0, 0, 0.021),
+      16.8px 26.6px 7.4px -12px rgba(0, 0, 0, 0.03),
+      22.5px 35.6px 14px -12px rgba(0, 0, 0, 0.037),
+      28.3px 44.9px 25px -12px rgba(0, 0, 0, 0.044),
+      37.4px 59.2px 46.8px -12px rgba(0, 0, 0, 0.053),
+      65px 103px 112px -12px rgba(0, 0, 0, 0.07);
+    h2 {
+      margin-left: 5rem;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      font-size: 2.1rem;
+    }
+    .form {
+      margin: 1rem 2rem;
+      .input-name {
+        display: flex;
+        justify-content: space-between;
+        #first-name,
+        #last-name {
+          display: flex;
+          flex-direction: column;
+          label {
+            margin-left: 0.3rem;
+          }
+          input {
+            width: 25rem;
+            height: 50px;
+            flex-shrink: 0;
+            border: 3px solid $textWhite;
+            transition: border-color 0.3s ease-in-out;
+            border-radius: 9px;
+            padding: 0.3rem 0.5rem;
+            background: rgba(207, 207, 207, 0.4);
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+            &:focus {
+              border: 3px solid $orangeTextColor;
+              outline: none;
+            }
+            &::placeholder {
+              color: rgba(78, 78, 78, 0.699);
+            }
+          }
+        }
+      }
+      .phone {
+        display: flex;
+        flex-direction: column;
+        label {
+          margin-top: 2rem;
+          margin-left: 0.3rem;
+        }
+        input {
+          height: 50px;
+          padding: 0.3rem 0.5rem;
+          border: 3px solid $textWhite;
+          transition: border-color 0.3s ease-in-out;
+          border-radius: 9px;
+          background: rgba(207, 207, 207, 0.4);
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+          &:focus {
+            border: 3px solid $orangeTextColor;
+            outline: none;
+          }
+          &::placeholder {
+            color: rgba(78, 78, 78, 0.699);
+          }
+        }
+      }
+      .email {
+        display: flex;
+        flex-direction: column;
+        label {
+          margin-top: 2rem;
+          margin-left: 0.3rem;
+        }
+        input {
+          height: 50px;
+          padding: 0.3rem 0.5rem;
+          border: 3px solid $textWhite;
+          transition: border-color 0.3s ease-in-out;
+          border-radius: 9px;
+          background: rgba(207, 207, 207, 0.4);
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+          &:focus {
+            border: 3px solid $orangeTextColor;
+            outline: none;
+          }
+          &::placeholder {
+            color: rgba(78, 78, 78, 0.699);
+          }
+        }
+      }
+      .message {
+        display: flex;
+        flex-direction: column;
+        label {
+          margin-left: 0.3rem;
+          margin-top: 2rem;
+        }
+        input {
+          height: 9rem;
+          padding: 0.3rem 0.5rem;
+          border: 3px solid $textWhite;
+          transition: border-color 0.3s ease-in-out;
+          border-radius: 9px;
+          display: flex;
+          justify-content: first baseline;
+          background: rgba(207, 207, 207, 0.4);
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+          &:focus {
+            border: 3px solid $orangeTextColor;
+            outline: none;
+          }
+          &::placeholder {
+            color: rgba(78, 78, 78, 0.699);
+          }
+        }
+      }
+      .btn-contact {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        button {
+          padding: 0.5rem 0.7rem;
+          font-size: 0.9rem;
+          color: $orangeTextColor;
+          background-color: white;
+          border: 1px solid rgb(173, 171, 171);
+          margin-bottom: 2rem;
+          cursor: pointer;
+          border-radius: 6px;
+          box-shadow: 9.7px 15.4px 3.1px -12px rgba(0, 0, 0, 0.021),
+            10.8px 16.6px 5.4px -8px rgba(0, 0, 0, 0.03),
+            15.5px 25.6px 13px -12px rgba(0, 0, 0, 0.037),
+            28.3px 44.9px 25px -12px rgba(0, 0, 0, 0.044),
+            37.4px 59.2px 46.8px -12px rgba(0, 0, 0, 0.053);
+          transition: all 0.44s ease-in-out;
+          &:hover {
+            color: $textWhite;
+            background-color: $orangeTextColor;
+            border: 1px solid $orangeTextColor;
+          }
+        }
+      }
+    }
+  }
+}
