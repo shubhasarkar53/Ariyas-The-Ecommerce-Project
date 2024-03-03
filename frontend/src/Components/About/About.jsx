@@ -15,7 +15,7 @@ const About = () => {
       try {
         setTimeout(() => {
           setLoading(false);
-        }, 1500);
+        }, 600);
       } catch (error) {
         setError(error.message);
         setLoading(false);
