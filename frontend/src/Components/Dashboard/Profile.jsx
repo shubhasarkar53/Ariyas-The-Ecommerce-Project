@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react'
 import userImg from '../../assets/Images/Icons/profile icons/userImg.png';
-import profileSide from '../../assets/Images/Icons/profile icons/1359798_169921-OW80DH-950.jpg';
+import profileSide from '../../assets/Images/Icons/profile icons/pngwing 3.png';
 import ordersImg from '../../assets/Images/Icons/profile icons/ordersImg.png';
 import cartImg from '../../assets/Images/Icons/profile icons/cart.png';
 import wishlistImg from '../../assets/Images/Icons/profile icons/wishlist.png';
