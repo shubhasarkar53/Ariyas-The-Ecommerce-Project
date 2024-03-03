@@ -22,15 +22,15 @@ const BecomeSeller = () => {
     <>
       <div className="become-seller-container">
         <div className="become-seller-card">
-          <h2>Want to become a seller. Login or Register first</h2>
+          <h2>Want to become a seller. Register now</h2>
           <div className="btn-auth-">
-            <button onClick={() => handleButtonClick('/login', setLoadingLogin)} disabled={loadingLogin}>
+            {/*<button onClick={() => handleButtonClick('/login', setLoadingLogin)} disabled={loadingLogin}>
               {loadingLogin ? (
                 <div className="loading-spinner"></div>
               ) : (
                 'Login'
               )}
-            </button>
+            </button> */}
             <button onClick={() => handleButtonClick('/register/new', setLoadingRegister)} disabled={loadingRegister}>
               {loadingRegister ? (
                 <div className="loading-spinner"></div>

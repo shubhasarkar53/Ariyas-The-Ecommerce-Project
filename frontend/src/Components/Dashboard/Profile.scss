@@ -1,0 +1,109 @@
+.profile-container {
+  width: 100%;
+  height: fit-content;
+}
+.profile-title {
+  margin: 0 15rem;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+.profile-title h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.3rem;
+  font-weight: normal;
+}
+
+.img-profile {
+  background-color: aliceblue;
+}
+
+.img-profile img {
+  width: 70px;
+  height: 70px;
+}
+
+.profile-det-container {
+  display: flex;
+  justify-content: space-between;
+  height: 90vh;
+  margin: 1rem 3rem;
+}
+.ext-left-profile,
+.ext-right-profile {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ext-left-profile img,
+.ext-right-profile img {
+  width: 250px;
+  height: 250px;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.main-profile {
+  width: 100%;
+  margin: 0 1rem;
+}
+.main-profile-container {
+  display: flex;
+  justify-content: flex-start;
+  padding: 2rem;
+  box-shadow: 0.4rem 0.2rem 0.5rem -5px rgba(0, 0, 0, 0.177),
+    0.5rem 0.1rem 0.5rem -6px rgba(0, 0, 0, 0.175),
+    0.2rem 0.6rem 0.2rem -2px rgba(0, 0, 0, 0.163);
+  border-radius: 10px;
+}
+.main-profile-det {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 1.7rem;
+  font-family: "Poppins", sans-serif;
+}
+.profile-actions-slot {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1.2rem;
+  margin-top: 2rem;
+  grid-column-gap: 3rem;
+}
+.profile-slot {
+  padding: 1.5rem 2.5rem;
+  display: flex;
+  border-radius: 8px;
+  box-shadow: 0.4rem 0.2rem 0.5rem -5px rgba(0, 0, 0, 0.177),
+    0.5rem 0.1rem 0.5rem -6px rgba(0, 0, 0, 0.175),
+    0.2rem 0.6rem 0.2rem -2px rgba(0, 0, 0, 0.163);
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+.profile-slot .img-profile,
+.profile-slot .title-action {
+  width: 100%;
+}
+.title-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+}
+.title-action p {
+  margin-top: 0.6rem;
+}
+.img-action img {
+  width: 50px;
+  height: 50px;
+  margin-right: 3rem;
+}
+
+.profile-slot:hover {
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.234),
+    rgba(128, 128, 128, 0.353)
+  );
+  box-shadow: none;
+}
