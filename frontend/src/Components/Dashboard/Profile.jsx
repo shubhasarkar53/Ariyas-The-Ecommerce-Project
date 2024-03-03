@@ -11,7 +11,7 @@ import loginImg from '../../assets/Images/Icons/profile icons/security.png';
 import paymentImg from '../../assets/Images/Icons/profile icons/payment.png';
 import addressImg from '../../assets/Images/Icons/profile icons/address.png';
 import logoutImg from '../../assets/Images/Icons/profile icons/logout.png';
-import adminImg from '../../assets/Images/Icons/profile icons/admin.png';
+// import adminImg from '../../assets/Images/Icons/profile icons/admin.png';
 import { connect } from 'react-redux';
 import { loadUser } from '../../Redux/Actions/userAction.js';
 import './Profile.scss';
@@ -123,7 +123,8 @@ const Profile = ({ user, loadUser }) => {
                   <p>Logout from Ariyas</p>
                 </div>
               </div>
-              <div className="profile-slot">
+
+              {/* <div className="profile-slot">
                 <div className="img-action">
                   <img src={adminImg} alt="Order Image" />
                 </div>
@@ -131,7 +132,9 @@ const Profile = ({ user, loadUser }) => {
                   <h4>Admin Dashboard</h4>
                   <p>Manage your Admin profile</p>
                 </div>
-              </div>
+              </div> */}
+
+
             </div>
           </div>
           {/* Right side of the profile */}
@@ -147,4 +150,5 @@ const mapStateToProps = (state) => ({
   user: state.user.user,
 });
 
-export default connect(mapStateToProps, { loadUser })(Profile);
+const ConnectedProfile = connect(mapStateToProps, { loadUser })(Profile);
+export default ConnectedProfile;
