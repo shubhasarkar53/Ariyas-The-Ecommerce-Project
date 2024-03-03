@@ -1,8 +1,13 @@
 import React, { Fragment } from 'react'
 import Loader from '../Loader/Loader'
-import { Route } from 'react-router-dom/cjs/react-router-dom.min'
+import { Redirect, Route } from 'react-router-dom/cjs/react-router-dom.min'
+import { useSelector } from 'react-redux'
 
 const ProtectedRoute = ({component:Component,...rest}) => {
+
+
+    const{loading,isAuthenticated,user}=useSelector(state=>state.user)
+
   return (
     <Fragment>
         {
@@ -11,7 +16,7 @@ const ProtectedRoute = ({component:Component,...rest}) => {
                     {...rest}
                     render={(props)=>{
                         if(!isAuthenticated){
-                            history.push("/login")
+                            return <Redirect to={'/login'}/>
                         }
                         return <Component {...props}/>
                     }}

@@ -13,7 +13,8 @@ export const userLogin = (email,password) => async(dispatch) => {
         dispatch({
             type:LOGIN_SUCCESS,
             // payload:data.user
-            payload:data
+            // payload:data
+            payload:data.user
         })
     }catch(error){
         dispatch({
@@ -33,8 +34,8 @@ export const userRegister = (userData) => async(dispatch) => { //distrub
 
         dispatch({
             type:REGISTER_SUCCESS,
-            // payload:data.user
-            payload:data
+            payload:data.user
+            // payload:data
         })
     }catch(error){
         dispatch({

@@ -15,9 +15,10 @@ import Shop from './Components/Shop/Shop.jsx'
 import Search from './Components/Search/Search.jsx'
 import { useDispatch, useSelector } from "react-redux";
 import Account from './Components/User/Account.jsx'
+import ProtectedRoute from './Components/Routes/ProtectedRoute.jsx'
 
 const App = () => {
-
+  // const { isAuthenticated, user } = useSelector((state) => state.user);
  
   useEffect(() => {
     store.dispatch(loadUser())
@@ -27,7 +28,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className='wrapper'>
-        <Header/>
+       <Header />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/shop" component={Shop} />
@@ -37,7 +38,7 @@ const App = () => {
 
             <Route exact path="/login" component={Login} />
             <Route exact path="/register/new" component={Register}/>
-            <Route exact path="/account" component={Account}/>
+            <ProtectedRoute exact path="/account" component={Account}/>
           </Switch>
 
           <Footer/>
@@ -48,4 +49,7 @@ const App = () => {
 }
 
 export default App
+
+
+
 
