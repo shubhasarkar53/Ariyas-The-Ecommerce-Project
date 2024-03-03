@@ -3,6 +3,7 @@ import React from 'react'
 import { Rating } from '@mui/material'
 import './ReviewCard.scss'
 import '../ProductDetails/ProductDetails.scss'
+import PropTypes from 'prop-types'
 const profilePng = "https://www.w3schools.com/howto/img_avatar.png"
 
 const ReviewCard = ({review}) => {
@@ -36,5 +37,15 @@ const ReviewCard = ({review}) => {
     </div>
   )
 }
+
+
+ReviewCard.propTypes = {
+  review: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+      comment: PropTypes.string.isRequired
+  }).isRequired
+};
 
 export default ReviewCard

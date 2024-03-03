@@ -2,8 +2,17 @@
 import React from 'react'
 import "./ProductCard.scss"
 import {Link} from 'react-router-dom'
+import Rating from '@mui/material/Rating';
 import PropTypes from 'prop-types';
 const ProductCard = ({ product }) => {
+
+  const options = {
+    size: "large",
+    value: product ? product.ratings : 0,
+    readOnly: true,
+    precision: 0.5,
+  };
+  
   // console.log(product);
 
   return (
@@ -14,6 +23,15 @@ const ProductCard = ({ product }) => {
             </div>
             <p className='product-title'>{product.name}</p>
             {/* <p className='product-des'>{product.description}</p> */}
+
+            <div className='ratings'>
+          <Rating {...options} />
+                <span className="detailsBlock-2-span">
+                  {" "}
+                  ({product.numOfReviews} {product.numOfReviews > 1 ? "Reviews" : "Review"})
+                </span>
+          </div>       
+
             <div className='prices-continer'>
                 <span className='price-1'>RS. {product.price}</span>
                 <span className='price-2'>Rs. 2223</span>
@@ -25,14 +43,18 @@ const ProductCard = ({ product }) => {
 
 ProductCard.propTypes = {
   product: PropTypes.shape({
-    name: PropTypes.string.isRequired,
     _id: PropTypes.string.isRequired,
-    image: PropTypes.array.isRequired,
-    description: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    image: PropTypes.arrayOf(PropTypes.shape({
+      url: PropTypes.string.isRequired
+    })).isRequired,
+    ratings: PropTypes.number.isRequired,
+    numOfReviews: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired
-    // Add more PropTypes as needed for other properties of the product object
   }).isRequired
 };
+
+export default ProductCard
 
 //Explain--->
 // This code defines the propTypes for a React component called ProductCard. propTypes are used to ensure that the component receives the correct type of data as props.
@@ -49,4 +71,3 @@ ProductCard.propTypes = {
 // By defining propTypes for the ProductCard component, it helps to ensure that the component is used correctly and can prevent bugs caused by passing the wrong type of data as props.
 
 
-export default ProductCard
