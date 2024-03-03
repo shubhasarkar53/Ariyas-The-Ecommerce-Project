@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import "./Login.scss";
@@ -9,9 +10,9 @@ import Loader from "../Loader/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Login = ({history}) => {
+const Login = ({ history }) => {
   const dispatch = useDispatch();
-  const { loading, isAuthenticated, error ,token } = useSelector(
+  const { loading, isAuthenticated, error, token } = useSelector(
     (state) => state.user
   );
   const [loginEmail, setLoginEmail] = useState("");
@@ -25,7 +26,7 @@ const Login = ({history}) => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error,{
+      toast.error(error, {
         position: "bottom-center",
         autoClose: 3000,
       });
@@ -39,9 +40,9 @@ const Login = ({history}) => {
     // }
 
     if (isAuthenticated) {
-        history.push("/");
+      history.push("/");
     }
-  }, [dispatch, error,toast,history,isAuthenticated]);
+  }, [dispatch, error, toast, history, isAuthenticated]);
 
   return (
     <>
@@ -55,8 +56,8 @@ const Login = ({history}) => {
             <div className="login-upper">
               <h1 className="login-heading">Welcome Back</h1>
               <p className="login-txt">
-                Buy & Sell today,tommorow and bayond{" "}
-                <span className="login-highligt">Empower Local Artician's</span>
+                Buy & Sell today,tommorow and beyond{" "}
+                <span className="login-highligt">Empower Local Artisans</span>
               </p>
             </div>
             <div className="login-lower">
@@ -91,7 +92,7 @@ const Login = ({history}) => {
           <div className="pic-login">
             <img src={subLoginImg} alt="" />
           </div>
-             <ToastContainer/>
+          <ToastContainer />
         </div>
       )}
     </>
