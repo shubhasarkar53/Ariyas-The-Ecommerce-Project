@@ -1,0 +1,38 @@
+$textColor: #212121;
+$textWhite: #fafafa;
+$secondaryTextColor: #4d4d4d;
+$orangeTextColor: #d47f00;
+
+.no-page-container {
+  width: 100%;
+  height: fit-content;
+  .image-not-found {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 700px;
+      height: 700px;
+      padding: 1rem;
+    }
+  }
+  .btn-not-found {
+    display: flex;
+    justify-content: center;
+    button {
+      padding: 1rem;
+      font-size: 1.5rem;
+      color: white;
+      background-color: $orangeTextColor;
+      border: 1px solid $orangeTextColor;
+      border-radius: 1rem;
+      cursor: pointer;
+      transition: all 0.44s ease-in-out;
+      &:hover {
+        background-color: orange;
+        border: 1px solid orange;
+      }
+    }
+  }
+}

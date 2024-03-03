@@ -1,41 +1,47 @@
-.search-form{
-    display: flex;
-    width: 50%;
-    justify-content: center;
-    align-items: center;
-    margin:2rem auto; ;
-    position:relative;
-    
-    .search-input {
-        flex: 1;
-        padding: 1rem;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        margin-right: 1rem;
-        font-size: 1.2rem;
-        transition: border-color 0.3s ease;
-    
-        &:focus {
-          border-color: #007bff;
-          outline: none;
-        }
-        &::placeholder {
-          color: #b5b5b5;
-        }
-      }
-    
-      .search-button {
-        padding: 1rem ;
-        border: 1px solid #007bff;
-        border-radius: 10px;
-        background-color: #007bff;
-        color: #fff;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    
-        &:hover {
-          background-color: #0056b3;
-        }
-      }
+$textColor: #212121;
+$textWhite: #fafafa;
+$secondaryTextColor: #4d4d4d;
+$orangeTextColor: #d47f00;
+
+.search-form {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  position: relative;
+
+  .search-input {
+    flex: 1;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border: 2px solid orange;
+      outline: none;
+    }
+    &::placeholder {
+      color: #b5b5b5;
+    }
+  }
+
+  .search-button {
+    padding: 1rem;
+    border: 1px solid $orangeTextColor;
+    border-radius: 10px;
+    background-color: $orangeTextColor;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      background-color: orange;
+      border: 1px solid orange;
+    }
+  }
 }

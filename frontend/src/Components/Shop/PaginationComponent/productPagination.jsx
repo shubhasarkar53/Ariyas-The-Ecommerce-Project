@@ -13,32 +13,33 @@ const ProductPagination = ({ totalPages, currentPage, onPageChange }) => {
 
       <div className='pagination-container'>
         <Pagination
-              className={'pagination-div'}
-                sx={{ display: 'flex',
-                justifyContent: 'center', 
-                margin: '1rem 0' ,
-                gap: '10.5rem',
-                }}
-                color="secondary"
-                size="large"
-                shape="rounded"
-                defaultPage={1}
-                count={totalPages}
-                page={currentPage}
-                onChange={handleChange}
-                renderItem={(item) => (
-                  <PaginationItem
-                    component="a"
-                    {...item}
-                  />
-                )}
-              />
+          className={'pagination-div'}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            margin: '1rem 0',
+            gap: '10.5rem',
+          }}
+          color="secondary"
+          size="large"
+          shape="rounded"
+          defaultPage={1}
+          count={totalPages}
+          page={currentPage}
+          onChange={handleChange}
+          renderItem={(item) => (
+            <PaginationItem
+              component="a"
+              {...item}
+            />
+          )}
+        />
       </div>
-       
+
     </Fragment>
-    
+
   );
-  
+
 };
 
 export default ProductPagination;
@@ -48,7 +49,7 @@ export default ProductPagination;
 
 // This code defines a React component called `ProductPagination` using Material-UI's `Pagination` component. Let's break down the code:
 
-// 1. **Imports**: 
+// 1. **Imports**:
 //    - `React`: Importing React library.
 //    - `Pagination`, `PaginationItem`: Importing components from Material-UI's `@mui/material` library.
 

@@ -3,7 +3,7 @@ import React, { Fragment, useEffect } from "react";
 import paperplane from "../../../assets/Images/Navbar/papperplane1.png";
 import cart from "../../../assets/Images/Navbar/cart1.png";
 import search from "../../../assets/Images/Navbar/search1.png";
-import logo from "../../../assets/Images/Navbar/logo1.png";
+import logo from '../../../assets/Images/Navbar/logo.png';
 import userImgPlaceHolder from "../../../assets/Images/Navbar/person.png";
 
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
@@ -19,7 +19,7 @@ const Header = () => {
       <header>
         <nav>
           <div className="left-nav">
-            <img src={logo} alt="" />
+            <img src={logo} alt="ariyas" style={{ filter: "invert(60)" }} />
           </div>
           <div className="mid-nav">
             {["Home", "Sale", "Shop", "Contact", "About", "Blog"].map(
