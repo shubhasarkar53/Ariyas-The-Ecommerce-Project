@@ -74,7 +74,7 @@ const Register = ({history}) => {
                 position: "bottom-center",
                 autoClose: 3000,
               });
-            history.push("/account");
+            history.push("/");
         }
     },[dispatch,toast,error,history,isAuthenticated])
 
