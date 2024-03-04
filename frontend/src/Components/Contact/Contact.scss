@@ -1,7 +1,7 @@
 $textColor: #212121;
 $textWhite: #fafafa;
 $secondaryTextColor: #4d4d4d;
-$orangeTextColor: #d47f00;
+$orangeTextColor: #ee9208;
 
 .contact-container {
   width: 100vmax;
@@ -134,12 +134,14 @@ $orangeTextColor: #d47f00;
         margin-top: 2rem;
         display: flex;
         justify-content: center;
+
         button {
           padding: 0.5rem 0.7rem;
           font-size: 0.9rem;
           color: $orangeTextColor;
           background-color: white;
           border: 1px solid rgb(173, 171, 171);
+          border: none;
           margin-bottom: 2rem;
           cursor: pointer;
           border-radius: 6px;
@@ -152,7 +154,7 @@ $orangeTextColor: #d47f00;
           &:hover {
             color: $textWhite;
             background-color: $orangeTextColor;
-            border: 1px solid $orangeTextColor;
+            // border: 1px solid $orangeTextColor;
           }
         }
       }

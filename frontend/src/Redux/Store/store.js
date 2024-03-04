@@ -13,13 +13,14 @@ import {
 } from "../Reducers/productReducer";
 
 import { userReducer } from "../Reducers/userReducer";
-
+import contactReducer from '../Reducers/contactReducer';
 
 // Reducers
 const reducer = combineReducers({
   products: productReducer,
   productDetails: productDetailsReducer,
   user: userReducer,
+  contact: contactReducer,
 });
 let initialState = {};
 const middleWare = [thunk];

@@ -136,7 +136,7 @@ const Profile = () => {
                   </div>
                   <div className="main-profile-det">
                     <div className="profile-name">
-                      <p>{user && user.name}</p>
+                      <p>{user && user.name} (<strong>{user.role}</strong>)</p>
                     </div>
                     <div className="profile-email">
                       <p>{user && user.email}</p>

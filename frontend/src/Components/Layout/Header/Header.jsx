@@ -62,7 +62,7 @@ const Header = () => {
                 <div className="avatar-img">
                   {user.avatar && user.avatar.url ? (
                     <Link to={"/profile"}>
-                      <img src={user.avatar.url} alt="icon" />
+                      <img src={user.avatar.url || userImgPlaceHolder } alt={"User"} />
                     </Link>
                   ) : (
                     <Link to={"/profile"}>

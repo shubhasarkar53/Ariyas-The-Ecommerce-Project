@@ -26,9 +26,10 @@ import Contact from './Components/Contact/Contact.jsx'
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
-    if(isAuthenticated){
-      store.dispatch(loadUser())       
-    }
+    // if(!isAuthenticated){
+    //   store.dispatch(loadUser())       
+    // }
+    store.dispatch(loadUser()) 
   }, []) //assumtion:in future there may be problem beacuse of no dependency in the array but curretly ok. 
 
   return (
