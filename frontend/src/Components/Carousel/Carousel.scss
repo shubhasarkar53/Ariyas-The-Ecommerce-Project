@@ -1,18 +1,11 @@
-.carousel-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  color: white;
-  padding: 0.5rem;
-  text-align: center;
-  font-size: 1.5rem;
-  transition: bottom 0.5s;
-}
+$orangeTextColor:rgba(193, 130, 14, 0.794);
+$orangehover:orange;
+
 .carouselImgStyle {
+
   .carousel-image-div {
     width: 100%;
-    height: 43vmax;
+    height: 35vmax;
     margin-bottom: 0.5rem;
     transition: transform 0.5s;
     // overflow: hidden;
@@ -21,5 +14,47 @@
     background-position: center;
     background-attachment: fixed;
     object-fit: cover;
+    z-index: 1;
+  }
+  .caption-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    position: absolute;
+    bottom: 15rem;
+    left: 5rem;
+    gap: 1rem;
+    z-index: 999;
+    max-width: calc(100% - 2rem);
+
+    .carousel-title{
+      font-size: 3rem;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 4px #000000;
+    }
+    .carousel-caption{
+      font-size: 2rem;
+      color:white;
+      text-shadow: 2px 2px 4px #000000;
+      opacity: 0.8;
+    }
+    .carousel-button{
+      font-size: 1rem;
+      background: $orangeTextColor;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 100px;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        background: $orangehover;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1), 0 0 6px rgba(0, 0, 0, 0.05);
+      }
+    }
   }
 }

@@ -1,5 +1,187 @@
-.carousel-container{
-   width: 100vmax;
-   margin: 0 auto;
-   
+// *{
+//    border: 1px solid red;
+// }
+$categoriText:white;
+
+.home-container {
+  .carousel-container {
+    width: 100vmax;
+    margin: 0 auto;
+  }
+  .logo-container {
+    display: flex;
+    justify-content: center;
+  }
+  .category-container {
+    width: 100%;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+    gap: 3rem;
+    flex-direction: column;
+    .top-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      .top1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+        background-image: url("../../assets/Images/Home/top1.jpg");
+        background-size: 48rem 30rem;
+        background-repeat: no-repeat;
+        height: 50vh;
+        border-radius: 8px;
+        transition: all 0.5s ease-in-out;
+        box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+          6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+          12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+          22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+          41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+          100px 100px 80px rgba(0, 0, 0, 0.07);
+        &:hover {
+          filter: grayscale(100);
+        }
+        .top1-text {
+          color:$categoriText;
+          font-size: 2rem;
+          font-weight: 600;
+          margin: 1rem;
+          text-shadow: 2px 2px 2px black;
+        }
+        .top1-button {
+          background-color: transparent;
+          color: $categoriText;
+          border: 2px solid $categoriText;
+          padding: 0.5rem 1rem;
+          font-size: 1.5rem;
+          font-weight: 600;
+          border-radius: 8px;
+          transition: all 0.5s ease-in-out;
+        }
+      }
+      .top2 {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+        width: 40%;
+        background-image: url("../../assets/Images/Home/top2.jpg");
+        background-size: 48rem 35rem;
+        height: 50vh;
+        border-radius: 8px;
+        transition: all 0.5s ease-in-out;
+        box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+          6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+          12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+          22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+          41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+          100px 100px 80px rgba(0, 0, 0, 0.07);
+        &:hover {
+          filter: grayscale(100);
+        }
+        .top2-text {
+         color:$categoriText;
+         font-size: 2rem;
+         font-weight: 600;
+         margin: 1rem;
+         text-shadow: 2px 2px 2px black;
+        }
+        .top2-button {
+         background-color: transparent;
+         color: $categoriText;
+         border: 2px solid $categoriText;
+         padding: 0.5rem 1rem;
+         font-size: 1.5rem;
+         font-weight: 600;
+         border-radius: 8px;
+         transition: all 0.5s ease-in-out;
+        }
+      }
+    }
+    .bottom-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      .bottom1 {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+        width: 40%;
+        background-image: url("../../assets/Images/Home/bottom1.jpeg");
+        background-size: 48rem 30rem;
+        height: 50vh;
+        border-radius: 8px;
+        transition: all 0.5s ease-in-out;
+        box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+          6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+          12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+          22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+          41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+          100px 100px 80px rgba(0, 0, 0, 0.07);
+        &:hover {
+          filter: grayscale(100);
+        }
+        .bottom1-text {
+         color:$categoriText;
+         font-size: 2rem;
+         font-weight: 600;
+         margin: 1rem;
+         text-shadow: 2px 2px 2px black;
+        }
+        .bottom1-button {
+         
+            background-color: transparent;
+            color: $categoriText;
+            border: 2px solid $categoriText;
+            padding: 0.5rem 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.5s ease-in-out;
+        }
+      }
+      .bottom2 {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+        width: 40%;
+        background-image: url("../../assets/Images/Home/bottom2.jpg");
+        background-size: 48rem 29rem;
+        height: 50vh;
+        border-radius: 8px;
+        transition: all 0.5s ease-in-out;
+        box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+          6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+          12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+          22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+          41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+          100px 100px 80px rgba(0, 0, 0, 0.07);
+        &:hover {
+          filter: grayscale(100);
+        }
+        .bottom2-text {
+         color:$categoriText;
+         font-size: 2rem;
+         font-weight: 600;
+         margin: 1rem;
+         text-shadow: 2px 2px 2px black;
+        }
+        .bottom2-button {
+         background-color: transparent;
+         color: $categoriText;
+         border: 2px solid $categoriText;
+         padding: 0.5rem 1rem;
+         font-size: 1.5rem;
+         font-weight: 600;
+         border-radius: 8px;
+         transition: all 0.5s ease-in-out;
+        }
+      }
+    }
+  }
 }
