@@ -23,6 +23,7 @@ import BecomeSeller from './Components/Seller/BecomeSeller.jsx'
 import Profile from './Components/Dashboard/Profile.jsx'
 import RegisterSeller from './Components/Seller/Register-Seller/RegisterSeller';
 import Contact from './Components/Contact/Contact.jsx'
+import FAQs from './Components/FAQ/FAQ.jsx'
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
@@ -61,6 +62,8 @@ const App = () => {
             <ProtectedRoute exact path="/profile" component={Profile} />
 
             <Route exact path="/contact" component={Contact} />
+            <Route exact path="/faq" component={FAQs} />
+
 
             {/* This will catch all the routes that do not exist */}
             <Route component={PageNotFound} />

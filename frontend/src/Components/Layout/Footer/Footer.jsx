@@ -105,11 +105,14 @@ const Footer = () => {
 
             <div className="need-help">
               <h3>Need Help?</h3>
-              {["Contact Us", "FAQ"].map((item, index) => {
+              {[
+                 { label: "Contact Us", path: "/contact" },
+                 { label: "FAQs", path: "/faq" },
+              ].map((item, index) => {
                 return (
-                  <a href="#" key={index}>
-                    {item}
-                  </a>
+                  <Link to={item.path} key={index}>
+                    {item.label}
+                  </Link>
                 );
               })}
             </div>
