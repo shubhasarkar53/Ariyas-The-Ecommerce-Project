@@ -51,7 +51,7 @@ const Register = ({ history }) => {
 
 
     const myFromData = new FormData();
-
+    
     myFromData.set("name", fullName);
     myFromData.set("email", registerEmail);
     myFromData.set("phone", phone);
@@ -59,6 +59,18 @@ const Register = ({ history }) => {
     // myFromData.set("confirmRegisterPass",confirmRegisterPass);
     // console.log( "inside:",fullName,registerEmail,phone,registerPass,confirmRegisterPass);
     dispatch(userRegister(myFromData));
+
+
+
+    //     if (isAuthenticated) {
+    //         toast.success("Registration Successful",{
+    //             position: "bottom-center",
+    //             autoClose: 3000,
+    //           });
+    //         history.push("/");
+    //     }
+    // },[dispatch,toast,error,history,isAuthenticated])
+
   }
 
 
@@ -76,7 +88,7 @@ const Register = ({ history }) => {
         position: "bottom-center",
         autoClose: 3000,
       });
-      history.push("/account");
+      history.push("/");
     }
   }, [dispatch, toast, error, history, isAuthenticated])
 
