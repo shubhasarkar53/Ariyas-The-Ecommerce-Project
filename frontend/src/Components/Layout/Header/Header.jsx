@@ -61,11 +61,11 @@ const Header = () => {
               {isAuthenticated ? (
                 <div className="avatar-img">
                   {user.avatar && user.avatar.url ? (
-                    <Link to={"/account"}>
+                    <Link to={"/profile"}>
                       <img src={user.avatar.url} alt="icon" />
                     </Link>
                   ) : (
-                    <Link to={"/account"}>
+                    <Link to={"/profile"}>
                       <img className="avatarPlaceholder" src={userImgPlaceHolder} alt="icon" />
                     </Link> // A little bug is here so I have given a placeholder of UserImg here ft.Shubha
                   )}

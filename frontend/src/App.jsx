@@ -15,7 +15,6 @@ import { loadUser } from './Redux/Actions/userAction.js';
 import Shop from './Components/Shop/Shop.jsx'
 import Search from './Components/Search/Search.jsx'
 import { useDispatch, useSelector } from "react-redux";
-import Account from './Components/User/Account.jsx'
 import ProtectedRoute from './Components/Routes/ProtectedRoute.jsx'
 import Sale from './Components/Sale/Sale.jsx'
 import About from './Components/About/About';
@@ -25,11 +24,12 @@ import Profile from './Components/Dashboard/Profile.jsx'
 import RegisterSeller from './Components/Seller/Register-Seller/RegisterSeller';
 import Contact from './Components/Contact/Contact.jsx'
 const App = () => {
-  // const { isAuthenticated, user } = useSelector((state) => state.user);
-const App = () => {
+  const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
-    store.dispatch(loadUser())
-  }, [])
+    if(isAuthenticated){
+      store.dispatch(loadUser())       
+    }
+  }, []) //assumtion:in future there may be problem beacuse of no dependency in the array but curretly ok. 
 
   return (
     <>
@@ -49,13 +49,15 @@ const App = () => {
 
             <Route exact path="/login" component={Login} />
             <Route exact path="/register/new" component={Register}/>
-            <ProtectedRoute exact path="/account" component={Account}/>
+            
             <Route exact path="/register/new" component={Register} />
-            {/* <Route exact path="/account" component={Account} /> */}
 
             <Route exact path="/become-seller" component={BecomeSeller} />
             <Route path="/register-seller" component={RegisterSeller} />
-            <Route exact path="/profile" component={Profile} />
+
+            {/* <ProtectedRoute exact path="/account" component={Account}/> */}
+
+            <ProtectedRoute exact path="/profile" component={Profile} />
 
             <Route exact path="/contact" component={Contact} />
 
@@ -71,7 +73,7 @@ const App = () => {
   )
 }
 
-export default App
+export default App;
 
 
 
