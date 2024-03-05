@@ -3,7 +3,6 @@ import React, { Fragment, useEffect, useState } from "react";
 import "./Home.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "../../Redux/Actions/productAction";
-// import BagsRow from "../Row/BagsRow";
 import Loader from "../Loader/Loader";
 import ImageCarousel from "../Carousel/Carousel";
 
@@ -141,7 +140,7 @@ const Home = () => {
             {/* Wooden row */}
             <div className="row">
               <h1>{products && products[0].category} Item&apos;s</h1>
-              <div>
+              <div className="row-products">
                 {products &&
                   products.slice(0, 4).map((product) => {
                     return <ProductCard key={product._id} product={product} />;
@@ -152,7 +151,7 @@ const Home = () => {
             {/* Clay/ceramic Row */}
             <div className="row">
               <h1>{products && products[4].category} Item&apos;s</h1>
-              <div>
+              <div className="row-products">
                 {products &&
                   products.slice(4, 8).map((product) => {
                     return <ProductCard key={product._id} product={product} />;
@@ -161,6 +160,7 @@ const Home = () => {
             </div>
 
             {/* Bags Row */}
+
             {/* <div className="row">
               <h1>{products && products[13].category} Item&apos;s</h1>
               <div>
@@ -174,14 +174,17 @@ const Home = () => {
             {/* Sarees Row */}
             <div className="row">
               <h1>{products && products[8].category} Item&apos;s</h1>
-              <div>
+              <div className="row-products">
                 {products &&
                   products.slice(8, 12).map((product) => {
                     return <ProductCard key={product._id} product={product} />;
                   })}
               </div>
             </div>
-          </div>
+            
+          </div> 
+      
+          
         </div>
       )}
     </Fragment>

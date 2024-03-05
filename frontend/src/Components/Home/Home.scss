@@ -210,7 +210,18 @@ $categoriText: white;
   .product-row-container{
     display: flex;
     flex-direction: column;
+    gap:3rem;
     margin-left: 10rem;
+    margin-top: 5rem;
+    .row{
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      .row-products{
+        display: flex;
+        gap: 2rem;
+      }
+    }
   }
 }
 
