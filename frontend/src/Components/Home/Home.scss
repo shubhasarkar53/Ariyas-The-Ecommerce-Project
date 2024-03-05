@@ -184,4 +184,9 @@ $categoriText:white;
       }
     }
   }
+  .product-row-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10rem;
+  }
 }

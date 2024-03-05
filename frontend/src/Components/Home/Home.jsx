@@ -1,9 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "./Home.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "../../Redux/Actions/productAction";
-import Row from "../Row/Row";
+import WoodenRow from "../Row/WoodenRow";
+import ShareeRow from "../Row/ShareeRow";
+import ClayRow from "../Row/ClayRow";
+// import BagsRow from "../Row/BagsRow";
 import Loader from "../Loader/Loader";
 import ImageCarousel from "../Carousel/Carousel";
 
@@ -16,21 +19,36 @@ import image4 from "../../assets/Images/Carousel/AdobeStock_655646740_Preview.jp
 
 //import other images
 import Logo from '../../assets/Images/Home/all_logo.png'
+
+
+
+
 const Home = () => {
   const dispatch = useDispatch();
-  const { products, error, loading, productCount } = useSelector(
+  const { products, error, loading,category } = useSelector(
     (state) => state.products
   );
+
+
+
+
+
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
 
+
+
+
+//images, titles and captions for carousel
   const images = [
     { url: img, title: "Ariyas - Discover Local Treasures" ,caption: "Products With GI Tag's",link:"/" },
     { url: image2, title: "Ariyas - Discover Local Treasures" ,caption: "Buy & Sell Local Goods",link:"/" },
     { url: image3, title: "Ariyas - Discover Local Treasures" , caption: "Empower Local Artician's",link:"/" },
     { url: image4, title: "Ariyas - Discover Local Treasures" , caption: "Start Your Journey Today",link:"/" },
   ];
+
+
 
   return (
     <Fragment>
@@ -77,9 +95,11 @@ const Home = () => {
           </div>
 
           <div className="product-row-container">
-            <Row products={products} loading={loading} error={error} />
-            <Row products={products} loading={loading} error={error} />
-            <Row products={products} loading={loading} error={error} />
+           <WoodenRow products={products} />
+            <ClayRow products={products} /> 
+             <ShareeRow products={products} /> 
+            {/* <BagsRow products={products} />  */}
+
           </div>
         </div>
       )}

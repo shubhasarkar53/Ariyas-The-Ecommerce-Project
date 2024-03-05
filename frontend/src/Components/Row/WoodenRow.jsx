@@ -2,13 +2,15 @@
 import React from 'react'
 import './Row.scss'
 import ProductCard from '../Home/ProductCard'
-const Row = ({products}) => {
+import PropTypes from 'prop-types';
+
+const WoodenRow = ({ products }) => {
   return (
     <div className="row">
-      <h1>Title</h1>
+      <h1>{ products && products[0].category} Item&apos;s</h1>
         <div>
         {
-            products && products.map((product)=>{
+            products && products.slice(0,4).map((product)=>{
                 return(
                     <ProductCard key={product._id}  product = {product} />
                 )
@@ -19,4 +21,8 @@ const Row = ({products}) => {
   )
 }
 
-export default Row
+WoodenRow.propTypes = {
+  products: PropTypes.array.isRequired
+}
+
+export default WoodenRow

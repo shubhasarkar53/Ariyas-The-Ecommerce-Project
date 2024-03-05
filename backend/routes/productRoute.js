@@ -21,6 +21,9 @@ router.route("/products").get(getAllProducts);
 // get single product
 router.route("/product/:id").get(getSingleProduct);
 
+//get category wise product
+router.route("/products/category/:category").get(getAllProducts);
+
 // create product ----ADMIN ---SELLER
 // router.route("/product/new").post(isAuthenticated, authRole("admin"), createNewProducts);
 router.route("/product/new").post(isAuthenticated, authRole("seller","admin"), createNewProducts);
@@ -38,6 +41,7 @@ router.route("/reviews").get(getProductReviews).delete(isAuthenticated,deleteRev
 router.route("/seller/products/me").get(isAuthenticated,authRole("seller"),myProducts);
 // get all products of a seller
 router.route("/admin/sellerProducts/:id").get(isAuthenticated,authRole("admin"),getProductsOfSeller);
+
 
 
 module.exports = router;
