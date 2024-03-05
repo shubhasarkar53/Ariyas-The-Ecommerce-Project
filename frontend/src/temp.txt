@@ -1,0 +1,35 @@
+
+  // const handleSubmitContactForm = async (e) => {
+  //   e.preventDefault();
+
+  //   // Set loading to true when the form is submitted
+  //   setLoading(true);
+
+  //   try {
+  //     // Dispatch the submitContactForm action
+  //     const result = await dispatch(submitContactForm({
+  //       firstName,
+  //       lastName,
+  //       phone,
+  //       email,
+  //       message,
+  //     }));
+
+  //     if (result.error) {
+  //       // Handle error, show toast or perform other actions
+  //       toast.error(`Error: ${result.error.message}`);
+  //     } else {
+  //       // Introduce a delay of 2 seconds before setting loading to false
+  //       setTimeout(() => {
+  //         // Show the success message and set loading to false
+  //         toast.success('Message sent successfully!');
+  //         setLoading(false);
+  //       }, 2000);
+  //     }
+  //   } catch (error) {
+  //     // Handle error, show toast or perform other actions
+  //     toast.error(`Error: ${error.message}`);
+  //     // Set loading to false if there's an error
+  //     setLoading(false);
+  //   }
+  // };

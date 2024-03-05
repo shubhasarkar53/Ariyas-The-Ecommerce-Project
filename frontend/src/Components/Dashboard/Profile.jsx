@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import userImg from "../../assets/Images/Icons/profile icons/userImg.png";
 import profileSide from "../../assets/Images/Icons/profile icons/pngwing 3.png";
 import ordersImg from "../../assets/Images/Icons/profile icons/ordersImg.png";
@@ -19,6 +19,7 @@ import Loader from "../Loader/Loader.jsx";
 import { useHistory } from "react-router-dom";
 
 const Profile = () => {
+  const [loadingDelay, setLoadingDelay] = useState(false);
   const { user, loading, error, isAuthenticated } = useSelector(
     (state) => state.user
   );
@@ -107,6 +108,7 @@ const Profile = () => {
   }
   function managelogOut() {
     dispatch(logOut());
+    console.log("logged out");
     console.log("loggedout");
   }
   function manageAdminProfile() {

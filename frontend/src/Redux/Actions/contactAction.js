@@ -19,19 +19,29 @@ export const submitContactFormFailure = (error) => ({
   payload: error,
 });
 
+// export const clearContactFormState = () => ({
+//   type: CLEAR_CONTACT_FORM_STATE,
+// });
+
 // Async action for form submission
 export const submitContactForm = (formData) => (dispatch) => {
   dispatch(submitContactFormRequest());
-
 
   setTimeout(() => {
     try {
       // Here you would make your actual API request
       // If successful, dispatch success action
       dispatch(submitContactFormSuccess());
+      // message sent, dispatch to clear the form
+      // dispatch(clearContactFormState());
     } catch (error) {
       // dispatch failure action, if there's an error that occurs
       dispatch(submitContactFormFailure(error.message));
     }
   }, 1000);
 };
+
+// Async action for form being cleared
+// export const clearContactForm = () => (dispatch) => {
+//   dispatch(clearContactFormState);
+// }

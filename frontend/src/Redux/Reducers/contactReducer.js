@@ -35,7 +35,10 @@ const contactReducer = (state = initialState, action) => {
         success: false,
         error: action.payload,
       };
-
+    // case CLEAR_CONTACT_FORM_STATE:
+    //   return {
+    //     ...initialState,
+    //   };
     default:
       return state;
   }
