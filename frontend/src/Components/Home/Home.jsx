@@ -18,7 +18,7 @@ import ProductCard from "./ProductCard";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { products, error, loading, category } = useSelector(
+  const { products, error, loading, productCount, category } = useSelector(
     (state) => state.products
   );
 
@@ -137,54 +137,51 @@ const Home = () => {
           </div>
 
           <div className="product-row-container">
-            {/* Wooden row */}
-            <div className="row">
-              <h1>{products && products[0].category} Item&apos;s</h1>
-              <div className="row-products">
-                {products &&
-                  products.slice(0, 4).map((product) => {
+            {products && products.length > 0 && (
+              <div className="row">
+                <h1>{products[0] && products[0].category} Item&apos;s</h1>
+                <div className="row-products">
+                  {products.slice(0, 4).map((product) => {
                     return <ProductCard key={product._id} product={product} />;
                   })}
+                </div>
               </div>
-            </div>
+            )}
 
-            {/* Clay/ceramic Row */}
-            <div className="row">
-              <h1>{products && products[4].category} Item&apos;s</h1>
-              <div className="row-products">
-                {products &&
-                  products.slice(4, 8).map((product) => {
+            {products && products.length > 0 && (
+              <div className="row">
+                <h1>{products[4] && products[4].category} Item&apos;s</h1>
+                <div className="row-products">
+                  {products.slice(4, 8).map((product) => {
                     return <ProductCard key={product._id} product={product} />;
                   })}
+                </div>
               </div>
-            </div>
+            )}
 
-            {/* Bags Row */}
-
-            {/* <div className="row">
-              <h1>{products && products[13].category} Item&apos;s</h1>
-              <div>
-                {products &&
-                  products.slice(13, 16).map((product) => {
+            {products && products.length > 0 && (
+              <div className="row">
+                <h1>{products[8] && products[8].category} Item&apos;s</h1>
+                <div className="row-products">
+                  {products.slice(8, 12).map((product) => {
                     return <ProductCard key={product._id} product={product} />;
                   })}
+                </div>
               </div>
-            </div> */}
+            )}
 
-            {/* Sarees Row */}
-            <div className="row">
-              <h1>{products && products[8].category} Item&apos;s</h1>
-              <div className="row-products">
-                {products &&
-                  products.slice(8, 12).map((product) => {
+            {/* unable to fetch */}
+            {/* {products && products.length > 0 && (
+              <div className="row">
+                <h1>{products[12] && products[12].category} Item&apos;s</h1>
+                <div className="row-products">
+                  {products.slice(12, 16).map((product) => {
                     return <ProductCard key={product._id} product={product} />;
                   })}
+                </div>
               </div>
-            </div>
-            
-          </div> 
-      
-          
+            )} */}
+          </div>
         </div>
       )}
     </Fragment>
