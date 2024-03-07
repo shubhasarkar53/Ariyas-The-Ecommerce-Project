@@ -12,6 +12,13 @@ const Contact = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [showContactAnimation, setShowContactAnimation] = useState(false);
+  const [fieldError, setFieldError] = useState({
+    firstName: false,
+    lastName: false,
+    phone: false,
+    email: false,
+    message: false,
+  });
   const error = useSelector(state => state.contact.error);
   const success = useSelector(state => state.contact.success);
 
@@ -23,6 +30,31 @@ const Contact = () => {
 
   const handleSubmitContactForm = async (e) => {
     e.preventDefault();
+
+    // Validate form fields
+    const errors = {};
+    if (!firstName) {
+      errors.firstName = true;
+    }
+    if (!lastName) {
+      errors.lastName = true;
+    }
+    if (!phone) {
+      errors.phone = true;
+    }
+    if (!email) {
+      errors.email = true;
+    }
+    if (!message) {
+      errors.message = true;
+    }
+
+    if (Object.keys(errors).length > 0) {
+      // Set fieldError to highlight empty fields
+      setFieldError(errors);
+      toast.error('All fields are required. Please fill in all the fields.');
+      return;
+    }
 
     try {
       // Set loading to true when initiating form submission
@@ -56,6 +88,15 @@ const Contact = () => {
       setTimeout(() => {
         setShowContactAnimation(false);
       }, 2000);
+
+      // Clear fieldError state
+      setFieldError({
+        firstName: false,
+        lastName: false,
+        phone: false,
+        email: false,
+        message: false,
+      });
     }
   }
 
@@ -109,14 +150,14 @@ const Contact = () => {
                   <form className="form" onSubmit={handleSubmitContactForm}>
                     <div className="input-name">
                       <div id="first-name">
-                        <label htmlFor="">First name</label>
+                        <label htmlFor="first-name">First name</label>
                         <input type="text" placeholder="Enter First Name"
                           value={firstName}
                           onChange={(e) => setFirstName(e.target.value)}
                         />
                       </div>
                       <div id="last-name">
-                        <label htmlFor="">Last name</label>
+                        <label htmlFor="last-name">Last name</label>
                         <input type="text" placeholder="Enter Last Name"
                           value={lastName}
                           onChange={(e) => setLastName(e.target.value)}
@@ -124,21 +165,21 @@ const Contact = () => {
                       </div>
                     </div>
                     <div className="phone">
-                      <label htmlFor="">Phone Number</label>
+                      <label htmlFor="phone">Phone Number</label>
                       <input type="text" placeholder="69696 424244"
                         value={phone}
                         onChange={(e) => { setPhone(e.target.value) }}
                       />
                     </div>
                     <div className="email">
-                      <label htmlFor="">Email</label>
+                      <label htmlFor="email">Email</label>
                       <input type="email" placeholder="Enter email"
                         value={email}
                         onChange={(e) => { setEmail(e.target.value) }}
                       />
                     </div>
                     <div className="message">
-                      <label htmlFor="">Message</label>
+                      <label htmlFor="message">Message</label>
                       <input type="textarea" placeholder="Your Message.."
                         value={message}
                         onChange={(e) => { setMessage(e.target.value) }}
