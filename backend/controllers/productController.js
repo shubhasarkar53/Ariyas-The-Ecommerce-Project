@@ -248,4 +248,3 @@ exports.getProductsOfSeller = catchAsyncErr(async (req, res, next) => {
     sellerAllProducts,
   });
 });
-
