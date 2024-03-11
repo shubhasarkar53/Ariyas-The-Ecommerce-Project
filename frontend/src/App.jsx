@@ -24,6 +24,7 @@ import Profile from './Components/Dashboard/Profile.jsx'
 import RegisterSeller from './Components/Seller/Register-Seller/RegisterSeller';
 import Contact from './Components/Contact/Contact.jsx'
 import FAQs from './Components/FAQ/FAQ.jsx'
+import UpdateProfile from './Components/Dashboard/UpdateProfile.jsx'
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
@@ -57,9 +58,8 @@ const App = () => {
             <Route exact path="/become-seller" component={BecomeSeller} />
             <Route path="/register-seller" component={RegisterSeller} />
 
-            {/* <ProtectedRoute exact path="/account" component={Account}/> */}
-
             <ProtectedRoute exact path="/profile" component={Profile} />
+            <ProtectedRoute exact path="/me/update/profile" component={UpdateProfile} />
 
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/faq" component={FAQs} />

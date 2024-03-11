@@ -12,6 +12,19 @@ const userSchema = new mongoose.Schema({
     minlength: 3,
     maxlength: 30,
   },
+  gender:{
+    type:String,
+    enum : ['Male','Female','Others'],
+  },
+  phone:{
+    type:Number,
+    required: [true, "Please give a Phone Number"],
+    maxlength: 10,
+  },
+  dob:{
+    // type:Date
+    type:String //but not proper
+  },
   email: {
     type: String,
     required: [true, "Please give a email"],
