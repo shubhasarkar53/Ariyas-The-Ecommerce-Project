@@ -42,6 +42,12 @@ const ProductPagination = ({ totalPages, currentPage, onPageChange }) => {
 
 };
 
+ProductPagination.propTypes = {
+  totalPages: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired
+}
+
 export default ProductPagination;
 
 

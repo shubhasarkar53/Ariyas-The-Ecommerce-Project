@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const errorMiddleWare = require("./middleWares/error");
 const fileUpload = require("express-fileupload");
 const bodyParser = require("body-parser");
+const nodemailer = require('nodemailer');
 // * route import 
 const productRoute = require("./routes/productRoute");
 const userRoute = require("./routes/userRoute");
@@ -17,13 +18,35 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
 
 // * route
-app.use("/api/v1",productRoute);
-app.use("/api/v1",userRoute);
-app.use("/api/v1",orderRoute);
-app.use("/api/v1",addressRoute);
-app.use("/api/v1",returnRoute);
+app.use("/api/v1", productRoute);
+app.use("/api/v1", userRoute);
+app.use("/api/v1", orderRoute);
+app.use("/api/v1", addressRoute);
+app.use("/api/v1", returnRoute);
 
-module.exports=app;
+// Email sending functionality
+// const sendEmail = async (to, subject, text) => {
+//   const transporter = nodemailer.createTransport({
+//     service: "gmail",
+//     auth: {
+//       user: process.env.EMAIL_USER,
+//       pass: process.env.EMAIL_PASSWORD,
+//     },
+//   });
+
+//   const mailOptions = {
+//     from: process.env.EMAIL_USER,
+//     to,
+//     subject,
+//     text,
+//   };
+
+//   await transporter.sendMail(mailOptions);
+// };
+
+
+// module.exports = { app, sendEmail };
+module.exports = app;
 
 // Error middleware should be in last of the code
 app.use(errorMiddleWare);

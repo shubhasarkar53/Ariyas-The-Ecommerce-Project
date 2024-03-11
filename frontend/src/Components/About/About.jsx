@@ -5,6 +5,7 @@ import aboutImage from '../../assets/Images/Carousel/AdobeStock_313642757_Previe
 import aboutImg1 from '../../assets/Images/Carousel/AdobeStock_500191794_Preview.jpeg';
 // import { useSelector } from 'react-redux';
 import './AboutAnimation.scss';
+import Loader from '../Loader/Loader';
 
 const About = () => {
   const [loading, setLoading] = useState(true);
@@ -27,11 +28,7 @@ const About = () => {
   return (
     <>
       {loading ? (
-        <div className="about-animation">
-          <div className="dot"></div>
-          <div className="dot"></div>
-          <div className="dot"></div>
-        </div>
+        <Loader />
       ) : error ? (
         <div>{error}</div>
       ) : (

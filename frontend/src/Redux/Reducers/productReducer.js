@@ -67,17 +67,7 @@ export const productDetailsReducer = (state = { product: {} }, action) => {
     }
 }
 
-//filter reducer
-export const productFilterReducer = (state = { products: [] }, action) => {
-    switch (action.type) {
-        case PRODUCT_FILTER:
-            return {
-                products: action.payload
-            };
-        default:
-            return state;
-    }
-};
+
 
 //Explanation 
 // This code is a Redux reducer for managing the state of products in a web application. 
