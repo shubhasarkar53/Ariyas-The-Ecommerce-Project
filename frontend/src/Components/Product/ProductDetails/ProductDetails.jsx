@@ -13,7 +13,9 @@ import './ProductDetails.scss'
 import ReviewCard from '../ReviewCard/ReviewCard'
 import Loader from '../../Loader/Loader'
 import ReviewForm from '../CreateReview/CreateReview'
-
+import { addItemsToCart } from '../../../Redux/Actions/cartAction'
+import { toast , ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
  
 // import ProductShare from './Share'
 
@@ -49,7 +51,7 @@ const ProductDetails = ({ match }) => {
   };
 
   const increaseQuantity = () => {
-    if (product.Stock <= quantity) return;
+    if (product.stock <= quantity) return;
 
     const qty = quantity + 1;
     setQuantity(qty);
@@ -61,6 +63,24 @@ const ProductDetails = ({ match }) => {
     const qty = quantity - 1;
     setQuantity(qty);
   };
+
+
+  
+  // add to cart func
+  const addToCartHandler = () => {
+    if (!product.name || !quantity) return;
+    dispatch(addItemsToCart(match.params.id, quantity));
+    toast.success(`${quantity} ${quantity > 1 ? 'items' : 'item'} added to cart` , {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme:"colored",
+    });
+  }
 
   return (
     <Fragment>
@@ -109,7 +129,7 @@ const ProductDetails = ({ match }) => {
           <div className="buttondiv">
             <button className='buynow'>Buy Now</button>
 
-            <button className='addtocart'>Add to Cart</button>
+            <button className='addtocart' onClick={addToCartHandler}>Add to Cart</button>
 
             <div className='quantity'>
             <button onClick={decreaseQuantity}>-</button>
@@ -165,6 +185,8 @@ const ProductDetails = ({ match }) => {
       {/* end of down div section */}
       </div>
       {/*end page wrapper section */}
+
+      <ToastContainer/>
     </Fragment>)}
 
     </Fragment>

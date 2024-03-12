@@ -24,6 +24,7 @@ import Profile from './Components/Dashboard/Profile.jsx'
 import RegisterSeller from './Components/Seller/Register-Seller/RegisterSeller';
 import Contact from './Components/Contact/Contact.jsx'
 import FAQs from './Components/FAQ/FAQ.jsx'
+import Cart from './Components/Cart/Cart.jsx'
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
@@ -45,6 +46,7 @@ const App = () => {
             <Route path="/products/:keyword" render={(props) => <Shop {...props} />} />
             {/* <Route path="/products/:keyword" component={Shop} /> */}
             <Route path="/products/:keyword" component={Shop} />
+            <Route exact path="/cart" component={Cart} />
             <Route exact path="/about" component={About} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/product/:id" component={ProductDetails} />

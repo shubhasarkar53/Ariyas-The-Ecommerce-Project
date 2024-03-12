@@ -1,0 +1,25 @@
+.cardItem{
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+    padding: 1vmax;
+    margin: 3rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    img{
+        width: 5vmax;
+        height: 5vmax;
+        object-fit: cover;
+    }
+    .cardItem-details{
+        display: flex;
+        flex-direction: column;
+    }
+    p{
+        margin: 0;
+        padding: 0;
+        font-size: 1rem;
+        color: red;
+    }
+}
