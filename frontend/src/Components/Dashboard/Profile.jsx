@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import userImg from "../../assets/Images/Icons/profile icons/userImg.png";
 import profileSide from "../../assets/Images/Icons/profile icons/pngwing 3.png";
 import ordersImg from "../../assets/Images/Icons/profile icons/ordersImg.png";
@@ -16,13 +16,24 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { loadUser, logOut } from "../../Redux/Actions/userAction.js";
 import "./Profile.scss";
 import Loader from "../Loader/Loader.jsx";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import EditIcon from "@mui/icons-material/Edit";
+import Tooltip from "@mui/material/Tooltip";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Profile = () => {
   const [loadingDelay, setLoadingDelay] = useState(false);
   const { user, loading, error, isAuthenticated } = useSelector(
     (state) => state.user
   );
+
+  const fileInputRef = useRef(null);
+
+  const handleEditIconClick = () => {
+    fileInputRef.current.click();
+  };
+
   const dispatch = useDispatch();
   const history = useHistory();
   const options = [
@@ -98,7 +109,7 @@ const Profile = () => {
     history.push("/contact");
   }
   function updateCredentials() {
-    history.push("/update/me");
+    history.push("/password/update");
   }
   function managePaymentMethod() {
     history.push("/payments");
@@ -108,8 +119,8 @@ const Profile = () => {
   }
   function managelogOut() {
     dispatch(logOut());
-    console.log("logged out");
-    console.log("loggedout");
+    // console.log("logged out");
+    // console.log("loggedout");
   }
   function manageAdminProfile() {
     history.push("/admin");
@@ -126,6 +137,7 @@ const Profile = () => {
               <h2>My Profile</h2>
             </div>
             <div className="profile-det-container">
+            <ToastContainer/>
               {/* Left side of the profile */}
               <div className="ext-left-profile">
                 <img src={profileSide} alt="Background Image" />
@@ -133,16 +145,43 @@ const Profile = () => {
               {/* Main Profile details */}
               <div className="main-profile">
                 <div className="main-profile-container">
-                  <div className="img-profile">
-                    <img src={user?.avatar?.url} alt="My Image" />
+                  <div className="main-profile-container-left">
+                    <div className="img-profile">
+                      <img src={user?.avatar?.url} alt="My Image" />
+                    </div>
+                    <div className="main-profile-det">
+                      <div className="profile-name">
+                        <p>
+                          {user && user.name} (<strong>{user.role}</strong>)
+                        </p>
+                      </div>
+                      <div className="profile-email">
+                        <p>{user && user.email}</p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="main-profile-det">
-                    <div className="profile-name">
-                      <p>{user && user.name} (<strong>{user.role}</strong>)</p>
-                    </div>
-                    <div className="profile-email">
-                      <p>{user && user.email}</p>
-                    </div>
+                  {/* <div className="main-profile-container-right">
+                    <input type="file" name="avatar" accept="image/*" />
+                  </div> */}
+
+                  <div className="main-profile-container-right">
+                    {/* Hidden file input */}
+                    <input
+                      type="file"
+                      ref={fileInputRef}
+                      name="avatar"
+                      accept="image/*"
+                      style={{ display: "none" }}
+                    />
+
+                    {/* Edit icon */}
+                    <Link to={"/me/update/profile"}>
+                      <Tooltip title="Edit Profile">
+                        <label >
+                          <EditIcon />
+                        </label>
+                      </Tooltip>
+                    </Link>
                   </div>
                 </div>
                 {/* All the actions that the profile section provides to the user */}
@@ -166,6 +205,7 @@ const Profile = () => {
                   })}
                 </div>
               </div>
+
               {/* Right side of the profile */}
               <div className="ext-right-profile">
                 <img src={profileSide} alt="Background Image" />

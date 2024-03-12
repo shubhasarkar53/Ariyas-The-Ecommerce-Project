@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const cookieParser = require('cookie-parser');
 const errorMiddleWare = require("./middleWares/error");
+const fileUpload = require("express-fileupload");
+const bodyParser = require("body-parser");
 const nodemailer = require('nodemailer');
 // * route import 
 const productRoute = require("./routes/productRoute");
@@ -12,6 +14,8 @@ const returnRoute = require("./routes/returnRoute");
 // * middleware
 app.use(express.json());
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(fileUpload());
 
 // * route
 app.use("/api/v1", productRoute);
