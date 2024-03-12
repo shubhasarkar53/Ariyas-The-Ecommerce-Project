@@ -15,6 +15,9 @@ import {
   UPDATE_USER_RESET,
   UPDATE_USER_FAIL,
   UPDATE_USER_SUCCESS,
+  UPDATE_USER_PASSWORD_REQUEST,
+  UPDATE_USER_PASSWORD_SUCCESS,
+  UPDATE_USER_PASSWORD_FAIL,
 } from "../Constants/userConstant";
 
 import axios from "axios";
@@ -132,3 +135,30 @@ export const updateUserProfile = (userData) => async (dispatch) => {
     });
   }
 };
+
+//Update users Password action
+
+export const updateUserPassword = (userData) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_USER_PASSWORD_REQUEST });
+
+    const config = { headers: { "Content-Type": "application/json" } };
+    // Sending the request to server and get response back
+    
+    const {data} = await axios.put("/api/v1/password/update", userData, config);
+    // console.log("fromUpdate acton",data)
+
+    dispatch({
+      type: UPDATE_USER_PASSWORD_SUCCESS,
+      payload: data.success,
+    });
+    
+  } catch (error) {
+    // console.log(error);
+    dispatch({
+      type: UPDATE_USER_PASSWORD_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+

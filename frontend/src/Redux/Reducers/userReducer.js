@@ -12,7 +12,13 @@ import {
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
   UPDATE_USER_REQUEST,
-  UPDATE_USER_SUCCESS,UPDATE_USER_FAIL, UPDATE_USER_RESET
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAIL,
+  UPDATE_USER_RESET,
+  UPDATE_USER_PASSWORD_REQUEST,
+  UPDATE_USER_PASSWORD_SUCCESS,
+  UPDATE_USER_PASSWORD_FAIL,
+  UPDATE_USER_PASSWORD_RESET,
 } from "../Constants/userConstant";
 
 export const userReducer = (state = { user: {} }, action) => {
@@ -81,17 +87,18 @@ export const userReducer = (state = { user: {} }, action) => {
   }
 };
 
-
 // Profile Reducer
 
 export const profileReducer = (state = {}, action) => {
   switch (action.type) {
     case UPDATE_USER_REQUEST:
+    case UPDATE_USER_PASSWORD_REQUEST:
       return {
         ...state,
         loading: true,
       };
     case UPDATE_USER_SUCCESS:
+    case UPDATE_USER_PASSWORD_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -99,6 +106,7 @@ export const profileReducer = (state = {}, action) => {
       };
 
     case UPDATE_USER_FAIL:
+    case UPDATE_USER_PASSWORD_FAIL:
       return {
         ...state,
         loading: false,
@@ -106,10 +114,11 @@ export const profileReducer = (state = {}, action) => {
       };
 
     case UPDATE_USER_RESET:
-        return {
-          ...state,
-          isUpdated: false,
-        };
+    case UPDATE_USER_PASSWORD_RESET:
+      return {
+        ...state,
+        isUpdated: false,
+      };
 
     case CLEAR_ERRORS:
       return {

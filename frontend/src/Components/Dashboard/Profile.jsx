@@ -109,7 +109,7 @@ const Profile = () => {
     history.push("/contact");
   }
   function updateCredentials() {
-    history.push("/update/me");
+    history.push("/password/update");
   }
   function managePaymentMethod() {
     history.push("/payments");
@@ -119,8 +119,8 @@ const Profile = () => {
   }
   function managelogOut() {
     dispatch(logOut());
-    console.log("logged out");
-    console.log("loggedout");
+    // console.log("logged out");
+    // console.log("loggedout");
   }
   function manageAdminProfile() {
     history.push("/admin");
@@ -133,11 +133,11 @@ const Profile = () => {
       ) : (
         <>
           <div className="profile-container">
-            <ToastContainer/>
             <div className="profile-title">
               <h2>My Profile</h2>
             </div>
             <div className="profile-det-container">
+            <ToastContainer/>
               {/* Left side of the profile */}
               <div className="ext-left-profile">
                 <img src={profileSide} alt="Background Image" />
