@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { Fragment } from "react";
-import PropTypes from "prop-types";
 import "./Cart.scss";
 import CartItemCard from "./CartItemCard";
 import {useSelector,useDispatch} from "react-redux";
 import { addItemsToCart, removeItemsFromCart } from "../../Redux/Actions/cartAction";
+import { Link } from "react-router-dom";
 import { toast , ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -59,6 +59,7 @@ const Cart = () => {
             <div className="emptyCart-container">
                 <h1>Your Cart is Empty</h1>
                 <img src={emptycart} alt="empty cart" />
+                <Link className="empty-cart-btn" to="/shop">Shop Now</Link>
             </div>
         ):(
             <Fragment>
@@ -87,14 +88,12 @@ const Cart = () => {
     
               <div className="cartGrossPrice-container">
 
-               <div></div>
+               <div className="bar"></div>
 
                <div className="cartGrossTotalBox">
                  <p className="cartGrossTotal">Gross Total</p>
                  <p className="cartGrossPrice">{`₹${cartItems.reduce((acc,item)=>acc+item.quantity*item.price,0)}`}</p>
                </div>
-
-               <div></div>
 
                <div className="checkOut">
                  <button className="checkOutBtn">Check Out</button>
@@ -110,5 +109,6 @@ const Cart = () => {
     </Fragment>
     );
   };
+
 
 export default Cart;
