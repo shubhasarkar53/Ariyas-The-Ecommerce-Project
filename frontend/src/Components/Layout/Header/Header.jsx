@@ -7,13 +7,18 @@ import logo from '../../../assets/Images/Navbar/logo.png';
 import userImgPlaceHolder from "../../../assets/Images/Navbar/person.png";
 
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./Header.scss";
 const Header = () => {
   const { user, isAuthenticated, loading, error } = useSelector(
     (state) => state.user
   );
+  
+  // Get the cart items from the redux store
+  const { cartItems } = useSelector((state) => state.cart);
+  const total = cartItems.length;
+
   return (
     <Fragment>
       <header>
@@ -44,13 +49,14 @@ const Header = () => {
             <div className="icon-btns-container">
               {[
                 { icon: paperplane, path: "/paperplane" },
-                { icon: cart, path: "/cart" },
+                { icon: cart, path: "/cart",},
                 { icon: search, path: "/search" },
               ].map((item, index) => {
                 return (
                   <div className="icon-btn" key={index}>
                     <Link to={item.path}>
                       <img src={item.icon} alt="icon" />
+                      {total !== undefined && item.path === "/cart" && <span className="count-badge">{total}</span>}
                     </Link>
                   </div>
                 );

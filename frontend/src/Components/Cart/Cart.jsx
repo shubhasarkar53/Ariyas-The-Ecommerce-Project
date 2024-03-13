@@ -52,7 +52,6 @@ const Cart = () => {
         dispatch(addItemsToCart(id, newQty));
     }
 
-
     return (
     <Fragment>
         {cartItems.length === 0 ?(
@@ -69,7 +68,7 @@ const Cart = () => {
                 <p className="cart-quantity">Quantity</p>
                 <p className="cart-total-price">Total Price</p>
               </div>
-    
+
             {cartItems && cartItems.map((item) => (
                 <div className="cartCardContainer" key={item.product}>
                     <CartItemCard item={item} deleteCartItems={removeCartItemHandler}/>
