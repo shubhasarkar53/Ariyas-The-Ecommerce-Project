@@ -15,6 +15,23 @@ const ProductCard = ({ product }) => {
   
   // console.log(product);
 
+// const randomNumber = Math.floor(Math.random() * 5) + 1;
+
+//function for genarate a random number for span tag in product card
+function getRandomNumber() {
+
+  const randomNumber = Math.random();
+
+  const scaledRandomNumber = randomNumber * 4;
+
+  const finalRandomNumber = Math.floor(scaledRandomNumber) + 2;
+
+  return finalRandomNumber;
+}
+
+const randomNo = getRandomNumber();
+
+
   return (
   
     <Link className="card" to={`/product/${product._id}`}>
@@ -25,7 +42,7 @@ const ProductCard = ({ product }) => {
             {/* <p className='product-des'>{product.description}</p> */}
 
             <div className='ratings'>
-          <Rating {...options} />
+          <Rating {...options} className='rating-options'/>
                 <span className="detailsBlock-2-span">
                   {" "}
                   ({product.numOfReviews} {product.numOfReviews > 1 ? "Reviews" : "Review"})
@@ -34,7 +51,7 @@ const ProductCard = ({ product }) => {
 
             <div className='prices-continer'>
                 <span className='price-1'>RS. {product.price}</span>
-                <span className='price-2'>Rs. 2223</span>
+                <span className='price-2'>Rs. {product.price*randomNo}</span>
             </div>
     </Link>
   )

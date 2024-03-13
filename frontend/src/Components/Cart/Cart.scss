@@ -30,6 +30,15 @@
         margin: 0 5rem;
         font-size: 1.5rem;
         border-bottom: 3px solid #e0e0e0;
+        .cart-title{
+            margin-left: 5rem;
+        }
+        .cart-quantity{
+            margin-left: 25rem;
+        }
+        .cart-total-price{
+            margin-right: 2rem;
+        }
     }
     .cartCardContainer{
         display: flex;
@@ -38,9 +47,6 @@
         margin: auto;
         width: 90%;
         .quantity {
-            display: flex;
-            align-items: center;
-          
             button {
                 border-radius: 8px;
                 border: 1px solid transparent;

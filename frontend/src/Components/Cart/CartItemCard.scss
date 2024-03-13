@@ -1,16 +1,22 @@
+// *{
+//     border:1px solid red;
+// }
 .cardItem{
     display: flex;
-    // justify-content: space-between;
     align-items: center;
-    padding: 1vmax;
+    width: 30%;
+    padding:3vmax;
     margin: 3rem;
-    border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    transition: all 1s ease-in-out;
+
     img{
         width: 5vmax;
         height: 5vmax;
         object-fit: cover;
+        border-radius: 1.3rem;
+        margin-right: 2rem;
     }
     .cardItem-details{
         display: flex;
@@ -21,5 +27,9 @@
         padding: 0;
         font-size: 1rem;
         color: red;
+    }
+    &:hover{
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        transform: scale(1.04);
     }
 }
