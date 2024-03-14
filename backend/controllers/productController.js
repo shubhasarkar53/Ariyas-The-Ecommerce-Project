@@ -108,6 +108,7 @@ exports.productRatingReview = catchAsyncErr(async (req, res, next) => {
     user: req.user._id,
     userName: req.user.name,
     rating: Number(rating),
+    date: Date.now(),
     comment,
   };
 

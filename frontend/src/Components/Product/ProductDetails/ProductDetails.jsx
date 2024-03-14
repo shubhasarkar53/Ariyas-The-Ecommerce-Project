@@ -51,14 +51,37 @@ const ProductDetails = ({ match }) => {
   };
 
   const increaseQuantity = () => {
-    if (product.stock <= quantity) return;
+    if (product.stock <= quantity){
+      toast.error("Cannot add more items. Insufficient stock.", {
+        position: "bottom-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
+      return;
+    }
 
     const qty = quantity + 1;
     setQuantity(qty);
   };
 
   const decreaseQuantity = () => {
-    if (1 >= quantity) return;
+    if (1 >= quantity) {
+      toast.error("Minimum quantity reached. Cannot decrease further.", {
+        position: "bottom-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    });
+      return;
+    }
 
     const qty = quantity - 1;
     setQuantity(qty);
