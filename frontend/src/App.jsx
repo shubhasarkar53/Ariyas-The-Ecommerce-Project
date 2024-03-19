@@ -25,6 +25,7 @@ import RegisterSeller from './Components/Seller/Register-Seller/RegisterSeller';
 import Contact from './Components/Contact/Contact.jsx'
 import FAQs from './Components/FAQ/FAQ.jsx'
 import Cart from './Components/Cart/Cart.jsx'
+import WishList from './Components/WishList/WishList.jsx'
 import UpdateProfile from './Components/Dashboard/UpdateProfile.jsx'
 import UpdatePassword from './Components/Dashboard/UpdatePassword.jsx'
 const App = () => {
@@ -49,6 +50,7 @@ const App = () => {
             {/* <Route path="/products/:keyword" component={Shop} /> */}
             <Route path="/products/:keyword" component={Shop} />
             <Route exact path="/cart" component={Cart} />
+            <Route exact path="/wishlist" component={WishList} />
             <Route exact path="/about" component={About} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/product/:id" component={ProductDetails} />
