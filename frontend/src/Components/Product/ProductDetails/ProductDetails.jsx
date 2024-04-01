@@ -7,6 +7,7 @@ import Cod from '../../../assets/Images/Icons/cod.png'
 import Fast from '../../../assets/Images/Icons/fast.png'
 import Secure from '../../../assets/Images/Icons/secure.png'
 import Share from '../../../assets/Images/Icons/share.png'
+import Wish from '../../../assets/Images/Icons/profile icons/wishlist.png'
 import PropTypes from 'prop-types';
 import { Rating } from '@mui/material'
 import './ProductDetails.scss'
@@ -14,6 +15,7 @@ import ReviewCard from '../ReviewCard/ReviewCard'
 import Loader from '../../Loader/Loader'
 import ReviewForm from '../CreateReview/CreateReview'
 import { addItemsToCart } from '../../../Redux/Actions/cartAction'
+import { addItemsToWishList } from '../../../Redux/Actions/wishListAction'
 import { toast , ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
  
@@ -51,14 +53,37 @@ const ProductDetails = ({ match }) => {
   };
 
   const increaseQuantity = () => {
-    if (product.stock <= quantity) return;
+    if (product.stock <= quantity){
+      toast.error("Cannot add more items. Insufficient stock.", {
+        position: "bottom-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
+      return;
+    }
 
     const qty = quantity + 1;
     setQuantity(qty);
   };
 
   const decreaseQuantity = () => {
-    if (1 >= quantity) return;
+    if (1 >= quantity) {
+      toast.error("Minimum quantity reached. Cannot decrease further.", {
+        position: "bottom-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    });
+      return;
+    }
 
     const qty = quantity - 1;
     setQuantity(qty);
@@ -81,6 +106,26 @@ const ProductDetails = ({ match }) => {
       theme:"colored",
     });
   }
+
+
+
+  // add to wishlist func
+  const addToWishListHandler = () => {
+    if (!product.name) return;
+    dispatch(addItemsToWishList(match.params.id));
+    toast.success(`${product.name} added to wishlist` , {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme:"colored",
+    });
+  }
+
+  
 
   return (
     <Fragment>
@@ -137,6 +182,9 @@ const ProductDetails = ({ match }) => {
                     <button onClick={increaseQuantity}>+</button>
             </div>
 
+            <div className="wishlist">
+              <img onClick={addToWishListHandler} src={Wish} alt=""/>
+            </div>
           </div>
           
           <div className="icons">

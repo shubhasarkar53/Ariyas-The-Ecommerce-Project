@@ -81,6 +81,23 @@ header{
             width: 45px;
             cursor: pointer;
         }
+        .count-badge{
+            position: absolute;
+            background-color: rgb(255, 106, 0);
+            color: white;
+            padding: 0.2em 0.5em;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            &:hover::after{
+                content: "See  Your Cart Items";
+                background-color: rgb(255, 106, 0);
+                padding: 5px 10px;
+                border-radius: 5px;
+                font-size: 14px;
+                transform: translateX(-50%);
+                             
+            }
+        }
     }
 
     .avatar-img{

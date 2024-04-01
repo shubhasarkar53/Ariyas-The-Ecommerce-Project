@@ -38,6 +38,17 @@ const Cart = () => {
     const increaseQuantity = (id, quantity, stock) => {
         const newQty = quantity + 1;
         if(stock <= quantity){
+          // Display toast message indicating that stock is insufficient
+        toast.error("Cannot add more items. Insufficient stock.", {
+          position: "bottom-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+      });
             return;
         }
         dispatch(addItemsToCart(id, newQty));
@@ -51,7 +62,6 @@ const Cart = () => {
         }
         dispatch(addItemsToCart(id, newQty));
     }
-
 
     return (
     <Fragment>
@@ -69,7 +79,7 @@ const Cart = () => {
                 <p className="cart-quantity">Quantity</p>
                 <p className="cart-total-price">Total Price</p>
               </div>
-    
+
             {cartItems && cartItems.map((item) => (
                 <div className="cartCardContainer" key={item.product}>
                     <CartItemCard item={item} deleteCartItems={removeCartItemHandler}/>

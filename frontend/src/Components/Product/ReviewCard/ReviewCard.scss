@@ -3,6 +3,13 @@
     flex-direction: column;
     flex-wrap: wrap;
     width: 90%;
+    .bar{
+        height: 2px;
+        background-color: rgb(196, 196, 196);
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+
+    }
     .review{
         display: flex;
         flex-direction: column;

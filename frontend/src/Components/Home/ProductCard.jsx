@@ -4,6 +4,8 @@ import "./ProductCard.scss"
 import {Link} from 'react-router-dom'
 import Rating from '@mui/material/Rating';
 import PropTypes from 'prop-types';
+import { CiShoppingCart } from "react-icons/ci";
+import { RiHeartAddFill } from "react-icons/ri";
 const ProductCard = ({ product }) => {
 
   const options = {
@@ -29,7 +31,9 @@ function getRandomNumber() {
   return finalRandomNumber;
 }
 
+
 const randomNo = getRandomNumber();
+
 
 
   return (
@@ -49,9 +53,21 @@ const randomNo = getRandomNumber();
                 </span>
           </div>       
 
+            <div className="carddown-div">
+
+            <div className="cart">
+              <CiShoppingCart />
+            </div>
+
             <div className='prices-continer'>
                 <span className='price-1'>RS. {product.price}</span>
                 <span className='price-2'>Rs. {product.price*randomNo}</span>
+            </div>
+
+            <div className="wishlist">
+            <RiHeartAddFill />
+            </div>
+            
             </div>
     </Link>
   )
