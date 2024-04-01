@@ -115,7 +115,7 @@ const Profile = () => {
     history.push("/payments");
   }
   function manageAddress() {
-    history.push("/address");
+    history.push("/addresses");
   }
   function managelogOut() {
     dispatch(logOut());

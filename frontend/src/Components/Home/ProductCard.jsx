@@ -66,7 +66,7 @@ ProductCard.propTypes = {
       url: PropTypes.string.isRequired
     })).isRequired,
     ratings: PropTypes.number.isRequired,
-    numOfReviews: PropTypes.number.isRequired,
+    numOfReviews: PropTypes.number,
     price: PropTypes.number.isRequired
   }).isRequired
 };
