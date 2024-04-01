@@ -1,0 +1,72 @@
+a{
+    text-decoration: none;
+}
+.container{
+    width: 100%;
+    // border: 2px solid rebeccapurple;
+}
+
+.addressesContainer{
+    width: 80%;
+    // border: 2px solid red;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.addressesTitle{
+    padding-bottom: 1.5em;
+}
+.myAddress-container{
+    // border: 2px solid rgb(60, 255, 0);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.plusicon{
+    font-size: 61px;
+}
+.addresses{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    // border: 2px solid rgb(0, 42, 255);
+    border-radius: 20px;
+    background: #E4E4E4;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.25);
+    min-width: 325px;
+    min-height: 255px;
+    flex-shrink: 0;
+    padding: 1em;
+    color: black;
+ 
+}
+
+.address-btn-container{
+    margin-top: 1em;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+
+    a,button{
+        color: #00C2FF;
+        width: 40%;
+        font-weight: 500;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+    }
+}
+.address{
+    // text-align: justify;
+    padding: 1em;
+}
+.address-box {
+    margin: 0 auto;
+    border-radius: 5px;
+    // background-color: #f9f9f9;
+  }
+  

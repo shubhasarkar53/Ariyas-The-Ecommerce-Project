@@ -167,6 +167,11 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: true,
       },
+      date:{
+        type: Date,
+        // default: Date.now ,
+        default: Date.now(),
+      },
       comment: {
         type: String,
       },

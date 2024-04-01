@@ -17,12 +17,13 @@ const ReviewCard = ({review}) => {
 
   return (
     <div className="reviews"> 
+    <div className="bar"></div>
 
            <div className="user">
 
               <img src={profilePng} alt="User"/>
 
-              <p className='username'>{review.name}<br/>{review.date}</p>
+              <p className='username'>{review.userName}<br/>{review.date}</p>
 
            </div>
 
@@ -41,7 +42,7 @@ const ReviewCard = ({review}) => {
 
 ReviewCard.propTypes = {
   review: PropTypes.shape({
-      name: PropTypes.string.isRequired,
+      userName: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
       rating: PropTypes.number.isRequired,
       comment: PropTypes.string.isRequired

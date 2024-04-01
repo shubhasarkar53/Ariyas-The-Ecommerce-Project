@@ -6,18 +6,21 @@ const { sendMail } = require("../utills/sendMail");
 const crypto = require("crypto");
 const SellerInfo = require("../models/SellerInfo");
 const { sendContactUsMail } = require("../utills/sendContactUsMail");
+// const cloudinary = require('cloudinary').v2;
+const cloudinary = require('cloudinary');
+
 
 // Register User
-
 exports.registerUser = catchAsyncErr(async (req, res, next) => {
-  const { name, email, password } = req.body;
-
+  const { name, email, password , phone} = req.body;
+  
 // creating user using the data given in the body
 
   const user = await User.create({
     name: name,
     email: email,
     password: password,
+    phone:phone,
     avatar: {
       publicId: "demoPublicId123",
       url: "Demourl.com",
@@ -108,7 +111,7 @@ exports.forgotPassword = catchAsyncErr(async (req, res, next) => {
 
   const message = `Your password reset link is -->\n\n${resetURL}\n\nIgnore if it was not created by you.`;
 
-  console.log(message);
+  // console.log(message);
 
   try {
     await sendMail({
@@ -134,7 +137,7 @@ exports.forgotPassword = catchAsyncErr(async (req, res, next) => {
 exports.resetPassword = catchAsyncErr(async (req, res, next) => {
   // take the token from body.parms
   let resetToken = req.params.token;
-  console.log("reset token--", resetToken);
+  // console.log("reset token--", resetToken);
   // hash it
   const resetPasswordToken = crypto
     .createHash("sha256")
@@ -227,16 +230,41 @@ exports.updateUserPassword = catchAsyncErr(async (req, res, next) => {
 
 // Update user's profile details 
 exports.updateUserDetails = catchAsyncErr(async(req,res,next)=>{
-  const user = await User.findById(req.user.id);
 
   const userDetails = {
     name : req.body.name,
-    // will be updated 
-    // userName: req.body.userNameame,
-    // firstName: req.body.firstName,
-    // lastName: req.body.lastName,
-    // gender: req.body.gender,
-    email: req.body.email,
+    gender: req.body.gender,
+    phone: req.body.phone,
+    // avatar:req.body.avatar
+    // dob: req.body.dob,
+  }
+
+  // console.log("From backedn",userDetails);
+
+  if(req.body.avatar!==""){
+    const user = await User.findById(req.user.id);
+    //remove old image from cloudinary
+    // console.log("skipping If");
+    if(user.avatar.publicId!=="demoPublicId123"){
+      const imgId = user.avatar.publicId;
+      await cloudinary.v2.uploader.destroy(imgId);
+    }
+    // console.log("skipped If");
+    // console.log("Uploading to cn");
+    
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar,{
+      folder: "avatars",
+      width:150,
+      crop:"scale",
+      quality: 'auto:low'
+    })
+    // console.log("Uploadded to cn");
+    userDetails.avatar={
+      publicId:myCloud.public_id,
+      url:myCloud.secure_url
+    }
+    // console.log("avatr obj edted with pId and Url");
+
   }
 
   const updatedUser = await User.findByIdAndUpdate(req.user.id,userDetails,{

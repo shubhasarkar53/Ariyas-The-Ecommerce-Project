@@ -13,6 +13,14 @@ process.on("uncaughtException", (err) => {
 })
 
 // <------- end of uncaught ref err ------->
+// const cloudinary = require('cloudinary').v2;
+const cloudinary = require('cloudinary');
+
+cloudinary.config({
+   cloud_name : process.env.CLOUDINARY_NAME,
+   api_key    : process.env.CLODINARY_APIKEY,
+   api_secret : process.env.CLODINARY_SECRET
+});
 
 const dbConnect = require("./config/database");
 

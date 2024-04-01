@@ -12,17 +12,40 @@ import {
   productDetailsReducer,
 } from "../Reducers/productReducer";
 
-import { userReducer } from "../Reducers/userReducer";
+import { profileReducer, userReducer } from "../Reducers/userReducer";
 import contactReducer from '../Reducers/contactReducer';
+import  {cartReducer } from "../Reducers/cartReducer";
+import { addressReducer } from "../Reducers/addressReducer";
+import {wishlistReducer} from '../Reducers/wishlistReducer';
 
 // Reducers
 const reducer = combineReducers({
   products: productReducer,
   productDetails: productDetailsReducer,
   user: userReducer,
+  profile:profileReducer,
   contact: contactReducer,
+  cart: cartReducer,
+  addresses: addressReducer,
+  wishlist: wishlistReducer,
 });
-let initialState = {};
+
+
+
+let initialState = {
+  cart: {
+    cartItems: localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : [],
+  },
+  wishlist: {
+    wishlistItems: localStorage.getItem("wishlistItems")
+      ? JSON.parse(localStorage.getItem("wishlistItems"))
+      : [],
+  },
+};
+
+
 const middleWare = [thunk];
 const store = createStore(
   reducer,

@@ -1,0 +1,22 @@
+.wishlist-main-container{
+    display: flex;
+    flex-direction: column;
+    padding:2vmax;
+    margin: 0 auto;
+    border-radius: 10px;
+    transition: all 1s ease-in-out;
+    h1{
+        font-size: 1.8rem;
+        font-weight: 600;
+        padding: 2em 0;
+        margin-left: 2em;
+    }
+    .wishlist-container{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 95%;
+        margin: 0 auto;
+        gap: 2em;
+    }
+}

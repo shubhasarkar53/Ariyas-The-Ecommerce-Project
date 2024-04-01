@@ -21,14 +21,14 @@ const Register = ({ history }) => {
   const [user, setUser] = useState({
     fullName: "",
     registerEmail: "",
-    phone: "",
+    registerPhone: "",
     registerPass: "",
     confirmRegisterPass: ""
 
   });
 
 
-  const { fullName, registerEmail, phone, registerPass, confirmRegisterPass } = user
+  const { fullName, registerEmail, registerPhone, registerPass, confirmRegisterPass } = user
 
 
   const registerFormData = (e) => {
@@ -54,7 +54,7 @@ const Register = ({ history }) => {
     
     myFromData.set("name", fullName);
     myFromData.set("email", registerEmail);
-    myFromData.set("phone", phone);
+    myFromData.set("phone", registerPhone);
     myFromData.set("password", registerPass);
     // myFromData.set("confirmRegisterPass",confirmRegisterPass);
     // console.log( "inside:",fullName,registerEmail,phone,registerPass,confirmRegisterPass);
@@ -134,9 +134,9 @@ const Register = ({ history }) => {
                 <label htmlFor="phone">Phone Number</label>
                 <input
                   type="number"
-                  name="phone"
+                  name="registerPhone"
                   placeholder="Eg. 1234567890"
-                  value={phone}
+                  value={registerPhone}
                   required
                   onChange={registerFormData}
                 />

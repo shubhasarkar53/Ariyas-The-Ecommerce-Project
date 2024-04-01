@@ -24,6 +24,13 @@ import Profile from './Components/Dashboard/Profile.jsx'
 import RegisterSeller from './Components/Seller/Register-Seller/RegisterSeller';
 import Contact from './Components/Contact/Contact.jsx'
 import FAQs from './Components/FAQ/FAQ.jsx'
+import Cart from './Components/Cart/Cart.jsx'
+import WishList from './Components/WishList/WishList.jsx'
+import UpdateProfile from './Components/Dashboard/UpdateProfile.jsx'
+import UpdatePassword from './Components/Dashboard/UpdatePassword.jsx'
+import AddressesPage from './Components/Dashboard/Address/AddressesPage.jsx'
+import NewAddress from './Components/Dashboard/Address/NewAddress.jsx'
+import EditAddressPage from './Components/Dashboard/Address/EditAddressPage.jsx'
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
@@ -45,6 +52,8 @@ const App = () => {
             <Route path="/products/:keyword" render={(props) => <Shop {...props} />} />
             {/* <Route path="/products/:keyword" component={Shop} /> */}
             <Route path="/products/:keyword" component={Shop} />
+            <Route exact path="/cart" component={Cart} />
+            <Route exact path="/wishlist" component={WishList} />
             <Route exact path="/about" component={About} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/product/:id" component={ProductDetails} />
@@ -57,9 +66,12 @@ const App = () => {
             <Route exact path="/become-seller" component={BecomeSeller} />
             <Route path="/register-seller" component={RegisterSeller} />
 
-            {/* <ProtectedRoute exact path="/account" component={Account}/> */}
-
             <ProtectedRoute exact path="/profile" component={Profile} />
+            <ProtectedRoute exact path="/me/update/profile" component={UpdateProfile} />
+            <ProtectedRoute exact path="/password/update" component={UpdatePassword} />
+            <ProtectedRoute exact path="/addresses" component={AddressesPage} />
+            <ProtectedRoute exact path="/new/address" component={NewAddress} />
+            <ProtectedRoute exact path="/address/edit/:id" component={EditAddressPage} />
 
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/faq" component={FAQs} />

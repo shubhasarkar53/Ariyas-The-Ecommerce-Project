@@ -5,6 +5,7 @@ $orangeTextColor: #d47f00;
 a {
   text-decoration: none;
 }
+
 .card {
   position: relative;
   color: $textColor;
@@ -37,12 +38,107 @@ a {
   }
   .prices-continer {
     width: 65%;
+    .card {
+      color: $textColor;
+      width: 400px;
+      height: 400px;
+      // border: 2px solid red;
+      padding: 1.8em 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 20px;
+    }
+    .price-1 {
+      font-weight: 500;
+    }
+    .price-2 {
+      color: #777777;
+      text-decoration: line-through;
+    }
+    .imgContainer {
+      position: relative;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        display: block;
+      }
+
+      .hover-buttons {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 1;
+
+        .wishlist-hov-button,
+        .cart-button {
+          cursor: pointer;
+          background: none;
+          color: white;
+          font-size: 20px;
+          transition: all 0.3s ease-in-out;
+          &:hover {
+            color: $orangeTextColor;
+          }
+        }
+      }
+    }
+  }
+  .card:hover {
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transform: translateY(-1vmax);
+  }
+  .product-title {
+    font-weight: 500;
+    margin: 0.5em 0;
+    font-size: 20px;
+  }
+}
+.card:hover {
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1vmax);
+}
+
+.ratings {
+  display: flex;
+  opacity: 0;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.3rem;
+  &:hover {
+    opacity: 1;
+  }
+}
+.carddown-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  gap: 1rem;
+  width: 65%;
+  transition: all 0.3s ease-in-out;
+  .cart {
+    font-size: 2rem;
+    cursor: pointer;
+    &:hover {
+      color: #d47f00;
+    }
+  }
+  .prices-continer {
+    width: 65%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 400;
-    line-height: 20px;
+    line-height: 30px;
   }
   .price-1 {
     font-weight: 500;
@@ -51,39 +147,20 @@ a {
     color: #777777;
     text-decoration: line-through;
   }
-  .imgContainer {
-    position: relative; 
-    overflow: hidden; 
-
-    img {
-      width: 100%; 
-      display: block;
-    }
-
-    .hover-buttons {
-      position: absolute; 
-      top: 10px; 
-      right: 10px; 
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 1; 
-
-      .wishlist-hov-button,
-      .cart-button {
-        cursor: pointer;
-        background: none;
-        color: white;
-        font-size: 20px;
-        transition: all 0.3s ease-in-out;
-        &:hover {
-          color: $orangeTextColor;
-        }
-      }
+  .wishlist {
+    font-size: 1.8rem;
+    cursor: pointer;
+    &:hover {
+      color: #d47f00;
     }
   }
 }
-.card:hover {
-  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  transform: translateY(-1vmax);
-}
+
+// .productCard-cart{
+//     width: 30px;
+//     height: 30px;
+//     cursor: pointer;
+//     // &:hover{
+//     //     color: #D47F00;
+//     // }
+// }

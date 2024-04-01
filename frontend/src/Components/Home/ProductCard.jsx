@@ -5,7 +5,23 @@ import { Link } from 'react-router-dom'
 import Rating from '@mui/material/Rating';
 import PropTypes from 'prop-types';
 import { FiShoppingCart, FiHeart } from "react-icons/fi";
-const ProductCard = ({ product }) => {
+import { CiShoppingCart } from "react-icons/ci";
+import { RiHeartAddFill } from "react-icons/ri";
+import { addItemsToWishList } from '../../Redux/Actions/wishListAction';
+import {addItemsToCart} from "../../Redux/Actions/cartAction"
+import { toast , ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from 'react-redux';
+
+import wishL from "../../assets/Images/Icons/CartPage/wishL.png"
+import cart2 from "../../assets/Images/Icons/CartPage/cart2.png"
+const ProductCard = ({ product, match }) => {
+
+  const dispatch = useDispatch();
+
+
+  const [quantity, setQuantity] = React.useState(1);
+
 
   const options = {
     size: "large",
@@ -22,7 +38,61 @@ const ProductCard = ({ product }) => {
 
   // console.log(product);
 
+// const randomNumber = Math.floor(Math.random() * 5) + 1;
+
+//function for genarate a random number for span tag in product card
+function getRandomNumber() {
+
+  const randomNumber = Math.random();
+
+  const scaledRandomNumber = randomNumber * 4;
+
+  const finalRandomNumber = Math.floor(scaledRandomNumber) + 2;
+
+  return finalRandomNumber;
+}
+
+
+const randomNo = getRandomNumber();
+
+
+// add to wishlist func
+const addToWishListHandler = () => {
+  if (!product.name) return;
+  dispatch(addItemsToWishList(match.params.id));
+  toast.success(`${product.name} added to wishlist` , {
+    position: "bottom-center",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme:"colored",
+  });
+}
+
+
+// add to cart func
+const addToCartHandler = () => {
+  if (!product.name || !quantity) return;
+  dispatch(addItemsToCart(match.params.id, quantity));
+  toast.success(`${quantity} ${quantity > 1 ? 'items' : 'item'} added to cart` , {
+    position: "bottom-center",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme:"colored",
+  });
+}
+
+
+
   return (
+
 
     <Link
       className={`card ${isHovered ? 'hovered' : ''}`}
@@ -57,24 +127,40 @@ const ProductCard = ({ product }) => {
         <span className='price-1'>RS. {product.price}</span>
         <span className='price-2'>Rs. 2223</span>
       </div>
+            <div className='ratings'>
+          <Rating {...options} className='rating-options'/>
+                <span className="detailsBlock-2-span">
+                  {" "}
+                  ({product.numOfReviews} {product.numOfReviews > 1 ? "Reviews" : "Review"})
+                </span>
+          </div>       
+
+            <div className="carddown-div">
+
+            <div className="cart">
+              {/* <CiShoppingCart /> */}
+              <img src={cart2} alt="" onClick={addToCartHandler}  className='productCard-cart'/>
+            </div>
+
+            <div className='prices-continer'>
+                <span className='price-1'>RS. {product.price}</span>
+                <span className='price-2'>Rs. {product.price*randomNo}</span>
+            </div>
+
+            <div className="wishlist">
+            {/* <RiHeartAddFill onClick={addToWishListHandler} /> */}
+            <img src={wishL} alt="" onClick={addToWishListHandler} className='productCard-wishlist' />
+            </div>
+            
+            </div>
     </Link>
   )
 }
 
-
 ProductCard.propTypes = {
-  product: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    image: PropTypes.arrayOf(PropTypes.shape({
-      url: PropTypes.string.isRequired
-    })).isRequired,
-    ratings: PropTypes.number.isRequired,
-    numOfReviews: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired
-  }).isRequired
+  product: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
-
 export default ProductCard
 
 //Explain--->
