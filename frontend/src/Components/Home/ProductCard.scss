@@ -33,7 +33,7 @@ a{
     .product-title{
         font-weight: 500;
         margin: 0.5em 0;
-        font-size: 15px;
+        font-size: 20px;
     }
     
 }
@@ -74,9 +74,9 @@ a{
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        font-size: 15px;
+        font-size: 20px;
         font-weight: 400;
-        line-height: 20px;
+        line-height: 30px;
     }
     .price-1{
         font-weight: 500;
@@ -93,3 +93,12 @@ a{
         }
     }
 }
+
+// .productCard-cart{
+//     width: 30px;
+//     height: 30px;
+//     cursor: pointer;
+//     // &:hover{
+//     //     color: #D47F00;
+//     // }
+// }

@@ -51,6 +51,18 @@ export const wishlistReducer = (state = { wishlistItems: [], cartItems: [] }, ac
         //         }
         //     }
 
+        case MOVE_TO_CART: {
+            const itemToMove = state.wishlistItems.find(item => item.product === action.payload);
+            if (itemToMove) {
+                return {
+                    ...state,
+                    wishlistItems: state.wishlistItems.filter(item => item.product !== action.payload),
+                    cartItems: [...state.cartItems, itemToMove],
+                };
+            }
+            return state;
+        }
+        
 
         default:
             return state;
