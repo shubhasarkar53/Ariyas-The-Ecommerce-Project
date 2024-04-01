@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React, { useState } from 'react'
 import "./ProductCard.scss"
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Rating from '@mui/material/Rating';
 import PropTypes from 'prop-types';
+import { FiShoppingCart, FiHeart } from "react-icons/fi";
 const ProductCard = ({ product }) => {
 
   const options = {
@@ -12,30 +13,50 @@ const ProductCard = ({ product }) => {
     readOnly: true,
     precision: 0.5,
   };
-  
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleHover = () => {
+    setIsHovered(!isHovered);
+  };
+
+
   // console.log(product);
 
   return (
-  
-    <Link className="card" to={`/product/${product._id}`}>
-            <div className='imgContainer'>
-                <img src={product.image[0].url} alt="" />
-            </div>
-            <p className='product-title'>{product.name}</p>
-            {/* <p className='product-des'>{product.description}</p> */}
 
-            <div className='ratings'>
-          <Rating {...options} />
-                <span className="detailsBlock-2-span">
-                  {" "}
-                  ({product.numOfReviews} {product.numOfReviews > 1 ? "Reviews" : "Review"})
-                </span>
-          </div>       
+    <Link
+      className={`card ${isHovered ? 'hovered' : ''}`}
+      to={`/product/${product._id}`}
+      onMouseEnter={handleHover}
+      onMouseLeave={handleHover}>
+      <div className='imgContainer'>
+        <img src={product.image[0].url} alt="" />
+        {isHovered && (
+          <div className="hover-buttons">
+            <button className="wishlist-hov-button">
+              <FiHeart />
+            </button>
+            <Link to="/cart" className="cart-button">
+              <FiShoppingCart />
+            </Link>
+          </div>
+        )}
+      </div>
+      <p className='product-title'>{product.name}</p>
+      {/* <p className='product-des'>{product.description}</p> */}
 
-            <div className='prices-continer'>
-                <span className='price-1'>RS. {product.price}</span>
-                <span className='price-2'>Rs. 2223</span>
-            </div>
+      <div className='ratings'>
+        <Rating {...options} />
+        <span className="detailsBlock-2-span">
+          {" "}
+          ({product.numOfReviews} {product.numOfReviews > 1 ? "Reviews" : "Review"})
+        </span>
+      </div>
+
+      <div className='prices-continer'>
+        <span className='price-1'>RS. {product.price}</span>
+        <span className='price-2'>Rs. 2223</span>
+      </div>
     </Link>
   )
 }

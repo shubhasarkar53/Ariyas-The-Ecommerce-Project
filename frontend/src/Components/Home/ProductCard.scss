@@ -1,58 +1,89 @@
-$textColor:#212121;
-$textWhite:#FAFAFA;
-$secondaryTextColor:#4D4D4D;
-$orangeTextColor:#D47F00;
-a{
-    text-decoration: none;
+$textColor: #212121;
+$textWhite: #fafafa;
+$secondaryTextColor: #4d4d4d;
+$orangeTextColor: #d47f00;
+a {
+  text-decoration: none;
 }
-.card{
-    color: $textColor;
-    width: 350px;
-    height: 350px;
-    // border: 2px solid red;
-    padding: 1.8em 0;
+.card {
+  position: relative;
+  color: $textColor;
+  width: 350px;
+  height: 350px;
+  // border: 2px solid red;
+  padding: 1.8em 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+
+  .imgContainer {
+    width: 280px;
+    height: 280px;
+    margin-top: 0.2em;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .product-title {
+    font-weight: 500;
+    margin: 0.5em 0;
+    font-size: 15px;
+  }
+  .prices-continer {
+    width: 65%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.25) ;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+  .price-1 {
+    font-weight: 500;
+  }
+  .price-2 {
+    color: #777777;
+    text-decoration: line-through;
+  }
+  .imgContainer {
+    position: relative; 
+    overflow: hidden; 
 
-    .imgContainer{
-        width: 280px;
-        height: 280px;
-        margin-top: .2em;
-        
-    }
-   
-    img{
-        width: 100%;
+    img {
+      width: 100%; 
+      display: block;
     }
 
-    .product-title{
-        font-weight: 500;
-        margin: 0.5em 0;
-        font-size: 15px;
+    .hover-buttons {
+      position: absolute; 
+      top: 10px; 
+      right: 10px; 
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1; 
+
+      .wishlist-hov-button,
+      .cart-button {
+        cursor: pointer;
+        background: none;
+        color: white;
+        font-size: 20px;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          color: $orangeTextColor;
+        }
+      }
     }
-    .prices-continer{
-        width: 65%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 15px;
-        font-weight: 400;
-        line-height: 20px;
-    }
-    .price-1{
-        font-weight: 500;
-    }
-    .price-2{
-        color: #777777;
-        text-decoration: line-through;
-    }
+  }
 }
-.card:hover{
-    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    transform: translateY(-1vmax);
+.card:hover {
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1vmax);
 }

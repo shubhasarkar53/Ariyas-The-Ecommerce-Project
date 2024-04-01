@@ -1,0 +1,127 @@
+.register-seller-container {
+  width: 100vmax;
+  height: fit-content;
+  .reg-img-mail-section {
+    margin: 2rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .extra-container {
+      display: flex;
+      padding: 1rem 1rem;
+      width: 50%;
+      border-radius: 12px;
+      margin: 1rem 0;
+      box-shadow: 5px 6px 4px -0.5px rgba(44, 44, 44, 0.263);
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        background-color: rgba(53, 52, 52, 0.103);
+      }
+      img {
+        width: 70px;
+        height: 70px;
+        margin-right: 1rem;
+      }
+      p {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .seller-profile-form {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100vmax;
+    height: fit-content;
+    .pradeep-side {
+      display: flex;
+      justify-content: flex-start;
+    }
+    .seller-form {
+      text-align: start;
+      width: 50%;
+      border: 1px solid red;
+      padding-left: 1rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      h2 {
+        margin-top: 1rem;
+      }
+      .shop-det-date {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        .shop-name {
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          label {
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+          }
+          input {
+            width: 80%;
+            font-size: 0.9rem;
+            padding: 0.5rem 0.7rem;
+            border-radius: 10px;
+            background: rgba(207, 207, 207, 0.4);
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+          }
+        }
+        .dob {
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          label {
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+          }
+          input {
+            width: 60%;
+            font-size: 0.9rem;
+            padding: 0.5rem 0.7rem;
+            border-radius: 10px;
+            background: rgba(207, 207, 207, 0.4);
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+          }
+        }
+      }
+      .form-reg-name {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        margin-top: 2rem;
+        #first-name,
+        #middle-name,
+        #last-name {
+          flex: 1;
+          width: 100%;
+          input {
+            width: 100%;
+            padding: 0.5rem 0.7rem;
+            border-radius: 10px;
+            background: rgba(207, 207, 207, 0.4);
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+            font-size: 0.9rem;
+          }
+          label {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+          }
+        }
+        #first-name {
+          padding-right: 1rem;
+        }
+        #middle-name {
+          padding-right: 1rem;
+        }
+      }
+    }
+  }
+}
+// border-radius: 10px;
+//             background: rgba(207, 207, 207, 0.4);
+//             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
