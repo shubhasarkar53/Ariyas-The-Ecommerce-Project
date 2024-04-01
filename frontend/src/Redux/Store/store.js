@@ -15,6 +15,7 @@ import {
 import { profileReducer, userReducer } from "../Reducers/userReducer";
 import contactReducer from '../Reducers/contactReducer';
 import  {cartReducer } from "../Reducers/cartReducer";
+import { addressReducer } from "../Reducers/addressReducer";
 import {wishlistReducer} from '../Reducers/wishlistReducer';
 
 // Reducers
@@ -25,6 +26,7 @@ const reducer = combineReducers({
   profile:profileReducer,
   contact: contactReducer,
   cart: cartReducer,
+  addresses: addressReducer,
   wishlist: wishlistReducer,
 });
 
