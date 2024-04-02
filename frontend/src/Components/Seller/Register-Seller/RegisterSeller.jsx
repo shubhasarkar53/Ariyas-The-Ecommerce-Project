@@ -58,6 +58,45 @@ const RegisterSeller = () => {
               </div>
             </div>
 
+            <div className="form-phone">
+              <label>Phone number *</label>
+              <div className="phone-section">
+                <div className="phone-sect-1">
+                  <div className="input-dropdown">
+                    <div className="dropdown">
+                      <select className="dropdown-options">
+                        <option href="#">+91</option>
+                        <option href="#">+1</option>
+                        {/* Add other country codes as needed */}
+                      </select>
+                    </div>
+                  </div>
+                  <input type="tel" />
+                  <button>Send OTP</button>
+                </div>
+                <div className="phone-sect-2">
+                  <input type="number" className="phone-input" />
+                  <div className="btn-verify">
+                    <button>Verify</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="form-email">
+              <label>Email ID *</label>
+              <div className="email-section">
+                <div className="email-sect-1">
+                  <input type="email" />
+                  <button>Send OTP</button>
+                </div>
+                <div className="email-sect-2">
+                  <input type="number" />
+                  <button>Verify</button>
+                </div>
+              </div>
+            </div>
+
           </form>
           <div className="pradeep-side">
             <img src={profileSide} alt="" />

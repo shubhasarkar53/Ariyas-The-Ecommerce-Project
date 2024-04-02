@@ -98,7 +98,7 @@
           flex: 1;
           width: 100%;
           input {
-            width: 100%;
+            width: 80%;
             padding: 0.5rem 0.7rem;
             border-radius: 10px;
             background: rgba(207, 207, 207, 0.4);
@@ -117,6 +117,146 @@
         }
         #middle-name {
           padding-right: 1rem;
+        }
+      }
+      .form-phone {
+        width: 100%;
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        label {
+          margin-left: 0.3rem;
+          margin-bottom: 0.5rem;
+        }
+        .phone-section {
+          display: flex;
+          justify-content: flex-start;
+        }
+        .phone-sect-1 {
+          display: flex;
+          align-items: center;
+          .input-dropdown {
+            .dropdown-options {
+              padding: 0.5rem;
+              font-size: 0.8rem;
+              border: none;
+            }
+          }
+          input {
+            padding: 0.5rem 0.7rem;
+            border-radius: 10px;
+            background: rgba(207, 207, 207, 0.4);
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+            font-size: 0.9rem;
+          }
+          button {
+            padding: 0.5rem 0.7rem;
+            margin-left: 1rem;
+            background-color: transparent;
+            box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.066),
+              4px 5px 2px 2px rgba(0, 0, 0, 0.079);
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+            &:hover {
+              background-color: orange;
+              color: white;
+            }
+          }
+        }
+        .phone-sect-2 {
+          display: flex;
+          margin-left: 7rem;
+
+          input {
+            padding: 0.5rem 0.7rem;
+            border-radius: 10px;
+            background: rgba(207, 207, 207, 0.4);
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+            font-size: 0.9rem;
+          }
+          .btn-verify {
+            button {
+              padding: 0.5rem 0.7rem;
+              margin-left: 1rem;
+              background-color: transparent;
+              box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.066),
+                4px 5px 2px 2px rgba(0, 0, 0, 0.079);
+              border-radius: 0.5rem;
+              border: none;
+              cursor: pointer;
+              transition: all 0.4s ease-in-out;
+              &:hover {
+                background-color: orange;
+                color: white;
+              }
+            }
+          }
+        }
+      }
+
+      .form-email {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2rem;
+        width: 100%;
+        label {
+          margin-left: 0.3rem;
+          margin-bottom: 0.5rem;
+        }
+        .email-section {
+          display: flex;
+          justify-content: flex-start;
+          .email-sect-1 {
+            input {
+              padding: 0.5rem 0.7rem;
+              border-radius: 10px;
+              background: rgba(207, 207, 207, 0.4);
+              box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+              font-size: 0.9rem;
+            }
+            button {
+              padding: 0.5rem 0.7rem;
+              margin-left: 1rem;
+              background-color: transparent;
+              box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.066),
+                4px 5px 2px 2px rgba(0, 0, 0, 0.079);
+              border-radius: 0.5rem;
+              border: none;
+              cursor: pointer;
+              transition: all 0.4s ease-in-out;
+              &:hover {
+                background-color: orange;
+                color: white;
+              }
+            }
+          }
+          .email-sect-2 {
+            margin-left: 7rem;
+            input {
+              padding: 0.5rem 0.7rem;
+              border-radius: 10px;
+              background: rgba(207, 207, 207, 0.4);
+              box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+              font-size: 0.9rem;
+            }
+            button {
+              padding: 0.5rem 0.7rem;
+              margin-left: 1rem;
+              background-color: transparent;
+              box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.066),
+                4px 5px 2px 2px rgba(0, 0, 0, 0.079);
+              border-radius: 0.5rem;
+              border: none;
+              cursor: pointer;
+              transition: all 0.4s ease-in-out;
+              &:hover {
+                background-color: orange;
+                color: white;
+              }
+            }
+          }
         }
       }
     }
