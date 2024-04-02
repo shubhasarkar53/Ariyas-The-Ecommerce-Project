@@ -97,6 +97,132 @@ const RegisterSeller = () => {
               </div>
             </div>
 
+            <div className="form-aadhar">
+              <div className="aadhar-section">
+                <div className="aadhar-sect-1">
+                  <label>Enter your Aadhar number *</label>
+                  <input type="text" />
+                </div>
+                <div className="aadhar-sect-2">
+                  <label>Upload both side picture of Aadhar Card *</label>
+                  <button>Upload</button>
+                </div>
+              </div>
+            </div>
+
+            <div className="form-pan">
+              <div className="pan-section">
+                <div className="pan-sect-1">
+                  <label>Enter your PAN Number *</label>
+                  <input type="text" />
+                </div>
+                <div className="pan-sect-2">
+                  <label>Upload both side picture of PAN Card *</label>
+                  <div className="input-pan">
+                    <button>Upload</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="form-commercial-address">
+              <label>Enter your Commercial Address *</label>
+              <div className="commercial-section">
+                <div className="comm-sect-1">
+                  <label>Pincode</label>
+                  <input type="number" />
+                </div>
+                <div className="comm-sect-2">
+                  <label>Post Office</label>
+                  <input type="text" />
+                </div>
+                <div className="comm-sect-3">
+                  <label>Police Station</label>
+                  <input type="text" />
+                </div>
+              </div>
+              <div className="address-section">
+                <div className="address-sect-1">
+                  <label>Flat, House no, Building, Company, Apartment</label>
+                  <input type="text" />
+                </div>
+                <div className="address-sect-2">
+                  <label>Area, Street, Sector, Village</label>
+                  <input type="text" />
+                </div>
+                <div className="address-sect-3">
+                  <label>Landmark</label>
+                  <input type="text" />
+                </div>
+                <div className="address-sect-4">
+                  <div className="location-details">
+                    <label>Town/City</label>
+                    <input type="text" />
+                  </div>
+                  <div className="choose-state">
+                    <label>Choose a State</label>
+                    <select name="state">
+                      <option value="Choose a State">-Select a State-</option>
+                      <option value="Andhra Pradesh">Andhra Pradesh</option>
+                      <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                      <option value="Assam">Assam</option>
+                      <option value="Bihar">Bihar</option>
+                      <option value="Chhattisgarh">Chhattisgarh</option>
+                      <option value="Goa">Goa</option>
+                      <option value="Gujarat">Gujarat</option>
+                      <option value="Haryana">Haryana</option>
+                      <option value="Himachal Pradesh">Himachal Pradesh</option>
+                      <option value="Jharkhand">Jharkhand</option>
+                      <option value="Karnataka">Karnataka</option>
+                      <option value="Kerala">Kerala</option>
+                      <option value="Madhya Pradesh">Madhya Pradesh</option>
+                      <option value="Maharashtra">Maharashtra</option>
+                      <option value="Manipur">Manipur</option>
+                      <option value="Meghalaya">Meghalaya</option>
+                      <option value="Mizoram">Mizoram</option>
+                      <option value="Nagaland">Nagaland</option>
+                      <option value="Odisha">Odisha</option>
+                      <option value="Punjab">Punjab</option>
+                      <option value="Rajasthan">Rajasthan</option>
+                      <option value="Sikkim">Sikkim</option>
+                      <option value="Tamil Nadu">Tamil Nadu</option>
+                      <option value="Telangana">Telangana</option>
+                      <option value="Tripura">Tripura</option>
+                      <option value="Uttar Pradesh">Uttar Pradesh</option>
+                      <option value="Uttarakhand">Uttarakhand</option>
+                      <option value="West Bengal">West Bengal</option>
+                    </select>
+
+                  </div>
+                </div>
+
+                <div className="address-sect-5">
+                  <label>Address proof of business place from where the products will be shipped *</label>
+                  <button>Upload</button>
+                </div>
+              </div>
+            </div>
+
+            <div className="form-upload-account-details">
+              <p>A copy of your current accounts cancelled cheque showing bank account number and account type with the account holders name and IFSC code *</p>
+              <div className="btn-account-upload">
+                <button>Upload</button>
+              </div>
+            </div>
+
+            <div className="form-gst">
+              <label>GST Certificate *</label>
+              <button>Upload</button>
+            </div>
+
+            <div className="btn-submit-div">
+              <button className="submit-btn">
+                Submit
+              </button>
+
+            </div>
+
+
           </form>
           <div className="pradeep-side">
             <img src={profileSide} alt="" />
