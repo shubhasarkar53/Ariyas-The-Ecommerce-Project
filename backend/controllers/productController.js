@@ -4,6 +4,7 @@ const { catchAsyncErr } = require("../middleWares/catchAsyncError");
 const ErrorHandler = require("../utills/errorHandler");
 const apiFeatures = require("../utills/apifeatures");
 const User = require("../models/User");
+const cloudinary = require('cloudinary');
 
 //Controller for Get All products
 exports.getAllProducts = catchAsyncErr(async (req, res, next) => {
@@ -40,6 +41,24 @@ exports.getSingleProduct = catchAsyncErr(async (req, res, next) => {
 //controller  for create a product for --Admin access
 exports.createNewProducts = catchAsyncErr(async (req, res, next) => {
   req.body.user = req.user.id;
+  
+  if(req.body.image!==""){
+    console.log("entered into if ")
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.image,{
+      folder: "productsImg",
+      width:150,
+      crop:"scale",
+      quality: 'auto:low'
+    })
+    console.log("Uploadded to cn");
+    req.body.image={
+      publicId:myCloud.public_id,
+      url:myCloud.secure_url
+    }
+    console.log("avatr obj edted with pId and Url");
+
+  }
+
   const product = await Product.create(req.body);
   res.status(201).json({
     success: true,
