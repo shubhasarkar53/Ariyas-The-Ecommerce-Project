@@ -7,7 +7,14 @@ import {
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_DETAILS_FAIL,
     CLEAR_ERRORS,
-    PRODUCT_FILTER
+    PRODUCT_FILTER,
+    CREATE_PRODUCT_REQUEST,
+    CREATE_PRODUCT_SUCCESS,
+    CREATE_PRODUCT_FAIL,
+    CREATE_PRODUCT_RESET,
+    LOAD_CREATED_PRODUCT_REQUEST,
+    LOAD_CREATED_PRODUCT_SUCCESS,
+    LOAD_CREATED_PRODUCT_FAIL
 } from '../Constants/productConstants';
 
 export const productReducer = (state = { products: [] }, action) => {
@@ -66,6 +73,67 @@ export const productDetailsReducer = (state = { product: {} }, action) => {
             return state;
     }
 }
+
+export const createProductReducer = (state = { products: [] }, action) => {
+    switch (action.type) {
+        case CREATE_PRODUCT_REQUEST:
+            return {
+                ...state,
+                loading: true,
+                
+            };
+        case CREATE_PRODUCT_SUCCESS:
+            return {
+                loading: false,
+                isCreated:action.payload.success,
+                products:[...state.products,action.payload.product]
+            };
+        case CREATE_PRODUCT_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            };
+        case CREATE_PRODUCT_RESET:
+            return {
+                ...state,
+                isCreated:false,
+              };
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null 
+            };
+        default:
+            return state;
+    }
+};
+export const loadCreatedProductReducer = (state = { products: [] }, action) => {
+    switch (action.type) {
+        case LOAD_CREATED_PRODUCT_REQUEST:
+            return {
+                loading: true,
+                products: []
+            };
+        case LOAD_CREATED_PRODUCT_SUCCESS:
+            return {
+                loading: false,
+                products: action.payload
+            };
+        case LOAD_CREATED_PRODUCT_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            };
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null 
+            };
+        default:
+            return state;
+    }
+};
+
 
 
 

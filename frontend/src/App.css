@@ -6,7 +6,7 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   /* border: 1px solid red; */
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   ::-webkit-scrollbar{
     display: none;
     
@@ -14,4 +14,19 @@
 }
 .wrapper{
   overflow-x: hidden;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 3;
+}
+.page-mid-content{
+  padding-top: 4em;
+}
+
+.footer-part{
+  position: relative;
+  margin-top: auto;
+
 }
