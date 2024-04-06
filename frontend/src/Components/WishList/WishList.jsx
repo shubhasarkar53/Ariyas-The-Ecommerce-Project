@@ -1,15 +1,17 @@
 /* eslint-disable no-unused-vars */
 import React, { Fragment } from 'react'
-import {useSelector,useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { removeItemsFromWishList, moveToCart } from '../../Redux/Actions/wishListAction';
-import  WishListCard  from "./WishListCard";
+import WishListCard from "./WishListCard";
 import "./WishList.scss"
-import { toast , ToastContainer} from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import emptyWishList from '../../assets/Images/Icons/CartPage/emptycart.png';
+import { Link } from 'react-router-dom';
 const WishList = () => {
 
   const dispatch = useDispatch();
-  
+
   // Get the cart items from the redux store
   const { wishlistItems } = useSelector((state) => state.wishlist);
 
@@ -25,8 +27,8 @@ const WishList = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme:"colored",
-  })
+      theme: "colored",
+    })
   }
 
   // move the wishlist items to cart
@@ -40,27 +42,43 @@ const WishList = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme:"colored",
-  })
+      theme: "colored",
+    })
   }
- 
+
   return (
-  <Fragment>
-    <div className="wishlist-main-container">
-      <h1>WishList</h1>
-      <div className="wishlist-container">
-        {wishlistItems && wishlistItems.map((item) => (
-          <WishListCard
-            key={item.product}
-            item={item}
-            deleteWishListItems={removeWishListItemHandler}
-            moveToCartHandler={moveToCartHandler}
-          />
-        ))}
+    <Fragment>
+      <div className="wishlist-main-container">
+        <h1>WishList</h1>
+        <div className="wishlist-container">
+          {wishlistItems.length === 0 ? ( // Conditionally render default layout when wishlist is empty
+            <div className="empty-wishlist">
+              <p>Your Wishlist is empty</p>
+              <img src={emptyWishList} alt="" />
+              <Link to="/shop"><button className="add-now-button">Add now</button></Link>
+            </div>
+          ) : (
+            wishlistItems.map((item) => (
+              <WishListCard
+                key={item.product}
+                item={item}
+                deleteWishListItems={removeWishListItemHandler}
+                moveToCartHandler={moveToCartHandler}
+              />
+            ))
+          )}
+          {/* {wishlistItems && wishlistItems.map((item) => (
+            <WishListCard
+              key={item.product}
+              item={item}
+              deleteWishListItems={removeWishListItemHandler}
+              moveToCartHandler={moveToCartHandler}
+            />
+          ))} */}
+        </div>
       </div>
-    </div>
-    <ToastContainer/>
-  </Fragment>
+      <ToastContainer />
+    </Fragment>
   )
 }
 
