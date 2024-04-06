@@ -1,6 +1,9 @@
 .register-seller-container {
   width: 100vmax;
   height: fit-content;
+  .error {
+    color: crimson;
+  }
 
   .reg-img-mail-section {
     margin: 2rem 0;

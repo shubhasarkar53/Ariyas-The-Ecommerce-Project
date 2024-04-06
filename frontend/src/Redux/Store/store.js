@@ -14,20 +14,22 @@ import {
 
 import { profileReducer, userReducer } from "../Reducers/userReducer";
 import contactReducer from '../Reducers/contactReducer';
-import  {cartReducer } from "../Reducers/cartReducer";
+import registerSellerReducer from "../Reducers/registerSellerReducer";
+import { cartReducer } from "../Reducers/cartReducer";
 import { addressReducer } from "../Reducers/addressReducer";
-import {wishlistReducer} from '../Reducers/wishlistReducer';
+import { wishlistReducer } from '../Reducers/wishlistReducer';
 
 // Reducers
 const reducer = combineReducers({
   products: productReducer,
   productDetails: productDetailsReducer,
   user: userReducer,
-  profile:profileReducer,
+  profile: profileReducer,
   contact: contactReducer,
   cart: cartReducer,
   addresses: addressReducer,
   wishlist: wishlistReducer,
+  registerSeller: registerSellerReducer,
 });
 
 
