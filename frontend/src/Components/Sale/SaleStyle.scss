@@ -270,10 +270,16 @@ $orangeTextColor: #d47f00;
             transition: all 0.4s ease-in-out;
             position: relative;
             &:hover {
-              box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.182),
-                0.2rem 0.4rem 0.3rem rgba(0, 0, 0, 0.079),
-                0.4rem 0.3rem 0.1rem rgba(0, 0, 0, 0.13),
-                0.6rem 0.2rem 0.4rem rgba(0, 0, 0, 0.142);
+              // box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.182),
+              //   0.2rem 0.4rem 0.3rem rgba(0, 0, 0, 0.079),
+              //   0.4rem 0.3rem 0.1rem rgba(0, 0, 0, 0.13),
+              //   0.6rem 0.2rem 0.4rem rgba(0, 0, 0, 0.142);
+              box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+                6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+                12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+                22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+                41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+                100px 100px 80px rgba(0, 0, 0, 0.07);
               transform: translateY(-30px);
             }
 
@@ -289,11 +295,6 @@ $orangeTextColor: #d47f00;
                 object-fit: cover;
                 background-position: center;
                 background-size: cover;
-
-                transition: all 0.4s ease-in-out;
-                &:hover {
-                  filter: grayscale(40);
-                }
               }
 
               .icon-container {
@@ -332,6 +333,7 @@ $orangeTextColor: #d47f00;
             .sales-title {
               .sale-title-links {
                 margin: 0;
+                text-align: center;
                 font-size: 1.2rem;
                 color: $secondaryTextColor;
                 transition: color 0.4s ease-in-out;
