@@ -15,6 +15,9 @@ import {
   LOAD_CREATED_PRODUCT_REQUEST,
   LOAD_CREATED_PRODUCT_SUCCESS,
   LOAD_CREATED_PRODUCT_FAIL,
+  DELETE_PRODUCT_REQUEST,
+  DELETE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_FAIL,
 } from "../Constants/productConstants";
 
 export const getProducts =
@@ -149,6 +152,26 @@ export const createProductAction = (productData) => async (dispatch) => {
     });
   }
 };
+
+export const deleteCreatedProduct = (productId) => async(dispatch) =>{
+  try {
+      dispatch({type:DELETE_PRODUCT_REQUEST});
+
+      const {data} = await axios.delete(`/api/v1/product/${productId}`);
+
+      dispatch({
+        type: DELETE_PRODUCT_SUCCESS,
+        payload:productId,
+      });
+
+    } catch (error) {
+      dispatch({
+        type: DELETE_PRODUCT_FAIL,
+        payload:error.response.data.message 
+      });
+    }
+};
+
 
 export const clearError = () => async (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
