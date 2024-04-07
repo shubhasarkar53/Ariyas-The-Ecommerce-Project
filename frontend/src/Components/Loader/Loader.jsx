@@ -5,7 +5,7 @@ import gif from "../../assets/Gifs/Bean Eater-1s-200px.gif"
 const Loader = () => {
   return (
     <div className='loader-container'>
-        <img src={gif} alt="" />
+      <img src={gif} alt="" />
     </div>
   )
 }
