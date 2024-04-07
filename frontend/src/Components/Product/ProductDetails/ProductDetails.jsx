@@ -18,7 +18,7 @@ import { addItemsToCart } from '../../../Redux/Actions/cartAction'
 import { addItemsToWishList } from '../../../Redux/Actions/wishListAction'
 import { toast , ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
- 
+import { useHistory } from 'react-router-dom';
 // import ProductShare from './Share'
 
 
@@ -27,9 +27,15 @@ const ProductDetails = ({ match }) => {
 
   const dispatch = useDispatch();
 
+  const history = useHistory();
+
   const [itemCount, setItemCount] = React.useState(1);
   const [quantity, setQuantity] = React.useState(1);
 
+  const handleBuyNow = () => {
+    // Navigate to address selection page
+    history.push('/address-selection');
+  };
 
   useEffect(() => {
     dispatch(getProductDetails(match.params.id));
@@ -172,7 +178,7 @@ const ProductDetails = ({ match }) => {
           </div>
 
           <div className="buttondiv">
-            <button className='buynow'>Buy Now</button>
+            <button className='buynow' onClick={handleBuyNow}>Buy Now</button>
 
             <button className='addtocart' onClick={addToCartHandler}>Add to Cart</button>
 

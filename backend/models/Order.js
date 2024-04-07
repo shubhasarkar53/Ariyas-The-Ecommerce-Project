@@ -43,9 +43,10 @@ const orderSchema = new mongoose.Schema({
         status: {
           type: String
         },
-      },
-      paidAt: {
-        type: Date
+        enum:['COD',"Stripe"],
+        paidAt: {
+          type: Date
+        }
       },
       itemsPrice: {
         type: Number,

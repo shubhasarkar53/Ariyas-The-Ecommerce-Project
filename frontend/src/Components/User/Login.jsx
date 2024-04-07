@@ -10,7 +10,7 @@ import Loader from "../Loader/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Login = ({ history }) => {
+const Login = ({ history, location }) => {
   const dispatch = useDispatch();
   const { loading, isAuthenticated, error, token } = useSelector(
     (state) => state.user
@@ -23,6 +23,8 @@ const Login = ({ history }) => {
     // console.log(loginEmail,loginPassword);
     dispatch(userLogin(loginEmail, loginPassword));
   };
+
+  const redirect = location.search ? location.search.split("=")[1] : "/profile";
 
   useEffect(() => {
     if (error) {
@@ -40,9 +42,9 @@ const Login = ({ history }) => {
     // }
 
     if (isAuthenticated) {
-      history.push("/");
+      history.push(redirect);
     }
-  }, [dispatch, error, toast, history, isAuthenticated]);
+  }, [dispatch, error, toast, history, isAuthenticated, redirect]);
 
   return (
     <>

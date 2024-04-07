@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
@@ -7,12 +8,15 @@ import { deleteAddress, loadAddress } from "../../../Redux/Actions/addressAction
 import Loader from "../../Loader/Loader.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PropTypes from 'prop-types'
 
 const AddressesPage = ({history}) => {
+
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(loadAddress());
-  }, []);
+  }, [ dispatch,history]);
   // useEffect(() => {
   //   dispatch(loadAddress());
   // }, [dispatch,history]);
@@ -79,5 +83,10 @@ const AddressesPage = ({history}) => {
     
   );
 };
+
+
+AddressesPage.propTypes = {
+  history: PropTypes.object
+}
 
 export default AddressesPage;

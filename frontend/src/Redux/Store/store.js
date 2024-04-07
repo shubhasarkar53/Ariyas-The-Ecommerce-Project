@@ -17,6 +17,7 @@ import contactReducer from '../Reducers/contactReducer';
 import  {cartReducer } from "../Reducers/cartReducer";
 import { addressReducer } from "../Reducers/addressReducer";
 import {wishlistReducer} from '../Reducers/wishlistReducer';
+import { placeOrderReducer } from "../Reducers/placeOrderReducer";
 
 // Reducers
 const reducer = combineReducers({
@@ -28,6 +29,7 @@ const reducer = combineReducers({
   cart: cartReducer,
   addresses: addressReducer,
   wishlist: wishlistReducer,
+  placeOrder: placeOrderReducer
 });
 
 
@@ -37,6 +39,9 @@ let initialState = {
     cartItems: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
       : [],
+    shippingInfo: localStorage.getItem("shippingInfo")
+      ? JSON.parse(localStorage.getItem("shippingInfo"))
+      : {},
   },
   wishlist: {
     wishlistItems: localStorage.getItem("wishlistItems")

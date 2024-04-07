@@ -4,20 +4,21 @@ import "./Cart.scss";
 import CartItemCard from "./CartItemCard";
 import {useSelector,useDispatch} from "react-redux";
 import { addItemsToCart, removeItemsFromCart } from "../../Redux/Actions/cartAction";
+import { loadAddress , addNewAddress } from "../../Redux/Actions/addressAction"
 import { Link } from "react-router-dom";
 import { toast , ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
+import PropTypes from 'prop-types'
 //import image
 import emptycart from '../../assets/Images/Icons/CartPage/emptycart.png'
 
-const Cart = () => {
+const Cart = ({ history }) => {
 
     const dispatch = useDispatch();
     
     // Get the cart items from the redux store
     const { cartItems } = useSelector((state) => state.cart);
-
+    
 
     // remove the cart items function
     const removeCartItemHandler = (id) => {
@@ -63,6 +64,12 @@ const Cart = () => {
         dispatch(addItemsToCart(id, newQty));
     }
 
+
+    // check out handler
+    const checkOutHandler = () => {
+      history.push("/login?redirect=select-address");
+    };
+
     return (
     <Fragment>
         {cartItems.length === 0 ?(
@@ -104,9 +111,8 @@ const Cart = () => {
                  <p className="cartGrossTotal">Gross Total</p>
                  <p className="cartGrossPrice">{`₹${cartItems.reduce((acc,item)=>acc+item.quantity*item.price,0)}`}</p>
                </div>
-
                <div className="checkOut">
-                 <button className="checkOutBtn">Check Out</button>
+                 <button className="checkOutBtn" onClick={checkOutHandler}>Check Out</button>
                </div>
 
               </div>
@@ -119,6 +125,11 @@ const Cart = () => {
     </Fragment>
     );
   };
+
+
+Cart.propTypes = {
+    history: PropTypes.object
+}
 
 
 export default Cart;

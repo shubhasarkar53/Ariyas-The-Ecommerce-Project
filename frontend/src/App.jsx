@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react'
 import Header from './Components/Layout/Header/Header'
 import "./App.css"
@@ -31,13 +31,35 @@ import UpdatePassword from './Components/Dashboard/UpdatePassword.jsx'
 import AddressesPage from './Components/Dashboard/Address/AddressesPage.jsx'
 import NewAddress from './Components/Dashboard/Address/NewAddress.jsx'
 import EditAddressPage from './Components/Dashboard/Address/EditAddressPage.jsx'
+// import CheckoutPage from './Components/Order/CheckoutPage.jsx'
+import AddressSelectionPage from './Components/PlaceOrder/AddressSelectionPage.jsx'
+import PaymentPage from './Components/PlaceOrder/PaymentPage.jsx'
+import OrderConfirmationPage from './Components/PlaceOrder/OrderSummaryPage.jsx'
+import OrderSuccessPage from './Components/PlaceOrder/OrderSuccessPage.jsx'
+import axios from 'axios'
+
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+
+
+
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
+
+  const [stripeApiKey, setStripeApiKey] = useState("");
+
+  async function getStripeApiKey() {
+    const { data } = await axios.get("/api/v1/stripeapikey");
+    setStripeApiKey(data.stripeApiKey);
+  }
+
+
   useEffect(() => {
     // if(!isAuthenticated){
     //   store.dispatch(loadUser())       
     // }
-    store.dispatch(loadUser()) 
+    store.dispatch(loadUser());
+    getStripeApiKey();
   }, []) //assumtion:in future there may be problem beacuse of no dependency in the array but curretly ok. 
 
   return (
@@ -45,6 +67,7 @@ const App = () => {
       <BrowserRouter>
         <div className='wrapper'>
           <Header />
+
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/sale" component={Sale} />
@@ -69,13 +92,28 @@ const App = () => {
             <ProtectedRoute exact path="/profile" component={Profile} />
             <ProtectedRoute exact path="/me/update/profile" component={UpdateProfile} />
             <ProtectedRoute exact path="/password/update" component={UpdatePassword} />
+
             <ProtectedRoute exact path="/addresses" component={AddressesPage} />
+
+
+            <ProtectedRoute exact path="/order/confirm" component={OrderConfirmationPage} />
+
+            <ProtectedRoute exact path="/order/success" component={OrderSuccessPage} />
+
+
+            <ProtectedRoute exact path="/select-address" component={AddressSelectionPage} />
             <ProtectedRoute exact path="/new/address" component={NewAddress} />
             <ProtectedRoute exact path="/address/edit/:id" component={EditAddressPage} />
 
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/faq" component={FAQs} />
 
+
+            {stripeApiKey && (
+            <Elements stripe={loadStripe(stripeApiKey)}>
+            <ProtectedRoute exact path="/process/payment" component={PaymentPage} />
+            </Elements>
+          )}
 
             {/* This will catch all the routes that do not exist */}
             <Route component={PageNotFound} />
