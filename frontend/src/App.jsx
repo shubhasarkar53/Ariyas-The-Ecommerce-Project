@@ -38,6 +38,7 @@ import EditAddressPage from "./Components/Dashboard/Address/EditAddressPage.jsx"
 import AdminDashboard from "./Components/Admin/AdminDashboard.jsx";
 import CreateNewProduct from "./Components/Admin/AdminFunctions/CreateNewProduct.jsx";
 import CreatedProducts from "./Components/Admin/AdminFunctions/CreatedProducts.jsx";
+import EditProduct from "./Components/Admin/AdminFunctions/EditProduct.jsx";
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
@@ -115,6 +116,11 @@ const App = () => {
                 exact
                 path="/yourProducts"
                 component={CreatedProducts}
+              />
+              <ProtectedRoute
+                exact
+                path="/edit-product/:id"
+                component={EditProduct}
               />
 
               <Route exact path="/contact" component={Contact} />

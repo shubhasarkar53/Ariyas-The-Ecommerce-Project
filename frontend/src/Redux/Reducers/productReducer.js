@@ -19,6 +19,10 @@ import {
   DELETE_PRODUCT_SUCCESS,
   DELETE_PRODUCT_FAIL,
   DELETE_PRODUCT_RESET,
+  EDIT_PRODUCT_REQUEST,
+  EDIT_PRODUCT_SUCCESS,
+  EDIT_PRODUCT_FAIL,
+  EDIT_PRODUCT_RESET,
 } from "../Constants/productConstants";
 
 export const productReducer = (state = { products: [] }, action) => {
@@ -91,6 +95,7 @@ export const createProductReducer = (state = { products: [] }, action) => {
         isCreated: action.payload.success,
         products: [...state.products, action.payload.product],
       };
+ 
     case CREATE_PRODUCT_FAIL:
       return {
         loading: false,
@@ -101,13 +106,6 @@ export const createProductReducer = (state = { products: [] }, action) => {
         ...state,
         isCreated: false,
       };
-
-    case DELETE_PRODUCT_RESET: {
-      return {
-        ...state,
-        isDeleted: false,
-      };
-    }
     case CLEAR_ERRORS:
       return {
         ...state,
@@ -119,6 +117,7 @@ export const createProductReducer = (state = { products: [] }, action) => {
 };
 export const loadCreatedProductReducer = (state = { products: [] }, action) => {
   switch (action.type) {
+    case EDIT_PRODUCT_REQUEST:
     case DELETE_PRODUCT_REQUEST:
       return {
         ...state,
@@ -134,7 +133,12 @@ export const loadCreatedProductReducer = (state = { products: [] }, action) => {
         loading: false,
         products: action.payload,
       };
-
+    case EDIT_PRODUCT_SUCCESS:
+        return{
+          ...state,
+          loading: false,
+          isEdited: action.payload,
+        }
     case DELETE_PRODUCT_SUCCESS:
       return {
         ...state,
@@ -145,10 +149,7 @@ export const loadCreatedProductReducer = (state = { products: [] }, action) => {
         loading: false,
       };
     case LOAD_CREATED_PRODUCT_FAIL:
-      return {
-        loading: false,
-        error: action.payload,
-      };
+    case EDIT_PRODUCT_FAIL:
     case DELETE_PRODUCT_FAIL:
       return {
         loading: false,
@@ -158,6 +159,12 @@ export const loadCreatedProductReducer = (state = { products: [] }, action) => {
       return {
         ...state,
         isDeleted: false,
+      };
+    }
+    case EDIT_PRODUCT_RESET:{
+      return {
+        ...state,
+        isEdited: false,
       };
     }
     case CLEAR_ERRORS:

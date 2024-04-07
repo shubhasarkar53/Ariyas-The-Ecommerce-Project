@@ -62,7 +62,7 @@ const EditAddressPage = () => {
 
   const{loading,isEdited,error} = useSelector(state=> state.addresses);
   const address = useSelector(state => state.addresses.addresses.find(addr => addr._id === id));
- console.log(address)
+//  console.log(address)
 
   useEffect( ()=>{
      if (id && address){

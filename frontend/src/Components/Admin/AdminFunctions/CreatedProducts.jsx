@@ -11,6 +11,7 @@ import { clearError, createProductAction, deleteCreatedProduct, getYourProducts 
 import { CREATE_PRODUCT_RESET } from "../../../Redux/Constants/productConstants";
 import Loader from "../../Loader/Loader";
 import "./CreatedProducts.scss"
+import DotLoader from "../../Loader/DotLoader";
 const CreatedProducts = () => {
 
     const dispatch = useDispatch();
@@ -46,16 +47,15 @@ const CreatedProducts = () => {
     function handleDeleteProduct(productId) {
         dispatch(deleteCreatedProduct(productId));
     }
-    function handleEditProduct(){
-      console.log("Ok ed")
-
+    function handleEditProduct(productId){
+     history.push(`/edit-product/${productId}`);
     }
 
 
     return (
         <>
         {
-          loading? <Loader /> :
+          loading? <DotLoader/> :
           (
             <>
           <div className="profile-container">
@@ -93,7 +93,7 @@ const CreatedProducts = () => {
                                     <p>{product.stock}</p>
                                     <p>Rs. {product.price}</p>
                                     <div className="create-product-actions">
-                                      <button className="action-edit" onClick={handleEditProduct}>
+                                      <button className="action-edit" onClick={ ()=> handleEditProduct(product._id)}>
                                         <img src={pencilIcon} alt="Edit" />
                                       </button>
                                       <button className="action-delete" onClick={()=> handleDeleteProduct(product._id)}>
