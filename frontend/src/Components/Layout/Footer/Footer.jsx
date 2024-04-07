@@ -21,6 +21,7 @@ const Footer = () => {
   ];
   return (
     <>
+
       <div className="footer">
         <div className="footer-container">
           <div className="footer-top">
@@ -94,6 +95,7 @@ const Footer = () => {
                 { label: "Privacy Policy", path: "/privacy-policy" },
                 { label: "Terms & Conditions", path: "/terms-and-conditions" },
                 { label: "Become a Seller", path: "/become-seller" },
+                { label: "Wishlist", path: "/wishlist" },
               ].map((item, index) => {
                 return (
                   <Link to={item.path} key={index}>
@@ -106,8 +108,8 @@ const Footer = () => {
             <div className="need-help">
               <h3>Need Help?</h3>
               {[
-                 { label: "Contact Us", path: "/contact" },
-                 { label: "FAQs", path: "/faq" },
+                { label: "Contact Us", path: "/contact" },
+                { label: "FAQs", path: "/faq" },
               ].map((item, index) => {
                 return (
                   <Link to={item.path} key={index}>

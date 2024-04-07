@@ -10,11 +10,14 @@ import { composeWithDevTools } from "@redux-devtools/extension";
 import {
   productReducer,
   productDetailsReducer,
+  createProductReducer,
+  loadCreatedProductReducer,
 } from "../Reducers/productReducer";
 
 import { profileReducer, userReducer } from "../Reducers/userReducer";
 import contactReducer from '../Reducers/contactReducer';
-import  {cartReducer } from "../Reducers/cartReducer";
+import registerSellerReducer from "../Reducers/registerSellerReducer";
+import { cartReducer } from "../Reducers/cartReducer";
 import { addressReducer } from "../Reducers/addressReducer";
 import {wishlistReducer} from '../Reducers/wishlistReducer';
 import { placeOrderReducer } from "../Reducers/placeOrderReducer";
@@ -23,8 +26,10 @@ import { placeOrderReducer } from "../Reducers/placeOrderReducer";
 const reducer = combineReducers({
   products: productReducer,
   productDetails: productDetailsReducer,
+  createProduct: createProductReducer,
+  createdProducts: loadCreatedProductReducer,
   user: userReducer,
-  profile:profileReducer,
+  profile: profileReducer,
   contact: contactReducer,
   cart: cartReducer,
   addresses: addressReducer,

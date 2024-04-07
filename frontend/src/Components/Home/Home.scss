@@ -14,11 +14,8 @@ $categoriText: white;
   }
   .category-container {
     width: 100%;
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: space-around;
-    gap: 3rem;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     .top-container {
       display: flex;
       justify-content: space-around;
@@ -29,7 +26,12 @@ $categoriText: white;
         justify-content: center;
         align-items: center;
         width: 40%;
-        background-image: url("../../assets/Images/Home/top1.jpg");
+        background-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.23),
+            rgba(0, 0, 0, 0.452)
+          ),
+          url("../../assets/Images/Home/top1.jpg");
         // background-size: 48rem 30rem;
         background-size: cover;
         background-position: center;
@@ -50,7 +52,6 @@ $categoriText: white;
           font-size: 2rem;
           font-weight: 600;
           margin: 1rem;
-          text-shadow: 2px 2px 2px black;
         }
         .top1-button {
           background-color: transparent;
@@ -74,7 +75,12 @@ $categoriText: white;
         justify-content: center;
         align-items: center;
         width: 40%;
-        background-image: url("../../assets/Images/Home/top2.jpg");
+        background-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.23),
+            rgba(0, 0, 0, 0.452)
+          ),
+          url("../../assets/Images/Home/top2.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         height: 50vh;
@@ -94,7 +100,6 @@ $categoriText: white;
           font-size: 2rem;
           font-weight: 600;
           margin: 1rem;
-          text-shadow: 2px 2px 2px black;
         }
         .top2-button {
           background-color: transparent;
@@ -123,7 +128,12 @@ $categoriText: white;
         justify-content: center;
         align-items: center;
         width: 40%;
-        background-image: url("../../assets/Images/Home/bottom1.jpeg");
+        background-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.23),
+            rgba(0, 0, 0, 0.452)
+          ),
+          url("../../assets/Images/Home/bottom1.jpeg");
         background-size: cover;
         background-position: center;
         height: 50vh;
@@ -143,7 +153,6 @@ $categoriText: white;
           font-size: 2rem;
           font-weight: 600;
           margin: 1rem;
-          text-shadow: 2px 2px 2px black;
         }
         .bottom1-button {
           background-color: transparent;
@@ -167,7 +176,12 @@ $categoriText: white;
         justify-content: center;
         align-items: center;
         width: 40%;
-        background-image: url("../../assets/Images/Home/bottom2.jpg");
+        background-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.23),
+            rgba(0, 0, 0, 0.452)
+          ),
+          url("../../assets/Images/Home/bottom2.jpg");
         background-position: center;
         background-size: cover;
         height: 50vh;
@@ -187,7 +201,6 @@ $categoriText: white;
           font-size: 2rem;
           font-weight: 600;
           margin: 1rem;
-          text-shadow: 2px 2px 2px black;
         }
         .bottom2-button {
           background-color: transparent;
@@ -207,17 +220,17 @@ $categoriText: white;
       }
     }
   }
-  .product-row-container{
+  .product-row-container {
     display: flex;
     flex-direction: column;
-    gap:3rem;
+    gap: 3rem;
     margin-left: 10rem;
     margin-top: 5rem;
-    .row{
+    .row {
       display: flex;
       flex-direction: column;
       gap: 2rem;
-      .row-products{
+      .row-products {
         display: flex;
         gap: 2rem;
       }

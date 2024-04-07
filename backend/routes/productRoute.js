@@ -37,8 +37,9 @@ router.route("/review").put(isAuthenticated,productRatingReview);
 // get all reviews and Delete review
 router.route("/reviews").get(getProductReviews).delete(isAuthenticated,deleteReview);
 
+router.route("/products/me").get(isAuthenticated,authRole("seller","admin"),myProducts);
 // my products -SELLER
-router.route("/seller/products/me").get(isAuthenticated,authRole("seller"),myProducts);
+// router.route("/seller/products/me").get(isAuthenticated,authRole("seller"),myProducts);
 // get all products of a seller
 router.route("/admin/sellerProducts/:id").get(isAuthenticated,authRole("admin"),getProductsOfSeller);
 
