@@ -34,7 +34,8 @@ const reducer = combineReducers({
   cart: cartReducer,
   addresses: addressReducer,
   wishlist: wishlistReducer,
-  placeOrder: placeOrderReducer
+  placeOrder: placeOrderReducer,
+  registerSeller: registerSellerReducer,
 });
 
 
