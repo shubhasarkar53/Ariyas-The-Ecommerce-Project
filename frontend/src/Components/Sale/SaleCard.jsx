@@ -9,12 +9,53 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { addItemsToCart } from '../../Redux/Actions/cartAction.js';
 import { addItemsToWishList } from '../../Redux/Actions/wishListAction.js';
+import { Rating } from '@mui/material';
 
-const SaleCards = ({ products, isButtonClicked, onButtonClick }) => {
+const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
 
   const [loadingButtonId, setLoadingButtonId] = useState(null);
   const [hoveredProductId, setHoveredProductId] = useState(null);
   const dispatch = useDispatch();
+
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleHover = () => {
+    setIsHovered(!isHovered);
+  };
+
+  // add to wishlist func
+  const addToWishListHandler = () => {
+    if (!product.name) return;
+    dispatch(addItemsToWishList(match.params.id));
+    toast.success(`${product.name} added to wishlist`, {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  }
+
+
+  // add to cart func
+  const addToCartHandler = () => {
+    if (!product.name || !quantity) return;
+    dispatch(addItemsToCart(match.params.id, quantity));
+    toast.success(`${quantity} ${quantity > 1 ? 'items' : 'item'} added to cart`, {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  }
+
 
   const handleButtonClick = async (buttonId) => {
     // If the button is already loading, prevent additional clicks
@@ -57,6 +98,15 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick }) => {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
+
+  const options = {
+    size: "large",
+    value: product ? product.ratings : 0,
+    readOnly: true,
+    precision: 0.5,
+  };
+
+
 
   return (
     <>
@@ -108,21 +158,26 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick }) => {
                           <img src={product.image[0].url} alt={product.name} />
                           {hoveredProductId === product._id && (
                             <div className="icon-container">
-                              <button onClick={() => handleAddToWishlist(product._id, product.name)}> {/* Call handleAddToWishlist with product ID and name */}
-                                <FaHeart className="wishlist-icon"
-                                />
-                              </button>
-                              <button>
-                                <FaShoppingCart className="cart-icon"
-                                  onClick={() =>
-                                    handleAddToCart(
-                                      product._id,
-                                      product.name,
-                                      product.price
-                                    )
-                                  }
-                                />
-                              </button>
+                              <Link to="/wishlist">
+                                <button onClick={() => handleAddToWishlist(product._id, product.name)}>
+                                  {/* Call handleAddToWishlist with product ID and name */}
+                                  <FaHeart className="wishlist-icon"
+                                  />
+                                </button>
+                              </Link>
+                              <Link to="/cart">
+                                <button>
+                                  <FaShoppingCart className="cart-icon"
+                                    onClick={() =>
+                                      handleAddToCart(
+                                        product._id,
+                                        product.name,
+                                        product.price
+                                      )
+                                    }
+                                  />
+                                </button>
+                              </Link>
                             </div>
                           )}
                         </Link>
@@ -134,7 +189,30 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick }) => {
                         <p>&#x20B9; {product.price}  (<span className="discount-sale">30% off</span>)</p>
                         <p className="price-cut">&#x20B9; 69420</p>
                       </div>
+
                     </div>
+                    <div className='ratings'>
+                      <Rating {...options} className='rating-options' />
+                      <span className="detailsBlock-2-span">
+                        {" "}
+                        ({product.numOfReviews} {product.numOfReviews > 1 ? "Reviews" : "Review"})
+                      </span>
+                    </div>
+
+                    {isHovered && (
+                      <div className='carddown-div'>
+                        <div className='cart'>
+                          <img src={cart2} alt='' onClick={addToCartHandler} className='productCard-cart' />
+                        </div>
+                        <div className='prices-continer'>
+                          <span className='price-1'>RS. {product.price}</span>
+                          <span className='price-2'>Rs. {product.price * 4}</span>
+                        </div>
+                        <div className='wishlist'>
+                          <img src={wishL} alt='' onClick={addToWishListHandler} className='productCard-wishlist' />
+                        </div>
+                      </div>
+                    )}
 
                   </div>
                 ))

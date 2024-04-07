@@ -270,10 +270,6 @@ $orangeTextColor: #d47f00;
             transition: all 0.4s ease-in-out;
             position: relative;
             &:hover {
-              // box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.182),
-              //   0.2rem 0.4rem 0.3rem rgba(0, 0, 0, 0.079),
-              //   0.4rem 0.3rem 0.1rem rgba(0, 0, 0, 0.13),
-              //   0.6rem 0.2rem 0.4rem rgba(0, 0, 0, 0.142);
               box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
                 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
                 12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
@@ -286,8 +282,14 @@ $orangeTextColor: #d47f00;
             .img-detail {
               display: flex;
               justify-content: center;
+              position: relative;
+              overflow: hidden;
               &:hover .icon-container {
                 display: flex;
+              }
+              &:hover img {
+                filter: brightness(75%);
+                transform: scale(1.05);
               }
               img {
                 width: 100%;
@@ -295,6 +297,7 @@ $orangeTextColor: #d47f00;
                 object-fit: cover;
                 background-position: center;
                 background-size: cover;
+                transition: all 0.4s ease-in-out;
               }
 
               .icon-container {
@@ -362,9 +365,59 @@ $orangeTextColor: #d47f00;
                 }
               }
             }
+            .ratings {
+              display: flex;
+              justify-content: center;
+              margin-top: 1rem;
+              .rating-options {
+                font-size: 1.5rem;
+                color: gold;
+              }
+            }
           }
         }
       }
+    }
+  }
+}
+
+.carddown-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  gap: 1rem;
+  width: 65%;
+  transition: all 0.3s ease-in-out;
+  .cart {
+    font-size: 2rem;
+    cursor: pointer;
+    &:hover {
+      color: #d47f00;
+    }
+  }
+  .prices-continer {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+  }
+  .price-1 {
+    font-weight: 500;
+  }
+  .price-2 {
+    color: #777777;
+    text-decoration: line-through;
+  }
+  .wishlist {
+    font-size: 1.8rem;
+    cursor: pointer;
+    &:hover {
+      color: #d47f00;
     }
   }
 }
