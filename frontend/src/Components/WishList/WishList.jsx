@@ -55,7 +55,7 @@ const WishList = () => {
             <div className="empty-wishlist">
               <p>Your Wishlist is empty</p>
               <img src={emptyWishList} alt="" />
-              <Link to="/shop"><button className="add-now-button">Add now</button></Link>
+              <Link to="/sale"><button className="add-now-button">Add now</button></Link>
             </div>
           ) : (
             wishlistItems.map((item) => (
