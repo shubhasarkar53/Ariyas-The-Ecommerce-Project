@@ -10,10 +10,13 @@ import { useDispatch } from 'react-redux';
 import { addItemsToCart } from '../../Redux/Actions/cartAction.js';
 import { addItemsToWishList } from '../../Redux/Actions/wishListAction.js';
 import { Rating } from '@mui/material';
+import wishL from "../../assets/Images/Icons/CartPage/wishL.png";
+import cart2 from "../../assets/Images/Icons/CartPage/cart2.png";
 
 const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
 
   const [loadingButtonId, setLoadingButtonId] = useState(null);
+  const [isCardDownVisible, setIsCardDownVisible] = useState(false);
   const [hoveredProductId, setHoveredProductId] = useState(null);
   const dispatch = useDispatch();
 
@@ -183,14 +186,22 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
                         </Link>
                       )}
                     </div>
-                    <div className="sales-title">
+
+                    <div className={`sales-title ${hoveredProductId === product._id ? 'hidden' : ''} `}>
+                      <h1><Link to={`/product/${product._id}`} className="sale-title-links">{product.name}</Link></h1>
+                      <div className='price'>
+                        <p>&#x20B9; {product.price}  (<span className="discount-sale">30% off</span>)</p>
+                        <p className="price-cut">&#x20B9; 69420</p>
+                      </div>
+                    </div>
+                    {/* <div className="sales-title">
                       <h1><Link to={`/product/${product._id}`} className="sale-title-links">{product.name}</Link></h1>
                       <div className="price">
                         <p>&#x20B9; {product.price}  (<span className="discount-sale">30% off</span>)</p>
                         <p className="price-cut">&#x20B9; 69420</p>
                       </div>
+                    </div> */}
 
-                    </div>
                     <div className='ratings'>
                       <Rating {...options} className='rating-options' />
                       <span className="detailsBlock-2-span">
@@ -199,7 +210,7 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
                       </span>
                     </div>
 
-                    {isHovered && (
+                    {/* {isHovered && (
                       <div className='carddown-div'>
                         <div className='cart'>
                           <img src={cart2} alt='' onClick={addToCartHandler} className='productCard-cart' />
@@ -212,8 +223,41 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
                           <img src={wishL} alt='' onClick={addToWishListHandler} className='productCard-wishlist' />
                         </div>
                       </div>
+                    )} */}
+
+                    {hoveredProductId === product._id && (
+                      <div
+                        className={`carddown-div ${isCardDownVisible ? 'visible' : ''}`}
+                        onMouseEnter={() => setIsCardDownVisible(true)}
+                        onMouseLeave={() => setIsCardDownVisible(false)}
+                      >
+                        <div className='cart'>
+                          <img src={cart2} alt='' onClick={() => handleAddToCart(product._id, product.name, product.price)} className='productCard-cart' />
+                        </div>
+                        <div className='prices-continer'>
+                          <span className='price-1'>RS. {product.price}</span>
+                          <span className='price-2'>Rs. {product.price * 4}</span>
+                        </div>
+                        <div className='wishlist'>
+                          <img src={wishL} alt='' onClick={() => handleAddToWishList(product._id, product.name)} className='productCard-wishlist' />
+                        </div>
+                      </div>
                     )}
 
+                    {/* {hoveredProductId === product._id && (
+                      <div className='carddown-div'>
+                        <div className='cart'>
+                          <img src={cart2} alt='' onClick={addToCartHandler} className='productCard-cart' />
+                        </div>
+                        <div className='prices-continer'>
+                          <span className='price-1'>RS. {product.price}</span>
+                          <span className='price-2'>Rs. {product.price * 4}</span>
+                        </div>
+                        <div className='wishlist'>
+                          <img src={wishL} alt='' onClick={addToWishListHandler} className='productCard-wishlist' />
+                        </div>
+                      </div>
+                    )} */}
                   </div>
                 ))
 

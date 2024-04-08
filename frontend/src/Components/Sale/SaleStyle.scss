@@ -268,7 +268,9 @@ $orangeTextColor: #d47f00;
             flex-direction: column;
             padding: 1.5rem 1rem;
             transition: all 0.4s ease-in-out;
+            overflow: hidden;
             position: relative;
+            transition: height 0.4s ease-in-out;
             &:hover {
               box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
                 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
@@ -382,13 +384,23 @@ $orangeTextColor: #d47f00;
 }
 
 .carddown-div {
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-between;
+  // padding: 0.5rem;
+  // gap: 1rem;
+  // width: 100%;
+  // height: fit-content;
+  // transition: all 0.3s ease-in-out;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem;
   gap: 1rem;
-  width: 65%;
-  transition: all 0.3s ease-in-out;
+  width: 100%; /* Set width to 100% to occupy full width of .sales-card */
+  transition: all 0.3s ease-in-out; /* Add transition for smoothness */
+  opacity: 0; /* Initially hide the carddown-div */
+  transform: translateY(20px);
   .cart {
     font-size: 2rem;
     cursor: pointer;
@@ -420,4 +432,11 @@ $orangeTextColor: #d47f00;
       color: #d47f00;
     }
   }
+}
+.sales-card:hover .carddown-div {
+  opacity: 1; /* Show carddown-div on hover */
+  transform: translateY(0); /* Move carddown-div back to its original position */
+}
+.hidden {
+  display: none;
 }
