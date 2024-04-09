@@ -14,11 +14,14 @@ export const placeOrder = (order) => async (dispatch, getState) => {
             }
         }
         const { data } = await axios.post('/api/v1/order/new', order, config)
+        
         dispatch({ type: PLACE_ORDER_SUCCESS, payload: data })
     } catch (error) {
         dispatch({
             type: PLACE_ORDER_FAIL,
-            payload: error.response.data.message,
+            payload: error.response.data.message
+            ?error.response.data.message
+            :error.message,
         })
         console.log( error.response.data.message)
     }

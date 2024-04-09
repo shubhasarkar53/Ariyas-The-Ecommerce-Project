@@ -54,6 +54,12 @@ let initialState = {
       ? JSON.parse(localStorage.getItem("wishlistItems"))
       : [],
   },
+  placeOrder:{
+    orderInfo: localStorage.getItem("orderInfo")
+      ? JSON.parse(localStorage.getItem("orderInfo"))
+      : [],
+  }
+
 };
 
 
