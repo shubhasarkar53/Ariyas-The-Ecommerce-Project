@@ -24,16 +24,20 @@ const orderSchema = new mongoose.Schema({
             type: Number,
             required: true
           },
-          productId: {
+          product: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Product',
             required: true
           }
+          // productId: {
+          //   type: mongoose.Schema.Types.ObjectId,
+          //   ref: 'Product',
+          //   required: true
+          // }
         }
       ],
       shippingInfo: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Address',
+        type: Object,
         required:true
       },
       paymentInfo: {

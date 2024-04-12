@@ -34,8 +34,29 @@ const ConfirmOrder = ({ history }) => {
 
   const order = {
     //map all cart product items in ordedrInfo
-   orderInfo:cartItems,
-    shippingInfo: {
+
+    // shippingInfo: {
+    //   address: selectedAddress.address,
+    //   city: selectedAddress.city,
+    //   state: selectedAddress.state,
+    //   country: selectedAddress.country,
+    //   pinCode: selectedAddress.pinCode,
+    //   phoneNo: selectedAddress.phoneNo,
+    // },
+    // user: user._id,
+    // selectedAddress,
+    // paymentMethod: "COD",
+    // itemsPrice: subTotal,
+    // taxPrice: tax,
+    // shippingPrice: shippingCharges,
+    // totalPrice,
+
+
+    orderItems:cartItems,
+    itemsPrice: subTotal,
+    shippingPrice: shippingCharges,
+    totalPrice,
+     shippingInfo: {
       address: selectedAddress.address,
       city: selectedAddress.city,
       state: selectedAddress.state,
@@ -43,14 +64,12 @@ const ConfirmOrder = ({ history }) => {
       pinCode: selectedAddress.pinCode,
       phoneNo: selectedAddress.phoneNo,
     },
-    user: user._id,
-    selectedAddress,
-    paymentMethod: "COD",
-    itemsPrice: subTotal,
-    taxPrice: tax,
-    shippingPrice: shippingCharges,
-    totalPrice,
-  };
+    paymentInfo: {
+      id: "demoId",
+      status: "Success",
+    },
+    paidAt:"COD",
+};
   console.log(order);
 
 

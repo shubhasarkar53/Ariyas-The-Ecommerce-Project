@@ -10,26 +10,31 @@ const User = require("../models/User");
 exports.createNewOrder = catchAsyncErr(async (req, res, next) => {
   const {
     orderItems,
+    shippingInfo,
     paymentInfo,
+    paidAt,     // 🔴 need to be fixed from API  🔴
     itemsPrice,
     shippingPrice,
     totalPrice,
+    deliveredAt,  // 🔴 need to be fixed from API  🔴
   } = req.body;
 
   // Retrieve the user
   const user = await User.findById(req.user._id)
-  console.log(user);
+  // console.log(user);
  // Retrieve the user's saved address 
   const userAddress = await Address.findById(user.address);
-  console.log(userAddress);
+  // console.log(userAddress);
 
   const newOrder = await Order.create({
     orderItems,
-    shippingInfo:userAddress,
-    paymentInfo,
+    // shippingInfo:userAddress,
     itemsPrice,
     shippingPrice,
     totalPrice,
+    shippingInfo,
+    paymentInfo,
+    // paidAt,            // 🔴 need to be fixed from API  🔴
     user: user,
   });
 
