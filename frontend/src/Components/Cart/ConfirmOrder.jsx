@@ -33,15 +33,43 @@ const ConfirmOrder = ({ history }) => {
   const totalPrice = subTotal + tax + shippingCharges;
 
   const order = {
-    orderItems:cartItems.product,
-    user: user._id,
-    selectedAddress,
-    paymentInfo: "COD",
+    //map all cart product items in ordedrInfo
+
+    // shippingInfo: {
+    //   address: selectedAddress.address,
+    //   city: selectedAddress.city,
+    //   state: selectedAddress.state,
+    //   country: selectedAddress.country,
+    //   pinCode: selectedAddress.pinCode,
+    //   phoneNo: selectedAddress.phoneNo,
+    // },
+    // user: user._id,
+    // selectedAddress,
+    // paymentMethod: "COD",
+    // itemsPrice: subTotal,
+    // taxPrice: tax,
+    // shippingPrice: shippingCharges,
+    // totalPrice,
+
+
+    orderItems:cartItems,
     itemsPrice: subTotal,
-    taxPrice: tax,
     shippingPrice: shippingCharges,
     totalPrice,
-  };
+     shippingInfo: {
+      address: selectedAddress.address,
+      city: selectedAddress.city,
+      state: selectedAddress.state,
+      country: selectedAddress.country,
+      pinCode: selectedAddress.pinCode,
+      phoneNo: selectedAddress.phoneNo,
+    },
+    paymentInfo: {
+      id: "demoId",
+      status: "Success",
+    },
+    paidAt:"COD",
+};
   console.log(order);
 
 
