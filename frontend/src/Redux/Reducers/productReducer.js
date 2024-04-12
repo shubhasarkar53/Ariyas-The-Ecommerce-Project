@@ -135,7 +135,6 @@ export const loadCreatedProductReducer = (state = { products: [] }, action) => {
       };
     case EDIT_PRODUCT_SUCCESS:
         return{
-          ...state,
           loading: false,
           isEdited: action.payload,
         }

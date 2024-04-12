@@ -93,7 +93,7 @@ const CreatedProducts = () => {
                                     <p>{product.stock}</p>
                                     <p>Rs. {product.price}</p>
                                     <div className="create-product-actions">
-                                      <button className="action-edit" onClick={ ()=> handleEditProduct(product._id)}>
+                                      <button  className="action-edit" onClick={ ()=> handleEditProduct(product._id)}>
                                         <img src={pencilIcon} alt="Edit" />
                                       </button>
                                       <button className="action-delete" onClick={()=> handleDeleteProduct(product._id)}>

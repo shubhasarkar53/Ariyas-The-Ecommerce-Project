@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
+
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,6 +9,7 @@ import {
   clearError,
   createProductAction,
   editCreatedProduct,
+  getYourProducts,
 } from "../../../Redux/Actions/productAction";
 import { CREATE_PRODUCT_RESET, EDIT_PRODUCT_RESET } from "../../../Redux/Constants/productConstants";
 import Loader from "../../Loader/Loader";
@@ -27,18 +28,29 @@ import location from "../../../assets/Images/Icons/createProduct/loc.png";
 import DotLoader from "../../Loader/DotLoader";
 
 
-const EditProduct = () => {
+const EditProduct = ({history}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
 // id from website
 const { id } = useParams(); 
 //   Redux stuffs
   const { loading, isEdited, error } = useSelector(
-    (state) => state.createProduct
+    (state) => state.createdProducts
   );
-const clickedProduct = useSelector(state => state.createdProducts.products.find(item => item._id === id));
-//  console.log(address)
+  // console.log("iSedited:.............",isEdited);
 
+  if (isEdited) {
+    // some tost upatded successfully
+    dispatch(getYourProducts());
+    history.push("/admin");
+    toast.success("Product Updated Successfully!", {
+      position: "top-center",
+      autoClose: 3000,
+    });
+
+    dispatch({ type: EDIT_PRODUCT_RESET });
+  }
+  const clickedProduct = useSelector(state => state.createdProducts.products.find(item => item._id === id));
 
   const [productImg, setProductImg] = useState(clickedProduct.image[0].url);
   const [formData, setFormData] = useState({
@@ -79,7 +91,7 @@ const clickedProduct = useSelector(state => state.createdProducts.products.find(
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("submitted");
+    // console.log("submitted");
 
     const myFormData = new FormData();
     myFormData.set("name", productName);
@@ -93,6 +105,7 @@ const clickedProduct = useSelector(state => state.createdProducts.products.find(
     // myFormData.forEach(item => console.log(item))
 
     dispatch(editCreatedProduct(id,myFormData));
+    
   }
 
   useEffect(() => {
@@ -118,18 +131,11 @@ const clickedProduct = useSelector(state => state.createdProducts.products.find(
       console.log("useeffect:", error);
       dispatch(clearError());
     }
-
-    if (isEdited) {
-      // some tost upatded successfully
-      // dispatch(loadAddress());
-      history.push("/admin");
-      toast.success("Product Updated Successfully!", {
-        position: "top-center",
-        autoClose: 3000,
-      });
-
-      dispatch({ type: EDIT_PRODUCT_RESET });
-    }
+    // *****************************************
+    // not working here isEdited is not detecting by the code but redux state is showing isEdited is true
+    // *****************************************
+    // console.log("isEdited:", isEdited);
+    
   }, [dispatch, history, isEdited, error]);
 
   return (
@@ -212,9 +218,13 @@ const clickedProduct = useSelector(state => state.createdProducts.products.find(
                       name="productCategory"
                     >
                       <option value="-1">Select category</option>
-                      <option value="1">Category 1</option>
-                      <option value="2">Category 2</option>
-                      <option value="3">Category 3</option>
+                      {
+                        ["Bags","Shoes","Sharees","Kurttys","Jewelry","Wooden","Ceramic"].map((item,index)=>{
+                          return(
+                            <option key={index} value={`${item}`}>{item}</option>
+                          )
+                        })
+                      }
                     </select>
                   </div>
                   <div className="create-product-form-group">
