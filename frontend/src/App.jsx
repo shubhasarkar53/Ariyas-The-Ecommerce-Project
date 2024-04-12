@@ -38,6 +38,8 @@ import EditAddressPage from "./Components/Dashboard/Address/EditAddressPage.jsx"
 import AdminDashboard from "./Components/Admin/AdminDashboard.jsx";
 import CreateNewProduct from "./Components/Admin/AdminFunctions/CreateNewProduct.jsx";
 import CreatedProducts from "./Components/Admin/AdminFunctions/CreatedProducts.jsx";
+import Shipping from "./Components/Cart/Shipping.jsx";
+import ConfirmOrder from "./Components/Cart/ConfirmOrder.jsx";
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
@@ -115,6 +117,14 @@ const App = () => {
                 exact
                 path="/yourProducts"
                 component={CreatedProducts}
+              />
+
+              <ProtectedRoute exact path="/shipping" component={Shipping} />
+
+              <ProtectedRoute
+                exact
+                path="/order/confirm"
+                component={ConfirmOrder}
               />
 
               <Route exact path="/contact" component={Contact} />

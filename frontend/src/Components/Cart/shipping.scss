@@ -1,0 +1,30 @@
+.addresses {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 auto;
+
+  .address {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+}
+
+.address-btn {
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #dbc81a;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: none;
+  border-radius: 10px;
+  &:hover {
+    background-color: #bc7305;
+  }
+}
