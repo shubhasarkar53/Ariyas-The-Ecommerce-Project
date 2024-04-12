@@ -69,4 +69,17 @@
       }
   }
 
+  .create-product-actions{
+    button{
+      border: none;
+      background-color: transparent;
+      outline: none;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      img:hover{
+       transform: scale(105%);
+      }
+    }
+  }
+
 

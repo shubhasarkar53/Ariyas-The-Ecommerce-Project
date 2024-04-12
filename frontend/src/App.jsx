@@ -40,6 +40,7 @@ import CreateNewProduct from "./Components/Admin/AdminFunctions/CreateNewProduct
 import CreatedProducts from "./Components/Admin/AdminFunctions/CreatedProducts.jsx";
 import Shipping from "./Components/Cart/Shipping.jsx";
 import ConfirmOrder from "./Components/Cart/ConfirmOrder.jsx";
+import EditProduct from "./Components/Admin/AdminFunctions/EditProduct.jsx";
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
@@ -117,6 +118,11 @@ const App = () => {
                 exact
                 path="/yourProducts"
                 component={CreatedProducts}
+              />
+              <ProtectedRoute
+                exact
+                path="/edit-product/:id"
+                component={EditProduct}
               />
 
               <ProtectedRoute exact path="/shipping" component={Shipping} />

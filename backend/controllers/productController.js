@@ -81,6 +81,29 @@ exports.updateProduct = catchAsyncErr(async (req, res, next) => {
     );
   }
 
+
+  if(req.body.image!==""){
+    const theProduct = await Product.findById(req.params.id)
+    //remove old image from cloudinary
+    // console.log("skipping If");
+    if(theProduct.image.publicId){
+      const imgId = theProduct.image.publicId;
+      await cloudinary.v2.uploader.destroy(imgId);
+    }
+    // console.log("skipped If");
+    // console.log("Uploading to cn");
+    
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.image,{
+      folder: "productsImg",
+      width:150,
+      crop:"scale",
+      quality: 'auto:low'
+    })
+    req.body.image={
+      publicId:myCloud.public_id,
+      url:myCloud.secure_url
+    }
+  }
   product = await Product.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
