@@ -35,6 +35,7 @@ const Shipping = ({ history }) => {
   };
 
   const handleSelectAddress = (addressId) => {
+    // set a default address selected 
     // Check if the address is already selected
     if (selectedAddressId === addressId) {
       return;
@@ -48,8 +49,22 @@ const addressSubmitHandler = (e) => {
   // Prevent default form submission
   e.preventDefault();
   // Dispatch saveShippingInfo action with the selected address id
+  // show a toast error if address not selected or not found
+  if (!selectedAddressId || !addresses) {
+    toast.error("Please select an address", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  } else {
   dispatch(saveShippingInfo({ address: selectedAddressId }));
-  history.push("/order/confirm");
+    history.push("/order/confirm");
+  }
 };
   
   return (
@@ -71,11 +86,12 @@ const addressSubmitHandler = (e) => {
           {addresses &&
                   addresses.map((address) => {
                     return (
-                      <div className="addresses" key={address._id}>
+                      <Fragment key={address._id}>
+                        <div className="addresses" key={address._id}>
                         <div className="address">
                           <input
                             type="radio"
-                            name="address"
+                            name="addressIn"
                             id={address._id}
                             value={address._id}
                             checked={selectedAddressId === address._id}
@@ -122,9 +138,12 @@ const addressSubmitHandler = (e) => {
                           </button>
                         </div>
                       </div>
+                      </Fragment>
                     );
                   })}
-          <button onClick={ addressSubmitHandler} className="address-btn">Continue to Payment</button>
+         <div className="buttonDiv">
+         <button onClick={ addressSubmitHandler} className="address-btn">Continue to Payment</button>
+         </div>
           <ToastContainer />
         </>
       )}

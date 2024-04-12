@@ -41,6 +41,7 @@ import CreatedProducts from "./Components/Admin/AdminFunctions/CreatedProducts.j
 import Shipping from "./Components/Cart/Shipping.jsx";
 import ConfirmOrder from "./Components/Cart/ConfirmOrder.jsx";
 import EditProduct from "./Components/Admin/AdminFunctions/EditProduct.jsx";
+import OrderSuccess from "./Components/Cart/OrderSuccess.jsx";
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
@@ -126,6 +127,12 @@ const App = () => {
               />
 
               <ProtectedRoute exact path="/shipping" component={Shipping} />
+
+              <ProtectedRoute
+                exact
+                path="/order/success"
+                component={OrderSuccess}
+              />
 
               <ProtectedRoute
                 exact

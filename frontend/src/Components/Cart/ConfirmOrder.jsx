@@ -7,6 +7,7 @@ import { Typography } from "@mui/material";
 import "./ConfirmOrder.scss";
 import PropTypes from "prop-types";
 import { createOrder, clearErrors } from "../../Redux/Actions/orderAction";
+import { clearCart } from "../../Redux/Actions/cartAction";
 import { ToastContainer, toast } from "react-toastify";
 
 
@@ -30,7 +31,9 @@ const ConfirmOrder = ({ history }) => {
   );
   const shippingCharges = subTotal > 1000 ? 0 : 200;
   const tax = subTotal * 0.18;
-  const totalPrice = subTotal + tax + shippingCharges;
+  const totalPrice = Math.ceil(subTotal + tax + shippingCharges);
+
+
 
   const order = {
     //map all cart product items in ordedrInfo
@@ -76,6 +79,23 @@ const ConfirmOrder = ({ history }) => {
   const submitOrderHandler =  (e) => {
     e.preventDefault();
      dispatch(createOrder(order));
+     if (!error) {
+          history.push("/order/success");
+        } else {
+          toast.error(error, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+          dispatch(clearErrors());
+        }
+        // clear cart after successfully placing order 
+        dispatch(clearCart());
   };
 
 
@@ -88,7 +108,16 @@ const ConfirmOrder = ({ history }) => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
       dispatch(clearErrors());
     }
   }, [dispatch, error, history]);
