@@ -12,9 +12,6 @@ import {addItemsToCart} from "../../Redux/Actions/cartAction"
 import { toast , ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from 'react-redux';
-
-import wishL from "../../assets/Images/Icons/CartPage/wishL.png"
-import cart2 from "../../assets/Images/Icons/CartPage/cart2.png"
 const ProductCard = ({ product, match }) => {
 
   const dispatch = useDispatch();
@@ -138,8 +135,8 @@ const addToCartHandler = () => {
             <div className="carddown-div">
 
             <div className="cart">
-              {/* <CiShoppingCart /> */}
-              <img src={cart2} alt="" onClick={addToCartHandler}  className='productCard-cart'/>
+              <CiShoppingCart onClick={addToCartHandler} />
+              {/* <img src={cart2} alt="" onClick={addToCartHandler}  className='productCard-cart'/> */}
             </div>
 
             <div className='prices-continer'>
@@ -148,8 +145,8 @@ const addToCartHandler = () => {
             </div>
 
             <div className="wishlist">
-            {/* <RiHeartAddFill onClick={addToWishListHandler} /> */}
-            <img src={wishL} alt="" onClick={addToWishListHandler} className='productCard-wishlist' />
+            <RiHeartAddFill onClick={addToWishListHandler} />
+            {/* <img src={wishL} alt="" onClick={addToWishListHandler} className='productCard-wishlist' /> */}
             </div>
             
             </div>
