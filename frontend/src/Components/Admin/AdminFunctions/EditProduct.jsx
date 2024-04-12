@@ -98,7 +98,7 @@ const { id } = useParams();
     myFormData.set("price", productPrice);
     myFormData.set("description", productDescription);
     myFormData.set("category", productCategory);
-    myFormData.set("quantity", productQuantity);
+    myFormData.set("stock", productQuantity);
     myFormData.set("category", productCategory);
     myFormData.set("location", productLocation);
     myFormData.set("image", productImg);
