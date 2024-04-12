@@ -33,19 +33,10 @@ const ConfirmOrder = ({ history }) => {
   const totalPrice = subTotal + tax + shippingCharges;
 
   const order = {
-    //map all cart product items in ordedrInfo
-   orderInfo:cartItems,
-    shippingInfo: {
-      address: selectedAddress.address,
-      city: selectedAddress.city,
-      state: selectedAddress.state,
-      country: selectedAddress.country,
-      pinCode: selectedAddress.pinCode,
-      phoneNo: selectedAddress.phoneNo,
-    },
+    orderItems:cartItems.product,
     user: user._id,
     selectedAddress,
-    paymentMethod: "COD",
+    paymentInfo: "COD",
     itemsPrice: subTotal,
     taxPrice: tax,
     shippingPrice: shippingCharges,
