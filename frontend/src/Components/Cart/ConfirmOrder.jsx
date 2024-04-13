@@ -78,8 +78,8 @@ const ConfirmOrder = ({ history }) => {
 
   const submitOrderHandler =  (e) => {
     e.preventDefault();
-     dispatch(createOrder(order));
      if (!error) {
+     dispatch(createOrder(order));
           history.push("/order/success");
         } else {
           toast.error(error, {

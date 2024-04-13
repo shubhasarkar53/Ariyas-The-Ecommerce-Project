@@ -12,7 +12,12 @@ const OrderSuccess = () => {
     (acc, item) => acc + item.quantity * item.price,
     0
   );
+
+  const shippingCharges2 = order.newOrder.shippingPrice;
+
   const tax = subTotal * 0.18; //tax is set to be 18%
+
+  const totalPrice = order.newOrder.totalPrice;
 
   return (
     <Fragment>
@@ -39,16 +44,16 @@ const OrderSuccess = () => {
             <div className="summary">
               <p className="summary_title-2">Order Summary</p>
               <p>
-                Subtotal: <span>₹{order.newOrder.itemsPrice}</span>
+                Subtotal: <span>₹{subTotal}</span>
               </p>
               <p>
-                Shipping: <span>₹{order.newOrder.shippingPrice}</span>
+                Shipping: <span>₹{shippingCharges2}</span>
               </p>
               <p>
                 Tax: <span>₹{tax}</span>
               </p>
               <p>
-                Total: <span>₹{order.newOrder.totalPrice}</span>
+                Total: <span>₹{totalPrice}</span>
               </p>
             </div>
           </div>
