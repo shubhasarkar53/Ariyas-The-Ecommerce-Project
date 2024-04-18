@@ -12,6 +12,7 @@ import { addItemsToWishList } from '../../Redux/Actions/wishListAction.js';
 import { Rating } from '@mui/material';
 import wishL from "../../assets/Images/Icons/CartPage/wishL.png";
 import cart2 from "../../assets/Images/Icons/CartPage/cart2.png";
+import PropTypes from 'prop-types';
 
 const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
 
@@ -25,39 +26,6 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
   const handleHover = () => {
     setIsHovered(!isHovered);
   };
-
-  // add to wishlist func
-  const addToWishListHandler = () => {
-    if (!product.name) return;
-    dispatch(addItemsToWishList(match.params.id));
-    toast.success(`${product.name} added to wishlist`, {
-      position: "bottom-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-    });
-  }
-
-
-  // add to cart func
-  const addToCartHandler = () => {
-    if (!product.name || !quantity) return;
-    dispatch(addItemsToCart(match.params.id, quantity));
-    toast.success(`${quantity} ${quantity > 1 ? 'items' : 'item'} added to cart`, {
-      position: "bottom-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-    });
-  }
 
 
   const handleButtonClick = async (buttonId) => {
@@ -187,20 +155,13 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
                       )}
                     </div>
 
-                    <div className={`sales-title ${hoveredProductId === product._id ? 'hidden' : ''} `}>
+                    <div className='sales-title'>
                       <h1><Link to={`/product/${product._id}`} className="sale-title-links">{product.name}</Link></h1>
                       <div className='price'>
                         <p>&#x20B9; {product.price}  (<span className="discount-sale">30% off</span>)</p>
                         <p className="price-cut">&#x20B9; 69420</p>
                       </div>
                     </div>
-                    {/* <div className="sales-title">
-                      <h1><Link to={`/product/${product._id}`} className="sale-title-links">{product.name}</Link></h1>
-                      <div className="price">
-                        <p>&#x20B9; {product.price}  (<span className="discount-sale">30% off</span>)</p>
-                        <p className="price-cut">&#x20B9; 69420</p>
-                      </div>
-                    </div> */}
 
                     <div className='ratings'>
                       <Rating {...options} className='rating-options' />
@@ -239,7 +200,7 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
                           <span className='price-2'>Rs. {product.price * 4}</span>
                         </div>
                         <div className='wishlist'>
-                          <img src={wishL} alt='' onClick={() => handleAddToWishList(product._id, product.name)} className='productCard-wishlist' />
+                          <img src={wishL} alt='' onClick={() => handleAddToWishlist(product._id, product.name)} className='productCard-wishlist' />
                         </div>
                       </div>
                     )}
@@ -269,5 +230,12 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
     </>
   )
 }
+
+SaleCards.propTypes = {
+  products: PropTypes.array.isRequired,
+  isButtonClicked: PropTypes.string.isRequired,
+  onButtonClick: PropTypes.func.isRequired,
+  product: PropTypes.object, // This is optional since it might not always be present
+};
 
 export default SaleCards

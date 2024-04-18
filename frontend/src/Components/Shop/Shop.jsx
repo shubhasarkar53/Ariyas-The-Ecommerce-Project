@@ -10,7 +10,7 @@ import ProductCard from "../Home/ProductCard";
 import ProductPagination from "./PaginationComponent/productPagination";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
-import { Rating } from '@mui/material'
+import { Rating } from '@mui/material';
 
 
 
@@ -23,17 +23,17 @@ const Shop = ({ match }) => {
     useSelector((state) => state.products);
 
 
-    const categories = [
-      "All",
-      "Bags",
-      "Shoes",
-      "Sharees",
-      "Kurttys",
-      "Jewelry",
-      "Wooden",
-      "Ceramic",
-      
-    ]
+  const categories = [
+    "All",
+    "Bags",
+    "Shoes",
+    "Sharees",
+    "Kurttys",
+    "Jewelry",
+    "Wooden",
+    "Ceramic",
+
+  ]
 
   /// pagination
   const [currentPage, setCurrentPage] = useState(1); // Current page
@@ -82,50 +82,50 @@ const Shop = ({ match }) => {
 
             <div className="price-filter-container ">
 
-             {/* Price Filter */}
-            <Typography className="price-header">Price</Typography>
-            <Slider
-            className="main-slider"
-              value={price}
-              onChange={priceHandler}
-              valueLabelDisplay="auto"
-              aria-labelledby="range-slider"
-              min={0}
-              max={30000}
-            />
-
-            {/* categori filter */}
-
-            <Typography className="category-header">Categories</Typography>
-            <ul className="categoryBox">
-              {categories.map((category) => (
-                <li
-                  className="category-link"
-                  key={category}
-                  onClick={() => setCategory(category)}
-                >
-                  {category}
-                </li>
-              ))}
-            </ul>
-
-            {/* Ratings Filter */}
-            <div className="rating-filter">
-              <Typography component="legend" className="rating-header">Ratings</Typography>
+              {/* Price Filter */}
+              <Typography className="price-header">Price</Typography>
               <Slider
-                className="rating-slider"
-                value={ratings}
-                onChange={(e, newRating) => {
-                  setRatings(newRating);
-                }}
-                aria-labelledby="continuous-slider"
+                className="main-slider"
+                value={price}
+                onChange={priceHandler}
                 valueLabelDisplay="auto"
+                aria-labelledby="range-slider"
                 min={0}
-                max={5}
+                max={30000}
               />
-            </div>
 
-      
+              {/* categori filter */}
+
+              <Typography className="category-header">Categories</Typography>
+              <ul className="categoryBox">
+                {categories.map((category) => (
+                  <li
+                    className="category-link"
+                    key={category}
+                    onClick={() => setCategory(category)}
+                  >
+                    {category}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Ratings Filter */}
+              <div className="rating-filter">
+                <Typography component="legend" className="rating-header">Ratings</Typography>
+                <Slider
+                  className="rating-slider"
+                  value={ratings}
+                  onChange={(e, newRating) => {
+                    setRatings(newRating);
+                  }}
+                  aria-labelledby="continuous-slider"
+                  valueLabelDisplay="auto"
+                  min={0}
+                  max={5}
+                />
+              </div>
+
+
             </div>
 
             <div className="paginationBox">

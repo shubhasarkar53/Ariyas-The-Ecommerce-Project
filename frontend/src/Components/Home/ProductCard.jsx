@@ -1,11 +1,10 @@
+
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import "./ProductCard.scss"
 import { Link } from 'react-router-dom'
 import Rating from '@mui/material/Rating';
 import PropTypes from 'prop-types';
-import { FiShoppingCart, FiHeart } from "react-icons/fi";
-import { CiShoppingCart } from "react-icons/ci";
 import { RiHeartAddFill } from "react-icons/ri";
 import { addItemsToWishList } from '../../Redux/Actions/wishListAction';
 import { addItemsToCart } from "../../Redux/Actions/cartAction"
@@ -15,12 +14,15 @@ import { useDispatch } from 'react-redux';
 
 import wishL from "../../assets/Images/Icons/CartPage/wishL.png"
 import cart2 from "../../assets/Images/Icons/CartPage/cart2.png"
-const ProductCard = ({ product, match }) => {
+import { FaHeart, FaShoppingCart } from 'react-icons/fa';
+const ProductCard = ({ products, product, match }) => {
 
   const dispatch = useDispatch();
 
 
-  const [quantity, setQuantity] = React.useState(1);
+  const [isCardDownVisible, setIsCardDownVisible] = useState(false);
+  const [hoveredProductId, setHoveredProductId] = useState(null);
+  const [quantity, setQuantity] = useState(1);
 
 
   const options = {
@@ -55,122 +57,157 @@ const ProductCard = ({ product, match }) => {
 
   const randomNo = getRandomNumber();
 
+  const handleAddToWishlist = (productId, productName) => {
+    // Dispatch the addItemsToWishList action with product ID
+    dispatch(addItemsToWishList(productId));
 
-  // add to wishlist func
-  const addToWishListHandler = () => {
-    if (!product.name) return;
-    dispatch(addItemsToWishList(match.params.id));
-    toast.success(`${product.name} added to wishlist`, {
-      position: "bottom-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
+    alert(`${productName} is added to wishlist`);
+
+    // Show a success toast
+    toast.success(`${productName} added to wishlist!`, {
+      position: toast.POSITION.TOP_RIGHT,
     });
-  }
+  };
 
+  const handleAddToCart = (productId, productName, productPrice) => {
+    const product = products.find((product) => product._id === productId);
 
-  // add to cart func
-  const addToCartHandler = () => {
-    if (!product.name || !quantity) return;
-    dispatch(addItemsToCart(match.params.id, quantity));
-    toast.success(`${quantity} ${quantity > 1 ? 'items' : 'item'} added to cart`, {
-      position: "bottom-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
+    // Dispatch the addItemsToCart action with id and quantity
+    dispatch(addItemsToCart(productId, 1)); // Assuming you're adding only one item
+
+    alert(`${productName} added to cart`);
+
+    // Show a success toast
+    toast.success(`${productName} added to cart!`, {
+      position: toast.POSITION.TOP_RIGHT,
     });
-  }
+  };
+
+
+  // // add to wishlist func
+  // const addToWishListHandler = () => {
+  //   if (!product.name) return;
+  //   dispatch(addItemsToWishList(match.params.id));
+  //   toast.success(`${product.name} added to wishlist`, {
+  //     position: "bottom-center",
+  //     autoClose: 2000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: "colored",
+  //   });
+  // }
+
+
+  // // add to cart func
+  // const addToCartHandler = () => {
+  //   if (!product.name || !quantity) return;
+  //   dispatch(addItemsToCart(match.params.id, quantity));
+  //   toast.success(`${quantity} ${quantity > 1 ? 'items' : 'item'} added to cart`, {
+  //     position: "bottom-center",
+  //     autoClose: 2000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: "colored",
+  //   });
+  // }
 
 
 
   return (
 
-
-    <Link
-      className={`card ${isHovered ? 'hovered' : ''}`}
-      to={`/product/${product._id}`}
-      onMouseEnter={handleHover}
-      onMouseLeave={handleHover}>
-      <div className='imgContainer'>
-        <img src={product.image[0].url} alt="" />
-        {isHovered && (
-          <div className="hover-buttons">
-            <button className="wishlist-hov-button">
-              <FiHeart />
-            </button>
-            <Link to="/cart" className="cart-button">
-              <FiShoppingCart />
-            </Link>
+    <div className="card-container">
+      <Link
+        className={`card ${isHovered ? 'hovered' : ''}`}
+        to={`/product/${product._id}`}
+        onMouseEnter={handleHover}
+        onMouseLeave={handleHover}>
+        <div className="card-layout-container">
+          <div className='imgContainer'>
+            <img src={product.image[0].url} alt="" />
+            {isHovered && (
+              <div className="hover-buttons">
+                <button className="wishlist-hov-button">
+                  <Link to="/wishlist" className='wishlist-button'>
+                    <FaHeart />
+                  </Link>
+                </button>
+                <button className='cart-hov-button'>
+                  <Link to="/cart" className="cart-button">
+                    <FaShoppingCart />
+                  </Link>
+                </button>
+              </div>
+            )}
           </div>
-        )}
-      </div>
-      <p className='product-title'>{product.name}</p>
-      {/* <p className='product-des'>{product.description}</p> */}
-
-      {/* <div className='ratings'>
-        <Rating {...options} />
-        <span className="detailsBlock-2-span">
-          {" "}
-          ({product.numOfReviews} {product.numOfReviews > 1 ? "Reviews" : "Review"})
-        </span>
-      </div> */}
-
-      <div className='prices-continer'>
-        <span className='price-1'>RS. {product.price}</span>
-        <span className='price-2'>Rs. 2223</span>
-      </div>
-      <div className='ratings'>
-        <Rating {...options} className='rating-options' />
-        <span className="detailsBlock-2-span">
-          {" "}
-          ({product.numOfReviews} {product.numOfReviews > 1 ? "Reviews" : "Review"})
-        </span>
-      </div>
-      {isHovered && (
-        <div className='carddown-div'>
-          <div className='cart'>
-            <img src={cart2} alt='' onClick={addToCartHandler} className='productCard-cart' />
+          <div className="product-titles">
+            <p className='title'>{product.name}</p>
           </div>
-          <div className='prices-continer'>
+          {/* <p className='product-des'>{product.description}</p> */}
+
+          <div className='prices-container'>
             <span className='price-1'>RS. {product.price}</span>
-            <span className='price-2'>Rs. {product.price * 4}</span>
+            <span className='price-2'>Rs. 2223</span>
           </div>
-          <div className='wishlist'>
-            <img src={wishL} alt='' onClick={addToWishListHandler} className='productCard-wishlist' />
+          <div className='ratings'>
+            <Rating {...options} className='rating-options' />
+            <span className="detailsBlock-2-span">
+              {" "}
+              ({product.numOfReviews} {product.numOfReviews > 1 ? "Reviews" : "Review"})
+            </span>
           </div>
-        </div>
-      )}
-      {/* <div className="carddown-div">
+          {hoveredProductId === product._id && (
+            <div
+              className={`carddown-div ${isCardDownVisible ? 'visible' : ''}`}
+              onMouseEnter={() => setIsCardDownVisible(true)}
+              onMouseLeave={() => setIsCardDownVisible(false)}
+            >
+              <div className='cart'>
+                <img src={cart2} alt='' onClick={() => handleAddToCart(product._id, product.name, product.price)} className='productCard-cart' />
+              </div>
+              <div className='prices-continer'>
+                <span className='price-1'>RS. {product.price}</span>
+                <span className='price-2'>Rs. {product.price * 4}</span>
+              </div>
+              <div className='wishlist'>
+                <img src={wishL} alt='' onClick={() => handleAddToWishlist(product._id, product.name)} className='productCard-wishlist' />
+              </div>
+            </div>
+          )}
+          {/* {isHovered && (
+            <div className="carddown-div">
 
-        <div className="cart">
-          <img src={cart2} alt="" onClick={addToCartHandler} className='productCard-cart' />
-        </div>
+              <div className="cart">
+                <img src={cart2} alt="" onClick={addItemsToCart} className='productCard-cart' />
+              </div>
 
-        <div className='prices-continer'>
-          <span className='price-1'>RS. {product.price}</span>
-          <span className='price-2'>Rs. {product.price * randomNo}</span>
-        </div>
+              <div className='prices-continer'>
+                <span className='price-1'>RS. {product.price}</span>
+                <span className='price-2'>Rs. {product.price * randomNo}</span>
+              </div>
 
-        <div className="wishlist">
-          <img src={wishL} alt="" onClick={addToWishListHandler} className='productCard-wishlist' />
-        </div>
+              <div className="wishlist">
+                <img src={wishL} alt="" onClick={addItemsToWishList} className='productCard-wishlist' />
+              </div>
 
-      </div> */}
-    </Link>
+            </div>
+          )} */}
+        </div>
+      </Link>
+
+    </div>
   )
 }
 
 ProductCard.propTypes = {
   product: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired
+  match: PropTypes.object.isRequired,
+  products: PropTypes.array.isRequired
 };
 export default ProductCard
 
@@ -187,5 +224,7 @@ export default ProductCard
 // The isRequired property means that the prop is required and will throw a warning if it is not provided.
 
 // By defining propTypes for the ProductCard component, it helps to ensure that the component is used correctly and can prevent bugs caused by passing the wrong type of data as props.
+
+
 
 

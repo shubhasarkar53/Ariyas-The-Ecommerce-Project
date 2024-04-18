@@ -15,6 +15,7 @@ import image4 from "../../assets/Images/Carousel/AdobeStock_655646740_Preview.jp
 //import other images
 import Logo from "../../assets/Images/Home/all_logo.png";
 import ProductCard from "./ProductCard";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
+
 
   //images, titles and captions for carousel
   const images = [
@@ -79,7 +81,7 @@ const Home = () => {
 
           <div className="logo-container">
             {" "}
-            <img src={Logo} alt="logo" />
+            <img src={Logo} alt="logo" className="logo" />
           </div>
 
           <div className="category-container">
@@ -138,7 +140,7 @@ const Home = () => {
                 <h1>{products[0] && products[0].category} Item&apos;s</h1>
                 <div className="row-products">
                   {products.slice(0, 4).map((product) => {
-                    return <ProductCard key={product._id} product={product} />;
+                    return <ProductCard key={product._id} product={product} products={products} />;
                   })}
                 </div>
               </div>
@@ -178,7 +180,23 @@ const Home = () => {
               </div>
             )} */}
           </div>
+          <div className="explore-more-section">
+            <div className="explore">
+              <div className="explore-title">
+                <h2>Explore more</h2>
+                <h3>Explore and enrich the cultural heritage of our Indian civilization.</h3>
+                <p>Explore our meticulously curated collection of traditional goods, each crafted with precision and imbued with centuries of heritage. From exquisite handloom sarees to intricately carved wooden artifacts, Ariyas showcases the finest craftsmanship India has to offer.</p>
+                <div className="btn-explore">
+                  <Link to="/shop"><button>Bags</button></Link>
+                  <Link to="/shop"><button>Sarees</button></Link>
+                  <Link to="/shop"><button>Wooden Items</button></Link>
+                  <Link to="/shop"><button>Clay Products</button></Link>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
       )}
     </Fragment>
   );
