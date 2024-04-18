@@ -7,24 +7,55 @@ import "react-toastify/dist/ReactToastify.css";
 import profileSide from "../../../assets/Images/Icons/profile icons/pngwing 3.png";
 import pencilIcon from "../../../assets/Images/Icons/createdProductActions/pencil.png";
 import deleteIcon from "../../../assets/Images/Icons/createdProductActions/delete.png";
-import { clearError, createProductAction, getYourProducts } from "../../../Redux/Actions/productAction";
+import { clearError, createProductAction, deleteCreatedProduct, getYourProducts } from "../../../Redux/Actions/productAction";
 import { CREATE_PRODUCT_RESET } from "../../../Redux/Constants/productConstants";
 import Loader from "../../Loader/Loader";
 import "./CreatedProducts.scss"
+import DotLoader from "../../Loader/DotLoader";
 const CreatedProducts = () => {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    const {loading,error,products} = useSelector(state=>state.createdProducts);
+    const {loading,error,products,isDeleted} = useSelector(state=>state.createdProducts);
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getYourProducts());
-    },[])
+
+        if (error) {
+          // some toast
+          toast.error(error, {
+            position: "bottom-center",
+            autoClose: 3000,
+          });
+          console.log("useeffect:", error);
+          dispatch(clearError());
+        }
+
+        if(isDeleted){
+          toast.success("Product Deleted Successfully", {
+            position: "bottom-center",
+            autoClose: 3000,
+          });
+          dispatch(getYourProducts());
+
+          dispatch({type:CREATE_PRODUCT_RESET});
+        }
+
+
+    },[dispatch,isDeleted,error]);
+
+    function handleDeleteProduct(productId) {
+        dispatch(deleteCreatedProduct(productId));
+    }
+    function handleEditProduct(productId){
+     history.push(`/edit-product/${productId}`);
+    }
+
 
     return (
         <>
         {
-          loading? <Loader /> :
+          loading? <DotLoader/> :
           (
             <>
           <div className="profile-container">
@@ -52,7 +83,6 @@ const CreatedProducts = () => {
                   <div className="created-products">
                   {
                         products.map((product)=>{
-                          console.log(product)
                             return(
                                 <div key={product._id} className="create-product-items">
                                     <div className="created-product-img">
@@ -63,12 +93,12 @@ const CreatedProducts = () => {
                                     <p>{product.stock}</p>
                                     <p>Rs. {product.price}</p>
                                     <div className="create-product-actions">
-                                      <div className="action-edit">
+                                      <button  className="action-edit" onClick={ ()=> handleEditProduct(product._id)}>
                                         <img src={pencilIcon} alt="Edit" />
-                                      </div>
-                                      <div className="action-delete">
+                                      </button>
+                                      <button className="action-delete" onClick={()=> handleDeleteProduct(product._id)}>
                                       <img src={deleteIcon} alt="Delete" />
-                                      </div>
+                                      </button>
                                     </div>
                                 </div>
                             )

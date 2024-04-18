@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { ADD_TO_CART, REMOVE_CART_ITEM, SAVE_SHIPPING_INFO } from '../Constants/cartConstants';
+import { ADD_TO_CART, REMOVE_CART_ITEM, SAVE_SHIPPING_INFO, CLEAR_ERRORS, CLEAR_CART } from '../Constants/cartConstants';
 
 
 const initialState = {
@@ -35,6 +35,16 @@ export const cartReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 shippingInfo: action.payload
+            }
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+        case CLEAR_CART:
+            return {
+                ...state,
+                cartItems: []
             }
         default:
             return state;

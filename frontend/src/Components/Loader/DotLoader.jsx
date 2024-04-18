@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./DotLoader.scss"
 const DotLoader = () => {
   return (
     <div className="dot-animation-container">

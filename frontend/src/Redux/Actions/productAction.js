@@ -15,6 +15,12 @@ import {
   LOAD_CREATED_PRODUCT_REQUEST,
   LOAD_CREATED_PRODUCT_SUCCESS,
   LOAD_CREATED_PRODUCT_FAIL,
+  DELETE_PRODUCT_REQUEST,
+  DELETE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_FAIL,
+  EDIT_PRODUCT_REQUEST,
+  EDIT_PRODUCT_SUCCESS,
+  EDIT_PRODUCT_FAIL,
 } from "../Constants/productConstants";
 
 export const getProducts =
@@ -149,6 +155,50 @@ export const createProductAction = (productData) => async (dispatch) => {
     });
   }
 };
+
+export const editCreatedProduct = (productId, updatedProductData) => async (dispatch) => {
+  dispatch({ type: EDIT_PRODUCT_REQUEST });
+
+  try {
+
+    const config = {
+      headers: {"Content-Type": "multipart/form-data"},
+      withCredentials: true,
+    };
+    const {data} = await axios.put(`/api/v1/product/${productId}`, updatedProductData,config );
+
+    dispatch({
+      type: EDIT_PRODUCT_SUCCESS,
+      payload: data.success ,
+    });
+  } catch (error) {
+    dispatch({
+      type: EDIT_PRODUCT_FAIL,
+      payload:error.response.data.message
+    });
+  }
+};
+
+
+export const deleteCreatedProduct = (productId) => async(dispatch) =>{
+  try {
+      dispatch({type:DELETE_PRODUCT_REQUEST});
+
+      const {data} = await axios.delete(`/api/v1/product/${productId}`);
+
+      dispatch({
+        type: DELETE_PRODUCT_SUCCESS,
+        payload:productId,
+      });
+
+    } catch (error) {
+      dispatch({
+        type: DELETE_PRODUCT_FAIL,
+        payload:error.response.data.message 
+      });
+    }
+};
+
 
 export const clearError = () => async (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
