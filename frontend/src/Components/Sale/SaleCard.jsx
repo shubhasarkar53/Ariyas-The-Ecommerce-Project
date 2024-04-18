@@ -239,3 +239,26 @@ SaleCards.propTypes = {
 };
 
 export default SaleCards
+
+
+// Explanation
+
+// This code is a React component named `SaleCards`. It renders a list of products, typically used for displaying items on sale. Here's a concise explanation:
+
+// 1. **Imports**: Imports necessary modules and components from React, React Router, React Icons, React Toastify, and Redux.
+
+// 2. **Component Definition**: Defines the `SaleCards` component which takes props such as `products`, `isButtonClicked`, `onButtonClick`, and `product`.
+
+// 3. **State**: Utilizes React hooks like `useState` to manage component state, including loading state for buttons and visibility of card details.
+
+// 4. **Event Handlers**: Defines functions to handle button clicks (for learning more about offers, adding to wishlist, and adding to cart).
+
+// 5. **Render Logic**: Renders UI elements including sales offers, product cards with images, titles, prices, ratings, and buttons for wishlist and cart.
+
+// 6. **Toasts**: Utilizes React Toastify for showing success messages upon adding items to wishlist or cart.
+
+// 7. **PropTypes**: Specifies prop types for type-checking during development.
+
+// 8. **Export**: Exports the `SaleCards` component as default.
+
+// Overall, it's a component responsible for rendering sale items with interactive buttons for adding to wishlist or cart, along with handling user interactions and displaying notifications.

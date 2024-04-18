@@ -28,7 +28,6 @@
     margin: 0 15rem;
     margin-top: 3rem;
     gap: 2rem;
-    border: 1px solid red;
     padding: 0 5vmax;
   }
 }
@@ -61,20 +60,20 @@
   .rating-header {
     font-size: 1.3rem;
     font-weight: 600;
-    color: #f50057;
+    color: orange;
     margin: 1rem;
   }
   .main-slider,
   .rating-slider {
     width: 90%;
     margin-bottom: 1rem;
-    color: #f50057;
+    color: orange;
     scroll-behavior: smooth;
   }
   .category-header {
     font-size: 1.3rem;
     font-weight: 600;
-    color: #f50057;
+    color: orange;
     margin: 1rem;
   }
   .category-link {
@@ -85,7 +84,7 @@
     cursor: pointer;
     transition: all 0.5s;
     &:hover {
-      color: #f50057;
+      color: orange;
     }
   }
   .rating-filter {
