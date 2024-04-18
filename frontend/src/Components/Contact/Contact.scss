@@ -188,13 +188,21 @@ $orangeTextColor: #ee9208;
     }
   }
 }
+@media screen and (max-width: 1200px) {
+  .contact-container {
+    width: 100%;
+    .contact-form {
+      width: 50%;
+    }
+  }
+}
 
 @media screen and (max-width: 1000px) {
   .contact-container {
     width: 100%;
 
     .contact-form {
-      width: 80%;
+      width: 45%;
       h2 {
         font-size: 1.7rem;
       }
@@ -249,7 +257,7 @@ $orangeTextColor: #ee9208;
 @media screen and (max-width: 768px) {
   .contact-container {
     .contact-form {
-      width: 80%;
+      width: 60%;
       h2 {
         font-size: 1.4rem;
       }
