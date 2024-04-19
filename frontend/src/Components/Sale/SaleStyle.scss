@@ -115,10 +115,8 @@ $orangeTextColor: #d47f00;
   }
 
   .sale-snap-container {
-    background-image: linear-gradient(
-        rgba(0, 0, 0, 0.582),
-        rgba(0, 0, 0, 0.417)
-      ),
+    background-image: linear-gradient(rgba(0, 0, 0, 0.582),
+        rgba(0, 0, 0, 0.417)),
       url("../../assets/Images/Carousel/AdobeStock_453480765_Preview.jpeg");
     background-position: center;
     background-size: cover;
@@ -240,6 +238,7 @@ $orangeTextColor: #d47f00;
   }
 
   @keyframes loadingDots {
+
     0%,
     20% {
       content: "...";
@@ -436,25 +435,14 @@ $orangeTextColor: #d47f00;
 }
 
 .carddown-div {
-  // display: flex;
-  // align-items: center;
-  // justify-content: space-between;
-  // padding: 0.5rem;
-  // gap: 1rem;
-  // width: 100%;
-  // height: fit-content;
-  // transition: all 0.3s ease-in-out;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem;
   gap: 1rem;
   width: 100%;
-  /* Set width to 100% to occupy full width of .sales-card */
   transition: all 0.3s ease-in-out;
-  /* Add transition for smoothness */
   opacity: 0;
-  /* Initially hide the carddown-div */
   transform: translateY(20px);
 
   .cart {
@@ -466,7 +454,7 @@ $orangeTextColor: #d47f00;
     }
   }
 
-  .prices-continer {
+  .prices-container {
     width: 65%;
     display: flex;
     flex-direction: column;
@@ -498,9 +486,7 @@ $orangeTextColor: #d47f00;
 
 .sales-card:hover .carddown-div {
   opacity: 1;
-  /* Show carddown-div on hover */
   transform: translateY(0);
-  /* Move carddown-div back to its original position */
 }
 
 .hidden {
@@ -530,6 +516,7 @@ $orangeTextColor: #d47f00;
           margin-right: 0.9rem;
         }
       }
+
       .gift-title {
         .gift-icon {
           font-size: 1.4rem;
@@ -569,17 +556,21 @@ $orangeTextColor: #d47f00;
   .gift-container {
     .gift-section {
       margin: 0 7rem;
+
       .gift-card-title {
         h2 {
           font-size: 1.2rem;
         }
+
         p {
           font-size: 0.8rem;
         }
       }
+
       .divider {
         margin-left: -0.5rem;
       }
+
       .gift-btn {
         button {
           padding: 0.8rem;
@@ -588,6 +579,7 @@ $orangeTextColor: #d47f00;
       }
     }
   }
+
   .sale-division {
     .sale-title-div {
       padding: 4rem 0;
@@ -621,17 +613,21 @@ $orangeTextColor: #d47f00;
   .gift-container {
     .gift-section {
       margin: 0 4rem;
+
       .gift-card-title {
         h2 {
           font-size: 1.1rem;
         }
+
         p {
           font-size: 0.7rem;
         }
       }
+
       .divider {
         margin-left: -0.5rem;
       }
+
       .gift-btn {
         button {
           padding: 0.8rem;
@@ -701,26 +697,32 @@ $orangeTextColor: #d47f00;
       margin: 0 3rem;
       flex-direction: column;
       align-items: center;
+
       .gift-card-title {
         h2 {
           font-size: 1.7rem;
           text-align: center;
         }
+
         p {
           font-size: 0.9rem;
           text-align: center;
         }
+
         .fagift-icon {
           font-size: 2rem;
         }
       }
+
       .divider {
         display: none;
       }
+
       .gift-btn {
         display: flex;
         justify-content: center;
         align-items: center;
+
         button {
           padding: 0.9rem;
           font-size: 1rem;

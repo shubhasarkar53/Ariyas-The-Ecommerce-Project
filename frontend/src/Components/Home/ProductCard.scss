@@ -3,82 +3,6 @@ $textWhite: #fafafa;
 $secondaryTextColor: #4d4d4d;
 $orangeTextColor: #d47f00;
 
-// .card-container {
-//   display: flex;
-//   justify-content: flex-start;
-//   border: 1px solid yellow;
-//   .card {
-//     width: 90%;
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//     margin-top: 2rem;
-//     border: 1px solid red;
-//     .card-layout-container {
-//       display: flex;
-//       flex-direction: column;
-//       .imgContainer {
-//         width: 100%;
-//         padding: 1.5rem;
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         flex-direction: column;
-//         img {
-//           width: 90%;
-//           height: 280px;
-//         }
-//       }
-//       .product-title,
-//       .prices-continer {
-//         text-align: center;
-//         padding: 0 1.5rem;
-//       }
-//       .product-title {
-//         text-decoration: none;
-//         font-size: 1.3rem;
-//         font-weight: bold;
-//         color: rgb(66, 65, 65);
-//         &:hover {
-//           color: $orangeTextColor;
-//         }
-//       }
-//       .ratings {
-//         display: flex;
-//         opacity: 0;
-//         align-items: center;
-//         justify-content: center;
-//         gap: 0.5rem;
-//         font-size: 1.3rem;
-//         &:hover {
-//           opacity: 1;
-//         }
-//       }
-//     }
-//   }
-// }
-
-// .productCard-cart{
-//     width: 30px;
-//     height: 30px;
-//     cursor: pointer;
-//     // &:hover{
-//     //     color: #D47F00;
-//     // }
-// }
-
-// .ratings {
-//   display: flex;
-//   opacity: 0;
-//   align-items: center;
-//   justify-content: center;
-//   gap: 0.5rem;
-//   font-size: 1.3rem;
-//   &:hover {
-//     opacity: 1;
-//   }
-// }
-
 .card-container {
   .card {
     display: flex;
@@ -141,24 +65,13 @@ $orangeTextColor: #d47f00;
         background: white;
         border: 0.2px solid rgba(128, 128, 128, 0.151);
         cursor: pointer;
+        color: gray;
         font-size: 20px;
         padding: 0.2rem;
-        color: $textColor; // Or any other color you prefer
-      }
-
-      .wishlist-button,
-      .cart-button {
-        text-decoration: none;
-        width: 20px;
-        height: 20px;
-        color: gray;
-        cursor: pointer;
-        padding: 0.3rem;
-        transition: color 0.4s ease-in-out, transform 0.4s ease-in-out;
-
+        transition: all 0.3s linear;
         &:hover {
-          color: $orangeTextColor;
-          transform: scale(1.1); // Change color on hover
+          color: orange;
+          transform: scale(1.01);
         }
       }
     }
@@ -187,6 +100,18 @@ $orangeTextColor: #d47f00;
     justify-content: center;
     gap: 0.5rem;
     font-size: 1rem;
+    .rating-options {
+      color: black;
+      .MuiRating-iconEmpty {
+        color: orange;
+      }
+      .MuiRating-iconHover {
+        color: gold;
+      }
+      .MuiSvgIcon-root {
+        font-size: 1.4rem;
+      }
+    }
   }
 
   .prices-container {
@@ -199,65 +124,55 @@ $orangeTextColor: #d47f00;
       color: $secondaryTextColor;
     }
   }
-
-  // .carddown-div {
-  //   display: none;
-  //   position: absolute;
-  //   bottom: 0;
-  //   left: 0;
-  //   width: 100%;
-  //   padding: 1rem;
-  //   background-color: rgba(255, 255, 255, 0.9);
-  //   transition: transform 0.3s ease-in-out;
-  //   z-index: 2;
-  //   &:hover {
-  //     transform: translateY(-100%);
-  //   }
-  //   img {
-  //     width: 30px;
-  //     height: 30px;
-  //     cursor: pointer;
-  //     margin-right: 10px;
-  //   }
-  // }
-
-  // &:hover {
-  //   .carddown-div {
-  //     display: flex;
-  //     justify-content: center;
-  //     align-items: center;
-  //   }
-  // }
   .carddown-div {
-    display: none;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    padding: 1rem;
+    padding: 0.5rem;
     background-color: rgba(255, 255, 255, 0.9);
-    transition: transform 0.3s ease-in-out;
-    border: 1px solid red;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
     z-index: 1;
-    margin-top: 5rem;
+    transform: translateY(20px);
 
-    img {
-      width: 30px;
-      height: 30px;
+    .cart {
+      font-size: 2rem;
       cursor: pointer;
-      margin-right: 10px;
+      &:hover {
+        color: orange;
+      }
+    }
+
+    .prices-container {
+      width: 65%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 30px;
+    }
+    .price1 {
+      font-weight: 500;
+    }
+    .price2 {
+      color: #777777;
+      text-decoration: line-through;
+    }
+
+    .wishlist {
+      font-size: 1.8rem;
+      cursor: pointer;
+      &:hover {
+        color: orange;
+      }
     }
   }
 
-  // .carddown-div {
-  //   display: none;
-  // }
-  // &:hover .carddown-div {
-  //   display: flex;
-  //   align-items: center; // Center content horizontally
-  //   width: 100%; // Ensure content spans the width of the card
-  //   background-color: white; // Add background color for better visibility
-  //   padding: 1rem; // Add padding for spacing
-  //   z-index: 1; // Ensure content appears above other elements
-  // }
+  &:hover .carddown-div {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

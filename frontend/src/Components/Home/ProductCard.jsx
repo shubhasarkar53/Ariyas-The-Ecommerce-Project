@@ -15,7 +15,7 @@ import { useDispatch } from 'react-redux';
 import wishL from "../../assets/Images/Icons/CartPage/wishL.png"
 import cart2 from "../../assets/Images/Icons/CartPage/cart2.png"
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
-const ProductCard = ({ products, product, match }) => {
+const ProductCard = ({ product, match }) => {
 
   const dispatch = useDispatch();
 
@@ -57,67 +57,37 @@ const ProductCard = ({ products, product, match }) => {
 
   const randomNo = getRandomNumber();
 
-  const handleAddToWishlist = (productId, productName) => {
-    // Dispatch the addItemsToWishList action with product ID
-    dispatch(addItemsToWishList(productId));
 
-    alert(`${productName} is added to wishlist`);
-
-    // Show a success toast
-    toast.success(`${productName} added to wishlist!`, {
-      position: toast.POSITION.TOP_RIGHT,
+  const addToWishListHandler = () => {
+    if (!product._id || !product.name) return;
+    dispatch(addItemsToWishList(product._id));
+    toast.success(`${product.name} added to wishlist`, {
+      // Toast notification
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
     });
   };
 
-  const handleAddToCart = (productId, productName, productPrice) => {
-    const product = products.find((product) => product._id === productId);
-
-    // Dispatch the addItemsToCart action with id and quantity
-    dispatch(addItemsToCart(productId, 1)); // Assuming you're adding only one item
-
-    alert(`${productName} added to cart`);
-
-    // Show a success toast
-    toast.success(`${productName} added to cart!`, {
-      position: toast.POSITION.TOP_RIGHT,
+  const addToCartHandler = () => {
+    if (!product._id || !product.name || !quantity) return;
+    dispatch(addItemsToCart(product._id, quantity));
+    toast.success(`${quantity} ${quantity > 1 ? 'items' : 'item'} added to cart`, {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
     });
   };
-
-
-  // // add to wishlist func
-  // const addToWishListHandler = () => {
-  //   if (!product.name) return;
-  //   dispatch(addItemsToWishList(match.params.id));
-  //   toast.success(`${product.name} added to wishlist`, {
-  //     position: "bottom-center",
-  //     autoClose: 2000,
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //     theme: "colored",
-  //   });
-  // }
-
-
-  // // add to cart func
-  // const addToCartHandler = () => {
-  //   if (!product.name || !quantity) return;
-  //   dispatch(addItemsToCart(match.params.id, quantity));
-  //   toast.success(`${quantity} ${quantity > 1 ? 'items' : 'item'} added to cart`, {
-  //     position: "bottom-center",
-  //     autoClose: 2000,
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //     theme: "colored",
-  //   });
-  // }
-
-
 
   return (
 
@@ -132,15 +102,21 @@ const ProductCard = ({ products, product, match }) => {
             <img src={product.image[0].url} alt="" />
             {isHovered && (
               <div className="hover-buttons">
-                <button className="wishlist-hov-button">
-                  <Link to="/wishlist" className='wishlist-button'>
-                    <FaHeart />
-                  </Link>
+                <button className="wishlist-hov-button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    addToWishListHandler();
+                  }}
+                >
+                  <FaHeart />
                 </button>
-                <button className='cart-hov-button'>
-                  <Link to="/cart" className="cart-button">
-                    <FaShoppingCart />
-                  </Link>
+                <button className='cart-hov-button'
+                  onClick={(e) => {
+                    e.preventDefault();
+                    addToCartHandler();
+                  }}
+                >
+                  <FaShoppingCart />
                 </button>
               </div>
             )}
@@ -161,42 +137,42 @@ const ProductCard = ({ products, product, match }) => {
               ({product.numOfReviews} {product.numOfReviews > 1 ? "Reviews" : "Review"})
             </span>
           </div>
-          {hoveredProductId === product._id && (
+          {/* {hoveredProductId === product._id && (
             <div
               className={`carddown-div ${isCardDownVisible ? 'visible' : ''}`}
               onMouseEnter={() => setIsCardDownVisible(true)}
               onMouseLeave={() => setIsCardDownVisible(false)}
             >
               <div className='cart'>
-                <img src={cart2} alt='' onClick={() => handleAddToCart(product._id, product.name, product.price)} className='productCard-cart' />
+                <img src={cart2} alt='' onClick={() => addToCartHandler(product._id, product.name, product.price)} className='productCard-cart' />
               </div>
               <div className='prices-continer'>
                 <span className='price-1'>RS. {product.price}</span>
                 <span className='price-2'>Rs. {product.price * 4}</span>
               </div>
               <div className='wishlist'>
-                <img src={wishL} alt='' onClick={() => handleAddToWishlist(product._id, product.name)} className='productCard-wishlist' />
+                <img src={wishL} alt='' onClick={() => addToWishListHandler(product._id, product.name)} className='productCard-wishlist' />
               </div>
             </div>
-          )}
-          {/* {isHovered && (
+          )} */}
+          {isHovered && (
             <div className="carddown-div">
 
               <div className="cart">
-                <img src={cart2} alt="" onClick={addItemsToCart} className='productCard-cart' />
+                <img src={cart2} alt="" onClick={addToCartHandler} className='productCard-cart' />
               </div>
 
-              <div className='prices-continer'>
+              <div className='prices-container'>
                 <span className='price-1'>RS. {product.price}</span>
                 <span className='price-2'>Rs. {product.price * randomNo}</span>
               </div>
 
               <div className="wishlist">
-                <img src={wishL} alt="" onClick={addItemsToWishList} className='productCard-wishlist' />
+                <img src={wishL} alt="" onClick={addToWishListHandler} className='productCard-wishlist' />
               </div>
 
             </div>
-          )} */}
+          )}
         </div>
       </Link>
 
@@ -206,8 +182,8 @@ const ProductCard = ({ products, product, match }) => {
 
 ProductCard.propTypes = {
   product: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired,
-  products: PropTypes.array.isRequired
+  match: PropTypes.object,
+  products: PropTypes.array
 };
 export default ProductCard
 

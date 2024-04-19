@@ -29,44 +29,41 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
 
 
   const handleButtonClick = async (buttonId) => {
-    // If the button is already loading, prevent additional clicks
     if (loadingButtonId) {
       return;
     }
-
     setLoadingButtonId(buttonId);
-
-    // It simulates an asynchronous operation (e.g., API call)
     await new Promise(resolve => setTimeout(resolve, 1500));
-
-    // After the operation, it stops the loading animation and performs other actions
     setLoadingButtonId(null);
     onButtonClick();
   };
 
   const handleAddToWishlist = (productId, productName) => {
-    // Dispatch the addItemsToWishList action with product ID
     dispatch(addItemsToWishList(productId));
-
-    alert(`${productName} is added to wishlist`);
-
-    // Show a success toast
     toast.success(`${productName} added to wishlist!`, {
-      position: toast.POSITION.TOP_RIGHT,
+      position: 'bottom-center',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
     });
   };
 
   const handleAddToCart = (productId, productName, productPrice) => {
     const product = products.find((product) => product._id === productId);
-
-    // Dispatch the addItemsToCart action with id and quantity
-    dispatch(addItemsToCart(productId, 1)); // Assuming you're adding only one item
-
-    alert(`${productName} added to cart`);
-
-    // Show a success toast
+    dispatch(addItemsToCart(productId, 1));
     toast.success(`${productName} added to cart!`, {
-      position: toast.POSITION.TOP_RIGHT,
+      position: 'bottom-center',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
     });
   };
 
@@ -76,8 +73,6 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
     readOnly: true,
     precision: 0.5,
   };
-
-
 
   return (
     <>
@@ -129,26 +124,18 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
                           <img src={product.image[0].url} alt={product.name} />
                           {hoveredProductId === product._id && (
                             <div className="icon-container">
-                              <Link to="/wishlist">
-                                <button onClick={() => handleAddToWishlist(product._id, product.name)}>
-                                  {/* Call handleAddToWishlist with product ID and name */}
-                                  <FaHeart className="wishlist-icon"
-                                  />
-                                </button>
-                              </Link>
-                              <Link to="/cart">
-                                <button>
-                                  <FaShoppingCart className="cart-icon"
-                                    onClick={() =>
-                                      handleAddToCart(
-                                        product._id,
-                                        product.name,
-                                        product.price
-                                      )
-                                    }
-                                  />
-                                </button>
-                              </Link>
+                              <button onClick={(e) => {
+                                e.preventDefault();
+                                handleAddToWishlist(product._id, product.name);
+                              }}>
+                                <FaHeart className="wishlist-icon" />
+                              </button>
+                              <button onClick={(e) => {
+                                e.preventDefault();
+                                handleAddToCart(product._id, product.name, product.price);
+                              }}>
+                                <FaShoppingCart className="cart-icon" />
+                              </button>
                             </div>
                           )}
                         </Link>
@@ -195,7 +182,7 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
                         <div className='cart'>
                           <img src={cart2} alt='' onClick={() => handleAddToCart(product._id, product.name, product.price)} className='productCard-cart' />
                         </div>
-                        <div className='prices-continer'>
+                        <div className='prices-container'>
                           <span className='price-1'>RS. {product.price}</span>
                           <span className='price-2'>Rs. {product.price * 4}</span>
                         </div>
@@ -235,7 +222,7 @@ SaleCards.propTypes = {
   products: PropTypes.array.isRequired,
   isButtonClicked: PropTypes.string.isRequired,
   onButtonClick: PropTypes.func.isRequired,
-  product: PropTypes.object, // This is optional since it might not always be present
+  product: PropTypes.object,
 };
 
 export default SaleCards

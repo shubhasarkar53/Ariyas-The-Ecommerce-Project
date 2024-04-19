@@ -3,11 +3,30 @@
 // }
 .shop-section {
   width: 100%;
+  position: relative;
   min-height: 80vh;
   display: flex;
   flex-direction: column;
   margin: 1rem 0 0 0;
   margin-top: 5rem;
+  .price-filter-button {
+    position: fixed;
+    top: 40%;
+    transform: translateY(-50%);
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 1.5rem 1rem;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 999;
+    transition: all 0.4s linear;
+    &:hover {
+      background-color: rgb(255, 143, 6);
+    }
+  }
+
   .title {
     text-align: center;
     margin-top: 1rem;
@@ -41,13 +60,16 @@
 
 .price-filter-container {
   width: 10vmax;
-  position: absolute;
+  position: fixed;
   margin-bottom: 2rem;
-  top: 12vmax;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
   padding: 20px;
   background-color: white;
   display: flex;
   flex-direction: column;
+  z-index: 999;
   align-items: center;
   box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
     6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
@@ -56,6 +78,10 @@
     41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
     100px 100px 80px rgba(0, 0, 0, 0.07);
   border-radius: 10px;
+  transition: background-color 0.4s linear;
+  &:hover {
+    background-color: rgba(165, 164, 164, 0.205);
+  }
   .price-header,
   .rating-header {
     font-size: 1.3rem;
