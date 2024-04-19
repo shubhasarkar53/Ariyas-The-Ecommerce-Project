@@ -137,24 +137,6 @@ const ProductCard = ({ product, match }) => {
               ({product.numOfReviews} {product.numOfReviews > 1 ? "Reviews" : "Review"})
             </span>
           </div>
-          {/* {hoveredProductId === product._id && (
-            <div
-              className={`carddown-div ${isCardDownVisible ? 'visible' : ''}`}
-              onMouseEnter={() => setIsCardDownVisible(true)}
-              onMouseLeave={() => setIsCardDownVisible(false)}
-            >
-              <div className='cart'>
-                <img src={cart2} alt='' onClick={() => addToCartHandler(product._id, product.name, product.price)} className='productCard-cart' />
-              </div>
-              <div className='prices-continer'>
-                <span className='price-1'>RS. {product.price}</span>
-                <span className='price-2'>Rs. {product.price * 4}</span>
-              </div>
-              <div className='wishlist'>
-                <img src={wishL} alt='' onClick={() => addToWishListHandler(product._id, product.name)} className='productCard-wishlist' />
-              </div>
-            </div>
-          )} */}
           {isHovered && (
             <div className="carddown-div">
 
