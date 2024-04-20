@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, CREATE_ORDER_FAIL, CLEAR_ERRORS} from "../Constants/orderConstants"
+import { CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, CREATE_ORDER_FAIL, CLEAR_ERRORS,
+    MY_ORDERS_SUCCESS, MY_ORDERS_FAIL, MY_ORDERS_REQUEST
+} from "../Constants/orderConstants"
 
 import axios from "axios"
 
@@ -55,3 +57,19 @@ export const listAllOrders = () => async (dispatch, getState) => {
     }
 }
 
+
+
+//my orders
+export const myOrders =() => async(dispatch, getState)=>{
+    try {
+        dispatch({ type: MY_ORDERS_REQUEST })
+        const { data } = await axios.get("/api/v1/orders/me");
+        console.log(data.orders);
+        dispatch({ type: MY_ORDERS_SUCCESS, payload:data.orders })
+    } catch (error) {
+        dispatch({ type: MY_ORDERS_FAIL, 
+            payload: error.response.data.message ?
+            error.response.data.message 
+            : error.message})
+    }
+}

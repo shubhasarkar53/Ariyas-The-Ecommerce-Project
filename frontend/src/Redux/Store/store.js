@@ -20,7 +20,7 @@ import registerSellerReducer from "../Reducers/registerSellerReducer";
 import { cartReducer } from "../Reducers/cartReducer";
 import { addressReducer } from "../Reducers/addressReducer";
 import { wishlistReducer } from '../Reducers/wishlistReducer';
-import { orderReducer } from "../Reducers/orderReducer";
+import { orderReducer,myOrderReducer } from "../Reducers/orderReducer";
 // Reducers
 const reducer = combineReducers({
   products: productReducer,
@@ -34,7 +34,8 @@ const reducer = combineReducers({
   addresses: addressReducer,
   wishlist: wishlistReducer,
   registerSeller: registerSellerReducer,
-  order: orderReducer
+  order: orderReducer,
+  myOrders: myOrderReducer
 });
 
 

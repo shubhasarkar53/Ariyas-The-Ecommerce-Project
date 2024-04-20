@@ -1,0 +1,41 @@
+.orders-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 30px 0;
+  padding: 3rem;
+  .myOrdersHeading {
+    text-align: center;
+    margin: 30px 0;
+  }
+
+  .myOrdersContainer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .myOrderItems {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1rem;
+    border-radius: 50px;
+    background: #e4e4e4;
+    box-shadow: 20px 20px 60px #c2c2c2, -20px -20px 60px #ffffff;
+  }
+
+  .myOrderItems h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .viewOrderBtn {
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    background: #e4e4e4;
+    box-shadow: 20px 20px 60px #c2c2c2, -20px -20px 60px #ffffff;
+  }
+}
