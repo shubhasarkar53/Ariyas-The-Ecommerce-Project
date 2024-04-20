@@ -140,7 +140,7 @@ $orangeTextColor: #d47f00;
       font-size: 2rem;
       cursor: pointer;
       &:hover {
-        color: orange;
+        color: $orangeTextColor;
       }
     }
 
@@ -166,7 +166,7 @@ $orangeTextColor: #d47f00;
       font-size: 1.8rem;
       cursor: pointer;
       &:hover {
-        color: orange;
+        color: $orangeTextColor;
       }
     }
   }

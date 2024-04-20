@@ -80,8 +80,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  h3 {
+    font-size: 1.2rem;
+  }
   p {
-    font-size: 16px;
+    font-size: 13px;
     line-height: 30px;
     font-weight: 500;
     color: #000000;
@@ -95,7 +98,7 @@
     a {
       text-decoration: none;
       color: #000000;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       &:hover {
         color: #cd8849;
       }
@@ -109,6 +112,9 @@
   .shop,
   .need-help,
   .about {
+    h3 {
+      font-size: 1.2rem;
+    }
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -119,7 +125,7 @@
     a {
       text-decoration: none;
       color: #000000;
-      font-size: 16px;
+      font-size: 12px;
       text-align: center;
       &:hover {
         color: #cd8849;
@@ -218,10 +224,57 @@
       .shop,
       .about,
       .need-help {
-        font-weight: 200;
-        a {
-          font-size: 14px;
+        h3 {
+          font-size: 1rem;
         }
+        a {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .footer-top {
+    margin-bottom: -0.4rem;
+    font-size: 12px;
+    gap: 0.3em;
+    .element {
+      gap: 0.8rem;
+      .symbol1,
+      .symbol2,
+      .symbol3 {
+        font-size: 0.8rem;
+      }
+    }
+  }
+  .footer-middle {
+    margin-top: -0.9rem;
+    .ariyas {
+      p {
+        margin-top: -0.3rem;
+        font-size: 10px;
+        line-height: 1.1rem;
+      }
+    }
+  }
+  .footer-bottom {
+    margin-top: -0.6rem;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .footer-top {
+    font-size: 10px;
+    gap: 0.3em;
+    .element {
+      gap: 0.4rem;
+      .symbol1,
+      .symbol2,
+      .symbol3 {
+        font-size: 0.4rem;
       }
     }
   }

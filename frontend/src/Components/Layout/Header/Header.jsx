@@ -146,7 +146,7 @@ const Header = () => {
         </div>
       )
       }
-    </Fragment >
+    </Fragment>
   );
 };
 

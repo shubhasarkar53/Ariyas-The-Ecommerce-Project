@@ -24,7 +24,7 @@ $orangeTextColor: #d47f00;
     justify-content: space-around;
     align-items: flex-start;
     position: absolute;
-    bottom: 15rem;
+    bottom: 12rem;
     left: 5rem;
     gap: 1rem;
     z-index: 999;
@@ -32,17 +32,17 @@ $orangeTextColor: #d47f00;
     margin-left: 15rem;
 
     .carousel-title {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: bold;
       color: white;
     }
     .carousel-caption {
-      font-size: 2rem;
+      font-size: 1.5rem;
       color: white;
       opacity: 0.8;
     }
     .carousel-button {
-      font-size: 1rem;
+      font-size: 0.9rem;
       background: $orangeTextColor;
       cursor: pointer;
       border: none;
@@ -71,10 +71,10 @@ $orangeTextColor: #d47f00;
     }
     .caption-div {
       .carousel-title {
-        font-size: 2.6rem;
+        font-size: 2.2rem;
       }
       .carousel-caption {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
       }
     }
   }
@@ -89,14 +89,14 @@ $orangeTextColor: #d47f00;
       background-attachment: fixed;
       object-fit: cover;
       .carousel-title {
-        font-size: 2.4rem;
+        font-size: 2rem;
       }
       .carousel-caption {
-        font-size: 1.4rem;
+        font-size: 1.1rem;
       }
       .carousel-button {
         padding: 0.5rem 1.2rem;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
       }
     }
   }
@@ -116,10 +116,10 @@ $orangeTextColor: #d47f00;
       max-width: calc(90% - 1.5rem);
       margin-left: 8rem;
       .carousel-title {
-        font-size: 2.1rem;
+        font-size: 1.9rem;
       }
       .carousel-caption {
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
       .carousel-button {
         font-size: 0.66rem;
@@ -140,15 +140,17 @@ $orangeTextColor: #d47f00;
     }
     .caption-div {
       margin-left: 5rem;
+      bottom: 8rem;
+      left: -2rem;
       .carousel-title {
-        font-size: 1.7rem;
+        font-size: 1.4rem;
       }
       .carousel-caption {
-        font-size: 1rem;
+        font-size: 0.7rem;
       }
       .carousel-button {
-        font-size: 0.9rem;
-        padding: 0.5rem 0.9rem;
+        font-size: 0.7rem;
+        padding: 0.5rem 0.8rem;
       }
     }
   }

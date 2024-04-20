@@ -141,7 +141,10 @@ const ProductCard = ({ product, match }) => {
             <div className="carddown-div">
 
               <div className="cart">
-                <img src={cart2} alt="" onClick={addToCartHandler} className='productCard-cart' />
+                <img src={cart2} alt="" onClick={(e) => {
+                  e.preventDefault();
+                  addToCartHandler();
+                }} className='productCard-cart' />
               </div>
 
               <div className='prices-container'>
@@ -150,7 +153,10 @@ const ProductCard = ({ product, match }) => {
               </div>
 
               <div className="wishlist">
-                <img src={wishL} alt="" onClick={addToWishListHandler} className='productCard-wishlist' />
+                <img src={wishL} alt="" onClick={(e) => {
+                  e.preventDefault();
+                  addToWishListHandler();
+                }} className='productCard-wishlist' />
               </div>
 
             </div>
