@@ -6,7 +6,7 @@ import "./OrderSuccess.scss";
 import PropTypes from "prop-types";
 const OrderSuccess = ({ history }) => {
   const { user } = useSelector((state) => state.user);
-  const { order,newOrder} = useSelector((state) => state.order);
+  const { order} = useSelector((state) => state.order);
 
   const subTotal = order.newOrder.orderItems.reduce(
     (acc, item) => acc + item.quantity * item.price,
