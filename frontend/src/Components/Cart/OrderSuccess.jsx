@@ -1,23 +1,28 @@
 /* eslint-disable no-unused-vars */
 import React, { Fragment } from "react";
-import Loader from "../Loader/Loader";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./OrderSuccess.scss";
-const OrderSuccess = () => {
+import PropTypes from "prop-types";
+const OrderSuccess = ({ history }) => {
   const { user } = useSelector((state) => state.user);
-  const { order} = useSelector((state) => state.order);
+  const { order,newOrder} = useSelector((state) => state.order);
 
   const subTotal = order.newOrder.orderItems.reduce(
     (acc, item) => acc + item.quantity * item.price,
     0
   );
 
-  const shippingCharges2 = order.newOrder.shippingPrice;
+  const shippingCharges2 = order.newOrder.shippingPrice; 
+
 
   const tax = subTotal * 0.18; //tax is set to be 18%
 
   const totalPrice = order.newOrder.totalPrice;
+
+  const add1 = order.newOrder.shippingInfo.state;
+  const add2 = order.newOrder.shippingInfo.country;
+  const add3 = order.newOrder.shippingInfo.phoneNo;
 
   return (
     <Fragment>
@@ -63,11 +68,11 @@ const OrderSuccess = () => {
             <p className="address">
               {user.name}
               <br />
-              {order.newOrder.shippingInfo.state}
+              {add1}
               <br />
-              {order.newOrder.shippingInfo.country}
+              {add2}
               <br />
-              {order.newOrder.shippingInfo.phoneNo}
+              {add3}
             </p>
           </div>
 
@@ -80,6 +85,10 @@ const OrderSuccess = () => {
       </div>
     </Fragment>
   );
+};
+
+OrderSuccess.propTypes = {
+  history: PropTypes.object.isRequired,
 };
 
 export default OrderSuccess;

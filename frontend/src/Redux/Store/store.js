@@ -20,7 +20,7 @@ import registerSellerReducer from "../Reducers/registerSellerReducer";
 import { cartReducer } from "../Reducers/cartReducer";
 import { addressReducer } from "../Reducers/addressReducer";
 import { wishlistReducer } from '../Reducers/wishlistReducer';
-import { orderReducer,myOrderReducer } from "../Reducers/orderReducer";
+import { orderReducer,myOrderReducer,orderDetailsReducer } from "../Reducers/orderReducer";
 // Reducers
 const reducer = combineReducers({
   products: productReducer,
@@ -35,7 +35,8 @@ const reducer = combineReducers({
   wishlist: wishlistReducer,
   registerSeller: registerSellerReducer,
   order: orderReducer,
-  myOrders: myOrderReducer
+  myOrders: myOrderReducer,
+  orderDetails: orderDetailsReducer
 });
 
 
@@ -67,6 +68,11 @@ let initialState = {
   order: {
     orderInfo: localStorage.getItem("orderInfo")
       ? JSON.parse(localStorage.getItem("orderInfo"))
+      : [],
+  },
+  orderDetails: {
+    orderDetails: localStorage.getItem("orderDetails")
+      ? JSON.parse(localStorage.getItem("orderDetails"))
       : [],
   },
 };
