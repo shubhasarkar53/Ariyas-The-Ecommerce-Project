@@ -42,6 +42,8 @@ import Shipping from "./Components/Cart/Shipping.jsx";
 import ConfirmOrder from "./Components/Cart/ConfirmOrder.jsx";
 import EditProduct from "./Components/Admin/AdminFunctions/EditProduct.jsx";
 import OrderSuccess from "./Components/Cart/OrderSuccess.jsx";
+import MyOrders from "./Components/Order/MyOrders.jsx";
+import ViewOrderDetails from "./Components/Order/ViewOrderDetails.jsx";
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
@@ -140,6 +142,14 @@ const App = () => {
                 component={ConfirmOrder}
               />
 
+              <ProtectedRoute exact path="/orders/me" component={MyOrders} />
+
+              <ProtectedRoute
+                exact
+                path="/order/:id"
+                component={ViewOrderDetails}
+              />
+
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/faq" component={FAQs} />
 
@@ -147,7 +157,7 @@ const App = () => {
               <Route component={PageNotFound} />
             </Switch>
           </section>
-          
+
           <section className="footer-part">
             <Footer />
           </section>

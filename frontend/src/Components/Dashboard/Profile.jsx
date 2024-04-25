@@ -97,7 +97,7 @@ const Profile = () => {
 
   // function definitions
   function manageOrders() {
-    history.push("/orders");
+    history.push("/orders/me");
   }
   function manageCarts() {
     history.push("/cart");
