@@ -3,34 +3,48 @@ import React, { Fragment } from 'react';
 import { Pagination, PaginationItem } from '@mui/material';
 import PropTypes from 'prop-types';
 import './productPagination.scss'
+
+
 const ProductPagination = ({ totalPages, currentPage, onPageChange }) => {
   const handleChange = (event, value) => {
     onPageChange(value);
   };
 
   return (
-    <Fragment >
+    <Fragment>
 
       <div className='pagination-container'>
         <Pagination
-          className={'pagination-div'}
+          className={`pagination-div`}
           sx={{
             display: 'flex',
             justifyContent: 'center',
             margin: '1rem 0',
             gap: '10.5rem',
           }}
-          color="secondary"
+          color="primary"
           size="large"
           shape="rounded"
           defaultPage={1}
           count={totalPages}
           page={currentPage}
           onChange={handleChange}
+          // renderItem={(item) => (
+          //   <PaginationItem
+          //     component="a"
+          //     {...item}
+          //   />
+          // )}
           renderItem={(item) => (
             <PaginationItem
               component="a"
               {...item}
+              style={{
+                color: item.page === currentPage ? 'white' : '',
+                backgroundColor: item.page === currentPage ? 'orange' : '',
+                fontWeight: item.page === currentPage ? 'bold' : 'normal',
+                fontSize: item.page === currentPage ? '1.01rem' : '',
+              }}
             />
           )}
         />
@@ -51,7 +65,7 @@ ProductPagination.propTypes = {
 export default ProductPagination;
 
 
-//*Explaination
+//*Explanation
 
 // This code defines a React component called `ProductPagination` using Material-UI's `Pagination` component. Let's break down the code:
 

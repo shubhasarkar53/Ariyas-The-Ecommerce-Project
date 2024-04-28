@@ -12,6 +12,7 @@ import {
   productDetailsReducer,
   createProductReducer,
   loadCreatedProductReducer,
+  createReviewReducer
 } from "../Reducers/productReducer";
 
 import { profileReducer, userReducer } from "../Reducers/userReducer";
@@ -20,7 +21,7 @@ import registerSellerReducer from "../Reducers/registerSellerReducer";
 import { cartReducer } from "../Reducers/cartReducer";
 import { addressReducer } from "../Reducers/addressReducer";
 import { wishlistReducer } from '../Reducers/wishlistReducer';
-
+import { orderReducer,myOrderReducer,orderDetailsReducer } from "../Reducers/orderReducer";
 // Reducers
 const reducer = combineReducers({
   products: productReducer,
@@ -34,6 +35,10 @@ const reducer = combineReducers({
   addresses: addressReducer,
   wishlist: wishlistReducer,
   registerSeller: registerSellerReducer,
+  order: orderReducer,
+  myOrders: myOrderReducer,
+  orderDetails: orderDetailsReducer,
+  createReview: createReviewReducer
 });
 
 
@@ -43,10 +48,33 @@ let initialState = {
     cartItems: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
       : [],
+    shippingInfo: localStorage.getItem("shippingInfo")
+      ? JSON.parse(localStorage.getItem("shippingInfo"))
+      : [],
   },
   wishlist: {
     wishlistItems: localStorage.getItem("wishlistItems")
       ? JSON.parse(localStorage.getItem("wishlistItems"))
+      : [],
+  },
+  user: {
+    userInfo: localStorage.getItem("userInfo")
+      ? JSON.parse(localStorage.getItem("userInfo"))
+      : [],
+  },
+  registerSeller: {
+    sellerInfo: localStorage.getItem("sellerInfo")
+      ? JSON.parse(localStorage.getItem("sellerInfo"))
+      : [],
+  },
+  order: {
+    orderInfo: localStorage.getItem("orderInfo")
+      ? JSON.parse(localStorage.getItem("orderInfo"))
+      : [],
+  },
+  orderDetails: {
+    orderDetails: localStorage.getItem("orderDetails")
+      ? JSON.parse(localStorage.getItem("orderDetails"))
       : [],
   },
 };

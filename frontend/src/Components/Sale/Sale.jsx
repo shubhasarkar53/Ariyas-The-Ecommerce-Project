@@ -6,7 +6,7 @@ import { getProducts as listProducts } from '../../Redux/Actions/productAction';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../Loader/Loader';
 import { FaGifts } from "react-icons/fa6";
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Sale = () => {
   const dispatch = useDispatch();
@@ -66,8 +66,10 @@ const Sale = () => {
                 <h1>Your favorite collection of products are on sale!</h1>
                 <p>Grab the best deals and enjoy the moment with the limited edition most enticing swadeshi products presented at your doorsteps. <br />Flat 20% off on traditional footwear and sarees</p>
                 <div className="btn-snap-sale">
-                  <button>Bags</button>
-                  <button>Dress</button>
+                  <Link to="/sale"><button>Bags</button></Link>
+                  <Link to="/sale"><button>Dress</button></Link>
+                  <Link to="/sale"><button>Wooden Items</button></Link>
+                  <Link to="/sale"><button>Clay Products</button></Link>
                 </div>
               </div>
             </div>

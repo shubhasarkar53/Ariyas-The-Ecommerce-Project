@@ -38,7 +38,12 @@ import EditAddressPage from "./Components/Dashboard/Address/EditAddressPage.jsx"
 import AdminDashboard from "./Components/Admin/AdminDashboard.jsx";
 import CreateNewProduct from "./Components/Admin/AdminFunctions/CreateNewProduct.jsx";
 import CreatedProducts from "./Components/Admin/AdminFunctions/CreatedProducts.jsx";
+import Shipping from "./Components/Cart/Shipping.jsx";
+import ConfirmOrder from "./Components/Cart/ConfirmOrder.jsx";
 import EditProduct from "./Components/Admin/AdminFunctions/EditProduct.jsx";
+import OrderSuccess from "./Components/Cart/OrderSuccess.jsx";
+import MyOrders from "./Components/Order/MyOrders.jsx";
+import ViewOrderDetails from "./Components/Order/ViewOrderDetails.jsx";
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
@@ -123,6 +128,28 @@ const App = () => {
                 component={EditProduct}
               />
 
+              <ProtectedRoute exact path="/shipping" component={Shipping} />
+
+              <ProtectedRoute
+                exact
+                path="/order/success"
+                component={OrderSuccess}
+              />
+
+              <ProtectedRoute
+                exact
+                path="/order/confirm"
+                component={ConfirmOrder}
+              />
+
+              <ProtectedRoute exact path="/orders/me" component={MyOrders} />
+
+              <ProtectedRoute
+                exact
+                path="/order/:id"
+                component={ViewOrderDetails}
+              />
+
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/faq" component={FAQs} />
 
@@ -130,7 +157,7 @@ const App = () => {
               <Route component={PageNotFound} />
             </Switch>
           </section>
-          
+
           <section className="footer-part">
             <Footer />
           </section>

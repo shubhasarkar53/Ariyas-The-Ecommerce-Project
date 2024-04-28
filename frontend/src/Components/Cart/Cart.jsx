@@ -7,11 +7,12 @@ import { addItemsToCart, removeItemsFromCart } from "../../Redux/Actions/cartAct
 import { Link } from "react-router-dom";
 import { toast , ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import PropTypes from 'prop-types';
 
 //import image
 import emptycart from '../../assets/Images/Icons/CartPage/emptycart.png'
 
-const Cart = () => {
+const Cart = ( { history }) => {
 
     const dispatch = useDispatch();
     
@@ -63,6 +64,11 @@ const Cart = () => {
         dispatch(addItemsToCart(id, newQty));
     }
 
+    //create a checkout handler 
+    const checkoutHandler = () => {
+        history.push('/login?redirect=shipping');
+    }
+
     return (
     <Fragment>
         {cartItems.length === 0 ?(
@@ -106,7 +112,7 @@ const Cart = () => {
                </div>
 
                <div className="checkOut">
-                 <button className="checkOutBtn">Check Out</button>
+                 <button className="checkOutBtn" onClick={checkoutHandler} >Check Out</button>
                </div>
 
               </div>
@@ -120,5 +126,9 @@ const Cart = () => {
     );
   };
 
+
+Cart.propTypes = {
+    history: PropTypes.object.isRequired
+  };
 
 export default Cart;

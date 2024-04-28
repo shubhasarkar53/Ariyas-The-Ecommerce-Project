@@ -74,49 +74,50 @@ const Footer = () => {
                 ))}
               </div>
             </div>
+            <div className="footer-det-container">
+              <div className="shop">
+                <h3>Shop</h3>
+                {["Bags", "Dress", "Clay Items", "Wooden Items"].map(
+                  (item, index) => {
+                    return (
+                      <a href="#" key={index}>
+                        {item}
+                      </a>
+                    );
+                  }
+                )}
+              </div>
 
-            <div className="shop">
-              <h3>Shop</h3>
-              {["Bags", "Dress", "Clay Items", "Wooden Items"].map(
-                (item, index) => {
+              <div className="about">
+                <h3>About</h3>
+                {[
+                  { label: "About Us", path: "/about" },
+                  { label: "Privacy Policy", path: "/privacy-policy" },
+                  { label: "Terms & Conditions", path: "/terms-and-conditions" },
+                  { label: "Become a Seller", path: "/become-seller" },
+                  { label: "Wishlist", path: "/wishlist" },
+                ].map((item, index) => {
                   return (
-                    <a href="#" key={index}>
-                      {item}
-                    </a>
+                    <Link to={item.path} key={index}>
+                      {item.label}
+                    </Link>
                   );
-                }
-              )}
-            </div>
+                })}
+              </div>
 
-            <div className="about">
-              <h3>About</h3>
-              {[
-                { label: "About Us", path: "/about" },
-                { label: "Privacy Policy", path: "/privacy-policy" },
-                { label: "Terms & Conditions", path: "/terms-and-conditions" },
-                { label: "Become a Seller", path: "/become-seller" },
-                { label: "Wishlist", path: "/wishlist" },
-              ].map((item, index) => {
-                return (
-                  <Link to={item.path} key={index}>
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </div>
-
-            <div className="need-help">
-              <h3>Need Help?</h3>
-              {[
-                { label: "Contact Us", path: "/contact" },
-                { label: "FAQs", path: "/faq" },
-              ].map((item, index) => {
-                return (
-                  <Link to={item.path} key={index}>
-                    {item.label}
-                  </Link>
-                );
-              })}
+              <div className="need-help">
+                <h3>Need Help?</h3>
+                {[
+                  { label: "Contact Us", path: "/contact" },
+                  { label: "FAQs", path: "/faq" },
+                ].map((item, index) => {
+                  return (
+                    <Link to={item.path} key={index}>
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

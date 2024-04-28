@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { ADD_TO_CART, REMOVE_CART_ITEM, SAVE_SHIPPING_INFO } from '../Constants/cartConstants';
+import { ADD_TO_CART, REMOVE_CART_ITEM, SAVE_SHIPPING_INFO, CLEAR_CART } from '../Constants/cartConstants';
 import axios from 'axios';
 
 
@@ -29,4 +29,23 @@ export const removeItemsFromCart = (id) => async (dispatch, getState) => {
         payload: id,
     });
     localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
+}
+
+
+//Save shipping info
+export const saveShippingInfo = (data) => async (dispatch) => {
+    dispatch({
+        type: SAVE_SHIPPING_INFO,
+        payload: data,
+    });
+    localStorage.setItem('shippingInfo', JSON.stringify(data));
+}
+
+
+//Clear cart
+export const clearCart = () => async (dispatch) => {
+    dispatch({
+        type: CLEAR_CART,
+    });
+    localStorage.removeItem('cartItems');
 }
