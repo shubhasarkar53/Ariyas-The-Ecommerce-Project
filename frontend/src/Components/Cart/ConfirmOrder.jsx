@@ -60,11 +60,13 @@ const ConfirmOrder = ({ history }) => {
     shippingPrice: shippingCharges,
     totalPrice,
      shippingInfo: {
-      address: selectedAddress.address,
-      city: selectedAddress.city,
+      fullName: selectedAddress.fullName,
+      address: selectedAddress.area,
+      landmark: selectedAddress.landmark,
+      city: selectedAddress.town,
       state: selectedAddress.state,
       country: selectedAddress.country,
-      pinCode: selectedAddress.pinCode,
+      pinCode: selectedAddress.postalCode,
       phoneNo: selectedAddress.phoneNo,
     },
     paymentInfo: {
