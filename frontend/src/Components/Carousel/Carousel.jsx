@@ -7,6 +7,7 @@ import { Paper, Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import PropTypes from "prop-types";
 import "./Carousel.scss";
+import { Link } from 'react-router-dom';
 
 const ImageCarousel = ({ images }) => {
   if (!images || images.length === 0) {
@@ -16,11 +17,11 @@ const ImageCarousel = ({ images }) => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 3000,
+    speed: 2500,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 2500,
     pauseOnHover: true,
     cssEase: "linear",
     fade: true,
@@ -50,12 +51,14 @@ const ImageCarousel = ({ images }) => {
             <Typography className="carousel-caption" variant="caption">
               {image.caption}
             </Typography>
-            <Button
-              className="carousel-button"
-              variant="contained"
-            >
-              Shop Now
-            </Button>
+            <Link to="/shop">
+              <Button
+                className="carousel-button"
+                variant="contained"
+              >
+                Shop Now
+              </Button>
+            </Link>
           </div>
         </div>
       ))}

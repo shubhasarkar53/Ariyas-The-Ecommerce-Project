@@ -1,34 +1,54 @@
 // *{
 //     border: 1px solid red;
 // }
-.shop-section{
-    width: 100%;
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    margin: 1rem 0 0 0;
-    .title{
-        text-align: center;
-        margin-top: 1rem;
-        padding:0 1rem 0 1rem;
-        font-size: 2rem;
-        font-weight: 400;
+.shop-section {
+  width: 100%;
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0 0 0;
+  margin-top: 5rem;
+  .price-filter-button {
+    position: fixed;
+    top: 40%;
+    transform: translateY(-50%);
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 1.5rem 1rem;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 999;
+    transition: all 0.4s linear;
+    &:hover {
+      background-color: rgb(255, 143, 6);
     }
-    .bar{
-        width: 10%;
-        height: 1px;
-        background-color: #000000;
-        margin: 0 auto;
-    }
-    .products-container{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 0 5vmax;
-        margin-top: 3rem;
-        gap: 2rem;
-    }
-    
+  }
+
+  .title {
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0 1rem 0 1rem;
+    font-size: 2rem;
+    font-weight: 400;
+  }
+  .bar {
+    width: 10%;
+    height: 1px;
+    background-color: #000000;
+    margin: 0 auto;
+  }
+  .products-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    margin: 0 15rem;
+    margin-top: 3rem;
+    gap: 2rem;
+    padding: 0 5vmax;
+  }
 }
 .paginationBox {
   width: 100%;
@@ -40,13 +60,16 @@
 
 .price-filter-container {
   width: 10vmax;
-  position: absolute;
+  position: fixed;
   margin-bottom: 2rem;
-  top: 12vmax;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
   padding: 20px;
   background-color: white;
   display: flex;
   flex-direction: column;
+  z-index: 999;
   align-items: center;
   box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
     6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
@@ -55,22 +78,28 @@
     41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
     100px 100px 80px rgba(0, 0, 0, 0.07);
   border-radius: 10px;
-  .price-header ,.rating-header {
+  transition: background-color 0.4s linear;
+  &:hover {
+    background-color: rgba(165, 164, 164, 0.205);
+  }
+  .price-header,
+  .rating-header {
     font-size: 1.3rem;
     font-weight: 600;
-    color: #f50057;
+    color: orange;
     margin: 1rem;
   }
-  .main-slider,.rating-slider {
+  .main-slider,
+  .rating-slider {
     width: 90%;
     margin-bottom: 1rem;
-    color: #f50057;
+    color: orange;
     scroll-behavior: smooth;
   }
   .category-header {
     font-size: 1.3rem;
     font-weight: 600;
-    color: #f50057;
+    color: orange;
     margin: 1rem;
   }
   .category-link {
@@ -81,13 +110,12 @@
     cursor: pointer;
     transition: all 0.5s;
     &:hover {
-      color: #f50057;
+      color: orange;
     }
   }
-  .rating-filter{
+  .rating-filter {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
   }
 }

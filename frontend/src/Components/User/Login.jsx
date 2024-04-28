@@ -6,11 +6,11 @@ import subLoginImg from "../../assets/Images/Login-Signup-page/rightLogin.png";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin, clearError } from "../../Redux/Actions/userAction";
 import Loader from "../Loader/Loader";
-
+import PropTypes from 'prop-types';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Login = ({ history }) => {
+const Login = ({ history, location }) => {
   const dispatch = useDispatch();
   const { loading, isAuthenticated, error, token } = useSelector(
     (state) => state.user
@@ -23,6 +23,10 @@ const Login = ({ history }) => {
     // console.log(loginEmail,loginPassword);
     dispatch(userLogin(loginEmail, loginPassword));
   };
+
+  const redirect = location.search
+    ? location.search.split("=")[1]
+    : "/profile";
 
   useEffect(() => {
     if (error) {
@@ -40,9 +44,9 @@ const Login = ({ history }) => {
     // }
 
     if (isAuthenticated) {
-      history.push("/");
+      history.push(redirect);
     }
-  }, [dispatch, error, toast, history, isAuthenticated]);
+  }, [dispatch, error, history, isAuthenticated,redirect]);
 
   return (
     <>
@@ -98,5 +102,9 @@ const Login = ({ history }) => {
     </>
   );
 };
+
+Login.propTypes = {
+  history: PropTypes.object
+}
 
 export default Login;

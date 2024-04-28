@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState, useRef } from "react";
 import "./Shop.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts, clearError } from "../../Redux/Actions/productAction";
@@ -10,12 +10,13 @@ import ProductCard from "../Home/ProductCard";
 import ProductPagination from "./PaginationComponent/productPagination";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
-import { Rating } from '@mui/material'
+import { Rating } from '@mui/material';
 
 
 
 const Shop = ({ match }) => {
   const dispatch = useDispatch();
+  const containerRef = useRef(null);
 
   const keyword = match.params.keyword;
 
@@ -23,17 +24,19 @@ const Shop = ({ match }) => {
     useSelector((state) => state.products);
 
 
-    const categories = [
-      "All",
-      "Bags",
-      "Shoes",
-      "Sharees",
-      "Kurttys",
-      "Jewelry",
-      "Wooden",
-      "Ceramic",
-      
-    ]
+  const categories = [
+    "All",
+    "Bags",
+    "Shoes",
+    "Sarees",
+    "Kurttys",
+    "Jewelry",
+    "Wooden",
+    "Ceramic",
+
+  ]
+
+  const [showPriceFilter, setShowPriceFilter] = useState(false);
 
   /// pagination
   const [currentPage, setCurrentPage] = useState(1); // Current page
@@ -63,6 +66,19 @@ const Shop = ({ match }) => {
     }
   }, [dispatch, error, keyword, currentPage, price, category, ratings]);
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
+        setShowPriceFilter(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <Fragment>
       {loading ? (
@@ -70,6 +86,17 @@ const Shop = ({ match }) => {
       ) : (
         <Fragment>
           <div className="shop-section">
+            <button
+              className="price-filter-button"
+              style={{
+                left: showPriceFilter ? "-100px" : "0",
+                writingMode: "vertical-lr", /* Vertical writing mode */
+                transform: "rotate(180deg)", /* Rotate text 180 degrees */
+              }}
+              onClick={() => setShowPriceFilter(!showPriceFilter)}
+            >
+              {showPriceFilter ? "Hide Price Filter" : "Show Price Filter"}
+            </button>
             <p className="title">Shop</p>
             <div className="bar"></div>
             {/* <Row products={products}  loading={loading} error={error} /> */}
@@ -79,54 +106,55 @@ const Shop = ({ match }) => {
                   return <ProductCard key={product._id} product={product} />;
                 })}
             </div>
+            {showPriceFilter && (
+              <div ref={containerRef} className="price-filter-container ">
 
-            <div className="price-filter-container ">
+                {/* Price Filter */}
+                <Typography className="price-header">Price</Typography>
+                <Slider
+                  className="main-slider"
+                  value={price}
+                  onChange={priceHandler}
+                  valueLabelDisplay="auto"
+                  aria-labelledby="range-slider"
+                  min={0}
+                  max={30000}
+                />
 
-             {/* Price Filter */}
-            <Typography className="price-header">Price</Typography>
-            <Slider
-            className="main-slider"
-              value={price}
-              onChange={priceHandler}
-              valueLabelDisplay="auto"
-              aria-labelledby="range-slider"
-              min={0}
-              max={30000}
-            />
+                {/* category filter */}
 
-            {/* categori filter */}
+                <Typography className="category-header">Categories</Typography>
+                <ul className="categoryBox">
+                  {categories.map((category) => (
+                    <li
+                      className="category-link"
+                      key={category}
+                      onClick={() => setCategory(category)}
+                    >
+                      {category}
+                    </li>
+                  ))}
+                </ul>
 
-            <Typography className="category-header">Categories</Typography>
-            <ul className="categoryBox">
-              {categories.map((category) => (
-                <li
-                  className="category-link"
-                  key={category}
-                  onClick={() => setCategory(category)}
-                >
-                  {category}
-                </li>
-              ))}
-            </ul>
+                {/* Ratings Filter */}
+                <div className="rating-filter">
+                  <Typography component="legend" className="rating-header">Ratings</Typography>
+                  <Slider
+                    className="rating-slider"
+                    value={ratings}
+                    onChange={(e, newRating) => {
+                      setRatings(newRating);
+                    }}
+                    aria-labelledby="continuous-slider"
+                    valueLabelDisplay="auto"
+                    min={0}
+                    max={5}
+                  />
+                </div>
 
-            {/* Ratings Filter */}
-            <div className="rating-filter">
-              <Typography component="legend" className="rating-header">Ratings</Typography>
-              <Slider
-                className="rating-slider"
-                value={ratings}
-                onChange={(e, newRating) => {
-                  setRatings(newRating);
-                }}
-                aria-labelledby="continuous-slider"
-                valueLabelDisplay="auto"
-                min={0}
-                max={5}
-              />
-            </div>
 
-      
-            </div>
+              </div>
+            )}
 
             <div className="paginationBox">
               <ProductPagination
@@ -153,3 +181,28 @@ Shop.propTypes = {
 };
 
 export default Shop;
+
+
+// Explanation
+
+// This code defines a React component called `Shop`, which serves as a page for browsing products. Here's a breakdown:
+
+// 1. **Imports**: Imports necessary modules and components from React, Redux, Material-UI, and local files.
+
+// 2. **Component Definition**: Defines the `Shop` component which takes the `match` prop from React Router.
+
+// 3. **State**: Utilizes React hooks like `useState` to manage component state, including current page, price range, selected category, and ratings filter.
+
+// 4. **Redux**: Uses `useSelector` and `useDispatch` hooks to interact with Redux store, fetching products, handling loading and errors, and dispatching actions.
+
+// 5. **Effect Hook**: Utilizes `useEffect` to fetch products when the component mounts or when dependencies like `keyword`, `currentPage`, `price`, `category`, or `ratings` change.
+
+// 6. **Rendering**: Renders UI elements including product cards, price filter (with a slider), category filter (with a list of categories), and ratings filter (with a slider).
+
+// 7. **Pagination**: Utilizes a custom pagination component (`ProductPagination`) to handle pagination functionality.
+
+// 8. **PropTypes**: Specifies prop types for type-checking during development.
+
+// 9. **Export**: Exports the `Shop` component as default.
+
+// Overall, it's a component responsible for rendering products based on filters like price range, category, and ratings, along with handling pagination and fetching data from the Redux store.

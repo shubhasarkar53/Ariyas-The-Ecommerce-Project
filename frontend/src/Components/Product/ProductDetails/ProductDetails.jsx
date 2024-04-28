@@ -23,7 +23,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 
 
-const ProductDetails = ({ match }) => {
+const ProductDetails = ({ match, history }) => {
 
   const dispatch = useDispatch();
 
@@ -125,7 +125,22 @@ const ProductDetails = ({ match }) => {
     });
   }
 
-  
+  //buy now function 
+  const buyNowHandler = () => {
+    if (!product.name || !quantity) return;
+    dispatch(addItemsToCart(match.params.id, quantity));
+    toast.success(`${quantity} ${quantity > 1 ? 'items' : 'item'} added to cart` , {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme:"colored",
+    });
+    history.push('/cart');
+  }
 
   return (
     <Fragment>
@@ -172,7 +187,7 @@ const ProductDetails = ({ match }) => {
           </div>
 
           <div className="buttondiv">
-            <button className='buynow'>Buy Now</button>
+            <button className='buynow' onClick={buyNowHandler}>Buy Now</button>
 
             <button className='addtocart' onClick={addToCartHandler}>Add to Cart</button>
 
@@ -242,7 +257,10 @@ const ProductDetails = ({ match }) => {
 };
 
 ProductDetails.propTypes = {
-  match: PropTypes.object.isRequired,
+  getProductDetails: PropTypes.func.isRequired,
+  product: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 // export default ProductDetails;

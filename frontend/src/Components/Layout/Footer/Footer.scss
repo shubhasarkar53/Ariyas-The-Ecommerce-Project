@@ -1,136 +1,228 @@
-*{
-    font-family: 'Poppins', sans-serif;
+* {
+  font-family: "Poppins", sans-serif;
 }
-.footer{
-    width: 100%;
-    // border: 2px solid red;
-    // height: auto;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.footer {
+  width: 100%;
+  // border: 2px solid red;
+  // height: auto;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+  padding: 20px;
+  // margin-top: 5rem;
+  text-align: center;
+
+  // margin-top: auto;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 1em;
+  width: 80%;
+  // border: 2px solid rgb(0, 255, 38);
+}
+.footer-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  gap: 1em;
+}
+.element {
+  display: flex;
+  gap: 2em;
+}
+.sline {
+  width: 1px;
+  height: 2rem;
+  background-color: gray;
+  margin: 0 0.5rem;
+}
+.line {
+  width: 100%;
+  height: 1.5px;
+  background-color: gray;
+  margin: 0.5rem 0;
+}
+.list-item1,
+.list-item2,
+.list-item3 {
+  display: flex;
+  align-items: center;
+}
+.symbol1,
+.symbol2,
+.symbol3 {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  color: orange;
+}
+.footer-middle {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+  font-size: 18px;
+  margin-top: 1em;
+  padding: 2rem;
+  padding-left: 0;
+  padding-right: 0;
+}
+.ariyas {
+  // border: 2px solid rgb(162, 255, 0);
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  p {
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 500;
     color: #000000;
-    padding: 20px;
-    // margin-top: 5rem;
-    text-align: center;
-    
-    // margin-top: auto;
-
-
-}
-.footer-container{
+    text-align: left;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .social-media {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 1em;
-    width: 80%;
-    // border: 2px solid rgb(0, 255, 38);
+    gap: 1rem;
+    a {
+      text-decoration: none;
+      color: #000000;
+      font-size: 1.5rem;
+      &:hover {
+        color: #cd8849;
+      }
+    }
+  }
 }
-.footer-top{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    gap: 1em;
-    // border: 2px solid rgb(0, 89, 255);
-}
-.element{
-    display: flex;
-    gap: 2em;
-}
-.sline{
-    width: 1px;
-    height: 2rem;
-    background-color: gray;
-    margin: 0 0.5rem;
-}
-.line{
-    width: 100%;
-    height: 1.5px;
-    background-color: gray;
-    margin: 0.5rem 0;
-}
-.list-item1, .list-item2, .list-item3{
-    display: flex; align-items: center;
-}
-.symbol1, .symbol2, .symbol3{
-    font-size: 2rem;
-    display: flex; align-items: center;
-    color: orange;
-}
-.footer-middle{
-    width: 100%;
-    // border: 2px solid red;
-    display: flex;
-    justify-content: space-between;
-    gap: 10rem;
-    font-size: 18px;
-    margin-top: 1em;
-    padding: 2rem;
-    padding-left: 0;
-    padding-right: 0;
-    text-decoration: none;
-}
-.ariyas{ 
-    // border: 2px solid rgb(162, 255, 0);
-    width: 30%;
+.footer-det-container {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  .shop,
+  .need-help,
+  .about {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    p{
-        font-size: 16px;
-        line-height: 30px;
-        font-weight: 500;
-        color: #000000;
-        text-align: left;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
-    .social-media{
-        display: flex;
-        gap: 1rem;
-        a{
-            text-decoration: none;
-            color: #000000;
-            font-size: 1.5rem;
-            &:hover {
-                color: #CD8849;
-            }
-        }
-    
-    }
-
-}
-
-.shop, .need-help, .about{
- display: flex;
- flex-direction: column;
- align-items: flex-start;
- gap: 1rem;
-    a{
-    text-decoration: none;
-    color: #000000;
-    font-size: 18px;
-        &:hover {
-            color: #CD8849;
-        }
-   }
-}
-
-.footer-bottom{
     width: 100%;
-    height: 2rem;
-    bottom: 0;
-    position:relative;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-   
+    font-weight: 300;
+    color: rgb(60, 60, 60);
+    gap: 1rem;
+    a {
+      text-decoration: none;
+      color: #000000;
+      font-size: 16px;
+      text-align: center;
+      &:hover {
+        color: #cd8849;
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
+.footer-bottom {
+  width: 100%;
+  height: 2rem;
+  bottom: 0;
+  position: relative;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
 
-//media
+@media screen and (max-width: 1400px) {
+  .footer {
+    .footer-container {
+      .footer-middle {
+        flex-direction: column;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        .ariyas {
+          display: flex;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+          p {
+            text-align: center;
+          }
+        }
+        .footer-det-container {
+          width: 100%;
+          .shop,
+          .about,
+          .need-help {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .footer-top {
+    font-size: 15px;
+    gap: 0.8em;
+    .element {
+      gap: 1.5em;
+      .symbol1,
+      .symbol2,
+      .symbol3 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .footer-middle {
+    .ariyas {
+      p {
+        font-size: 13px;
+      }
+      .social-media {
+        a {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer-top {
+    font-size: 13px;
+    gap: 0.5em;
+    .element {
+      gap: 1rem;
+      .symbol1,
+      .symbol2,
+      .symbol3 {
+        font-size: 1rem;
+      }
+    }
+  }
+  .footer-middle {
+    .footer-det-container {
+      .shop,
+      .about,
+      .need-help {
+        font-weight: 200;
+        a {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
