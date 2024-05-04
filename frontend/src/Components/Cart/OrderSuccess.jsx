@@ -9,24 +9,24 @@ const OrderSuccess = ({ history }) => {
   const { user } = useSelector((state) => state.user);
   const { order,loading} = useSelector((state) => state.order);
 
-  const subTotal = order.newOrder.orderItems.reduce(
-    (acc, item) => acc + item.quantity * item.price,
-    0
-  );
+  // const subTotal = order.newOrder.orderItems.reduce(
+  //   (acc, item) => acc + item.quantity * item.price,
+  //   0
+  // );
 
-  const shippingCharges2 = order.newOrder.shippingPrice; 
+  // const shippingCharges2 = order.newOrder.shippingPrice; 
 
 
-  const tax = subTotal * 0.18; //tax is set to be 18%
+ // const tax = subTotal * 0.18; //tax is set to be 18%
 
-  const totalPrice = order.newOrder.totalPrice;
+  // const totalPrice = order.newOrder.totalPrice;
 
-  const add1 = order.newOrder.shippingInfo.state;
-  const add2 = order.newOrder.shippingInfo.country;
-  const add3 = order.newOrder.shippingInfo.phoneNo;
-  const add4 = order.newOrder.shippingInfo.address;
-  const add5 = order.newOrder.shippingInfo.city;
-  const add6 = order.newOrder.shippingInfo.pinCode;
+  // const add1 = order.newOrder.shippingInfo.state;
+  // const add2 = order.newOrder.shippingInfo.country;
+  // const add3 = order.newOrder.shippingInfo.phoneNo;
+  // const add4 = order.newOrder.shippingInfo.address;
+  // const add5 = order.newOrder.shippingInfo.city;
+  // const add6 = order.newOrder.shippingInfo.pinCode;
 
   return (
     <Fragment>
@@ -57,16 +57,19 @@ const OrderSuccess = ({ history }) => {
               <div className="summary">
                 <p className="summary_title-2">Order Summary</p>
                 <p>
-                  Subtotal: <span>₹{subTotal}</span>
+                  Subtotal: <span>₹{order.newOrder.orderItems.reduce(
+    (acc, item) => acc + item.quantity * item.price,
+    0
+  )}</span>
                 </p>
                 <p>
-                  Shipping: <span>₹{shippingCharges2}</span>
+                  Shipping: <span>₹{order.newOrder.shippingPrice}</span>
                 </p>
                 <p>
-                  Tax: <span>₹{tax}</span>
+                  Tax: <span>₹{ order.newOrder.totalPrice * 0.18}</span>
                 </p>
                 <p>
-                  Total: <span>₹{totalPrice}</span>
+                  Total: <span>₹{ order.newOrder.totalPrice}</span>
                 </p>
               </div>
             </div>
@@ -76,17 +79,17 @@ const OrderSuccess = ({ history }) => {
               <p className="address">
                 {user.name}
                 <br />
-                {add1}
+                {order.newOrder.shippingInfo.state}
                 <br />
-                {add2}
+                {order.newOrder.shippingInfo.country}
                 <br />
-                {add3}
+                { order.newOrder.shippingInfo.phoneNo}
                 <br />
-                {add4}
+                {order.newOrder.shippingInfo.address}
                 <br />
-                {add5}
+                { order.newOrder.shippingInfo.city}
                 <br />
-                {add6}
+                {order.newOrder.shippingInfo.pinCode}
               </p>
             </div>
   
