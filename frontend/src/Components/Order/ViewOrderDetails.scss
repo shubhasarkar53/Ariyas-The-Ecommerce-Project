@@ -3,4 +3,76 @@
     flex-direction: column;
     margin: 3rem;
     padding: 2rem;
+    .orderDetailsHeader{
+       display: flex;
+       justify-content: space-evenly;
+       color: rgba(255, 255, 255, 0.839);
+    //    border: 2px solid red;
+       padding: 2rem;
+       margin: 1.2rem;
+       background: #D98900;
+       border-radius: 1.2rem;
+       .orderDetailsLeft{
+           display: flex;
+           flex-direction: column;
+           gap: 0.5rem;
+       }
+       .shippingInfo{
+              display: flex;
+              flex-direction: column;
+              gap: 0.5rem;
+                  .addDetailsTab{
+                      .addressItem{
+                          display: flex;
+                          flex-direction: column;
+                      }
+                  }
+           
+       }
+    }
+    .orderDetailsContainerBox{
+        // border: 2px solid red;
+        padding: 2rem;
+        margin: 1.2rem;
+        background:#D98900;
+        border-radius: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        .orderDetailsContainerBoxItem{
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            .items{
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                .imgItem{
+                    width: 100px;
+                    height: 100px;
+                    object-fit: contain;
+                    border-radius: 1.5rem;
+                }
+                .productLink{
+                    color: white;
+                    text-decoration: none;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    &:hover{
+                        text-decoration: underline;
+                        cursor: pointer;
+                        color: #ffffff93;
+                    }
+                }
+                .itemQnt{
+                    color: rgb(28, 4, 4);
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    font-style: italic;
+                    margin-left: auto;
+                    
+                }
+            }
+        }
+    }
 }

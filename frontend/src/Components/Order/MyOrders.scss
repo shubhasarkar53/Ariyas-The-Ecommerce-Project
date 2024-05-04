@@ -1,41 +1,63 @@
-.orders-container {
-  width: 100%;
+
+.orders-container{
+  color: #1d1d1dd4;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  margin: 30px 0;
-  padding: 3rem;
-  .myOrdersHeading {
+  justify-content: center;
+  margin: 2rem;
+  .myOrdersHeading{
+    font-size: 2rem;
     text-align: center;
-    margin: 30px 0;
+    margin: 1rem;
   }
-
-  .myOrdersContainer {
+  .myOrdersContainer{
+    // border: 2px solid red;
+    .myOrderItems{
+    // border: 2px solid red;
+    border-radius: 1.2rem;
+    background: #E4E4E4;
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
-  .myOrderItems {
-    display: flex;
-    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 2rem;
     padding: 2rem;
-    gap: 1rem;
-    border-radius: 50px;
-    background: #e4e4e4;
-    box-shadow: 20px 20px 60px #c2c2c2, -20px -20px 60px #ffffff;
+    .leftDiv{
+      width: 50%;
+      .btnSec{
+        display: flex;
+        margin-top: 2rem;
+        gap: 1rem;
+        .viewOrderBtn{
+          padding: 0.5rem 1rem;
+          background-color: #BD6639;
+          border: 1px solid black;
+          border-radius: 0.5rem;
+          cursor: pointer;
+          border:none;
+          color: white;
+        }
+        .cancelOrderBtn{
+          padding: 0.5rem 1rem;
+          background-color: #BD6639;
+          border: 1px solid black;
+          border-radius: 0.5rem;
+          cursor: pointer;
+          border:none;
+          color: white;
+        }
+        .retutnOrderBtn{
+          padding: 0.5rem 1rem;
+          background-color: #BD6639;
+          border:none;
+          border-radius: 0.5rem;
+          cursor: pointer;
+          color: white;
+        }
+      }
+    }
+    .rightDiv{
+      width: 50%;
+    }
+    }
   }
-
-  .myOrderItems h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-  }
-
-  .viewOrderBtn {
-    padding: 0.7rem 1.5rem;
-    border-radius: 50px;
-    background: #e4e4e4;
-    box-shadow: 20px 20px 60px #c2c2c2, -20px -20px 60px #ffffff;
-  }
+ 
 }
