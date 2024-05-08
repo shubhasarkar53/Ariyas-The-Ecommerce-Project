@@ -59,11 +59,11 @@ const ProductDetails = ({ match, history }) => {
   } = useSelector((state) => state.createReview);
 
 
-  if (loading) {
-    console.log("loading");
-  } else {
-    console.log("product:", product);
-  }
+  // if (loading) {
+  //   console.log("loading");
+  // } else {
+  //   console.log("product:", product);
+  // }
 
   // pre defined options for rating
   const options = {
@@ -396,12 +396,16 @@ const ProductDetails = ({ match, history }) => {
   );
 };
 
-ProductDetails.propTypes = {
-  getProductDetails: PropTypes.func.isRequired,
-  product: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired,
-};
+
+// ------------------------------------
+// commented by shubha
+// ------------------------------------
+// ProductDetails.propTypes = {
+//   // getProductDetails: PropTypes.func.isRequired,
+//   // product: PropTypes.object.isRequired,
+//   // history: PropTypes.object.isRequired,
+//   // match: PropTypes.object.isRequired,
+// };
 
 // export default ProductDetails;
 

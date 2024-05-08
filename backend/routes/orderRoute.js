@@ -1,5 +1,5 @@
 const express =  require("express");
-const { createNewOrder, getSingleOrder, getLoggedInUserOrders, getAllOrders, deleteOrder, updateOrderStatus, getAllIncomingOrders } = require("../controllers/orderController");
+const { createNewOrder, getSingleOrder, getLoggedInUserOrders, getAllOrders, deleteOrder, updateOrderStatus, getAllIncomingOrders, updateOrderStatusForSeller } = require("../controllers/orderController");
 const { isAuthenticated, authRole } = require("../middleWares/auth");
 const router = express.Router();
 
@@ -24,9 +24,23 @@ router.route("/admin/orders").get(isAuthenticated, authRole("admin"), getAllOrde
 //GetAllIncoming Order details, UpdateOrderStatus,delete order --Admin
 router.route('/admin/order/:id')
 .delete(isAuthenticated, authRole('admin'), deleteOrder)
-.put(isAuthenticated, authRole('admin'), updateOrderStatus);
+// .put(isAuthenticated, authRole('admin'), updateOrderStatus);
 
 //GetAllIncoming Order details
-router.route('/getallorders/incoming/seller/').get(isAuthenticated,getAllIncomingOrders);
+router.route('/getallorders/incoming/seller').get(isAuthenticated,getAllIncomingOrders);
+
+
+
+// seller routes
+
+// updateSellerOrder status
+router.route("/update-order-status/seller/:id").put(isAuthenticated,authRole("admin","seller"),updateOrderStatusForSeller)
+
+
+
+
+
+
+
 
 module.exports = router;

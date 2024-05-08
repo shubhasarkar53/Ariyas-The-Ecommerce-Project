@@ -45,12 +45,6 @@ const AdminDashboard = () => {
           text: "See Your Products Reviews",
           func: manageReviews,
         },
-        {
-          icon: authorization,
-          title: "Update Authorization",
-          text: "Manage User Authorizarion",
-          func: manageAuthorization,
-        },
         
       ];
 
@@ -62,7 +56,7 @@ const AdminDashboard = () => {
         history.push("/newProduct/create")
       }
       function manageIncomingOrders(){
-        history.push("/incomingOrders")
+        history.push("/incoming-orders")
       }
       function manageReviews(){
         history.push("/manageReviews")
@@ -71,7 +65,14 @@ const AdminDashboard = () => {
         history.push("/authorization")
       }
 
-
+      if (user.role === "admin") {
+        options.unshift(  {
+          icon: authorization,
+          title: "Update Authorization",
+          text: "Manage User Authorizarion",
+          func: manageAuthorization,
+        });
+      }
 
 
     return (
