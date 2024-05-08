@@ -49,7 +49,9 @@ const Header = () => {
       <header>
         <nav>
           <div className="left-nav">
-            <img src={logo} alt="ariyas" style={{ filter: "invert(60)" }} />
+           <Link to="/">
+           <img src={logo} alt="ariyas" style={{ filter: "invert(60)" }} />
+           </Link>
           </div>
           {/* <div className={`mid-nav ${isMenuOpen ? 'mobile-menu-link' : ''}`}> */}
           <div className="mid-nav">

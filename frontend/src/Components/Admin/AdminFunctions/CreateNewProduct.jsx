@@ -73,7 +73,7 @@ const CreateNewProduct = () => {
     myFormData.set("price", productPrice);
     myFormData.set("description", productDescription);
     myFormData.set("category", productCategory);
-    myFormData.set("quantity", productQuantity);
+    myFormData.set("stock", productQuantity);
     myFormData.set("category", productCategory);
     myFormData.set("location", productLocation);
     myFormData.set("image", productImg);
@@ -186,9 +186,13 @@ const CreateNewProduct = () => {
                       name="productCategory"
                     >
                       <option value="-1">Select category</option>
-                      <option value="1">Category 1</option>
-                      <option value="2">Category 2</option>
-                      <option value="3">Category 3</option>
+                      {
+                        ["Bags","Shoes","Sharees","Kurttys","Jewelry","Wooden","Ceramic"].map((item,index)=>{
+                          return(
+                            <option key={index} value={`${item}`}>{item}</option>
+                          )
+                        })
+                      }
                     </select>
                   </div>
                   <div className="create-product-form-group">
