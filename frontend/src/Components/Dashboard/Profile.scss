@@ -16,6 +16,7 @@ a {
   font-family: "Poppins", sans-serif;
   font-size: 1.3rem;
   font-weight: normal;
+  text-transform:capitalize;
 }
 
 .img-profile img {
@@ -142,6 +143,10 @@ a {
   align-items: center;
   flex-direction: column;
   font-family: "Poppins", sans-serif;
+  h4{
+    text-transform: capitalize;
+  }
+
 }
 
 .title-action p {

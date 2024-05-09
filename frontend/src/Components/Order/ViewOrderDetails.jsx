@@ -32,7 +32,7 @@ const ViewOrderDetails = ( { match }) => {
             dispatch(clearErrors());
         }
         dispatch(getOrderDetails(match.params.id));
-    }, [dispatch, error,match.params.id]);
+    }, [dispatch, error]);
 
   return (
   <Fragment>

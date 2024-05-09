@@ -86,11 +86,11 @@ const Profile = () => {
       func: managelogOut,
     },
   ];
-  if (user.role === "admin") {
+  if (user.role === "admin" || user.role === "seller") {
     options.unshift({
       icon: adminImg,
-      title: "Admin Dashboard",
-      text: "Manage your Admin profile",
+      title: `${user.role} Dashboard`,
+      text: `Manage your ${user.role} profile`,
       func: manageAdminProfile,
     });
   }
