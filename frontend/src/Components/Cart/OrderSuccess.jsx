@@ -5,29 +5,10 @@ import { Link } from "react-router-dom";
 import "./OrderSuccess.scss";
 import PropTypes from "prop-types";
 import Loader from "../Loader/Loader";
-import Loader from "../Loader/Loader";
+
 const OrderSuccess = ({ history }) => {
   const { user } = useSelector((state) => state.user);
   const { order,loading} = useSelector((state) => state.order);
-
-  // const subTotal = order.newOrder.orderItems.reduce(
-  //   (acc, item) => acc + item.quantity * item.price,
-  //   0
-  // );
-
-  // const shippingCharges2 = order.newOrder.shippingPrice; 
-
-
- // const tax = subTotal * 0.18; //tax is set to be 18%
-
-  // const totalPrice = order.newOrder.totalPrice;
-
-  // const add1 = order.newOrder.shippingInfo.state;
-  // const add2 = order.newOrder.shippingInfo.country;
-  // const add3 = order.newOrder.shippingInfo.phoneNo;
-  // const add4 = order.newOrder.shippingInfo.address;
-  // const add5 = order.newOrder.shippingInfo.city;
-  // const add6 = order.newOrder.shippingInfo.pinCode;
 
   return (
     <Fragment>
