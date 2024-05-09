@@ -154,3 +154,74 @@ input[type="number"]::-webkit-outer-spin-button {
     }
   }
 }
+
+@media screen and (max-width: 1000px) {
+  .new-address-container {
+    width: 62%;
+    h1 {
+      font-size: 1.3rem;
+    }
+    .form-container {
+      .newAddressForm {
+        .newAddressForm-input-fields {
+          label {
+            font-size: 0.7rem;
+          }
+          input,
+          select {
+            font-size: 0.7rem;
+            padding: -0.2em -0.3em;
+          }
+        }
+        button {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .new-address-container {
+    width: 69%;
+    .form-container {
+      .newAddressForm {
+        button {
+          padding: 0.8em 1.2em;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .new-address-container {
+    width: 80%;
+    h1 {
+      font-size: 1rem;
+    }
+    .form-container {
+      .newAddressForm {
+        padding: -1.5rem -1.5rem !important ;
+        .newAddressForm-input-fields {
+          label,
+          input,
+          select {
+            font-size: 0.65rem;
+          }
+        }
+        button {
+          padding: 0.6em 1em;
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .new-address-container {
+    width: 90%;
+  }
+}
