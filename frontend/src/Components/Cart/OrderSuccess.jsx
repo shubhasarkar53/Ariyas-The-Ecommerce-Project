@@ -71,6 +71,8 @@ const OrderSuccess = ({ history }) => {
                 <br />
                 { order.newOrder.shippingInfo.city}
                 <br />
+                {order.newOrder.shippingInfo.landmark}
+                <br />
                 {order.newOrder.shippingInfo.pinCode}
               </p>
             </div>

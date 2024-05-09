@@ -75,7 +75,7 @@ const ViewOrderDetails = ({ match }) => {
               <div className="shippingInfo">
                 <h1>Shipping Info</h1>
                 <p>
-                  <b>Name:</b> {order && order.user && order.user.name}
+                  <b>Name:</b> {order && order.shippingInfo && order.shippingInfo.fullName}
                 </p>
                 <p>
                   <b>Phone:</b>{" "}
@@ -87,6 +87,7 @@ const ViewOrderDetails = ({ match }) => {
                     {order && order.shippingInfo && (
                       <div className="addressItem">
                         <span>{order.shippingInfo.address}</span>
+                        <span>{order.shippingInfo.landmark}</span>
                         <span>{order.shippingInfo.city}</span>
                         <span>{order.shippingInfo.state}</span>
                         <span>{order.shippingInfo.country}</span>
