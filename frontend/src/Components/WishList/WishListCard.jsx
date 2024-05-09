@@ -5,41 +5,51 @@ import "./WishListCard.scss"
 import { Link } from 'react-router-dom'
 import { RiDeleteBin7Fill } from "react-icons/ri";
 import { ImBoxRemove } from "react-icons/im";
-const WishListCard = ({item, deleteWishListItems,moveToCartHandler }) => {
 
+const truncateText = (text, limit) => {
+    const words = text.split(' ');
+    if (words.length > limit) {
+        return words.slice(0, limit).join(' ') + '...';
+    }
+    return text;
+};
 
-  return (
-   <Fragment>
-    
-       <div className="cardItem-container"> {/* main container */}
-    
-        <div className="card-Item">    {/* item card container */}
+const WishListCard = ({ item, deleteWishListItems, moveToCartHandler }) => {
 
-        <img src={item.image} alt={item.name}/>
+    const truncatedName = truncateText(item.name, 4);
 
-        <div className="cardItem-details">
+    return (
+        <Fragment>
 
-            <Link to={`/product/${item.product}`} className='cardItem-name'> 
-            {item.name}</Link>
-            <p className='cardItem-price'>Price:<span>{`₹ ${item.price}`}</span></p>
+            <div className="cardItem-container"> {/* main container */}
 
-            <p className='cardItem-remove'
+                <div className="card-Item">    {/* item card container */}
 
-             onClick={()=>deleteWishListItems(item.product)}>Remove
-             { <RiDeleteBin7Fill /> }</p>
+                    <img src={item.image} alt={item.name} />
 
-            <p className='move-to-cart' 
-            onClick={()=>moveToCartHandler(item.product)}>Move to Cart
-            { <ImBoxRemove/> }</p>
-            
-        </div>
-        </div>
+                    <div className="cardItem-details">
 
-        <div className="bar"></div>     {/* bar div */}
+                        <Link to={`/product/${item.product}`} className='cardItem-name'>
+                            {truncatedName}</Link>
+                        <p className='cardItem-price'>Price:<span>{`₹ ${item.price}`}</span></p>
 
-       </div>
-   </Fragment>
-  )
+                        <p className='cardItem-remove'
+
+                            onClick={() => deleteWishListItems(item.product)}>Remove
+                            {<RiDeleteBin7Fill />}</p>
+
+                        <p className='move-to-cart'
+                            onClick={() => moveToCartHandler(item.product)}>Move to Cart
+                            {<ImBoxRemove />}</p>
+
+                    </div>
+                </div>
+
+                <div className="bar"></div>     {/* bar div */}
+
+            </div>
+        </Fragment>
+    )
 }
 
 WishListCard.propTypes = {

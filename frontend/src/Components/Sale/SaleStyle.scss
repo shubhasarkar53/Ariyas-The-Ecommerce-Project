@@ -11,16 +11,15 @@ $orangeTextColor: #d47f00;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-
-  .sale-h1 {
-    padding: 3rem 0;
-    font-size: 4rem;
-    text-align: center;
-  }
-
-  .sale-h1 h1 {
-    font-weight: bolder;
+    .sale-h1 {
+      padding: 3rem 0;
+      font-size: 3rem;
+      text-align: center;
+      h1 {
+        margin-top: -1rem !important;
+        font-weight: 200 !important;
+      }
+    }
   }
 
   .gift-container {
@@ -32,7 +31,7 @@ $orangeTextColor: #d47f00;
   .gift-section {
     display: flex;
     justify-content: space-around;
-    margin: 0 20rem;
+    margin: 0 10rem;
     padding-bottom: 2rem;
     padding-top: 2rem;
 
@@ -81,12 +80,13 @@ $orangeTextColor: #d47f00;
   }
 
   .divider {
-    height: 10vh;
+    height: 15vh;
     width: 1px solid gray;
     border: 1px solid gray;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 1rem;
   }
 
   .gift-btn {
@@ -115,8 +115,10 @@ $orangeTextColor: #d47f00;
   }
 
   .sale-snap-container {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.582),
-        rgba(0, 0, 0, 0.417)),
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.582),
+        rgba(0, 0, 0, 0.417)
+      ),
       url("../../assets/Images/Carousel/AdobeStock_453480765_Preview.jpeg");
     background-position: center;
     background-size: cover;
@@ -128,25 +130,25 @@ $orangeTextColor: #d47f00;
 
   .sale-snap-container h1,
   .sale-snap-container p {
-    margin-bottom: 2rem;
+    margin-bottom: 2rem !important;
   }
 
   .sale-snap-container h1 {
     font-family: "Poppins", sans-serif;
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: normal;
   }
 
   .sale-snap-container p {
     font-family: "Poppins", sans-serif;
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: lighter;
   }
 
   .btn-snap-sale button {
     border: none;
     padding: 0.7rem 1rem;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-family: "Poppins", sans-serif;
     border: none;
     cursor: pointer;
@@ -168,49 +170,49 @@ $orangeTextColor: #d47f00;
   .sale-division {
     width: 100%;
     height: fit-content;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
   }
 
   .sale-division #sale-div-img1 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.45)),
+    background-image: linear-gradient(rgba(0, 0, 0, 0.418), rgba(0, 0, 0, 0.45)),
       url("../../assets/Images/Carousel/AdobeStock_613244753_Preview.jpeg");
     background-position: center;
     background-size: cover;
   }
 
   .sale-division #sale-div-img2 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.45)),
+    background-image: linear-gradient(rgba(0, 0, 0, 0.449), rgba(0, 0, 0, 0.45)),
       url("../../assets/Images/Carousel/AdobeStock_546564435_Preview.jpeg");
     background-position: center;
     background-size: cover;
   }
 
   .sale-title-div {
-    padding: 5rem 0;
+    padding: 2.5rem 0;
     color: $textWhite;
     font-family: "Poppins", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.8rem;
     letter-spacing: 2px;
   }
 
   .sale-title-div h2,
   .sale-title-div p,
   .sale-title-div .btn-div-sale {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .sale-title-div h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .sale-title-div .btn-div-sale {
-    padding: 1rem 1rem;
-    font-size: 1.1rem;
+    padding: 0.9rem;
+    font-size: 1rem;
     background-color: transparent;
     border: 2px solid $textWhite;
     color: $textWhite;
@@ -238,7 +240,6 @@ $orangeTextColor: #d47f00;
   }
 
   @keyframes loadingDots {
-
     0%,
     20% {
       content: "...";
@@ -264,12 +265,14 @@ $orangeTextColor: #d47f00;
   }
 
   .sale-view-offer {
-    margin-top: 10rem;
-    margin-bottom: 5rem;
-    margin-left: 20rem;
-    margin-right: 20rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 5rem;
 
     .sales-card-view {
+      width: 60%;
+
       .sales-title-section {
         display: flex;
         justify-content: space-between;
@@ -293,10 +296,10 @@ $orangeTextColor: #d47f00;
         justify-content: center;
 
         .details {
-          width: 80%;
+          width: 90%;
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          grid-gap: 2rem;
+          grid-template-columns: repeat(3, 1fr);
+          grid-gap: 1.5rem;
           align-self: start;
           margin-top: 2rem;
 
@@ -326,8 +329,15 @@ $orangeTextColor: #d47f00;
               overflow: hidden;
               width: 100%;
 
+              &::before {
+                content: "";
+                display: block;
+                padding-top: 75%;
+              }
+
               &:hover .icon-container {
-                display: flex;
+                // display: flex;
+                opacity: 1;
               }
 
               &:hover img {
@@ -336,22 +346,36 @@ $orangeTextColor: #d47f00;
               }
 
               img {
-                width: 290px;
-                height: 250px;
+                // width: 250px;
+                // height: 200px;
+                // object-fit: cover;
+                // background-position: center;
+                // background-size: cover;
+                // transition: all 0.4s ease-in-out;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
                 object-fit: cover;
+                transition: all 0.4s ease-in-out;
+                overflow: hidden;
                 background-position: center;
                 background-size: cover;
-                transition: all 0.4s ease-in-out;
               }
 
               .icon-container {
                 position: absolute;
-                top: 3rem;
-                right: 5rem;
+                top: 50%;
+                right: 50%;
                 transform: translate(50%, -50%);
-                display: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 0.5rem;
                 z-index: 1;
-                transition: opacity 0.3s;
+                opacity: 0;
+                transition: opacity 0.3s, transform 0.3s;
               }
 
               button {
@@ -360,8 +384,8 @@ $orangeTextColor: #d47f00;
 
                 .wishlist-icon,
                 .cart-icon {
-                  width: 20px;
-                  height: 20px;
+                  width: 15px;
+                  height: 15px;
                   color: grey;
                   border-radius: 50%;
                   display: flex;
@@ -381,14 +405,16 @@ $orangeTextColor: #d47f00;
             }
 
             .sales-title {
+              text-align: center;
+
               .sale-title-links {
                 margin: 0;
-                text-align: center;
                 font-size: 1.1rem;
                 color: $secondaryTextColor;
                 transition: color 0.4s ease-in-out;
                 display: flex;
                 justify-content: center;
+                margin-top: 0.3rem;
                 margin-bottom: 0.6rem;
 
                 &:hover {
@@ -397,13 +423,17 @@ $orangeTextColor: #d47f00;
               }
 
               .price {
+                // display: flex;
+                // justify-content: center;
                 display: flex;
                 justify-content: center;
+                margin-top: 0.5rem;
+                /* Adjust spacing */
 
                 p {
                   margin: 0;
                   color: $secondaryTextColor;
-                  padding-right: 1.5rem;
+                  padding-right: 0.7rem;
 
                   .discount-sale {
                     color: $orangeTextColor;
@@ -419,12 +449,27 @@ $orangeTextColor: #d47f00;
 
             .ratings {
               display: flex;
+              opacity: 1;
+              align-items: center;
               justify-content: center;
-              margin-top: 1rem;
+              gap: 0.5rem;
+              font-size: 1rem;
+              margin-top: 0.5rem;
 
               .rating-options {
-                font-size: 1.5rem;
-                color: gold;
+                color: orange;
+
+                .MuiRating-iconEmpty {
+                  color: orange;
+                }
+
+                .MuiRating-iconHover {
+                  color: gold;
+                }
+
+                .MuiSvgIcon-root {
+                  font-size: 1rem;
+                }
               }
             }
           }
@@ -439,29 +484,29 @@ $orangeTextColor: #d47f00;
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem;
-  gap: 1rem;
+  gap: 0.3rem;
   width: 100%;
   transition: all 0.3s ease-in-out;
   opacity: 0;
   transform: translateY(20px);
 
   .cart {
-    font-size: 2rem;
-    cursor: pointer;
+    width: 15%;
 
-    &:hover {
-      color: #d47f00;
+    .productCard-cart {
+      width: 35px;
+      cursor: pointer;
     }
   }
 
   .prices-container {
-    width: 65%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    font-size: 20px;
-    font-weight: 400;
+    font-size: 14px;
+    font-weight: 300;
     line-height: 30px;
   }
 
@@ -475,11 +520,11 @@ $orangeTextColor: #d47f00;
   }
 
   .wishlist {
-    font-size: 1.8rem;
-    cursor: pointer;
+    width: 15%;
 
-    &:hover {
-      color: #d47f00;
+    .productCard-wishlist {
+      width: 35px;
+      cursor: pointer;
     }
   }
 }
@@ -491,262 +536,4 @@ $orangeTextColor: #d47f00;
 
 .hidden {
   display: none;
-}
-
-@media screen and (max-width: 1900px) {
-  .gift-container {
-    .gift-section {
-      margin: 0 15rem;
-    }
-  }
-}
-
-@media screen and (max-width: 1700px) {
-  .gift-container {
-    .gift-section {
-      margin: 0 10rem;
-
-      .gift-card-title {
-        h2 {
-          font-size: 1.5rem;
-        }
-
-        .fagift-icon {
-          font-size: 3.5rem;
-          margin-right: 0.9rem;
-        }
-      }
-
-      .gift-title {
-        .gift-icon {
-          font-size: 1.4rem;
-        }
-      }
-    }
-  }
-
-  .sale-division {
-    .sale-title-div {
-      h2 {
-        font-size: 2.3rem;
-      }
-
-      .btn-div-sale {
-        font-size: 1rem;
-      }
-
-      p {
-        font-size: 0.9rem;
-      }
-    }
-  }
-
-  .sales-container {
-    .sale-snap {
-      .sale-snap-container {
-        h1 {
-          font-size: 3.1rem;
-        }
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 1400px) {
-  .gift-container {
-    .gift-section {
-      margin: 0 7rem;
-
-      .gift-card-title {
-        h2 {
-          font-size: 1.2rem;
-        }
-
-        p {
-          font-size: 0.8rem;
-        }
-      }
-
-      .divider {
-        margin-left: -0.5rem;
-      }
-
-      .gift-btn {
-        button {
-          padding: 0.8rem;
-          font-size: 0.9rem;
-        }
-      }
-    }
-  }
-
-  .sale-division {
-    .sale-title-div {
-      padding: 4rem 0;
-
-      h2,
-      p,
-      .btn-div-sale {
-        margin-bottom: 1.3rem;
-      }
-    }
-  }
-
-  .sales-container {
-    .sale-snap {
-      .sale-snap-container {
-        padding: 5rem 0;
-
-        h1 {
-          font-size: 2.8rem;
-        }
-
-        p {
-          font-size: 1.1rem;
-        }
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .gift-container {
-    .gift-section {
-      margin: 0 4rem;
-
-      .gift-card-title {
-        h2 {
-          font-size: 1.1rem;
-        }
-
-        p {
-          font-size: 0.7rem;
-        }
-      }
-
-      .divider {
-        margin-left: -0.5rem;
-      }
-
-      .gift-btn {
-        button {
-          padding: 0.8rem;
-          font-size: 0.9rem;
-        }
-      }
-    }
-  }
-
-  .sale-division {
-    .sale-title-div {
-      padding: 3.5rem 0;
-
-      h2,
-      p,
-      .btn-div-sale {
-        margin-bottom: 1.1rem;
-      }
-
-      h2 {
-        font-size: 2rem;
-      }
-
-      p {
-        font-size: 0.7rem;
-      }
-
-      .btn-div-sale {
-        font-size: 0.9rem;
-        padding: 0.8rem 0.8rem;
-      }
-    }
-  }
-
-  .sales-container {
-    .sale-snap {
-      .sale-snap-container {
-        padding: 3rem 1.5rem;
-
-        h1,
-        p {
-          margin-bottom: 1.5rem;
-        }
-
-        h1 {
-          font-size: 2rem;
-        }
-
-        p {
-          font-size: 0.9rem;
-        }
-
-        .btn-snap-sale {
-          button {
-            font-size: 0.8rem;
-            padding: 0.6rem 0.9rem;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .gift-container {
-    .gift-section {
-      margin: 0 3rem;
-      flex-direction: column;
-      align-items: center;
-
-      .gift-card-title {
-        h2 {
-          font-size: 1.7rem;
-          text-align: center;
-        }
-
-        p {
-          font-size: 0.9rem;
-          text-align: center;
-        }
-
-        .fagift-icon {
-          font-size: 2rem;
-        }
-      }
-
-      .divider {
-        display: none;
-      }
-
-      .gift-btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        button {
-          padding: 0.9rem;
-          font-size: 1rem;
-          margin-left: 1.5rem;
-        }
-      }
-    }
-  }
-
-  .sale-view-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-
-    .sale-division {
-      .sale-title-div {
-        padding: 4rem 0;
-
-        h2,
-        p,
-        .btn-div-sale {
-          margin-bottom: 1rem;
-        }
-      }
-    }
-  }
 }

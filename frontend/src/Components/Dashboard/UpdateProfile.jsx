@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import Loader from "../Loader/Loader.jsx";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,7 +18,7 @@ const UpdateProfile = ({ history }) => {
   const { user } = useSelector((state) => state.user);
   const { error, loading, isUpdated } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
- 
+
 
   const [formData, setFromData] = useState({
     fullName: "",
@@ -28,19 +30,19 @@ const UpdateProfile = ({ history }) => {
   const [avatar, setAvatar] = useState("");
 
 
-  function updateFormDataChange(e){
-    if(e.target.name === "avatar"){
+  function updateFormDataChange(e) {
+    if (e.target.name === "avatar") {
       const reader = new FileReader();
 
-      reader.onload = () =>{
-        if(reader.readyState === 2){
+      reader.onload = () => {
+        if (reader.readyState === 2) {
           setAvatar(reader.result);
           // console.log(reader.result);
         }
       }
       reader.readAsDataURL(e.target.files[0]);
-    }else{
-      setFromData({...formData,[e.target.name]:e.target.value})
+    } else {
+      setFromData({ ...formData, [e.target.name]: e.target.value })
       // console.log("from update form change:", formData);
     }
 
@@ -109,7 +111,7 @@ const UpdateProfile = ({ history }) => {
             <h2>Edit Profile</h2>
           </div>
           <div className="update-profile-container">
-            <ToastContainer/>
+            <ToastContainer />
             <div className="left-deep">
               <img src={profileSide} alt="Background Image" />
             </div>

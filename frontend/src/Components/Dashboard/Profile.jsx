@@ -137,7 +137,7 @@ const Profile = () => {
               <h2>My Profile</h2>
             </div>
             <div className="profile-det-container">
-            <ToastContainer/>
+              <ToastContainer />
               {/* Left side of the profile */}
               <div className="ext-left-profile">
                 <img src={profileSide} alt="Background Image" />
@@ -177,7 +177,7 @@ const Profile = () => {
                     {/* Edit icon */}
                     <Link to={"/me/update/profile"}>
                       <Tooltip title="Edit Profile">
-                        <label >
+                        <label>
                           <EditIcon />
                         </label>
                       </Tooltip>
@@ -191,8 +191,7 @@ const Profile = () => {
                       <div
                         className="profile-slot"
                         key={index}
-                        onClick={item.func}
-                      >
+                        onClick={item.func}>
                         <div className="img-action">
                           <img src={item.icon} alt={item.title} />
                         </div>

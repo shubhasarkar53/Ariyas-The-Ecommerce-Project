@@ -93,7 +93,7 @@ const Footer = () => {
                 {[
                   { label: "About Us", path: "/about" },
                   { label: "Privacy Policy", path: "/privacy-policy" },
-                  { label: "Terms & Conditions", path: "/terms-and-conditions" },
+                  { label: "Terms & Conditions", path: "/terms-conditions" },
                   { label: "Become a Seller", path: "/become-seller" },
                   { label: "Wishlist", path: "/wishlist" },
                 ].map((item, index) => {

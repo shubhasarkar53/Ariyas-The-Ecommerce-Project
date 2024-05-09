@@ -24,6 +24,13 @@ const ProductCard = ({ product, match }) => {
   const [hoveredProductId, setHoveredProductId] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
+  const truncateText = (text, limit) => {
+    const words = text.split(' ');
+    if (words.length > limit) {
+      return words.slice(0, limit).join(' ') + '...';
+    }
+    return text;
+  };
 
   const options = {
     size: "large",
@@ -102,27 +109,27 @@ const ProductCard = ({ product, match }) => {
             <img src={product.image[0].url} alt="" />
             {isHovered && (
               <div className="hover-buttons">
-                <button className="wishlist-hov-button"
+                <button
                   onClick={(e) => {
                     e.preventDefault();
                     addToWishListHandler();
                   }}
                 >
-                  <FaHeart />
+                  <FaHeart className="wishlist-hov-button" />
                 </button>
-                <button className='cart-hov-button'
+                <button
                   onClick={(e) => {
                     e.preventDefault();
                     addToCartHandler();
                   }}
                 >
-                  <FaShoppingCart />
+                  <FaShoppingCart className="cart-hov-button" />
                 </button>
               </div>
             )}
           </div>
           <div className="product-titles">
-            <p className='title'>{product.name}</p>
+            <p className='title'>{truncateText(product.name, 2)}</p>
           </div>
           {/* <p className='product-des'>{product.description}</p> */}
 
@@ -137,29 +144,14 @@ const ProductCard = ({ product, match }) => {
               ({product.numOfReviews} {product.numOfReviews > 1 ? "Reviews" : "Review"})
             </span>
           </div>
-          {/* {hoveredProductId === product._id && (
-            <div
-              className={`carddown-div ${isCardDownVisible ? 'visible' : ''}`}
-              onMouseEnter={() => setIsCardDownVisible(true)}
-              onMouseLeave={() => setIsCardDownVisible(false)}
-            >
-              <div className='cart'>
-                <img src={cart2} alt='' onClick={() => addToCartHandler(product._id, product.name, product.price)} className='productCard-cart' />
-              </div>
-              <div className='prices-continer'>
-                <span className='price-1'>RS. {product.price}</span>
-                <span className='price-2'>Rs. {product.price * 4}</span>
-              </div>
-              <div className='wishlist'>
-                <img src={wishL} alt='' onClick={() => addToWishListHandler(product._id, product.name)} className='productCard-wishlist' />
-              </div>
-            </div>
-          )} */}
           {isHovered && (
             <div className="carddown-div">
 
               <div className="cart">
-                <img src={cart2} alt="" onClick={addToCartHandler} className='productCard-cart' />
+                <img src={cart2} alt="" onClick={(e) => {
+                  e.preventDefault();
+                  addToCartHandler();
+                }} className='productCard-cart' />
               </div>
 
               <div className='prices-container'>
@@ -168,7 +160,10 @@ const ProductCard = ({ product, match }) => {
               </div>
 
               <div className="wishlist">
-                <img src={wishL} alt="" onClick={addToWishListHandler} className='productCard-wishlist' />
+                <img src={wishL} alt="" onClick={(e) => {
+                  e.preventDefault();
+                  addToWishListHandler();
+                }} className='productCard-wishlist' />
               </div>
 
             </div>

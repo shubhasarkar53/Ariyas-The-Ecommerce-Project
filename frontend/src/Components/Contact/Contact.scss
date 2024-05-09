@@ -176,12 +176,11 @@ $orangeTextColor: #ee9208;
             15.5px 25.6px 13px -12px rgba(0, 0, 0, 0.037),
             28.3px 44.9px 25px -12px rgba(0, 0, 0, 0.044),
             37.4px 59.2px 46.8px -12px rgba(0, 0, 0, 0.053);
-          transition: all 0.44s ease-in-out;
+          transition: all 0.44s linear;
 
           &:hover {
             color: $textWhite;
             background-color: $orangeTextColor;
-            // border: 1px solid $orangeTextColor;
           }
         }
       }
@@ -202,7 +201,7 @@ $orangeTextColor: #ee9208;
     width: 100%;
 
     .contact-form {
-      width: 45%;
+      width: 50%;
       h2 {
         font-size: 1.7rem;
       }
@@ -217,21 +216,21 @@ $orangeTextColor: #ee9208;
             margin-bottom: 1rem;
 
             label {
-              font-size: 0.9rem;
+              font-size: 0.8rem;
             }
 
             input {
-              font-size: 0.8rem;
+              font-size: 0.7rem;
             }
           }
 
           #last-name {
             label {
-              font-size: 0.9rem;
+              font-size: 0.8rem;
             }
 
             input {
-              font-size: 0.8rem;
+              font-size: 0.7rem;
             }
           }
         }
@@ -242,11 +241,11 @@ $orangeTextColor: #ee9208;
           margin-top: -1rem;
 
           label {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
           }
 
           input {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
           }
         }
       }
@@ -259,7 +258,7 @@ $orangeTextColor: #ee9208;
     .contact-form {
       width: 60%;
       h2 {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
       }
       .form {
         margin: 0.8rem 1.5rem;
@@ -269,10 +268,10 @@ $orangeTextColor: #ee9208;
           #first-name,
           #last-name {
             label {
-              font-size: 0.8rem;
+              font-size: 0.7rem;
             }
             input {
-              font-size: 0.7rem;
+              font-size: 0.65rem;
             }
           }
         }
@@ -280,19 +279,30 @@ $orangeTextColor: #ee9208;
         .message,
         .email {
           label {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
           }
           input {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
           }
         }
         .btn-contact {
           margin-top: 1.4rem;
           button {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             margin-bottom: 1.5rem;
           }
         }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .contact-container {
+    .contact-form {
+      width: 70%;
+      h2 {
+        font-size: 1rem;
       }
     }
   }

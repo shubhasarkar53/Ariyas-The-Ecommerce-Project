@@ -5,10 +5,13 @@
   align-items: center;
   flex-direction: column;
   margin: 30px 0;
-  padding: 3rem;
+  padding: 1rem;
+  padding-bottom: 2rem;
   .myOrdersHeading {
     text-align: center;
-    margin: 30px 0;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
   }
 
   .myOrdersContainer {
@@ -28,14 +31,48 @@
   }
 
   .myOrderItems h3 {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: 600;
   }
 
   .viewOrderBtn {
     padding: 0.7rem 1.5rem;
     border-radius: 50px;
+    margin-top: 1.5rem;
     background: #e4e4e4;
     box-shadow: 20px 20px 60px #c2c2c2, -20px -20px 60px #ffffff;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .orders-container {
+    .myOrdersContainer {
+      .myOrderItems {
+        h3 {
+          font-size: 0.9rem;
+        }
+        .viewOrderBtn {
+          padding: 0.5rem 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .orders-container {
+    .myOrdersHeading {
+      font-size: 1.1rem;
+    }
+    .myOrdersContainer {
+      .myOrderItems {
+        h3 {
+          font-size: 0.75rem;
+        }
+        .viewOrderBtn {
+          font-size: 0.8rem !important;
+        }
+      }
+    }
   }
 }
