@@ -126,6 +126,7 @@ const NewAddress = () => {
       const addressData = new FormData();
 
       addressData.set("fullName", fullName);
+      addressData.set("address", address);
       addressData.set("town", town);
       addressData.set("phoneNo", phoneNo);
       addressData.set("flatName", flatName);

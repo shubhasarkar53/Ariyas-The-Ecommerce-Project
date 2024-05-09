@@ -13,6 +13,7 @@ import { Rating } from '@mui/material';
 import wishL from "../../assets/Images/Icons/CartPage/wishL.png";
 import cart2 from "../../assets/Images/Icons/CartPage/cart2.png";
 import PropTypes from 'prop-types';
+import './SaleMediaQuery.scss';
 
 const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
 
@@ -65,6 +66,14 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
       progress: undefined,
       theme: 'colored',
     });
+  };
+
+  const truncateText = (text, limit) => {
+    const words = text.split(' ');
+    if (words.length > limit) {
+      return words.slice(0, limit).join(' ') + '...';
+    }
+    return text;
   };
 
   const options = {
@@ -143,35 +152,20 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
                     </div>
 
                     <div className='sales-title'>
-                      <h1><Link to={`/product/${product._id}`} className="sale-title-links">{product.name}</Link></h1>
+                      <h1><Link to={`/product/${product._id}`} className="sale-title-links">{truncateText(product.name, 2)}</Link></h1>
                       <div className='price'>
-                        <p>&#x20B9; {product.price}  (<span className="discount-sale">30% off</span>)</p>
-                        <p className="price-cut">&#x20B9; 69420</p>
+                        <p id="price-1">&#x20B9; {product.price}  (<span className="discount-sale">30% off</span>)</p>
+                        <p className="price-cut" id="price-2">&#x20B9; 69420</p>
                       </div>
                     </div>
 
                     <div className='ratings'>
                       <Rating {...options} className='rating-options' />
-                      <span className="detailsBlock-2-span">
+                      <span className="detailsBlock-2-span" style={{ fontSize: "0.8rem" }}>
                         {" "}
                         ({product.numOfReviews} {product.numOfReviews > 1 ? "Reviews" : "Review"})
                       </span>
                     </div>
-
-                    {/* {isHovered && (
-                      <div className='carddown-div'>
-                        <div className='cart'>
-                          <img src={cart2} alt='' onClick={addToCartHandler} className='productCard-cart' />
-                        </div>
-                        <div className='prices-continer'>
-                          <span className='price-1'>RS. {product.price}</span>
-                          <span className='price-2'>Rs. {product.price * 4}</span>
-                        </div>
-                        <div className='wishlist'>
-                          <img src={wishL} alt='' onClick={addToWishListHandler} className='productCard-wishlist' />
-                        </div>
-                      </div>
-                    )} */}
 
                     {hoveredProductId === product._id && (
                       <div
@@ -192,20 +186,6 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
                       </div>
                     )}
 
-                    {/* {hoveredProductId === product._id && (
-                      <div className='carddown-div'>
-                        <div className='cart'>
-                          <img src={cart2} alt='' onClick={addToCartHandler} className='productCard-cart' />
-                        </div>
-                        <div className='prices-continer'>
-                          <span className='price-1'>RS. {product.price}</span>
-                          <span className='price-2'>Rs. {product.price * 4}</span>
-                        </div>
-                        <div className='wishlist'>
-                          <img src={wishL} alt='' onClick={addToWishListHandler} className='productCard-wishlist' />
-                        </div>
-                      </div>
-                    )} */}
                   </div>
                 ))
 

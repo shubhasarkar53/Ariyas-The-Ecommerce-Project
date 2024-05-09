@@ -87,6 +87,19 @@ a {
   margin-left: 1.7rem;
   font-family: "Poppins", sans-serif;
   // border:2px solid rgb(0, 60, 255);
+  .profile-name {
+    p {
+      font-size: 1rem;
+      strong {
+        font-size: 0.9rem;
+      }
+    }
+  }
+  .profile-email {
+    p {
+      font-size: 0.8rem;
+    }
+  }
 }
 
 .profile-actions-slot {
@@ -105,7 +118,7 @@ a {
     0.5rem 0.1rem 0.5rem -6px rgba(0, 0, 0, 0.175),
     0.2rem 0.6rem 0.2rem -2px rgba(0, 0, 0, 0.163);
   cursor: pointer;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.3s linear;
 }
 
 .img-profile {
@@ -144,8 +157,8 @@ a {
 .profile-slot:hover {
   background: linear-gradient(
     to left,
-    rgba(0, 0, 0, 0.234),
-    rgba(128, 128, 128, 0.353)
+    rgba(0, 0, 0, 0.062),
+    rgba(128, 128, 128, 0.186)
   );
   box-shadow: none;
 }
@@ -302,6 +315,28 @@ a {
       .ext-right-profile {
         img {
           display: none;
+        }
+      }
+      .main-profile {
+        .main-profile-container {
+          .main-profile-container-left {
+            .img-profile {
+              width: 4rem;
+            }
+            .main-profile-det {
+              .profile-name {
+                p {
+                  font-size: 0.8rem;
+                  strong {
+                    font-size: 0.7rem;
+                  }
+                }
+              }
+              .profile-email {
+                font-size: 0.68rem;
+              }
+            }
+          }
         }
       }
     }

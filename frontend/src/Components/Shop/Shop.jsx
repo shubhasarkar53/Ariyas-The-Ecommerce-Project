@@ -29,8 +29,8 @@ const Shop = ({ match }) => {
     "Bags",
     "Shoes",
     "Sarees",
-    "Kurttys",
-    "Jewelry",
+    "Kurtis",
+    "Jewellery",
     "Wooden",
     "Ceramic",
 
@@ -90,21 +90,23 @@ const Shop = ({ match }) => {
               className="price-filter-button"
               style={{
                 left: showPriceFilter ? "-100px" : "0",
-                writingMode: "vertical-lr", /* Vertical writing mode */
-                transform: "rotate(180deg)", /* Rotate text 180 degrees */
+                writingMode: "vertical-lr",
+                transform: "rotate(180deg)",
               }}
               onClick={() => setShowPriceFilter(!showPriceFilter)}
             >
               {showPriceFilter ? "Hide Price Filter" : "Show Price Filter"}
             </button>
             <p className="title">Shop</p>
-            <div className="bar"></div>
+            {/* <div className="bar"></div> */}
             {/* <Row products={products}  loading={loading} error={error} /> */}
-            <div className="products-container">
-              {products &&
-                products.map((product) => {
-                  return <ProductCard key={product._id} product={product} />;
-                })}
+            <div className="products-main-container">
+              <div className="products-container">
+                {products &&
+                  products.map((product) => {
+                    return <ProductCard key={product._id} product={product} />;
+                  })}
+              </div>
             </div>
             {showPriceFilter && (
               <div ref={containerRef} className="price-filter-container ">

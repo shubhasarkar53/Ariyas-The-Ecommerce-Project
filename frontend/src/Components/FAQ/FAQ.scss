@@ -1,14 +1,14 @@
 .faq {
   .top-faq {
-    max-width: 100vmax;
+    max-width: 100%;
     display: flex;
     justify-content: space-between;
     height: fit-content;
-    margin: 1rem 2rem;
+    margin: 1rem 1.5rem;
 
     .faq-left-div {
       width: 100%;
-      padding: 20px;
+      padding: 10px;
       display: flex;
       flex-direction: column;
 
@@ -20,7 +20,7 @@
       }
 
       .faq-subtitle {
-        font-size: 16px;
+        font-size: 1.6rem;
         color: #666;
         line-height: 1.5;
         letter-spacing: 0.1rem;
@@ -43,6 +43,7 @@
         img {
           width: 100%;
           height: 100%;
+          object-fit: cover;
         }
       }
     }
@@ -61,6 +62,7 @@
       flex-direction: column;
       width: 50%;
       border: 1px solid rgba(46, 45, 45, 0.811);
+      margin-bottom: 2rem;
       .faq-item {
         display: flex;
         flex-direction: column;
@@ -99,63 +101,122 @@
   }
 }
 
-// demo medis but not working properly
-//genarate media query for all type of screen sizes
-@media only screen and (max-width: 1024px) {
+@media screen and (max-width: 1400px) {
   .faq {
     .top-faq {
-      .left-div {
-        .left-title {
-          font-size: 2.5rem;
+      .faq-left-div {
+        .faq-title {
+          font-size: 2.2rem;
         }
-        .left-subtitle {
-          font-size: 1rem;
-        }
-      }
-    }
-  }
-}
-@media only screen and (max-width: 768px) {
-  .faq {
-    .top-faq {
-      flex-direction: column;
-      .left-div {
-        width: 100%;
-      }
-      .right-div {
-        width: 100%;
-        img {
-          width: 100%;
+        .faq-subtitle {
+          font-size: 1.2rem;
         }
       }
     }
   }
 }
 
-@media only screen and (max-width: 480px) {
+@media screen and (max-width: 1200px) {
   .faq {
     .top-faq {
-      .left-div {
-        .left-title {
-          font-size: 2.5rem;
-        }
-        .left-subtitle {
-          font-size: 1rem;
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  .faq {
-    .top-faq {
-      .left-div {
-        .left-title {
+      .faq-left-div {
+        .faq-title {
           font-size: 2rem;
         }
-        .left-subtitle {
+        .faq-subtitle {
+          font-size: 1rem;
+        }
+      }
+    }
+    .bottom-faq {
+      .faq-container {
+        .faq-item {
+          .faq-question {
+            h3 {
+              font-size: 1.1rem;
+            }
+            .arrow-icon {
+              font-size: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .faq {
+    .top-faq {
+      flex-direction: column-reverse;
+      margin: 0 0.3rem;
+      .faq-left-div {
+        .faq-title {
+          font-size: 1.7rem;
+        }
+        .faq-subtitle {
           font-size: 0.8rem;
+        }
+      }
+      .faq-right-div {
+        .faq-img {
+          height: 70% !important;
+        }
+      }
+    }
+    .bottom-faq {
+      h1 {
+        font-size: 1.3rem;
+      }
+      .faq-container {
+        width: 60%;
+        .faq-item {
+          .faq-question {
+            h3 {
+              font-size: 0.9rem;
+            }
+            .arrow-icon {
+              font-size: 20px;
+            }
+          }
+          .faq-answer {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .faq {
+    .top-faq {
+      .faq-left-div {
+        .faq-title {
+          font-size: 1.4rem;
+        }
+        .faq-subtitle {
+          font-size: 0.65rem;
+        }
+      }
+    }
+    .bottom-faq {
+      h1 {
+        font-size: 1rem;
+      }
+      .faq-container {
+        width: 70%;
+        .faq-item {
+          .faq-question {
+            h3 {
+              font-size: 0.75rem;
+            }
+            .arrow-icon {
+              font-size: 15px;
+            }
+          }
+          .faq-answer {
+            font-size: 0.6rem;
+          }
         }
       }
     }

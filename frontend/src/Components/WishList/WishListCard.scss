@@ -22,6 +22,7 @@
       .cardItem-name {
         font-size: 1.2rem;
         font-weight: 500;
+        color: black !important;
       }
       .cardItem-price {
         font-size: 1.2rem;
@@ -71,5 +72,53 @@
     height: 3px;
     background-color: #e0e0e0;
     margin: 1rem 0;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .cardItem-container {
+    .card-Item {
+      .cardItem-details {
+        .cardItem-name {
+          font-size: 1rem;
+        }
+        .cardItem-price {
+          font-size: 1rem;
+          span {
+            font-size: 1rem;
+          }
+        }
+        .cardItem-remove {
+          font-size: 1rem;
+        }
+        .move-to-cart {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .cardItem-container {
+    .card-Item {
+      .cardItem-details {
+        .cardItem-name {
+          font-size: 0.8rem;
+        }
+        .cardItem-price {
+          font-size: 0.8rem;
+          span {
+            font-size: 0.8rem;
+          }
+        }
+        .cardItem-remove {
+          font-size: 0.8rem;
+        }
+        .move-to-cart {
+          font-size: 0.8rem;
+        }
+      }
+    }
   }
 }

@@ -1,0 +1,586 @@
+@media screen and (max-width: 1900px) {
+  .gift-container {
+    .gift-section {
+      margin: 0 15rem;
+    }
+  }
+}
+
+@media screen and (max-width: 1700px) {
+  .gift-container {
+    .gift-section {
+      margin: 0 10rem;
+
+      .gift-card-title {
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        .fagift-icon {
+          font-size: 3.5rem;
+          margin-right: 0.9rem;
+        }
+      }
+
+      .gift-title {
+        .gift-icon {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+
+  .sale-division {
+    .sale-title-div {
+      h2 {
+        font-size: 2.3rem;
+      }
+
+      .btn-div-sale {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .sales-container {
+    .sale-snap {
+      .sale-snap-container {
+        h1 {
+          font-size: 2.8rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .details-container {
+    .details {
+      .sales-title {
+        .price {
+          p {
+            font-size: 0.8rem;
+          }
+        }
+      }
+
+      .ratings {
+        font-size: 0.8rem;
+
+        .rating-options {
+          .MuiSvgIcon-root {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .gift-container {
+    .gift-section {
+      margin: 0 5rem;
+
+      .gift-card-title {
+        display: flex;
+        align-items: center;
+        h2 {
+          font-size: 1rem !important;
+        }
+
+        p {
+          font-size: 0.7rem !important;
+        }
+      }
+
+      .divider {
+        margin-left: -0.5rem !important;
+      }
+
+      .gift-btn {
+        button {
+          font-size: 0.9rem !important;
+          padding: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .sale-division {
+    .sale-title-div {
+      padding: 4rem 0;
+
+      h2,
+      p,
+      .btn-div-sale {
+        margin-bottom: 1.3rem;
+      }
+    }
+  }
+
+  .sale-view-offer {
+    .sales-card-view {
+      .details-container {
+        .details {
+          .sales-title {
+            h1 {
+              font-size: 0.8rem;
+            }
+
+            .price {
+              p {
+                font-size: 0.6rem;
+              }
+            }
+          }
+
+          .ratings {
+            font-size: 0.6rem;
+
+            .rating-options {
+              .MuiSvgIcon-root {
+                font-size: 0.6rem;
+              }
+
+              span {
+                font-size: 0.6rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sales-container {
+    .sales-view-offer {
+      .sales-card-view {
+        .sellers-link {
+          font-size: 1rem;
+        }
+
+        .details-container {
+          .details {
+            .sales-card {
+              .sales-title {
+                .sale-title-links {
+                  font-size: 0.8rem !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .sale-snap {
+      .sale-snap-container {
+        padding: 5rem 0;
+
+        h1 {
+          font-size: 2.8rem;
+        }
+
+        p {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .gift-container {
+    .gift-section {
+      margin: 0 3rem !important;
+      display: flex;
+      flex-direction: column;
+
+      .gift-card-title {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        h2 {
+          margin-top: 0.5rem;
+          font-size: 1.2rem !important;
+          text-align: center;
+        }
+
+        p {
+          font-size: 0.9rem !important;
+          text-align: center;
+        }
+      }
+
+      .divider {
+        display: none;
+      }
+
+      .gift-btn {
+        button {
+          padding: 0.7rem;
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+
+  .sale-division {
+    .sale-title-div {
+      padding: 3.5rem 0;
+
+      h2,
+      p,
+      .btn-div-sale {
+        margin-bottom: 1.1rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 0.7rem;
+      }
+
+      .btn-div-sale {
+        font-size: 0.9rem;
+        padding: 0.8rem 0.8rem;
+      }
+    }
+  }
+
+  .sales-container {
+    .sale-snap {
+      .sale-snap-container {
+        padding: 3rem 1.5rem;
+
+        h1,
+        p {
+          margin-bottom: 1.2rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        p {
+          font-size: 0.9rem;
+        }
+
+        .btn-snap-sale {
+          button {
+            font-size: 0.75rem;
+            padding: 0.6rem 0.9rem;
+          }
+        }
+      }
+    }
+
+    .sale-view-offer {
+      .sales-card-view {
+        width: 70%;
+
+        .details-container {
+          .details {
+            .sales-card {
+              .sales-title {
+                h1 {
+                  .sales-title-links {
+                    font-size: 0.7rem !important;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .gift-container {
+    .gift-section {
+      margin: 0 3rem;
+      flex-direction: column;
+      align-items: center;
+
+      .gift-card-title {
+        h2 {
+          font-size: 1.7rem;
+          text-align: center;
+        }
+
+        p {
+          font-size: 0.9rem;
+          text-align: center;
+        }
+
+        .fagift-icon {
+          display: none;
+        }
+      }
+
+      .divider {
+        display: none;
+      }
+
+      .gift-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        button {
+          padding: 0.9rem;
+          font-size: 1rem;
+          margin-left: 1.5rem;
+        }
+      }
+    }
+  }
+
+  .sale-view-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+    margin: 0 !important;
+    margin-top: -1rem !important;
+    gap: 1.5rem;
+
+    .sale-division {
+      width: 80% !important;
+      .sale-title-div {
+        padding: 2rem 0;
+
+        h2,
+        p,
+        .btn-div-sale {
+          margin-bottom: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .sale-view-offer {
+    .sales-card-view {
+      width: 80% !important;
+      .details-container {
+        .details {
+          .sales-card {
+            .img-detail {
+              button {
+                .wishlist-icon,
+                .cart-icon {
+                  width: 12px;
+                  height: 12px;
+                  margin: 9px;
+                }
+              }
+            }
+
+            .sales-title {
+              .sale-title-links {
+                font-size: 0.85rem !important;
+              }
+            }
+
+            .ratings {
+              display: flex;
+              flex-direction: column;
+
+              .detailsBlock-2-span {
+                font-size: 0.7rem !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .sales-container {
+    .gift-container {
+      .gift-section {
+        .gift-title {
+          .gift-card-title-div {
+            h2 {
+              font-size: 1rem !important;
+              margin-bottom: 0.3rem;
+            }
+            p {
+              font-size: 0.7rem !important;
+            }
+          }
+        }
+        .gift-btn {
+          button {
+            font-size: 0.8rem;
+            padding: 0.7rem !important;
+          }
+        }
+      }
+    }
+    .sale-snap {
+      .sale-snap-container {
+        padding: 2.3rem 1.5rem;
+        h1 {
+          font-size: 1.5rem;
+        }
+        p {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+  .sale-view-offer {
+    .sales-card-view {
+      width: 85% !important;
+
+      .details-container {
+        .details {
+          .sales-card {
+            .img-detail {
+              .icon-container {
+                .wishlist-icon,
+                .cart-icon {
+                  width: 13px !important;
+                  height: 13px !important;
+                }
+              }
+            }
+            .sales-title {
+              .sale-title-links {
+                font-size: 0.69rem !important;
+              }
+              .price {
+                display: flex;
+                flex-direction: column;
+
+                #price-1 {
+                  margin-bottom: 0.2rem;
+                }
+
+                #price-2 {
+                  margin-top: 0.2rem;
+                }
+              }
+            }
+            .carddown-div {
+              .cart,
+              .wishlist {
+                .productCard-cart,
+                .productCard-wishlist {
+                  width: 25px;
+                  height: 25px;
+                }
+              }
+              .prices-container {
+                .price-1,
+                .price-2 {
+                  font-size: 0.7rem;
+                  margin-bottom: -0.3rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sale-container {
+    margin-top: -0.5rem !important;
+    margin-bottom: -0.5rem !important;
+    .sale-h1 {
+      font-size: 2rem !important;
+    }
+  }
+  .sale-view-container {
+    .sale-division {
+      #sale-div-img1,
+      #sale-div-img2 {
+        p {
+          font-size: 0.7rem;
+        }
+        h2 {
+          font-size: 1rem;
+        }
+        .btn-div-sale {
+          padding: 0.7rem;
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+  .gift-container {
+    .gift-section {
+      padding-top: 1rem !important;
+      padding-bottom: 1rem !important;
+      .gift-title {
+        .gift-card-title {
+          .fagift-icon {
+            font-size: 3rem !important;
+          }
+          .gift-btn {
+            button {
+              font-size: 0.7rem !important;
+              padding: 0.6rem !important;
+            }
+          }
+        }
+      }
+    }
+  }
+  .sales-container {
+    .sale-snap {
+      .sale-snap-container {
+        padding: 1.6rem 1rem;
+        h1,
+        p {
+          margin-bottom: 0.9rem;
+        }
+        h1 {
+          font-size: 1rem;
+        }
+        p {
+          font-size: 0.65rem;
+        }
+        .btn-snap-sale {
+          button {
+            font-size: 0.65rem;
+            padding: 0.5rem 0.8rem;
+          }
+        }
+      }
+    }
+  }
+  .sales-view-offer {
+    .sales-card-view {
+      width: 100% !important;
+      .details-container {
+        .details {
+          .sales-card {
+            .carddown-dix {
+              .prices-container {
+                .price-1,
+                .price-2 {
+                  font-size: 0.5rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

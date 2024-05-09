@@ -24,6 +24,13 @@ const ProductCard = ({ product, match }) => {
   const [hoveredProductId, setHoveredProductId] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
+  const truncateText = (text, limit) => {
+    const words = text.split(' ');
+    if (words.length > limit) {
+      return words.slice(0, limit).join(' ') + '...';
+    }
+    return text;
+  };
 
   const options = {
     size: "large",
@@ -102,27 +109,27 @@ const ProductCard = ({ product, match }) => {
             <img src={product.image[0].url} alt="" />
             {isHovered && (
               <div className="hover-buttons">
-                <button className="wishlist-hov-button"
+                <button
                   onClick={(e) => {
                     e.preventDefault();
                     addToWishListHandler();
                   }}
                 >
-                  <FaHeart />
+                  <FaHeart className="wishlist-hov-button" />
                 </button>
-                <button className='cart-hov-button'
+                <button
                   onClick={(e) => {
                     e.preventDefault();
                     addToCartHandler();
                   }}
                 >
-                  <FaShoppingCart />
+                  <FaShoppingCart className="cart-hov-button" />
                 </button>
               </div>
             )}
           </div>
           <div className="product-titles">
-            <p className='title'>{product.name}</p>
+            <p className='title'>{truncateText(product.name, 2)}</p>
           </div>
           {/* <p className='product-des'>{product.description}</p> */}
 

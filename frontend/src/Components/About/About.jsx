@@ -6,6 +6,7 @@ import aboutImg1 from '../../assets/Images/Carousel/AdobeStock_500191794_Preview
 // import { useSelector } from 'react-redux';
 import './AboutAnimation.scss';
 import Loader from '../Loader/Loader';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   const [loading, setLoading] = useState(true);
@@ -41,7 +42,9 @@ const About = () => {
               <span>ABOUT US</span>
               <h2>Welcome to Ariyas</h2>
               <p>At Ariyas we take pride in showcasing the unique products and foods that make each place special. Our platform connects  local sellers with buyers; promoting local entrepreneurshiop and preserving local culture. Discover local treasures only at Ariyas.</p>
-              <button className='btn-about_'>Read more</button>
+              <Link to="/terms-conditions">
+                <button className='btn-about_'>Read more</button>
+              </Link>
             </div>
           </div>
           <div className="second-part">

@@ -191,8 +191,7 @@ const Profile = () => {
                       <div
                         className="profile-slot"
                         key={index}
-                        onClick={item.func}
-                      >
+                        onClick={item.func}>
                         <div className="img-action">
                           <img src={item.icon} alt={item.title} />
                         </div>
