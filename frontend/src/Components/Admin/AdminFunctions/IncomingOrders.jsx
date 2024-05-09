@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import profileSide from "../../../assets/Images/Icons/profile icons/pngwing 3.png";
-import pencilIcon from "../../../assets/Images/Icons/createdProductActions/pencil.png";
-import deleteIcon from "../../../assets/Images/Icons/createdProductActions/delete.png";
+// import { useHistory } from "react-router-dom";
+// import { useDispatch, useSelector } from "react-redux";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+// import profileSide from "../../../assets/Images/Icons/profile icons/pngwing 3.png";
+// import pencilIcon from "../../../assets/Images/Icons/createdProductActions/pencil.png";
+// import deleteIcon from "../../../assets/Images/Icons/createdProductActions/delete.png";
 
 import Loader from "../../Loader/Loader";
 import "./CreatedProducts.scss";

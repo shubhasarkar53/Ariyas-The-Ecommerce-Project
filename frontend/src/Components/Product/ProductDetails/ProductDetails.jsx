@@ -35,6 +35,7 @@ import {
 import {
   NEW_REVIEW_RESET,
 } from "../../../Redux/Constants/productConstants";
+import axios from "axios";
 
 // import ProductShare from './Share'
 
@@ -52,6 +53,25 @@ const ProductDetails = ({ match, history }) => {
   const { product, error, loading } = useSelector(
     (state) => state.productDetails
   );
+
+
+  const seller = product.user;
+
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(`/api/v1/me/${seller}`); // Assuming your API endpoint for fetching user data
+        setUser(response.data); // Assuming response.data contains user information
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserData();
+  }, [seller]);
 
   // Get the review details from Redux
   const {
@@ -330,7 +350,8 @@ const ProductDetails = ({ match, history }) => {
             {/* start of down div section */}
             <div className="downdiv">
               <div className="description">
-                <h3>Description:</h3><p> {product.description}</p>
+                Description:<p> {product.description}</p>
+                Seller:<p>{seller}</p>
               </div>
 
               <div className="reviews">
