@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./OrderSuccess.scss";
 import PropTypes from "prop-types";
 import Loader from "../Loader/Loader";
+import Loader from "../Loader/Loader";
 const OrderSuccess = ({ history }) => {
   const { user } = useSelector((state) => state.user);
   const { order,loading} = useSelector((state) => state.order);

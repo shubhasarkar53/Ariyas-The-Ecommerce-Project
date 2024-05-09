@@ -86,7 +86,7 @@ export const  loadAddress= () => async(dispatch)=>{
         dispatch({type:LOAD_ADDRESS_REQUEST} )
 
         const {data} = await axios.get("/api/v1/address/me");
-        console.log(data.userAddresses);
+        // console.log(data.userAddresses);
         
         dispatch({type:LOAD_ADDRESS_SUCCESS,payload:data.userAddresses})
 

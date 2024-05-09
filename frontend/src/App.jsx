@@ -44,6 +44,7 @@ import EditProduct from "./Components/Admin/AdminFunctions/EditProduct.jsx";
 import OrderSuccess from "./Components/Cart/OrderSuccess.jsx";
 import MyOrders from "./Components/Order/MyOrders.jsx";
 import ViewOrderDetails from "./Components/Order/ViewOrderDetails.jsx";
+import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
@@ -148,6 +149,12 @@ const App = () => {
                 exact
                 path="/order/:id"
                 component={ViewOrderDetails}
+              />
+
+              <ProtectedRoute
+                exact
+                path="/incoming-orders"
+                component={IncomingOrders}
               />
 
               <Route exact path="/contact" component={Contact} />
