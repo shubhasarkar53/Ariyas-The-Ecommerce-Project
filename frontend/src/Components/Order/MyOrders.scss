@@ -4,11 +4,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 2rem;
-  .myOrdersHeading{
-    font-size: 2rem;
+  align-items: center;
+  flex-direction: column;
+  margin: 30px 0;
+  padding: 1rem;
+  padding-bottom: 2rem;
+  .myOrdersHeading {
     text-align: center;
-    margin: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
   }
   .myOrdersContainer{
     // border: 2px solid red;
@@ -20,44 +25,55 @@
     justify-content: space-evenly;
     margin: 2rem;
     padding: 2rem;
-    .leftDiv{
-      width: 50%;
-      .btnSec{
-        display: flex;
-        margin-top: 2rem;
-        gap: 1rem;
-        .viewOrderBtn{
-          padding: 0.5rem 1rem;
-          background-color: #BD6639;
-          border: 1px solid black;
-          border-radius: 0.5rem;
-          cursor: pointer;
-          border:none;
-          color: white;
+    gap: 1rem;
+    border-radius: 50px;
+    background: #e4e4e4;
+    box-shadow: 20px 20px 60px #c2c2c2, -20px -20px 60px #ffffff;
+  }
+
+  .myOrderItems h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .viewOrderBtn {
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    margin-top: 1.5rem;
+    background: #e4e4e4;
+    box-shadow: 20px 20px 60px #c2c2c2, -20px -20px 60px #ffffff;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .orders-container {
+    .myOrdersContainer {
+      .myOrderItems {
+        h3 {
+          font-size: 0.9rem;
         }
-        .cancelOrderBtn{
+        .viewOrderBtn {
           padding: 0.5rem 1rem;
-          background-color: #BD6639;
-          border: 1px solid black;
-          border-radius: 0.5rem;
-          cursor: pointer;
-          border:none;
-          color: white;
-        }
-        .retutnOrderBtn{
-          padding: 0.5rem 1rem;
-          background-color: #BD6639;
-          border:none;
-          border-radius: 0.5rem;
-          cursor: pointer;
-          color: white;
         }
       }
     }
-    .rightDiv{
-      width: 50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .orders-container {
+    .myOrdersHeading {
+      font-size: 1.1rem;
     }
+    .myOrdersContainer {
+      .myOrderItems {
+        h3 {
+          font-size: 0.75rem;
+        }
+        .viewOrderBtn {
+          font-size: 0.8rem !important;
+        }
+      }
     }
   }
- 
 }

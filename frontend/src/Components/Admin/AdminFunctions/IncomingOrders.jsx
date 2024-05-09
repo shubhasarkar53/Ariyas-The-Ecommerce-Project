@@ -65,7 +65,7 @@
 //           <h2>Incoming Orders</h2>
 //         </div>
 //         <div className="profile-det-container">
-         
+
 //           {/* Left side of the profile */}
 //           <div className="ext-left-profile">
 //             <img src={profileSide} alt="Background Image" />
@@ -106,7 +106,7 @@
 //                     })
 //                 }
 //               </div>
-                
+
 //             </div>
 
 

@@ -44,6 +44,7 @@ import EditProduct from "./Components/Admin/AdminFunctions/EditProduct.jsx";
 import OrderSuccess from "./Components/Cart/OrderSuccess.jsx";
 import MyOrders from "./Components/Order/MyOrders.jsx";
 import ViewOrderDetails from "./Components/Order/ViewOrderDetails.jsx";
+import TermsConditions from "./Components/About/TermsConditions.jsx";
 // import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -150,15 +151,12 @@ const App = () => {
                 path="/order/:id"
                 component={ViewOrderDetails}
               />
-{/* 
-              <ProtectedRoute
-                exact
-                path="/incoming-orders"
-                component={IncomingOrders}
-              /> */}
+
+              {/* <ProtectedRoute exact path="/incoming-orders" component={IncomingOrders} /> */}
 
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/faq" component={FAQs} />
+              <Route exact path="/terms-conditions" component={TermsConditions} />
 
               {/* This will catch all the routes that do not exist */}
               <Route component={PageNotFound} />

@@ -307,8 +307,8 @@ $categoriText: white;
 
   .explore {
     background-image: linear-gradient(
-        rgba(0, 0, 0, 0.441),
-        rgba(6, 6, 6, 0.349)
+        rgba(0, 0, 0, 0.514),
+        rgba(6, 6, 6, 0.463)
       ),
       url("../../assets/Images/Carousel/AdobeStock_482937679_Preview_Editorial_Use_Only.jpeg");
     background-attachment: fixed;
@@ -316,22 +316,24 @@ $categoriText: white;
     background-size: cover;
     color: white;
     text-align: center;
-    padding: 4rem 15rem;
+    padding: 5rem 15rem;
 
     h2 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-weight: 600;
     }
 
     h3 {
-      font-size: 1.6rem;
-      font-weight: 500;
+      font-size: 1.2rem;
+      font-weight: 300;
+      letter-spacing: 0.09rem;
     }
 
     p {
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       font-weight: 300;
-      letter-spacing: 0.1rem;
+      letter-spacing: 0.19rem;
+      text-shadow: 0 0 0.11rem 0.3rem black, 0.2rem 0.1rem 0.01rem 0.3rem black;
     }
 
     h2,
@@ -345,7 +347,7 @@ $categoriText: white;
         padding: 0.7rem 1rem;
         color: black;
         background-color: white;
-        font-size: 1rem;
+        font-size: 0.8rem;
         border: none;
         cursor: pointer;
         transition: all 0.4s linear;
@@ -565,30 +567,30 @@ $categoriText: white;
 
     .explore-more-section {
       .explore {
-        padding: 3.5rem 10rem;
+        padding: 3.1rem 10rem;
 
         .explore-title {
           h2 {
-            font-size: 2rem;
+            font-size: 1.6rem;
           }
 
           h3 {
-            font-size: 1.2rem;
+            font-size: 0.8rem;
           }
 
           p {
-            font-size: 1rem;
+            font-size: 0.7rem;
           }
 
           h2,
           h3,
           p {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.1rem;
           }
 
           .btn-explore {
             button {
-              font-size: 0.9rem;
+              font-size: 0.7rem;
             }
           }
         }
@@ -623,19 +625,18 @@ $categoriText: white;
 
     .explore-more-section {
       .explore {
-        padding: 3rem 9.5rem;
+        padding: 3rem 5rem;
 
         .explore-title {
           h2 {
-            font-size: 1.9rem;
+            font-size: 1.4rem;
           }
 
           h3 {
-            font-size: 1rem;
+            font-size: 0.7rem;
           }
-
           p {
-            font-size: 0.9rem;
+            font-size: 0.66rem;
           }
 
           h2,
@@ -646,7 +647,7 @@ $categoriText: white;
 
           .btn-explore {
             button {
-              font-size: 0.8rem;
+              font-size: 0.7rem;
               padding: 0.5rem 0.8rem;
             }
           }
@@ -681,19 +682,19 @@ $categoriText: white;
     }
     .explore-more-section {
       .explore {
-        padding: 2rem 5rem;
+        padding: 2rem 4rem;
 
         .explore-title {
           h2 {
-            font-size: 1.6rem;
+            font-size: 1.3rem;
           }
 
           h3 {
-            font-size: 0.9rem;
+            font-size: 0.7rem;
           }
 
           p {
-            font-size: 0.7rem;
+            font-size: 0.6rem;
           }
 
           h2,
@@ -704,7 +705,75 @@ $categoriText: white;
 
           .btn-explore {
             button {
-              font-size: 0.8rem;
+              font-size: 0.7rem;
+              padding: 0.4rem 0.7rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .home-container {
+    .category-container {
+      .top-container {
+        .top1,
+        .top2 {
+          height: 36vh;
+          .top1-text,
+          .top2-text {
+            font-size: 1rem;
+          }
+          .top1-button,
+          .top2-button {
+            font-size: 0.7rem;
+          }
+        }
+      }
+
+      .bottom-container {
+        .bottom1,
+        .bottom2 {
+          height: 36vh;
+          .bottom1-text,
+          .bottom2-text {
+            font-size: 1rem;
+          }
+          .bottom1-button,
+          .bottom2-button {
+            font-size: 0.7rem;
+          }
+        }
+      }
+    }
+    .explore-more-section {
+      .explore {
+        padding: 2rem 3.5rem;
+
+        .explore-title {
+          h2 {
+            font-size: 1.1rem;
+          }
+
+          h3 {
+            font-size: 0.66rem;
+          }
+
+          p {
+            font-size: 0.5rem;
+          }
+
+          h2,
+          h3,
+          p {
+            margin-bottom: 0.7rem;
+          }
+
+          .btn-explore {
+            button {
+              font-size: 0.66rem;
               padding: 0.4rem 0.7rem;
             }
           }

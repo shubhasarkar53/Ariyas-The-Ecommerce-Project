@@ -10,7 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PropTypes from "prop-types";
 
-const AddressesPage = ({history}) => {
+const AddressesPage = ({ history }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadAddress());
@@ -19,7 +19,7 @@ const AddressesPage = ({history}) => {
   //   dispatch(loadAddress());
   // }, [dispatch,history]);
 
-  const { addresses,loading } = useSelector((state) => state.addresses);
+  const { addresses, loading } = useSelector((state) => state.addresses);
 
   const handleDelete = (addressId) => {
     // Dispatch deleteAddress action with the address id
@@ -30,55 +30,55 @@ const AddressesPage = ({history}) => {
 
   return (
 
-  <>
-  {
-    loading? (<Loader />) :
-    ( <>
-    <ToastContainer/>
-      <div className="container">
-        <div className="addressesContainer">
-          <h1 className="addressesTitle">Your Addresses</h1>
-          <div className="myAddress-container">
-            <Link className="addresses" to={"/new/address"}>
-              <AddIcon className="plusicon" />
-              <p>Add New</p>
-            </Link>
+    <>
+      {
+        loading ? (<Loader />) :
+          (<>
+            <ToastContainer />
+            <div className="container">
+              <div className="addressesContainer">
+                <h1 className="addressesTitle">Your Addresses</h1>
+                <div className="myAddress-container">
+                  <Link className="addresses" to={"/new/address"}>
+                    <AddIcon className="plusicon" />
+                    <p>Add New</p>
+                  </Link>
 
-            {addresses && addresses.map((address) => {
-              return (
-                <div className="addresses" key={address._id}>
-                  <div className="address">
-                    {
-                      
-                      <div className="address-box">
-                      <p><strong>User:</strong>{address.fullName}</p>
-                      <p><strong>Area:</strong>  {address.area} </p>
-                      <p><strong>Country:</strong> {address.country} </p>
-                      <p><strong>Flat Name:</strong> {address.flatName} </p>
-                      <p><strong>Landmark:</strong>  {address.landmark} </p>
-                      <p><strong>Phone Number:</strong> {address.phoneNo} </p>
-                      <p><strong>Postal Code:</strong> { address.postalCode} </p>
-                      <p><strong>Town:</strong> {address.town} </p>
-                      <p><strong>State:</strong> {address.state} </p>
-                    </div>
-                    }
-                  </div>
-                  <div className="address-btn-container">
-                    <Link to={`/address/edit/${address._id}`}>Edit</Link>
-                    <button onClick={() => handleDelete(address._id)}>Remove</button>
-                  </div>
+                  {addresses && addresses.map((address) => {
+                    return (
+                      <div className="addresses" key={address._id}>
+                        <div className="address">
+                          {
+
+                            <div className="address-box">
+                              <p><strong>User:</strong>{address.fullName}</p>
+                              <p><strong>Area:</strong>  {address.area} </p>
+                              <p><strong>Country:</strong> {address.country} </p>
+                              <p><strong>Flat Name:</strong> {address.flatName} </p>
+                              <p><strong>Landmark:</strong>  {address.landmark} </p>
+                              <p><strong>Phone Number:</strong> {address.phoneNo} </p>
+                              <p><strong>Postal Code:</strong> {address.postalCode} </p>
+                              <p><strong>Town:</strong> {address.town} </p>
+                              <p><strong>State:</strong> {address.state} </p>
+                            </div>
+                          }
+                        </div>
+                        <div className="address-btn-container">
+                          <Link to={`/address/edit/${address._id}`}>Edit</Link>
+                          <button onClick={() => handleDelete(address._id)}>Remove</button>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </>)
-  }
-  
-  </>
+              </div>
+            </div>
+          </>)
+      }
 
-    
+    </>
+
+
   );
 };
 

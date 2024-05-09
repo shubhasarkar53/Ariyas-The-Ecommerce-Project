@@ -5,7 +5,7 @@ $orangeTextColor: #d47f00;
 
 .search-form {
   display: flex;
-  width: 50%;
+  width: 100%;
   justify-content: center;
   align-items: center;
   margin: 2rem auto;
@@ -18,12 +18,14 @@ $orangeTextColor: #d47f00;
     border-radius: 10px;
     margin-right: 1rem;
     font-size: 1.2rem;
+    width: 70%;
     transition: border-color 0.3s ease;
 
     &:focus {
       border: 2px solid orange;
       outline: none;
     }
+
     &::placeholder {
       color: #b5b5b5;
     }
@@ -37,6 +39,7 @@ $orangeTextColor: #d47f00;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 1.5rem;
     transition: background-color 0.3s ease, color 0.3s ease;
 
     &:hover {

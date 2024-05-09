@@ -1,4 +1,6 @@
-import React, { Fragment, useState ,useEffect} from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+import React, { Fragment, useState, useEffect } from "react";
 import "./UpdatePassword.scss";
 import profileSide from "../../assets/Images/Icons/profile icons/pngwing 3.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,12 +9,6 @@ import { UPDATE_USER_PASSWORD_RESET } from "../../Redux/Constants/userConstant";
 import Loader from "../Loader/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-
-
-
-
-
 
 const UpdatePassword = ({ history }) => {
   const { error, loading, isUpdated } = useSelector((state) => state.profile);
@@ -60,11 +56,11 @@ const UpdatePassword = ({ history }) => {
         position: "bottom-center",
         autoClose: 3000,
       });
-    //   console.log("upatded successfully");
+      //   console.log("upatded successfully");
       history.push("/profile");
 
       dispatch({ type: UPDATE_USER_PASSWORD_RESET });
-    //   console.log("UPDATE_USER_PASSWORD_RESET");
+      //   console.log("UPDATE_USER_PASSWORD_RESET");
     }
   }, [dispatch, error, history, isUpdated]);
 
@@ -76,7 +72,7 @@ const UpdatePassword = ({ history }) => {
         <Fragment>
           <div className="container">
             <div className="update-password-container">
-                <ToastContainer/>
+              <ToastContainer />
               <div className="left-deep">
                 <img src={profileSide} alt="Background Image" />
               </div>

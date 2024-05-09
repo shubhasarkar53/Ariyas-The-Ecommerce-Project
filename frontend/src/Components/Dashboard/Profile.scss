@@ -1,24 +1,23 @@
-a{
-  text-decoration:  none;
+a {
+  text-decoration: none;
 }
-
 
 .profile-container {
   width: 100%;
   height: fit-content;
 }
+
 .profile-title {
-  margin: 0 15rem;
-  margin-top: 2rem;
-  margin-bottom: 1.5rem;
+  text-align: center;
+  margin-top: 3rem;
 }
+
 .profile-title h2 {
   font-family: "Poppins", sans-serif;
   font-size: 1.3rem;
   font-weight: normal;
   text-transform:capitalize;
 }
-
 
 .img-profile img {
   width: 70px;
@@ -28,9 +27,10 @@ a{
 .profile-det-container {
   display: flex;
   justify-content: space-between;
-  height: 90vh;
+  height: fit-content;
   margin: 1rem 3rem;
 }
+
 .ext-left-profile,
 .ext-right-profile {
   height: 100%;
@@ -38,6 +38,7 @@ a{
   align-items: center;
   justify-content: center;
 }
+
 .ext-left-profile img,
 .ext-right-profile img {
   width: 250px;
@@ -45,10 +46,12 @@ a{
   margin-left: 2rem;
   margin-right: 2rem;
 }
+
 .main-profile {
   width: 100%;
   margin: 0 1rem;
 }
+
 .main-profile-container {
   display: flex;
   justify-content: space-between;
@@ -58,25 +61,26 @@ a{
     0.2rem 0.6rem 0.2rem -2px rgba(0, 0, 0, 0.163);
   border-radius: 10px;
 }
-.main-profile-container-left{
 
+.main-profile-container-left {
   display: flex;
-  
 }
-.main-profile-container-right{
+
+.main-profile-container-right {
   // border:2px solid rgb(106, 255, 0);
   width: 5em;
   text-align: center;
- 
-  label{
+
+  label {
     cursor: pointer;
     font-size: 2rem;
   }
-  label:hover{
+
+  label:hover {
     color: orange;
   }
-
 }
+
 .main-profile-det {
   display: flex;
   justify-content: center;
@@ -84,7 +88,21 @@ a{
   margin-left: 1.7rem;
   font-family: "Poppins", sans-serif;
   // border:2px solid rgb(0, 60, 255);
+  .profile-name {
+    p {
+      font-size: 1rem;
+      strong {
+        font-size: 0.9rem;
+      }
+    }
+  }
+  .profile-email {
+    p {
+      font-size: 0.8rem;
+    }
+  }
 }
+
 .profile-actions-slot {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -92,6 +110,7 @@ a{
   margin-top: 2rem;
   grid-column-gap: 3rem;
 }
+
 .profile-slot {
   padding: 1.5rem 2.5rem;
   display: flex;
@@ -100,19 +119,24 @@ a{
     0.5rem 0.1rem 0.5rem -6px rgba(0, 0, 0, 0.175),
     0.2rem 0.6rem 0.2rem -2px rgba(0, 0, 0, 0.163);
   cursor: pointer;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.3s linear;
 }
-.img-profile{
+
+.img-profile {
   width: 5rem;
   display: flex;
   align-items: center;
-  img{
+
+  img {
     border-radius: 50%;
   }
 }
-.profile-slot , .profile-slot .title-action {
+
+.profile-slot,
+.profile-slot .title-action {
   width: 100%;
 }
+
 .title-action {
   display: flex;
   justify-content: center;
@@ -124,9 +148,11 @@ a{
   }
 
 }
+
 .title-action p {
   margin-top: 0.6rem;
 }
+
 .img-action img {
   width: 50px;
   height: 50px;
@@ -136,8 +162,188 @@ a{
 .profile-slot:hover {
   background: linear-gradient(
     to left,
-    rgba(0, 0, 0, 0.234),
-    rgba(128, 128, 128, 0.353)
+    rgba(0, 0, 0, 0.062),
+    rgba(128, 128, 128, 0.186)
   );
   box-shadow: none;
+}
+
+@media screen and (max-width: 1850px) {
+  .profile-container {
+    .profile-det-container {
+      .ext-left-profile,
+      .ext-right-profile {
+        img {
+          width: 200px;
+          height: 200px;
+          margin-left: 1.5rem;
+          margin-right: 1.5rem;
+        }
+      }
+      .profile-actions-slot {
+        .profile-slot {
+          .img-action {
+            width: 4rem;
+          }
+
+          .title-action {
+            h4 {
+              font-size: 1rem;
+            }
+
+            p {
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1650px) {
+  .profile-container {
+    .profile-det-container {
+      .ext-left-profile,
+      .ext-right-profile {
+        img {
+          width: 150px;
+          height: 150px;
+          margin-left: 1.2rem;
+          margin-right: 1.2rem;
+        }
+      }
+      .profile-actions-slot {
+        .profile-slot {
+          .img-action {
+            width: 3.6rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .profile-container {
+    .profile-det-container {
+      .ext-left-profile,
+      .ext-right-profile {
+        img {
+          width: 120px;
+          height: 120px;
+          margin-left: 1rem;
+          margin-right: 1rem;
+        }
+      }
+      .profile-actions-slot {
+        .profile-slot {
+          .img-action {
+            width: 3.2rem;
+          }
+          .title-action {
+            h4 {
+              font-size: 0.9rem;
+            }
+            p {
+              font-size: 0.7rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .profile-container {
+    .profile-det-container {
+      .profile-actions-slot {
+        grid-template-columns: 1fr;
+        .profile-slot {
+          .title-action {
+            h4 {
+              font-size: 1.1rem;
+            }
+            p {
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .profile-container {
+    .profile-det-container {
+      .main-profile {
+        .main-profile-container {
+          .main-profile-container-left {
+            .img-profile {
+              img {
+                width: 60px;
+                height: 60px;
+              }
+            }
+          }
+        }
+      }
+
+      .profile-actions-slot {
+        .profile-slot {
+          padding: 1rem 2rem;
+          .img-action {
+            img {
+              width: 35px;
+              height: 35px;
+            }
+          }
+          .title-action {
+            h4 {
+              font-size: 0.9rem;
+            }
+            p {
+              font-size: 0.7rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .profile-container {
+    .profile-det-container {
+      .ext-left-profile,
+      .ext-right-profile {
+        img {
+          display: none;
+        }
+      }
+      .main-profile {
+        .main-profile-container {
+          .main-profile-container-left {
+            .img-profile {
+              width: 4rem;
+            }
+            .main-profile-det {
+              .profile-name {
+                p {
+                  font-size: 0.8rem;
+                  strong {
+                    font-size: 0.7rem;
+                  }
+                }
+              }
+              .profile-email {
+                font-size: 0.68rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

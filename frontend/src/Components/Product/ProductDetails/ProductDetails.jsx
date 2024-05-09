@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { Fragment, useEffect, useState } from "react";
 import Carousel from "react-material-ui-carousel";
@@ -313,15 +314,19 @@ const ProductDetails = ({ match, history }) => {
                     Add to Cart
                   </button>
 
-                  <div className="quantity">
-                    <button onClick={decreaseQuantity}>-</button>
-                    <input readOnly type="number" value={quantity} />
-                    <button onClick={increaseQuantity}>+</button>
+                  <div className="horizontal-quantity-wishlist">
+                    <div className="quantity">
+                      <button onClick={decreaseQuantity}>-</button>
+                      <input readOnly type="number" value={quantity} />
+                      <button onClick={increaseQuantity}>+</button>
+                    </div>
+
+                    <div className="wishlist">
+                      <img onClick={addToWishListHandler} src={Wish} alt="" />
+                    </div>
+
                   </div>
 
-                  <div className="wishlist">
-                    <img onClick={addToWishListHandler} src={Wish} alt="" />
-                  </div>
                 </div>
 
                 <div className="icons">
@@ -352,47 +357,47 @@ const ProductDetails = ({ match, history }) => {
               <div className="reviews">
                 <h2>Reviews</h2>
 
-               <div className="createReviewContainer">
-               <Box>
-                  <Button variant="contained" onClick={handleOpen}>
-                    Leave a Review
-                  </Button>
-                  <Dialog open={open} onClose={handleClose}>
-                    <DialogTitle>Leave a Review</DialogTitle>
-                    <DialogContent>
-                      <Box>
-                        <Rating
-                          name="rating"
-                          value={rating}
-                          onChange={(event, newValue) => {
-                            setRating(newValue);
-                          }}
+                <div className="createReviewContainer">
+                  <Box>
+                    <Button variant="contained" onClick={handleOpen} className="review-button">
+                      Leave a Review
+                    </Button>
+                    <Dialog open={open} onClose={handleClose}>
+                      <DialogTitle className="reviews-comment">Leave a Review</DialogTitle>
+                      <DialogContent>
+                        <Box>
+                          <Rating
+                            name="rating"
+                            value={rating}
+                            onChange={(event, newValue) => {
+                              setRating(newValue);
+                            }}
+                          />
+                        </Box>
+                        <TextField
+                          multiline
+                          rows={4}
+                          variant="outlined"
+                          fullWidth
+                          margin="normal"
+                          label="Your Review"
+                          value={comment}
+                          onChange={(event) => setComment(event.target.value)}
                         />
-                      </Box>
-                      <TextField
-                        multiline
-                        rows={4}
-                        variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        label="Your Review"
-                        value={comment}
-                        onChange={(event) => setComment(event.target.value)}
-                      />
-                    </DialogContent>
-                    <DialogActions>
-                      <Button onClick={handleClose}>Cancel</Button>
-                      <Button
-                        onClick={handleSubmit}
-                        variant="contained"
-                        color="primary"
-                      >
-                        Submit
-                      </Button>
-                    </DialogActions>
-                  </Dialog>
-                </Box>
-               </div>
+                      </DialogContent>
+                      <DialogActions>
+                        <Button onClick={handleClose}>Cancel</Button>
+                        <Button
+                          onClick={handleSubmit}
+                          variant="contained"
+                          color="primary"
+                        >
+                          Submit
+                        </Button>
+                      </DialogActions>
+                    </Dialog>
+                  </Box>
+                </div>
 
                 {product.reviews && product.reviews[0] ? (
                   <div className="review">
