@@ -16,7 +16,6 @@ $gray: #a5a5a5;
   height: 100%;
 }
 .top-div {
-  border: 1px solid red;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -29,7 +28,7 @@ $gray: #a5a5a5;
 
   .left-div {
     width: 40%;
-    height: 500px;
+    height: fit-content;
 
     img {
       // width: 565px;
@@ -50,7 +49,6 @@ $gray: #a5a5a5;
     // align-items: center;
     // justify-content: center;
     margin: 1rem;
-    border: 1px solid red;
     gap: 2em;
     width: 50%;
     .name {
@@ -85,12 +83,11 @@ $gray: #a5a5a5;
     .buttondiv {
       display: flex;
       gap: 1rem;
-      border: 1px solid red;
       width: 100%;
       button {
         padding: 1rem 2rem;
         border: none;
-        border-radius: 3rem;
+        border-radius: 2rem;
         font-size: 1.2rem;
         font-family: inherit;
         padding: 0.5rem 2rem;
@@ -115,36 +112,41 @@ $gray: #a5a5a5;
           background-color: $safronhover;
         }
       }
-      .quantity {
+      .horizontal-quantity-wishlist {
         display: flex;
-        align-items: center;
+        flex-direction: row;
+        .quantity {
+          display: flex;
+          align-items: center;
+          margin-right: 1rem;
 
-        button {
-          border-radius: 8px;
-          border: 1px solid transparent;
-          padding: 0.6em 1.2em;
-          font-size: 1em;
-          font-weight: 500;
-          font-family: inherit;
-          background-color: #dbc81a;
-          cursor: pointer;
-          transition: background-color 0.3s linear;
+          button {
+            border-radius: 8px;
+            border: 1px solid transparent;
+            padding: 0.6em 1.2em;
+            font-size: 1em;
+            font-weight: 500;
+            font-family: inherit;
+            background-color: #dbc81a;
+            cursor: pointer;
+            transition: background-color 0.3s linear;
 
-          &:hover {
-            background-color: #e0e0e0;
+            &:hover {
+              background-color: #e0e0e0;
+            }
           }
-        }
 
-        input {
-          width: 3rem;
-          text-align: center;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          margin: 0 0.5rem;
-          padding: 0.5rem;
-          font-size: 1rem;
-          background-color: #fff;
-          color: #333;
+          input {
+            width: 3rem;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 0 0.5rem;
+            padding: 0.5rem;
+            font-size: 1rem;
+            background-color: #fff;
+            color: #333;
+          }
         }
       }
     }
@@ -154,36 +156,9 @@ $gray: #a5a5a5;
       justify-content: space-between;
       align-items: center;
       width: 40%;
-      margin-left: 4rem;
       gap: 2rem;
-      .first {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5rem;
-        img {
-          width: 70px;
-          height: 70px;
-        }
-        p {
-          font-size: 0.8rem;
-        }
-      }
-      .second {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        img {
-          width: 70px;
-          height: 70px;
-        }
-        p {
-          font-size: 0.8rem;
-        }
-      }
+      .first,
+      .second,
       .third {
         display: flex;
         flex-direction: column;
@@ -204,7 +179,7 @@ $gray: #a5a5a5;
 
 .downdiv {
   display: flex;
-  width: 80vw;
+  width: 80%;
   height: auto;
   max-width: 100%;
   padding: 1vmax;
@@ -269,7 +244,7 @@ $gray: #a5a5a5;
           font-size: 0.9rem;
         }
         .buynow {
-          font-size: 0.9rem;
+          font-size: 1rem;
         }
         .quantity {
           padding: 0.5em 1em;
@@ -296,10 +271,9 @@ $gray: #a5a5a5;
 
 @media screen and (max-width: 1000px) {
   .top-div {
-    border: 1px solid red;
     .left-div {
       width: 100%;
-      border: 1px solid red;
+      height: 510px;
 
       img {
         margin: 0 auto;
@@ -312,8 +286,161 @@ $gray: #a5a5a5;
     flex-direction: column;
     align-items: center;
     .right-div {
-      margin-top: 7rem;
+      margin-top: 1rem;
       width: 90%;
+      display: flex;
+      align-items: center;
+      .buttondiv {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        .buynow,
+        .addtocart {
+          width: 60%;
+        }
+        .horizontal-quantity-wishlist {
+          display: flex;
+          justify-content: space-between;
+          width: fit-content;
+          margin-top: 1rem;
+        }
+      }
+      .icons {
+        width: 60%;
+      }
+    }
+  }
+  .downdiv {
+    display: flex !important;
+    align-items: center;
+    flex-direction: column !important;
+    width: 100%;
+    .description {
+      padding: 1rem 3rem;
+      h3 {
+        font-size: 1.5rem;
+      }
+      p {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .top-div {
+    .left-div {
+      img {
+        width: 450px;
+        height: 450px;
+        margin-top: 2rem;
+      }
+    }
+    .right-div {
+      .name {
+        font-size: 1rem;
+        text-align: center;
+        gap: 3.5rem;
+      }
+      .icons {
+        width: 70%;
+        .first,
+        .second,
+        .third {
+          img {
+            width: 50px;
+            height: 50px;
+          }
+          p {
+            font-size: 0.65rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .top-div {
+    .left-div {
+      height: 400px;
+      img {
+        width: 370px;
+        height: 370px;
+        margin-top: 1rem;
+      }
+    }
+    .right-div {
+      margin-top: 3rem;
+      .name {
+        font-size: 0.85rem;
+      }
+      img {
+        width: 30px;
+        height: 30px;
+      }
+      .ratings {
+        font-size: 1.1rem;
+        span {
+          font-size: 1.2rem;
+        }
+      }
+      .price {
+        font-size: 1.2rem;
+      }
+      .icons {
+        width: 90%;
+      }
+    }
+  }
+  .downdiv {
+    .description {
+      padding: 1rem 1rem;
+      h3 {
+        font-size: 1.2rem;
+      }
+      p {
+        font-size: 0.9rem;
+      }
+    }
+    .reviews {
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      .review {
+        .user {
+          img {
+            width: 40px;
+            height: 40px;
+          }
+          .name {
+            font-size: 1.1rem !important;
+          }
+        }
+        .reviewtext {
+          font-size: 0.8rem;
+        }
+      }
+      .createReviewContainer {
+        .review-button {
+          font-size: 0.9rem;
+          margin-top: 0.45rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .top-div {
+    .left-div {
+      height: 390px;
+      img {
+        width: 350px;
+        height: 350px;
+      }
     }
   }
 }

@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
 
 
@@ -65,7 +67,7 @@ import DotLoader from "../../Loader/DotLoader";
 //           <h2>Incoming Orders</h2>
 //         </div>
 //         <div className="profile-det-container">
-         
+
 //           {/* Left side of the profile */}
 //           <div className="ext-left-profile">
 //             <img src={profileSide} alt="Background Image" />
@@ -106,7 +108,7 @@ import DotLoader from "../../Loader/DotLoader";
 //                     })
 //                 }
 //               </div>
-                
+
 //             </div>
 
 
