@@ -51,7 +51,13 @@ const ViewOrderDetails = ({ match }) => {
                   <b>Order Date:</b> {order && order.createdAt.substring(0, 10)}
                 </p>
                 <p className="orderDetailsId">
-                  <b>Order Amount:</b> ${order && order.totalPrice}
+                  <b>Total Order Amount:</b> ${order && order.totalPrice}
+                </p>
+                <p className="orderDetailsId">
+                  <b>Shipping Price:</b> ${order && order.shippingPrice}
+                </p>
+                <p className="orderDetailsId">
+                  <b>Tax:</b> ${order && order.itemPrice}
                 </p>
                 <p className="orderDetailsId">
                   <b>Order Status:</b>
@@ -87,7 +93,7 @@ const ViewOrderDetails = ({ match }) => {
                     {order && order.shippingInfo && (
                       <div className="addressItem">
                         <span>{order.shippingInfo.address}</span>
-                        <span>{order.shippingInfo.landmark}</span>
+                        
                         <span>{order.shippingInfo.city}</span>
                         <span>{order.shippingInfo.state}</span>
                         <span>{order.shippingInfo.country}</span>
