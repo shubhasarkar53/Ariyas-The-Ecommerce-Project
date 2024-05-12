@@ -9,15 +9,15 @@ import "./CheckoutSteps.scss";
 const CheckoutSteps = ({ activeStep }) => {
   const steps = [
     {
-      lable: <Typography> Shipping Details</Typography>,
+      label: <Typography> Shipping Details</Typography>,
       icon: <MdLocalShipping className="ico" />,
     },
     {
-      lable: <Typography> Confirm Order</Typography>,
+      label: <Typography> Confirm Order</Typography>,
       icon: <MdOutlineConfirmationNumber className="ico"  />,
     },
     {
-      lable: <Typography> Payment Details</Typography>,
+      label: <Typography> Payment Details</Typography>,
       icon: <MdOutlinePayment className="ico"  />,
     }
   ];
@@ -33,10 +33,10 @@ const CheckoutSteps = ({ activeStep }) => {
     <Fragment>
       <Stepper className="stepper-tab" activeStep={activeStep} alternativeLabel style={stepStyle}>
         {steps.map((step, index) => (
-          <Step key={step.lable} active={activeStep === index ? true : false} completed={activeStep >= index ? true : false}>
+          <Step key={step.label} active={activeStep === index ? true : false} completed={activeStep >= index ? true : false}>
             <StepLabel icon={step.icon} 
             style={{color: activeStep >= index ? "tomato" : "rgba(0, 0, 0, 0.649)" }}>
-              {step.lable}
+              {step.label}
             </StepLabel>
           </Step>
         ))}
