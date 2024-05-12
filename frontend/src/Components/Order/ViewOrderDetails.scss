@@ -1,78 +1,269 @@
-.orderDetailsContainer{
+.orderDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem;
+  padding: 2rem;
+  .orderDetailsHeader {
     display: flex;
-    flex-direction: column;
-    margin: 3rem;
-    padding: 2rem;
-    .orderDetailsHeader{
-       display: flex;
-       justify-content: space-evenly;
-       color: rgba(255, 255, 255, 0.839);
+    justify-content: space-evenly;
+    color: rgba(255, 255, 255, 0.839);
     //    border: 2px solid red;
-       padding: 2rem;
-       margin: 1.2rem;
-       background: #D98900;
-       border-radius: 1.2rem;
-       .orderDetailsLeft{
-           display: flex;
-           flex-direction: column;
-           gap: 0.5rem;
-       }
-       .shippingInfo{
-              display: flex;
-              flex-direction: column;
-              gap: 0.5rem;
-                  .addDetailsTab{
-                      .addressItem{
-                          display: flex;
-                          flex-direction: column;
-                      }
-                  }
-           
-       }
+    padding: 2rem;
+    margin: 1.2rem;
+    background: #d98900;
+    border-radius: 1.2rem;
+    .orderDetailsLeft {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      h1 {
+        text-decoration: 1.5px solid white underline !important;
+      }
+      .orderDetailsId {
+        font-size: 1rem !important;
+      }
     }
-    .orderDetailsContainerBox{
-        // border: 2px solid red;
-        padding: 2rem;
-        margin: 1.2rem;
-        background:#D98900;
-        border-radius: 1.2rem;
+    .flex-pay-ship-container {
+      display: flex;
+      gap: 6rem;
+      .paymentInfo {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
-        .orderDetailsContainerBoxItem{
+        gap: 0.5rem;
+        h1 {
+          text-decoration: 1.5px solid white underline !important;
+        }
+      }
+      .shippingInfo {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        h1 {
+          text-decoration: 1.5px solid white underline !important;
+        }
+        .addDetailsTab {
+          .addressItem {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-            .items{
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                .imgItem{
-                    width: 100px;
-                    height: 100px;
-                    object-fit: contain;
-                    border-radius: 1.5rem;
-                }
-                .productLink{
-                    color: white;
-                    text-decoration: none;
-                    font-size: 1.2rem;
-                    font-weight: 600;
-                    &:hover{
-                        text-decoration: underline;
-                        cursor: pointer;
-                        color: #ffffff93;
-                    }
-                }
-                .itemQnt{
-                    color: rgb(28, 4, 4);
-                    font-size: 1.2rem;
-                    font-weight: 600;
-                    font-style: italic;
-                    margin-left: auto;
-                    
-                }
-            }
+          }
         }
+      }
     }
+  }
+  .orderDetailsContainerBox {
+    // border: 2px solid red;
+    padding: 2rem;
+    margin: 1.2rem;
+    background: #d98900;
+    border-radius: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    .orderDetailsContainerBoxItem {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      .items {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        .imgItem {
+          width: 100px;
+          height: 100px;
+          object-fit: contain;
+          border-radius: 1.5rem;
+        }
+        .productLink {
+          color: white;
+          text-decoration: none;
+          font-size: 1.2rem;
+          font-weight: 600;
+          &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+            color: #ffffff93;
+          }
+        }
+        .itemQnt {
+          color: rgb(28, 4, 4);
+          font-size: 1.2rem;
+          font-weight: 600;
+          font-style: italic;
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .orderDetailsContainer {
+    .orderDetailsHeader {
+      .orderDetailsLeft {
+        h1 {
+          font-size: 1.2rem;
+        }
+        .orderDetailsId {
+          font-size: 0.8rem !important;
+        }
+      }
+      .paymentInfo {
+        h1 {
+          font-size: 1.2rem;
+        }
+        p {
+          font-size: 0.8rem !important;
+        }
+      }
+      .shippingInfo {
+        h1 {
+          font-size: 1.2rem;
+        }
+        p {
+          font-size: 0.8rem !important;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .orderDetailsContainer {
+    .orderDetailsHeader {
+      padding: 1.5rem;
+      .orderDetailsLeft {
+        h1 {
+          font-size: 1rem;
+        }
+        .orderDetailsId {
+          font-size: 0.69rem;
+        }
+      }
+      .paymentInfo,
+      .shippingInfo {
+        h1 {
+          font-size: 1rem;
+        }
+        p {
+          font-size: 0.69rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .orderDetailsContainer {
+    .orderDetailsHeader {
+      padding: 1rem;
+      .orderDetailsLeft {
+        .orderDetailsId {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+      .paymentInfo,
+      .shippingInfo {
+        p {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .orderDetailsContainer {
+    .orderDetailsHeader {
+      padding: 0.8rem;
+      .orderDetailsLeft {
+        h1 {
+          font-size: 0.9rem;
+        }
+        .orderDetailsId {
+          font-size: 0.6rem;
+        }
+      }
+      .flex-pay-ship-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        .paymentInfo,
+        .shippingInfo {
+          h1 {
+            font-size: 0.9rem;
+          }
+          p {
+            font-size: 0.6rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .orderDetailsContainer {
+    margin: 2rem;
+    padding: 1rem;
+    h1 {
+      font-size: 1.1rem;
+    }
+    .orderDetailsHeader {
+      .orderDetailsLeft {
+        h1 {
+          font-size: 0.8rem;
+        }
+        .orderDetailsId {
+          font-size: 0.5rem;
+        }
+      }
+      .flex-pay-ship-container {
+        .paymentInfo,
+        .shippingInfo {
+          h1 {
+            font-size: 0.8rem;
+          }
+          p {
+            font-size: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .orderDetailsContainer {
+    padding: 0;
+    margin: 1rem;
+    h1 {
+      font-size: 0.9rem;
+    }
+    .orderDetailsHeader {
+      .orderDetailsLeft {
+        h1 {
+          font-size: 0.75rem !important;
+        }
+        .orderDetailsId {
+          font-size: 0.6rem !important;
+        }
+      }
+      .flex-pay-ship-container {
+        .paymentInfo,
+        .shippingInfo {
+          h1 {
+            font-size: 0.75rem !important;
+          }
+          p {
+            font-size: 0.6rem !important;
+          }
+        }
+      }
+    }
+    .orderDetailsContainerBox {
+      .orderDetailsContainerBoxItem {
+      }
+    }
+  }
 }

@@ -144,7 +144,7 @@ const ProductCard = ({ product, match }) => {
               ({product.numOfReviews} {product.numOfReviews > 1 ? "Reviews" : "Review"})
             </span>
           </div>
-          {isHovered && (
+          {/* {isHovered && (
             <div className="carddown-div">
 
               <div className="cart">
@@ -167,7 +167,7 @@ const ProductCard = ({ product, match }) => {
               </div>
 
             </div>
-          )}
+          )} */}
         </div>
       </Link>
 

@@ -56,18 +56,20 @@ const MyOrders = ({ history }) => {
                 orders.reverse().map((order) => (
                   <div className="myOrderItems" key={order._id}>
                     <div className="leftDiv">
-                      <h3>Order Date: {order.createdAt.substring(0, 10)}</h3>
-                      <h3>Order Items: {order.orderItems.length}</h3>
-                      <h3>Amount: ${order.totalPrice}</h3>
-                      <h3>Order Status: <span  style={{ color: getStatusColor(order.orderStatus) }}>{order.orderStatus}</span></h3>
+                      <h3>Order Date: <span>{order.createdAt.substring(0, 10)}</span></h3>
+                      <h3>Order Items: <span>{order.orderItems.length}</span></h3>
+                      <h3>Amount: <span>${order.totalPrice}</span></h3>
+                      <h3>Order Status: <span style={{ color: getStatusColor(order.orderStatus) }}>{order.orderStatus}</span></h3>
                       <h3>
                         Delivery Date:{" "}
-                        {calculateDeliveryDate(order.createdAt, order.orderStatus)}
-                        {order.orderStatus !== "delivered" && "(approx)"}
+                        <span>
+                          {calculateDeliveryDate(order.createdAt, order.orderStatus)}
+                          {order.orderStatus !== "delivered" && "(approx)"}
+                        </span>
                       </h3>
                       <div className="btnSec">
-                      <button className="btN" onClick={()=> history.push(`/order/${order._id}`)}>View Order</button>
-                      {isCancelVisible(order.orderStatus) && (
+                        <button className="btN" onClick={() => history.push(`/order/${order._id}`)}>View Order</button>
+                        {isCancelVisible(order.orderStatus) && (
                           <button className="btN">Cancel Order</button>
                         )}
                         {isReturnEnabled(order.orderStatus) && (
@@ -77,12 +79,15 @@ const MyOrders = ({ history }) => {
                     </div>
                     <div className="rightDiv">
                       <h3>Order Id: <span className="orderID">{order._id}</span></h3>
-                      <h3>Payment Method: Cash On Delivery</h3>
+                      <h3>Payment Method: <span>Cash On Delivery</span></h3>
                       <h3>
                         Payment Status:{" "}
-                        {order.isPaid
-                          ? order.paidAt.substring(0, 10)
-                          : "Not Paid"}
+                        <span>
+                          {order.isPaid
+                            ? order.paidAt.substring(0, 10)
+                            : "Not Paid"}
+                        </span>
+
                       </h3>
                     </div>
                   </div>

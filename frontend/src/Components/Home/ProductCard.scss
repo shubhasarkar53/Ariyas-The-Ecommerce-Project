@@ -189,61 +189,61 @@ $orangeTextColor: #d47f00;
     }
   }
 
-  .carddown-div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 0.5rem;
-    background-color: rgba(255, 255, 255, 0.9);
-    transition: all 0.3s ease-in-out;
-    opacity: 0;
-    z-index: 1;
-    transform: translateY(20px);
+  // .carddown-div {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   width: 100%;
+  //   padding: 0.5rem;
+  //   background-color: rgba(255, 255, 255, 0.9);
+  //   transition: all 0.3s ease-in-out;
+  //   opacity: 0;
+  //   z-index: 1;
+  //   transform: translateY(20px);
 
-    .cart {
-      font-size: 2rem;
-      cursor: pointer;
+  //   .cart {
+  //     font-size: 2rem;
+  //     cursor: pointer;
 
-      &:hover {
-        color: $orangeTextColor;
-      }
-    }
+  //     &:hover {
+  //       color: $orangeTextColor;
+  //     }
+  //   }
 
-    .prices-container {
-      width: 65%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 20px;
-      font-weight: 400;
-      line-height: 30px;
-    }
+  //   .prices-container {
+  //     width: 65%;
+  //     display: flex;
+  //     flex-direction: column;
+  //     align-items: center;
+  //     justify-content: space-between;
+  //     font-size: 20px;
+  //     font-weight: 400;
+  //     line-height: 30px;
+  //   }
 
-    .price1 {
-      font-weight: 500;
-    }
+  //   .price1 {
+  //     font-weight: 500;
+  //   }
 
-    .price2 {
-      color: #777777;
-      text-decoration: line-through;
-    }
+  //   .price2 {
+  //     color: #777777;
+  //     text-decoration: line-through;
+  //   }
 
-    .wishlist {
-      font-size: 1.8rem;
-      cursor: pointer;
+  //   .wishlist {
+  //     font-size: 1.8rem;
+  //     cursor: pointer;
 
-      &:hover {
-        color: $orangeTextColor;
-      }
-    }
-  }
+  //     &:hover {
+  //       color: $orangeTextColor;
+  //     }
+  //   }
+  // }
 
-  &:hover .carddown-div {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  // &:hover .carddown-div {
+  //   opacity: 1;
+  //   transform: translateY(0);
+  // }
 }
 
 @media screen and (max-width: 1400px) {

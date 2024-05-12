@@ -9,22 +9,22 @@ import "./CheckoutSteps.scss";
 const CheckoutSteps = ({ activeStep }) => {
   const steps = [
     {
-      label: <Typography> Shipping Details</Typography>,
+      label: <Typography className="det-ico"> Shipping Details</Typography>,
       icon: <MdLocalShipping className="ico" />,
     },
     {
-      label: <Typography> Confirm Order</Typography>,
-      icon: <MdOutlineConfirmationNumber className="ico"  />,
+      label: <Typography className="det-ico"> Confirm Order</Typography>,
+      icon: <MdOutlineConfirmationNumber className="ico" />,
     },
     {
-      label: <Typography> Payment Details</Typography>,
-      icon: <MdOutlinePayment className="ico"  />,
+      label: <Typography className="det-ico"> Payment Details</Typography>,
+      icon: <MdOutlinePayment className="ico" />,
     }
   ];
 
   const stepStyle = {
     textTransform: "capitalize",
-    padding:"2rem",
+    padding: "2rem",
     display: "flex",
     gap: "10px",
   };
@@ -34,8 +34,8 @@ const CheckoutSteps = ({ activeStep }) => {
       <Stepper className="stepper-tab" activeStep={activeStep} alternativeLabel style={stepStyle}>
         {steps.map((step, index) => (
           <Step key={step.label} active={activeStep === index ? true : false} completed={activeStep >= index ? true : false}>
-            <StepLabel icon={step.icon} 
-            style={{color: activeStep >= index ? "tomato" : "rgba(0, 0, 0, 0.649)" }}>
+            <StepLabel icon={step.icon}
+              style={{ color: activeStep >= index ? "tomato" : "rgba(0, 0, 0, 0.649)" }}>
               {step.label}
             </StepLabel>
           </Step>

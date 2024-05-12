@@ -45,63 +45,85 @@ const ViewOrderDetails = ({ match }) => {
               <div className="orderDetailsLeft">
                 <h1>Order Details</h1>
                 <p className="orderDetailsId">
-                  <b>Order ID:</b> {order && order._id}
+                  <b>Order ID:</b> <span>{order && order._id}</span>
                 </p>
                 <p className="orderDetailsId">
-                  <b>Order Date:</b> {order && order.createdAt.substring(0, 10)}
+                  <b>Order Date:</b>
+                  <span>{order && order.createdAt.substring(0, 10)}</span>
                 </p>
                 <p className="orderDetailsId">
-                  <b>Total Order Amount:</b> ${order && order.totalPrice}
+                  <b>Total Order Amount:</b>
+                  <span>
+                    ${order && order.totalPrice}
+                  </span>
                 </p>
                 <p className="orderDetailsId">
-                  <b>Shipping Price:</b> ${order && order.shippingPrice}
+                  <b>Shipping Price:</b>
+                  <span>
+                    ${order && order.shippingPrice}
+                  </span>
                 </p>
                 <p className="orderDetailsId">
-                  <b>Tax:</b> ${order && order.itemPrice}
+                  <b>Tax:</b>
+                  <span>
+                    ${order && order.itemPrice}
+                  </span>
                 </p>
                 <p className="orderDetailsId">
                   <b>Order Status:</b>
-                  {order && order.orderStatus}
+                  <span>
+                    {order && order.orderStatus}
+                  </span>
+
                 </p>
               </div>
 
-              {/* payment info  */}
+              <div className="flex-pay-ship-container">
+                {/* payment info  */}
 
-              <div className="paymentInfo">
-                <h1>Payment Info</h1>
-                <p>
-                  <b>Amount:</b> ${order && order.totalPrice}
-                </p>
-                <p>
-                  <b>Method:</b> Cash On Delivery
-                </p>
-              </div>
+                <div className="paymentInfo">
+                  <h1>Payment Info</h1>
+                  <p>
+                    <b>Amount:</b>
+                    <span>
+                      ${order && order.totalPrice}
+                    </span>
+                  </p>
+                  <p>
+                    <b>Method:</b>
+                    <span>Cash On Delivery</span>
+                  </p>
+                </div>
 
-              {/* shipping info */}
-              <div className="shippingInfo">
-                <h1>Shipping Info</h1>
-                <p>
-                  <b>Name:</b> {order && order.shippingInfo && order.shippingInfo.fullName}
-                </p>
-                <p>
-                  <b>Phone:</b>{" "}
-                  {order && order.shippingInfo && order.shippingInfo.phoneNo}
-                </p>
-                <p>
-                  <b>Address:</b>{" "}
-                  <div className="addDetailsTab">
-                    {order && order.shippingInfo && (
-                      <div className="addressItem">
-                        <span>{order.shippingInfo.address}</span>
+                {/* shipping info */}
+                <div className="shippingInfo">
+                  <h1>Shipping Info</h1>
+                  <p>
+                    <b>Name:</b> <span>{order && order.shippingInfo && order.shippingInfo.fullName}</span>
+                  </p>
+                  <p>
+                    <b>Phone:</b>{" "}
+                    <span>
+                      {order && order.shippingInfo && order.shippingInfo.phoneNo}
+                    </span>
+                  </p>
+                  <p>
+                    <b>Address:</b>{" "}
+                    <div className="addDetailsTab">
+                      {order && order.shippingInfo && (
+                        <div className="addressItem">
+                          <span>{order.shippingInfo.address}</span>
 
-                        <span>{order.shippingInfo.city}</span>
-                        <span>{order.shippingInfo.state}</span>
-                        <span>{order.shippingInfo.country}</span>
-                        <span>{order.shippingInfo.pinCode}</span>
-                      </div>
-                    )}
-                  </div>
-                </p>
+                          <span>{order.shippingInfo.city}</span>
+                          <span>{order.shippingInfo.state}</span>
+                          <span>{order.shippingInfo.country}</span>
+                          <span>{order.shippingInfo.pinCode}</span>
+                        </div>
+                      )}
+                    </div>
+                  </p>
+                </div>
+
               </div>
             </div>
 
