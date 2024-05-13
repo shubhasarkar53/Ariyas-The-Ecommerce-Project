@@ -1,19 +1,17 @@
 
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import "./ProductCard.scss"
 import { Link } from 'react-router-dom'
 import Rating from '@mui/material/Rating';
 import PropTypes from 'prop-types';
-import { RiHeartAddFill } from "react-icons/ri";
+import { RiHeartAddLine } from "react-icons/ri";
+import { CiShoppingCart } from "react-icons/ci";
 import { addItemsToWishList } from '../../Redux/Actions/wishListAction';
 import { addItemsToCart } from "../../Redux/Actions/cartAction"
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from 'react-redux';
-
-import wishL from "../../assets/Images/Icons/CartPage/wishL.png"
-import cart2 from "../../assets/Images/Icons/CartPage/cart2.png"
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 const ProductCard = ({ product, match }) => {
 
@@ -44,10 +42,6 @@ const ProductCard = ({ product, match }) => {
     setIsHovered(!isHovered);
   };
 
-
-  // console.log(product);
-
-  // const randomNumber = Math.floor(Math.random() * 5) + 1;
 
   //function for genarate a random number for span tag in product card
   function getRandomNumber() {
@@ -97,8 +91,8 @@ const ProductCard = ({ product, match }) => {
   };
 
   return (
-
-    <div className="card-container">
+    <Fragment>
+        <div className="card-container">
       <Link
         className={`card ${isHovered ? 'hovered' : ''}`}
         to={`/product/${product._id}`}
@@ -131,12 +125,7 @@ const ProductCard = ({ product, match }) => {
           <div className="product-titles">
             <p className='title'>{truncateText(product.name, 2)}</p>
           </div>
-          {/* <p className='product-des'>{product.description}</p> */}
-
-          <div className='prices-container'>
-            <span className='price-1'>RS. {product.price}</span>
-            <span className='price-2'>Rs. 2223</span>
-          </div>
+    
           <div className='ratings'>
             <Rating {...options} className='rating-options' />
             <span className="detailsBlock-2-span">
@@ -148,10 +137,11 @@ const ProductCard = ({ product, match }) => {
             <div className="carddown-div">
 
               <div className="cart">
-                <img src={cart2} alt="" onClick={(e) => {
+              
+                <CiShoppingCart  onClick={(e) => {
                   e.preventDefault();
                   addToCartHandler();
-                }} className='productCard-cart' />
+                }} className='productCard-cart'/>
               </div>
 
               <div className='prices-container'>
@@ -160,18 +150,20 @@ const ProductCard = ({ product, match }) => {
               </div>
 
               <div className="wishlist">
-                <img src={wishL} alt="" onClick={(e) => {
+
+                <RiHeartAddLine  onClick={(e) => {
                   e.preventDefault();
                   addToWishListHandler();
-                }} className='productCard-wishlist' />
+                }} className='productCard-wishlist'/>
               </div>
 
             </div>
           )}
         </div>
       </Link>
-
     </div>
+    {/* <ToastContainer/> */}
+    </Fragment>
   )
 }
 

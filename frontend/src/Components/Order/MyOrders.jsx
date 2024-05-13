@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import "./MyOrders.scss";
 import Loader from "../Loader/Loader";
@@ -11,6 +11,9 @@ const MyOrders = ({ history }) => {
 
   const { user } = useSelector((state) => state.user);
   const { loading, error, orders } = useSelector((state) => state.myOrders);
+
+  
+  const [returnWindowOpen, setReturnWindowOpen] = useState(true);
 
   const calculateDeliveryDate = (orderDate, status) => {
     if (status === "delivered") {
@@ -40,7 +43,26 @@ const MyOrders = ({ history }) => {
     dispatch(myOrders());
   }, [dispatch, history]);
 
-  const isReturnEnabled = (status) => status === "delivered";
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Calculate if return window is closed after 7 days of delivery
+      orders.forEach(order => {
+        if (order.orderStatus === "delivered") {
+          const deliveryDate = new Date(order.createdAt);
+          deliveryDate.setDate(deliveryDate.getDate() + 7);
+          const currentDate = new Date();
+          if (currentDate > deliveryDate) {
+            setReturnWindowOpen(false);
+          }
+        }
+      });
+    }, 1000 * 60 * 60 * 24); // Check every day
+    return () => clearInterval(interval);
+  }, [orders]);
+
+
+  const isReturnEnabled = (status) => status === "delivered" && returnWindowOpen;
   const isCancelVisible = (status) => status !== "delivered";
 
   return (
@@ -72,6 +94,11 @@ const MyOrders = ({ history }) => {
                         )}
                         {isReturnEnabled(order.orderStatus) && (
                           <button className="btN">Return Order</button>
+                        )}
+                         {!returnWindowOpen && (
+                          <span style={{ color: "red", marginLeft: "10px" }}>
+                            Return window closed after 7 days
+                          </span>
                         )}
                       </div>
                     </div>

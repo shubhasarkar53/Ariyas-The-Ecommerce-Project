@@ -18,7 +18,8 @@
     gap: 1rem;
     margin: 1.2rem;
     padding: 1.5rem;
-    background:#E4E4E4;
+    // background:#E4E4E4;
+    background: rgba(255, 255, 255, 0.645);
     box-shadow:
   2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
   6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
@@ -46,7 +47,12 @@
           border-radius: 0.5rem;
           cursor: pointer;
           background:#BD6639;
-          color: #E4E4E4;
+          color: white;
+          border: none;
+          transition: all 0.3s ease;
+          &:hover{
+            background: #bc7305;
+          }
         }
       }
     }

@@ -54,6 +54,19 @@
       padding: 0 5vmax;
     }
   }
+  .not-found-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .NotFound{
+      width: 30rem;
+    }
+    .notfoundText{
+      font-size: 1.5rem;
+      font-weight: 500; 
+    }
+  }
 }
 .paginationBox {
   width: 100%;

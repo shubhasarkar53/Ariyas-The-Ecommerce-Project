@@ -245,25 +245,8 @@ $categoriText: white;
     }
   }
 
-  // .product-row-container {
-  //   display: flex;
-  //   flex-direction: column;
-  //   gap: 3rem;
-  //   margin-left: 10rem;
-  //   margin-top: 5rem;
-  //   .row {
-  //     display: flex;
-  //     flex-direction: column;
-  //     gap: 2rem;
-  //     .row-products {
-  //       display: flex;
-  //       gap: 2rem;
-  //     }
-  //   }
-  // }
   .product-row-container {
-    margin: 4rem 10rem;
-
+    margin-left: 10rem;
     .row {
       h1 {
         margin-bottom: 2rem;
@@ -273,7 +256,7 @@ $categoriText: white;
       .row-products {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-gap: 2rem;
+        grid-gap: 5rem;
         align-self: start;
         width: 80%;
       }
