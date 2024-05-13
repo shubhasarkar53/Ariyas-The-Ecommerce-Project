@@ -37,10 +37,10 @@ const ConfirmOrder = ({ history }) => {
   const orderItems = cartItems.map(item => ({
     ...item,
     seller: item.seller // Assuming you have seller information in each cart item
-}));
+  }));
 
   console.log("----------------------------------")
-  console.log("cartitems:",cartItems)
+  console.log("cartitems:", cartItems)
   console.log("----------------------------------")
 
 
@@ -179,16 +179,18 @@ const ConfirmOrder = ({ history }) => {
                         src={item.image}
                         alt="Product"
                       />
-                      <Link
-                        className="cartItemName"
-                        to={`/product/${item.product}`}
-                      >
-                        {item.name}
-                      </Link>{" "}
-                      <span className="cartItemPrice">
-                        {item.quantity} X ₹{item.price} ={" "}
-                        <b>₹{item.price * item.quantity}</b>
-                      </span>
+                      <div className="items-details">
+                        <Link
+                          className="cartItemName"
+                          to={`/product/${item.product}`}
+                        >
+                          {item.name}
+                        </Link>{" "}
+                        <span className="cartItemPrice">
+                          {item.quantity} X ₹{item.price} ={" "}
+                          <b>₹{item.price * item.quantity}</b>
+                        </span>
+                      </div>
                     </div>
                   ))}
               </div>
