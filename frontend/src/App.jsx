@@ -46,6 +46,7 @@ import MyOrders from "./Components/Order/MyOrders.jsx";
 import ViewOrderDetails from "./Components/Order/ViewOrderDetails.jsx";
 import TermsConditions from "./Components/About/TermsConditions.jsx";
 import Location from "./Components/Location/Location.jsx";
+// import LocationShop from "./Components/Location/LocationShop.jsx"; 
 // import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -76,6 +77,7 @@ const App = () => {
               />
               {/* <Route path="/products/:keyword" component={Shop} /> */}
               <Route path="/products/:keyword" component={Shop} />
+              <Route path="/products/:location" component={Shop} />
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/wishlist" component={WishList} />
               <Route exact path="/about" component={About} />
