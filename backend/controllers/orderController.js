@@ -100,6 +100,7 @@ exports.updateOrderStatusForSeller = catchAsyncErr(async (req, res, next) => {
   const orderId = req.params.id;
   const { sellerId, newStatus } = req.body;
 
+  console.log(orderId,sellerId,newStatus);
   // Find the order by orderId
   const order = await Order.findById(orderId);
 

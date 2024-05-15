@@ -155,15 +155,20 @@ orderSchema.pre('save', function (next) {
 });
 
 
+
 // Method to update seller status
 orderSchema.methods.updateSellerStatus = function(sellerId, newStatus) {
-  const sellerIndex = this.sellerStatus.findIndex(status => status.seller.equals(sellerId));
-  if (sellerIndex !== -1) {
-      this.sellerStatus[sellerIndex].status = newStatus;
-      return true; // Seller status updated successfully
-  }
-  return false; // Seller not found in sellerStatus array
+  let updated = false; // Flag to track if any status was updated
+  this.sellerStatus.forEach(status => {
+    if (status.seller.equals(sellerId)) {
+      status.status = newStatus;
+      updated = true;
+    }
+  });
+  return updated; // Return true if any status was updated, false otherwise
 };
+
+
 
 
 const Order = mongoose.model("Order", orderSchema);
