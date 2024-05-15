@@ -47,6 +47,7 @@ import ViewOrderDetails from "./Components/Order/ViewOrderDetails.jsx";
 import TermsConditions from "./Components/About/TermsConditions.jsx";
 import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
 // import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
+// import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
