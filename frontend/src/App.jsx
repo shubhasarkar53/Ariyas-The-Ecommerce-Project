@@ -68,12 +68,15 @@ const App = () => {
               <Route exact path="/" component={Home} />
               <Route exact path="/sale" component={Sale} />
               <Route exact path="/shop" component={Shop} />
+              <Route exact path="/location" component={Location} />
+
               <Route
                 path="/products/:keyword"
                 render={(props) => <Shop {...props} />}
               />
               {/* <Route path="/products/:keyword" component={Shop} /> */}
               <Route path="/products/:keyword" component={Shop} />
+              <Route path="/products/:location" component={Shop} />
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/wishlist" component={WishList} />
               <Route exact path="/about" component={About} />

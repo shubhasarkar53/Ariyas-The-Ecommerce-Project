@@ -1,80 +1,210 @@
-
-.orders-container{
-  color: #1d1d1dd4;
+.orders-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
-  margin: 30px 0;
-  padding: 1rem;
-  padding-bottom: 2rem;
+  padding: 2rem;
+  margin: 2rem;
   .myOrdersHeading {
-    text-align: center;
-    margin-top: 0.5rem;
+    font-size: 2rem;
+    font-weight: 400;
     margin-bottom: 2rem;
-    font-size: 1.4rem;
   }
   .myOrdersContainer{
-    // border: 2px solid red;
-    .myOrderItems{
-    // border: 2px solid red;
-    border-radius: 1.2rem;
-    background: #E4E4E4;
+    width: 60%;
+  }
+  .myOrderItems {
     display: flex;
     justify-content: space-evenly;
-    margin: 2rem;
-    padding: 2rem;
     gap: 1rem;
-    border-radius: 50px;
-    background: #e4e4e4;
-    box-shadow: 20px 20px 60px #c2c2c2, -20px -20px 60px #ffffff;
-  }
-
-  .myOrderItems h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-
-  .viewOrderBtn {
-    padding: 0.7rem 1.5rem;
-    border-radius: 50px;
-    margin-top: 1.5rem;
-    background: #e4e4e4;
-    box-shadow: 20px 20px 60px #c2c2c2, -20px -20px 60px #ffffff;
+    margin: 1.2rem;
+    padding: 1.5rem;
+    // background:#E4E4E4;
+    background: rgba(255, 255, 255, 0.645);
+    box-shadow:
+  2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+  6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+  12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+  22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+  41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+  100px 100px 80px rgba(0, 0, 0, 0.07)
+;
+    border-radius: 1.2rem;
+    .leftDiv {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      h3 {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+      .btnSec {
+        display: flex;
+        gap: 1rem;
+        .btN {
+          padding: 0.5rem 1rem;
+          font-size: 1rem;
+          font-weight: 500;
+          border-radius: 0.5rem;
+          cursor: pointer;
+          background:#BD6639;
+          color: white;
+          border: none;
+          transition: all 0.3s ease;
+          &:hover{
+            background: #bc7305;
+          }
+        }
+      }
+    }
+    .rightDiv {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      h3 {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+      .orderID {
+        color: #bd6639;
+      }
+    }
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
   .orders-container {
-    .myOrdersContainer {
-      .myOrderItems {
+    .myOrdersHeading {
+      font-size: 1.7rem;
+    }
+    .myOrderItems {
+      .leftDiv {
         h3 {
           font-size: 0.9rem;
         }
-        .viewOrderBtn {
-          padding: 0.5rem 1rem;
+        .btnSec {
+          .btN {
+            font-size: 0.9rem;
+          }
+        }
+      }
+      .rightDiv {
+        h3 {
+          font-size: 0.9rem;
         }
       }
     }
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .orders-container {
-    .myOrdersHeading {
-      font-size: 1.1rem;
-    }
+    margin: 1.5rem;
+    padding: 1.5rem;
     .myOrdersContainer {
-      .myOrderItems {
+      width: 90%;
+    }
+    .myOrderItems {
+      .leftDiv {
         h3 {
-          font-size: 0.75rem;
+          font-size: 0.8rem;
         }
-        .viewOrderBtn {
-          font-size: 0.8rem !important;
+        .btnSec {
+          .btn {
+            font-size: 0.8rem;
+          }
+        }
+      }
+      .rightDiv {
+        h3 {
+          font-size: 0.8rem;
         }
       }
     }
   }
 }
+
+@media screen and (max-width: 780px) {
+  .orders-container {
+    margin: 1rem;
+    padding: 1rem;
+    .myOrdersHeading {
+      font-size: 1.3rem;
+    }
+    .myOrdersContainer {
+      width: 70%;
+    }
+    .myOrderItems {
+      .leftDiv {
+        gap: 0.6rem;
+        h3 {
+          font-size: 0.7rem;
+          span {
+            display: block;
+          }
+        }
+        .btnSec {
+          display: flex;
+          flex-direction: column;
+          .btN {
+            font-size: 0.7rem;
+            padding: 0.5rem 0.8rem;
+          }
+        }
+      }
+      .rightDiv {
+        gap: 0.6rem;
+        h3 {
+          font-size: 0.7rem;
+          span {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .orders-container {
+    .myOrdersContainer {
+      width: 90%;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .orders-container {
+    .myOrdersContainer {
+      width: 100%;
+    }
+    .myOrderItems {
+      margin: 0.5rem;
+      padding: 0.5rem;
+      .leftDiv {
+        .btnSec {
+          gap: 0.7rem;
+          .btN {
+            font-size: 0.6rem;
+            padding: 0.3rem 0.6rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .orders-container {
+    .myOrderItems {
+      .leftDiv {
+        .btnSec {
+          gap: 0.5rem;
+          .btN {
+            font-size: 0.5rem;
+            padding: 0.25rem 0.55rem;
+          }
+        }
+      }
+    }
+  }
 }

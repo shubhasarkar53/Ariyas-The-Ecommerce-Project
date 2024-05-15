@@ -79,7 +79,7 @@ const Header = () => {
 
             <div className="icon-btns-container">
               {[
-                { icon: paperplane, path: "/paperplane" },
+                { icon: paperplane, path: "/" },
                 { icon: cart, path: "/cart", },
                 { icon: search, path: "/search" },
               ].map((item, index) => {

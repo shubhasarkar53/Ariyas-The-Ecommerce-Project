@@ -167,7 +167,7 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
                       </span>
                     </div>
 
-                    {hoveredProductId === product._id && (
+                    {/* {hoveredProductId === product._id && (
                       <div
                         className={`carddown-div ${isCardDownVisible ? 'visible' : ''}`}
                         onMouseEnter={() => setIsCardDownVisible(true)}
@@ -184,7 +184,7 @@ const SaleCards = ({ products, isButtonClicked, onButtonClick, product }) => {
                           <img src={wishL} alt='' onClick={() => handleAddToWishlist(product._id, product.name)} className='productCard-wishlist' />
                         </div>
                       </div>
-                    )}
+                    )} */}
 
                   </div>
                 ))

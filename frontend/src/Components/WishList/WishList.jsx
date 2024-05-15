@@ -75,7 +75,7 @@ const WishList = () => {
                 </Link>
               </div>
             ) : (
-              wishlistItems.map((item) => (
+              wishlistItems.reverse().map((item) => (
                 <WishListCard
                   key={item.product}
                   item={item}

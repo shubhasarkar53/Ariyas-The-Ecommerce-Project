@@ -9,22 +9,22 @@ import "./CheckoutSteps.scss";
 const CheckoutSteps = ({ activeStep }) => {
   const steps = [
     {
-      lable: <Typography> Shipping Details</Typography>,
+      label: <Typography className="det-ico"> Shipping Details</Typography>,
       icon: <MdLocalShipping className="ico" />,
     },
     {
-      lable: <Typography> Confirm Order</Typography>,
-      icon: <MdOutlineConfirmationNumber className="ico"  />,
+      label: <Typography className="det-ico"> Confirm Order</Typography>,
+      icon: <MdOutlineConfirmationNumber className="ico" />,
     },
     {
-      lable: <Typography> Payment Details</Typography>,
-      icon: <MdOutlinePayment className="ico"  />,
+      label: <Typography className="det-ico"> Payment Details</Typography>,
+      icon: <MdOutlinePayment className="ico" />,
     }
   ];
 
   const stepStyle = {
     textTransform: "capitalize",
-    padding:"2rem",
+    padding: "2rem",
     display: "flex",
     gap: "10px",
   };
@@ -33,10 +33,10 @@ const CheckoutSteps = ({ activeStep }) => {
     <Fragment>
       <Stepper className="stepper-tab" activeStep={activeStep} alternativeLabel style={stepStyle}>
         {steps.map((step, index) => (
-          <Step key={step.lable} active={activeStep === index ? true : false} completed={activeStep >= index ? true : false}>
-            <StepLabel icon={step.icon} 
-            style={{color: activeStep >= index ? "tomato" : "rgba(0, 0, 0, 0.649)" }}>
-              {step.lable}
+          <Step key={step.label} active={activeStep === index ? true : false} completed={activeStep >= index ? true : false}>
+            <StepLabel icon={step.icon}
+              style={{ color: activeStep >= index ? "tomato" : "rgba(0, 0, 0, 0.649)" }}>
+              {step.label}
             </StepLabel>
           </Step>
         ))}
