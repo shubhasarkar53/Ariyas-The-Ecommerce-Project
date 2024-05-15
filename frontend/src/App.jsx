@@ -45,9 +45,7 @@ import OrderSuccess from "./Components/Cart/OrderSuccess.jsx";
 import MyOrders from "./Components/Order/MyOrders.jsx";
 import ViewOrderDetails from "./Components/Order/ViewOrderDetails.jsx";
 import TermsConditions from "./Components/About/TermsConditions.jsx";
-import Location from "./Components/Location/Location.jsx";
-// import LocationShop from "./Components/Location/LocationShop.jsx"; 
-// import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
+
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
