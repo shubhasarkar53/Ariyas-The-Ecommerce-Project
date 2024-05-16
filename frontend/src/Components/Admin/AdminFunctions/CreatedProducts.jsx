@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -85,9 +85,9 @@ const CreatedProducts = () => {
                         products.map((product)=>{
                             return(
                                 <div key={product._id} className="create-product-items">
-                                    <div className="created-product-img">
+                                    <Link  to={`/product/${product._id}`} className="created-product-img">
                                     <img src={`${product.image[0].url}`} alt="image" />
-                                    </div>
+                                    </Link>
                                     <p >{product._id}</p>
                                     <p>{product.name}</p>
                                     <p>{product.stock}</p>
