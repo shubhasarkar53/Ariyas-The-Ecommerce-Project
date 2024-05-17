@@ -1,53 +1,28 @@
-
-.main_container {
+.location-main{
   margin: 2rem;
   padding: 2rem;
-  .sub-container {
+
+
+  .location-down-container{
     display: flex;
-    flex-direction: column;
-    .sub-top {
-        display: flex;
-        align-items: center;
-      .search-form {
-        display: flex;
-        .search-input {
-          border-radius: 10px;
-          border-radius: 29px;
-          width: 35%;
-        }
-        .search-button {
-          
-        }
-      }
-      .loc{
-        display: flex;
-        width: 20%;
-        .loc-img{
-            font-size: 2rem;
-        }
-        .loc_text{
-            font-size: 1.2rem;
-        }
-      }
+    margin-top: 2rem;
+    .products-container{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
     }
-    .sub-down {
-      .custom-dropdown {
-        width: 10%;
-        border:none;
-        outline: none;
-        border-radius: 10px;
-        border-radius: 29px;
-        background: linear-gradient(145deg, #ffffff, #e6e6e6);
-        box-shadow:  26px 26px 52px #d9d9d9,
-                     -26px -26px 52px #ffffff;
-        .custom-dropdown-control {
-          border: none;
-          outline: none;
-          border-radius: 10px;
-          border-radius: 29px;
-         
-        }
-      }
-    }
+  }
+}
+
+  .location-link {
+  list-style: none;
+  color: rgb(124, 124, 124);
+  font: 400 0.8vmax;
+  margin: 0.4vmax;
+  cursor: pointer;
+  transition: all 0.5s;
+  &:hover {
+    color: orange;
   }
 }

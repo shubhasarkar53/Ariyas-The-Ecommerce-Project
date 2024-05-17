@@ -74,8 +74,9 @@ const App = () => {
                 path="/products/:keyword"
                 render={(props) => <Shop {...props} />}
               />
-              {/* <Route path="/products/:keyword" component={Shop} /> */}
+
               <Route path="/products/:keyword" component={Shop} />
+            
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/wishlist" component={WishList} />
               <Route exact path="/about" component={About} />

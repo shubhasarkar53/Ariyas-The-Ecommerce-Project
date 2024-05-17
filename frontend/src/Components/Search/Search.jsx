@@ -8,8 +8,6 @@ const Search = ({history}) => {
 
     const [keyword,setKeyword] = useState("");
 
-
-
     const searchSubmithandler = (e)=>{
         e.preventDefault();
         if(keyword.trim()){
@@ -22,7 +20,7 @@ const Search = ({history}) => {
 
   return (
   <Fragment>
-    <form className='search-form'   onSubmit={ searchSubmithandler}>
+    <form className='search-form'  onSubmit={ searchSubmithandler}>
       <input 
 
       value={keyword}

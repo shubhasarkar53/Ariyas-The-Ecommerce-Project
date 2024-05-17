@@ -183,3 +183,42 @@ export default MyOrders;
             </div>
       </div>
 
+
+//15
+<Fragment>
+      <div className="main_container">
+        <h1>Find Local Treasures Products From Location</h1>
+        <div className="sub-container">
+          <div className="sub-top">
+            <form className="search-form" onSubmit={searchSubmithandler}>
+              <input
+                value={keyword}
+                className="search-input"
+                type="text"
+                id="search"
+                placeholder="Find Products From the Places You Want"
+                onChange={(e) => setKeyword(e.target.value)}
+              />
+              <input className="search-button" type="submit" value="Search" />
+            </form>
+            <div className="loc">
+              <FaLocationCrosshairs  className="loc-img"/>
+              <p className="loc_text">Fetch Your Current Location</p>
+            </div>
+          </div>
+          <div className="sub-down">
+            <Dropdown
+              options={options}
+              onChange={handleDropdownChange}
+              value={selectedOption}
+              placeholder="West Bengal"
+              className="custom-dropdown"
+              controlClassName="custom-dropdown-control"
+              menuClassName="custom-dropdown-menu"
+              arrowClassName="custom-dropdown-arrow"
+            />
+            {selectedOption && <p>You selected: {selectedOption.value}</p>}
+          </div>
+        </div>
+      </div>
+    </Fragment>

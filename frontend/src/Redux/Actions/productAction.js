@@ -32,6 +32,7 @@ export const getProducts =
     currentPage = 1,
     filteredPrice = [0, 30000],
     category = "",
+    location = "",
     ratings = 0
   ) =>
   async (dispatch) => {
@@ -42,7 +43,11 @@ export const getProducts =
 
 
       if (category) {
-        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${filteredPrice[0]}&price[lte]=${filteredPrice[1]}&category=${category}&ratings[gte]=${ratings}`;
+        link += `&category=${category}`;
+      }
+  
+      if (location) {
+        link += `&location=${location}`;
       }
 
       const { data } = await axios.get(link, {
