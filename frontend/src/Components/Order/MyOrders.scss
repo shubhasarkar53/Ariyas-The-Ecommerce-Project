@@ -9,7 +9,7 @@
     font-weight: 400;
     margin-bottom: 2rem;
   }
-  .myOrdersContainer{
+  .myOrdersContainer {
     width: 60%;
   }
   .myOrderItems {
@@ -20,14 +20,12 @@
     padding: 1.5rem;
     // background:#E4E4E4;
     background: rgba(255, 255, 255, 0.645);
-    box-shadow:
-  2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
-  6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-  12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
-  22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
-  41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
-  100px 100px 80px rgba(0, 0, 0, 0.07)
-;
+    box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+      6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+      12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+      22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+      41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+      100px 100px 80px rgba(0, 0, 0, 0.07);
     border-radius: 1.2rem;
     .leftDiv {
       display: flex;
@@ -46,11 +44,11 @@
           font-weight: 500;
           border-radius: 0.5rem;
           cursor: pointer;
-          background:#BD6639;
+          background: #bd6639;
           color: white;
           border: none;
           transition: all 0.3s ease;
-          &:hover{
+          &:hover {
             background: #bc7305;
           }
         }
@@ -95,6 +93,13 @@
     }
   }
 }
+@media screen and (max-width: 1130px) {
+  .orders-container {
+    .myOrdersContainer {
+      width: 80%;
+    }
+  }
+}
 
 @media screen and (max-width: 1000px) {
   .orders-container {
@@ -109,7 +114,7 @@
           font-size: 0.8rem;
         }
         .btnSec {
-          .btn {
+          .btN {
             font-size: 0.8rem;
           }
         }
@@ -195,6 +200,9 @@
 
 @media screen and (max-width: 400px) {
   .orders-container {
+    .myOrdersHeading {
+      font-size: 1.1rem;
+    }
     .myOrderItems {
       .leftDiv {
         .btnSec {
@@ -205,6 +213,14 @@
           }
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .orders-container {
+    .myOrdersContainer {
+      width: 110%;
     }
   }
 }

@@ -8,6 +8,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import sendingMessage from '../../assets/Gifs/giphy.gif';
 import Loader from './../Loader/Loader';
 
+import axios from 'axios';
+
 const Contact = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
@@ -30,6 +32,24 @@ const Contact = () => {
 
   const handleSubmitContactForm = async (e) => {
     e.preventDefault();
+
+    try {
+      // Send form data to backend route for sending email
+      const response = await axios.post('/api/v1/contact', {
+        firstName,
+        lastName,
+        phone,
+        email,
+        message,
+      });
+      // Handle success response
+      toast.success(response.data.message);
+      console.log("Message sent successfully");
+    } catch (error) {
+      // Handle error response
+      toast.error(`Error: ${error.response.data.error}`);
+      console.error(`Error: ${error.response.data.error}`);
+    }
 
     // Validate form fields
     const errors = {};
@@ -76,6 +96,9 @@ const Contact = () => {
       toast.success('Message sent successfully!');
       console.log("Message sent successfully");
 
+      // Reload the page after successful form submission
+      window.location.reload();
+
     } catch (error) {
       // Handle any errors that may occur during form submission
       toast.error(`Error: ${error}`);
@@ -83,11 +106,6 @@ const Contact = () => {
     } finally {
       // Set loading to false after form submission (success or error)
       setLoading(false);
-
-      // Hide contact animation after 2 seconds
-      setTimeout(() => {
-        setShowContactAnimation(false);
-      }, 2000);
 
       // Clear fieldError state
       setFieldError({
@@ -97,6 +115,11 @@ const Contact = () => {
         email: false,
         message: false,
       });
+
+      // Hide contact animation after 2 seconds
+      setTimeout(() => {
+        setShowContactAnimation(false);
+      }, 2000);
     }
   }
 
@@ -175,7 +198,7 @@ const Contact = () => {
                       <label htmlFor="email">Email</label>
                       <input type="email" placeholder="Enter email"
                         value={email}
-                        onChange={(e) => { setEmail(e.target.value) }}
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
                     <div className="message">

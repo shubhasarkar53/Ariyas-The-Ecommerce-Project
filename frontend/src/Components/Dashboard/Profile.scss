@@ -9,14 +9,14 @@ a {
 
 .profile-title {
   text-align: center;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .profile-title h2 {
   font-family: "Poppins", sans-serif;
   font-size: 1.3rem;
   font-weight: normal;
-  text-transform:capitalize;
+  text-transform: capitalize;
 }
 
 .img-profile img {
@@ -37,14 +37,13 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.ext-left-profile img,
-.ext-right-profile img {
-  width: 250px;
-  height: 250px;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  height: 100vh;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+  }
 }
 
 .main-profile {
@@ -143,10 +142,9 @@ a {
   align-items: center;
   flex-direction: column;
   font-family: "Poppins", sans-serif;
-  h4{
+  h4 {
     text-transform: capitalize;
   }
-
 }
 
 .title-action p {
@@ -277,6 +275,7 @@ a {
 @media screen and (max-width: 950px) {
   .profile-container {
     .profile-det-container {
+      margin: 1rem 2rem;
       .main-profile {
         .main-profile-container {
           .main-profile-container-left {
@@ -316,12 +315,6 @@ a {
 @media screen and (max-width: 900px) {
   .profile-container {
     .profile-det-container {
-      .ext-left-profile,
-      .ext-right-profile {
-        img {
-          display: none;
-        }
-      }
       .main-profile {
         .main-profile-container {
           .main-profile-container-left {
@@ -342,6 +335,150 @@ a {
               }
             }
           }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .profile-container {
+    .profile-det-container {
+      padding: 0.5rem 1rem;
+      .ext-left-profile,
+      .ext-right-profile {
+        img {
+          display: none;
+        }
+      }
+      .main-profile {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        .main-profile-container {
+          width: 80%;
+          .main-profile-container-right {
+            margin-left: 1rem;
+          }
+        }
+      }
+      .profile-actions-slot {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        .profile-slot {
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile-container {
+    .profile-det-container {
+      .main-profile {
+        .main-profile-container {
+          width: 90%;
+          .main-profile-container-left {
+            .img-profile {
+              width: 3rem;
+              img {
+                width: 50px;
+                height: 50px;
+              }
+            }
+            .main-profile-det {
+              margin-left: 0.5rem;
+              .profile-name,
+              .profile-email {
+                p {
+                  font-size: 0.7rem;
+                  strong {
+                    font-size: 0.6rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .profile-actions-slot {
+        .profile-slot {
+          width: 90%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile-container {
+    .profile-det-container {
+      padding: 0.5rem 0.5rem;
+      .main-profile {
+        .main-profile-container {
+          width: 100%;
+        }
+      }
+      .profile-actions-slot {
+        .profile-slot {
+          width: 100%;
+          .img-action {
+            display: flex;
+            align-items: center;
+            img {
+              width: 30px;
+              height: 30px;
+            }
+          }
+          .title-action {
+            h4 {
+              font-size: 0.7rem;
+            }
+            p {
+              font-size: 0.65rem;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .profile-container {
+    .profile-det-container {
+      .main-profile {
+        .main-profile-container {
+          width: 110%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .main-profile-container-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .img-profile {
+              margin-bottom: 0.5rem;
+              img {
+                width: 60px;
+                height: 60px;
+              }
+            }
+          }
+          .main-profile-container-right {
+            margin-top: 0.6rem;
+            margin-bottom: -1.5rem;
+          }
+        }
+      }
+      .profile-actions-slot {
+        .profile-slot {
+          width: 110%;
         }
       }
     }

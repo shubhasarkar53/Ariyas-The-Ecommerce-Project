@@ -33,6 +33,11 @@
         width: 70px;
         height: 70px;
         margin-right: 1rem;
+        border-radius: 50%;
+        box-shadow: 2px 1px 1.5px -0.5px rgba(128, 128, 128, 0.148),
+          3px 2px 9.5px -0.3px rgba(128, 128, 128, 0.234),
+          1px 5px 3.5px -0.4px rgba(128, 128, 128, 0.129),
+          6px 7px 4.5px -0.1px rgba(128, 128, 128, 0.089);
       }
 
       p {
@@ -121,17 +126,17 @@
       .form-reg-name {
         display: flex;
         justify-content: space-between;
-        width: 80%;
+        width: 100%;
         margin-top: 2rem;
 
         #first-name,
         #middle-name,
         #last-name {
-          flex: 1;
+          flex: 1.5;
           width: 100%;
 
           input {
-            width: 80%;
+            width: 100%;
             padding: 0.5rem 0.7rem;
             border-radius: 10px;
             background: rgba(207, 207, 207, 0.4);
@@ -170,6 +175,7 @@
         .phone-section {
           display: flex;
           justify-content: flex-start;
+          gap: 2rem;
         }
 
         .phone-sect-1 {
@@ -212,7 +218,7 @@
 
         .phone-sect-2 {
           display: flex;
-          margin-left: 7rem;
+          // margin-left: 7rem;
 
           input {
             padding: 0.5rem 0.7rem;
@@ -257,6 +263,7 @@
         .email-section {
           display: flex;
           justify-content: flex-start;
+          gap: 2rem;
 
           .email-sect-1 {
             input {
@@ -286,8 +293,6 @@
           }
 
           .email-sect-2 {
-            margin-left: 7rem;
-
             input {
               padding: 0.5rem 0.7rem;
               border-radius: 10px;
@@ -460,6 +465,7 @@
           margin-right: 15rem;
           display: flex;
           justify-content: space-between;
+          width: 100%;
 
           .comm-sect-1,
           .comm-sect-2,

@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 
 import { useHistory } from "react-router-dom";
@@ -131,7 +133,7 @@ const CreateNewProduct = () => {
                 </h1>
                 <form className="create-product-form" onSubmit={handleSubmit}>
                   <div className="create-product-form-group">
-                    <label htmlfor="productName">
+                    <label htmlFor="productName">
                       <img src={product1} alt="" />
                     </label>
                     <input
@@ -187,8 +189,8 @@ const CreateNewProduct = () => {
                     >
                       <option value="-1">Select category</option>
                       {
-                        ["Bags","Shoes","Sharees","Kurttys","Jewelry","Wooden","Ceramic"].map((item,index)=>{
-                          return(
+                        ["Bags", "Shoes", "Sharees", "Kurttys", "Jewelry", "Wooden", "Ceramic"].map((item, index) => {
+                          return (
                             <option key={index} value={`${item}`}>{item}</option>
                           )
                         })
