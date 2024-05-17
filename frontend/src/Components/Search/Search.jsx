@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 const Search = () => {
 
+  const history = useHistory();
     const [keyword,setKeyword] = useState("");
 
     const searchSubmithandler = (e)=>{
