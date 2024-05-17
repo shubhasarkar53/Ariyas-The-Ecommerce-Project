@@ -2,9 +2,9 @@
 import React, { Fragment, useState } from 'react'
 import PropTypes from 'prop-types';
 import "./Search.scss"
+import { useHistory } from 'react-router-dom'; 
 
-
-const Search = ({history}) => {
+const Search = () => {
 
     const [keyword,setKeyword] = useState("");
 
@@ -17,12 +17,14 @@ const Search = ({history}) => {
         }
     }
 
-
+    const calculateTotalPages = (totalCount, productsPerPage) => {
+      return Math.ceil(totalCount / productsPerPage);
+    };
+    
   return (
   <Fragment>
     <form className='search-form'  onSubmit={ searchSubmithandler}>
       <input 
-
       value={keyword}
       className='search-input'
       type="text" 

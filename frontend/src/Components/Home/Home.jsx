@@ -17,6 +17,8 @@ import Logo from "../../assets/Images/Home/all_logo.png";
 import ProductCard from "./ProductCard";
 import { Link } from "react-router-dom";
 
+import './HomeResponsive.scss';
+
 const Home = () => {
   const dispatch = useDispatch();
   const { products, error, loading, productCount, category } = useSelector(

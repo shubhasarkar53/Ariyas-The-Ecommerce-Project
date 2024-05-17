@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -28,12 +30,12 @@ import location from "../../../assets/Images/Icons/createProduct/loc.png";
 import DotLoader from "../../Loader/DotLoader";
 
 
-const EditProduct = ({history}) => {
+const EditProduct = ({ history }) => {
   const dispatch = useDispatch();
   // const history = useHistory();
-// id from website
-const { id } = useParams(); 
-//   Redux stuffs
+  // id from website
+  const { id } = useParams();
+  //   Redux stuffs
   const { loading, isEdited, error } = useSelector(
     (state) => state.createdProducts
   );
@@ -104,22 +106,22 @@ const { id } = useParams();
     myFormData.set("image", productImg);
     // myFormData.forEach(item => console.log(item))
 
-    dispatch(editCreatedProduct(id,myFormData));
-    
+    dispatch(editCreatedProduct(id, myFormData));
+
   }
 
   useEffect(() => {
 
-    if (id && clickedProduct){
-        setFormData({
-            productName: clickedProduct.name,
-            productPrice: clickedProduct.price,
-            productDescription: clickedProduct.description,
-            productCategory: clickedProduct.category,
-            productQuantity: clickedProduct.stock,
-            productLocation: clickedProduct.location,
-        })
-     }
+    if (id && clickedProduct) {
+      setFormData({
+        productName: clickedProduct.name,
+        productPrice: clickedProduct.price,
+        productDescription: clickedProduct.description,
+        productCategory: clickedProduct.category,
+        productQuantity: clickedProduct.stock,
+        productLocation: clickedProduct.location,
+      })
+    }
 
 
     if (error) {
@@ -135,7 +137,7 @@ const { id } = useParams();
     // not working here isEdited is not detecting by the code but redux state is showing isEdited is true
     // *****************************************
     // console.log("isEdited:", isEdited);
-    
+
   }, [dispatch, history, isEdited, error]);
 
   return (
@@ -163,7 +165,7 @@ const { id } = useParams();
                 </h1>
                 <form className="create-product-form" onSubmit={handleSubmit}>
                   <div className="create-product-form-group">
-                    <label htmlfor="productName">
+                    <label htmlFor="productName">
                       <img src={product1} alt="" />
                     </label>
                     <input
@@ -177,7 +179,7 @@ const { id } = useParams();
                     />
                   </div>
                   <div className="create-product-form-group">
-                    <label htmlfor="productPrice">
+                    <label htmlFor="productPrice">
                       <img src={price} alt="" />
                     </label>
 
@@ -192,7 +194,7 @@ const { id } = useParams();
                     />
                   </div>
                   <div className="create-product-form-group">
-                    <label htmlfor="productDescription">
+                    <label htmlFor="productDescription">
                       <img src={des} alt="" />
                     </label>
 
@@ -207,7 +209,7 @@ const { id } = useParams();
                     ></textarea>
                   </div>
                   <div className="create-product-form-group">
-                    <label htmlfor="productCategory">
+                    <label htmlFor="productCategory">
                       <img src={cat} alt="" />
                     </label>
                     <select
@@ -219,8 +221,8 @@ const { id } = useParams();
                     >
                       <option value="-1">Select category</option>
                       {
-                        ["Bags","Shoes","Sharees","Kurttys","Jewelry","Wooden","Ceramic"].map((item,index)=>{
-                          return(
+                        ["Bags", "Shoes", "Sharees", "Kurttys", "Jewelry", "Wooden", "Ceramic"].map((item, index) => {
+                          return (
                             <option key={index} value={`${item}`}>{item}</option>
                           )
                         })
@@ -228,7 +230,7 @@ const { id } = useParams();
                     </select>
                   </div>
                   <div className="create-product-form-group">
-                    <label htmlfor="productQuantity">
+                    <label htmlFor="productQuantity">
                       <img src={stock} alt="" />
                     </label>
 
@@ -243,7 +245,7 @@ const { id } = useParams();
                     />
                   </div>
                   <div className="create-product-form-group">
-                    <label htmlfor="productLocation">
+                    <label htmlFor="productLocation">
                       <img src={location} alt="" />
                     </label>
                     <input
@@ -256,7 +258,7 @@ const { id } = useParams();
                       name="productLocation"
                     />
                   </div>
-                  <label htmlfor="productImg">Upload a Product Image</label>
+                  <label htmlFor="productImg">Upload a Product Image</label>
                   <input
                     type="file"
                     accept="image/*"

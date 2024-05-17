@@ -5,12 +5,17 @@ import './RegisterSeller.scss';
 import profileSide from '../../../assets/Images/Icons/profile icons/pngwing 3.png'
 import regSeller from '../../../assets/Images/Icons/profile icons/userImg.png'
 import { ToastContainer, toast } from 'react-toastify';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { submitFormData, uploadDocumentSuccess } from '../../../Redux/Actions/registerSellerAction';
+import './RegisterSellerResponse.scss';
 
 const RegisterSeller = () => {
   const history = useHistory();
+  const { user, loading, error, isAuthenticated } = useSelector(
+    (state) => state.user
+  );
   const dispatch = useDispatch();
+
 
   // State variables for form data
   const [formData, setFormData] = useState({
@@ -30,6 +35,11 @@ const RegisterSeller = () => {
     houseAddress: '',
     townAdd: '',
   });
+
+  const [phoneOTP, setPhoneOTP] = useState('');
+  const [emailOTP, setEmailOTP] = useState('');
+  const [phoneVerified, setPhoneVerified] = useState(false);
+  const [emailVerified, setEmailVerified] = useState(false);
 
   useEffect(() => {
     const isValidAccess = history.location.state && history.location.state.fromBecomeSeller;
@@ -202,6 +212,95 @@ const RegisterSeller = () => {
           townAdd: townAdd,
         }
       )); // Replace 'formData' with the actual data to submit
+      history.push('/confirm-seller');
+    }
+  };
+
+
+
+  const handleSendOTP = (type) => {
+    if (type === 'phone') {
+      toast.success('OTP sent to phone number',
+        {
+          position: 'top-center',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      );
+    } else if (type === 'email') {
+      toast.success('OTP sent to email',
+        {
+          position: 'top-center',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      );
+    }
+  };
+
+  const handleVerifyOTP = (type) => {
+    if (type === 'phone') {
+      if (verifyPhone === '123456') {
+        setPhoneVerified(true);
+        toast.success('Phone number verified',
+          {
+            position: 'top-center',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          }
+        );
+      } else {
+        toast.error('Invalid OTP',
+          {
+            position: 'top-center',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          }
+        );
+      }
+    } else if (type === 'email') {
+      if (verifyEmail === '123456') {
+        setEmailVerified(true);
+        toast.success('Email verified',
+          {
+            position: 'top-center',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          }
+        );
+      } else {
+        toast.error('Invalid OTP',
+          {
+            position: 'top-center',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          }
+        );
+      }
     }
   };
 
@@ -211,8 +310,10 @@ const RegisterSeller = () => {
       <div className="register-seller-container">
         <div className="reg-img-mail-section">
           <div className="extra-container">
-            <img src={regSeller} alt="" />
-            <p>sayanizchad@gmail.com</p>
+            {/* <img src={regSeller} alt="" /> */}
+            <img src={user?.avatar?.url} alt="My Image" />
+            {/* <p>sayanizchad@gmail.com</p> */}
+            <p>{user && user.email}</p>
           </div>
         </div>
 
@@ -254,14 +355,14 @@ const RegisterSeller = () => {
               </div>
               <div id="middle-name">
                 <label htmlFor="">Middle Name</label>
-                <input type="text" placeholder='Enter the middle name'
+                <input type="text" placeholder='Enter middle name'
                   value={middleName}
                   onChange={(e) => setMiddleName(e.target.value)}
                 />
               </div>
               <div id="last-name">
                 <label htmlFor="">Last Name *</label>
-                <input type="text" placeholder='Enter the last name'
+                <input type="text" placeholder='Enter last name'
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                   required
@@ -282,21 +383,30 @@ const RegisterSeller = () => {
                       </select>
                     </div>
                   </div>
-                  <input type="text" placeholder='00011 22000'
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    required
-                  />
+                  <div className="verification-section">
+                    <input type="text" placeholder='00011 22000'
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      required
+                      disabled={phoneVerified}
+                    />
+
+                  </div>
                   {phoneError && <p className='error'>{phoneError}</p>}
-                  <button>Send OTP</button>
+                  <button type="button" onClick={() => handleSendOTP('phone')}
+                    disabled={phoneVerified}
+                  >Send OTP</button>
                 </div>
                 <div className="phone-sect-2">
                   <input type="number" className="phone-input"
                     value={verifyPhone}
                     onChange={(e) => setVerifyPhone(e.target.value)}
+                    disabled={phoneVerified}
                   />
                   <div className="btn-verify">
-                    <button>Verify</button>
+                    <button type="button" onClick={() => handleVerifyOTP('phone')}
+                      disabled={phoneVerified}
+                    >Verify</button>
                   </div>
                 </div>
               </div>
@@ -310,16 +420,22 @@ const RegisterSeller = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    disabled={emailVerified}
                   />
                   {emailError && <p className="error">{emailError}</p>}
-                  <button>Send OTP</button>
+                  <button type="button" onClick={() => handleSendOTP('email')}
+                    disabled={emailVerified}
+                  >Send OTP</button>
                 </div>
                 <div className="email-sect-2">
                   <input type="text"
                     value={verifyEmail}
                     onChange={(e) => setVerifyEmail(e.target.value)}
+                    disabled={emailVerified}
                   />
-                  <button>Verify</button>
+                  <button type="button" onClick={() => handleVerifyOTP('email')}
+                    disabled={emailVerified}
+                  >Verify</button>
                 </div>
               </div>
             </div>
@@ -431,7 +547,7 @@ const RegisterSeller = () => {
                   </div>
                   <div className="choose-state">
                     <label>Choose a State</label>
-                    <select name="state">
+                    <select name="state" defaultValue="West Bengal">
                       <option value="Choose a State">-Select a State-</option>
                       <option value="Andhra Pradesh">Andhra Pradesh</option>
                       <option value="Arunachal Pradesh">Arunachal Pradesh</option>

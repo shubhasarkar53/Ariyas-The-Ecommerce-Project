@@ -135,16 +135,18 @@ const ViewOrderDetails = ({ match }) => {
                   order.orderItems.map((item) => (
                     <div key={item.product} className="items">
                       <img src={item.image} alt="Product" className="imgItem" />
-                      <Link
-                        className="productLink"
-                        to={`/product/${item.product}`}
-                      >
-                        {item.name}
-                      </Link>
-                      <p className="itemQnt">
-                        {item.quantity} X &#8377;{item.price} = &#8377;
-                        {item.price * item.quantity}
-                      </p>
+                      <div className="items-det-container">
+                        <Link
+                          className="productLink"
+                          to={`/product/${item.product}`}
+                        >
+                          {item.name}
+                        </Link>
+                        <p className="itemQnt">
+                          {item.quantity} X &#8377;{item.price} = &#8377;
+                          {item.price * item.quantity}
+                        </p>
+                      </div>
                     </div>
                   ))}
               </div>
