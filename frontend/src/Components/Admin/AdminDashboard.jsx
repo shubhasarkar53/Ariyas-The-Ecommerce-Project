@@ -40,12 +40,12 @@ const AdminDashboard = () => {
       text: "Manage and View Your Incoming Orders",
       func: manageIncomingOrders,
     },
-    {
-      icon: reviews,
-      title: "Products Review",
-      text: "See Your Products Reviews",
-      func: manageReviews,
-    },
+    // {
+    //   icon: reviews,
+    //   title: "Products Review",
+    //   text: "See Your Products Reviews",
+    //   func: manageReviews,
+    // },
 
   ];
 

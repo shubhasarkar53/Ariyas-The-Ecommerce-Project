@@ -22,6 +22,7 @@ import { cartReducer } from "../Reducers/cartReducer";
 import { addressReducer } from "../Reducers/addressReducer";
 import { wishlistReducer } from '../Reducers/wishlistReducer';
 import { orderReducer,myOrderReducer,orderDetailsReducer } from "../Reducers/orderReducer";
+import incomingOrdersReducer from "../Reducers/incomingOrderReducer";
 // Reducers
 const reducer = combineReducers({
   products: productReducer,
@@ -38,7 +39,8 @@ const reducer = combineReducers({
   order: orderReducer,
   myOrders: myOrderReducer,
   orderDetails: orderDetailsReducer,
-  createReview: createReviewReducer
+  createReview: createReviewReducer,
+  incomingOrders:incomingOrdersReducer,
 });
 
 

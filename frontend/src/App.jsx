@@ -45,6 +45,8 @@ import OrderSuccess from "./Components/Cart/OrderSuccess.jsx";
 import MyOrders from "./Components/Order/MyOrders.jsx";
 import ViewOrderDetails from "./Components/Order/ViewOrderDetails.jsx";
 import TermsConditions from "./Components/About/TermsConditions.jsx";
+import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
+// import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
 import Location from "./Components/Location/Location.jsx";
 import ConfirmSeller from "./Components/Seller/Register-Seller/Confirm-Seller/ConfirmSeller.jsx";
 import ConfirmationPage from "./Components/Seller/Register-Seller/Confirm-Seller/ConfirmationPage.jsx";
@@ -78,6 +80,7 @@ const App = () => {
               />
               {/* <Route path="/products/:keyword" component={Shop} /> */}
               <Route path="/products/:keyword" component={Shop} />
+              <Route path="/products/:location" component={Shop} />
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/wishlist" component={WishList} />
               <Route exact path="/about" component={About} />
@@ -160,7 +163,7 @@ const App = () => {
                 component={ViewOrderDetails}
               />
 
-              {/* <ProtectedRoute exact path="/incoming-orders" component={IncomingOrders} /> */}
+              <ProtectedRoute exact path="/incoming-orders" component={IncomingOrders} />
 
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/faq" component={FAQs} />
