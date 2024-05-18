@@ -10,7 +10,6 @@ import ProductCard from "../Home/ProductCard";
 import ProductPagination from "./PaginationComponent/productPagination";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
-import { Rating } from "@mui/material";
 import NotFound from "../../assets/Images/OtherImages/notofund.png";
 
 const Shop = ({ match }) => {
@@ -46,29 +45,17 @@ const Shop = ({ match }) => {
 
   const priceHandler = (e, newPrice) => {
     setPrice(newPrice);
-    dispatch(
-      getProducts(
-        keyword,
-        currentPage,
-        [newPrice[0], newPrice[1]],
-        "",
-        category === "All" ? "" : category,
-        ratings
-      )
-    );
+    setCurrentPage(1); // Reset to first page on filter change
   };
 
   const handleCategoryChange = (categoryItem) => {
     setCategory(categoryItem);
-    dispatch(
-      getProducts(
-        keyword,
-        currentPage,
-        price,
-        categoryItem === "All" ? "" : categoryItem,
-        ratings
-      )
-    );
+    setCurrentPage(1); // Reset to first page on filter change
+  };
+
+  const handleRatingChange = (e, newRating) => {
+    setRatings(newRating);
+    setCurrentPage(1); // Reset to first page on filter change
   };
 
   useEffect(() => {
@@ -77,7 +64,6 @@ const Shop = ({ match }) => {
         keyword,
         currentPage,
         price,
-        "",
         category === "All" ? "" : category,
         ratings
       )
@@ -123,7 +109,7 @@ const Shop = ({ match }) => {
               }}
               onClick={() => setShowPriceFilter(!showPriceFilter)}
             >
-              {showPriceFilter ? "Hide Filter" : "Show  Filter"}
+              {showPriceFilter ? "Hide Filter" : "Show Filter"}
             </button>
             <Typography variant="h4" color="secondary" align="center">
               Shop From Different Categories
@@ -177,19 +163,7 @@ const Shop = ({ match }) => {
                   <Slider
                     className="rating-slider"
                     value={ratings}
-                    onChange={(e, newRating) => {
-                      setRatings(newRating);
-                      dispatch(
-                        getProducts(
-                          keyword,
-                          currentPage,
-                          price,
-                          "",
-                          category === "All" ? "" : category,
-                          newRating
-                        )
-                      );
-                    }}
+                    onChange={handleRatingChange}
                     aria-labelledby="continuous-slider"
                     valueLabelDisplay="auto"
                     min={0}

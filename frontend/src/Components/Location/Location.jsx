@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
-import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import "./Location.scss";
 import { useDispatch, useSelector } from "react-redux";
