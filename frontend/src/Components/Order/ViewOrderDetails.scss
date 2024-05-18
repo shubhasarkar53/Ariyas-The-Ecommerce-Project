@@ -33,6 +33,13 @@
         h1 {
           text-decoration: 1.5px solid white underline !important;
         }
+        .inv-container{
+          .invBtn{
+            background: #e7e2e2;
+            color: black;
+            font-weight: 600;
+          }
+        }
       }
       .shippingInfo {
         display: flex;
