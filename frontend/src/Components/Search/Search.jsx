@@ -6,10 +6,8 @@ import { useHistory } from 'react-router-dom';
 
 const Search = () => {
 
+  const history = useHistory();
     const [keyword,setKeyword] = useState("");
-    const history = useHistory();
-    const [totalPages, setTotalPages] = useState(0);
-
 
     const searchSubmithandler = (e)=>{
         e.preventDefault();
@@ -26,7 +24,7 @@ const Search = () => {
     
   return (
   <Fragment>
-    <form className='search-form'   onSubmit={ searchSubmithandler}>
+    <form className='search-form'  onSubmit={ searchSubmithandler}>
       <input 
       value={keyword}
       className='search-input'

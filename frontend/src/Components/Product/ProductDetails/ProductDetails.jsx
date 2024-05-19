@@ -350,8 +350,9 @@ const ProductDetails = ({ match, history }) => {
             {/* start of down div section */}
             <div className="downdiv">
               <div className="description">
-                Description:<p> {product.description}</p>
-                Seller:<p>{seller}</p>
+                <p>Description:<span> {product.description}</span></p>
+               <p>Seller:<span>{seller}</span></p>
+                <p>Location:<span>{product.location}</span></p>
               </div>
 
               <div className="reviews">

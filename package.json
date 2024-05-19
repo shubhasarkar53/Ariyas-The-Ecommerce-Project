@@ -22,7 +22,7 @@
     "http": "^0.0.1-security",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.8",
-    "nodemailer": "^6.9.11",
+    "nodemailer": "^6.9.13",
     "react-alert": "^7.0.3",
     "react-dropdown": "^1.11.0",
     "stripe": "^14.25.0",

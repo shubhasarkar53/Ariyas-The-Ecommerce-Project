@@ -49,6 +49,9 @@ import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx
 import ForgotPassword from "./Components/User/ForgotPassword.jsx";
 import ResetPassword from "./Components/User/ResetPassword.jsx";
 // import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
+import Location from "./Components/Location/Location.jsx";
+import ConfirmSeller from "./Components/Seller/Register-Seller/Confirm-Seller/ConfirmSeller.jsx";
+import ConfirmationPage from "./Components/Seller/Register-Seller/Confirm-Seller/ConfirmationPage.jsx";
 // import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
 const App = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -77,9 +80,9 @@ const App = () => {
                 path="/products/:keyword"
                 render={(props) => <Shop {...props} />}
               />
-              {/* <Route path="/products/:keyword" component={Shop} /> */}
+
               <Route path="/products/:keyword" component={Shop} />
-              <Route path="/products/:location" component={Shop} />
+            
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/wishlist" component={WishList} />
               <Route exact path="/about" component={About} />
@@ -93,6 +96,9 @@ const App = () => {
 
               <Route exact path="/become-seller" component={BecomeSeller} />
               <Route path="/register-seller" component={RegisterSeller} />
+              <Route path="/confirm-seller" component={ConfirmSeller} />
+              <Route path="/confirmation-page" component={ConfirmationPage} />
+
 
               <ProtectedRoute exact path="/profile" component={Profile} />
               <ProtectedRoute

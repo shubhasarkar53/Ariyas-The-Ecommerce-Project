@@ -351,3 +351,19 @@ $backgroundPrimaryColor: rgba(13, 191, 250, 0.083);
     }
   }
 }
+
+@media screen and (max-width: 400px) {
+  .about-container {
+    .second-part {
+      .sub-second-part {
+        .left-part,
+        .right-part {
+          h3 {
+            text-align: center;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}

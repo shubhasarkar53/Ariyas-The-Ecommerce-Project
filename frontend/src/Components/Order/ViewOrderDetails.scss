@@ -33,6 +33,13 @@
         h1 {
           text-decoration: 1.5px solid white underline !important;
         }
+        .inv-container{
+          .invBtn{
+            background: #e7e2e2;
+            color: black;
+            font-weight: 600;
+          }
+        }
       }
       .shippingInfo {
         display: flex;
@@ -63,6 +70,9 @@
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
+      h1 {
+        color: white;
+      }
       .items {
         display: flex;
         align-items: center;
@@ -71,25 +81,32 @@
           width: 100px;
           height: 100px;
           object-fit: contain;
-          border-radius: 1.5rem;
+          border-radius: 1.2rem;
+          margin-left: 1rem;
+          margin-right: 0.5rem;
         }
-        .productLink {
-          color: white;
-          text-decoration: none;
-          font-size: 1.2rem;
-          font-weight: 600;
-          &:hover {
-            text-decoration: underline;
-            cursor: pointer;
-            color: #ffffff93;
+        .items-det-container {
+          .productLink {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            &:hover {
+              text-decoration: underline;
+              cursor: pointer;
+              color: #ffffff93;
+            }
           }
-        }
-        .itemQnt {
-          color: rgb(28, 4, 4);
-          font-size: 1.2rem;
-          font-weight: 600;
-          font-style: italic;
-          margin-left: auto;
+          .itemQnt {
+            // color: rgb(28, 4, 4);
+            color: white;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 600;
+            font-style: italic;
+            margin-right: 2rem;
+            margin-left: auto;
+          }
         }
       }
     }
@@ -151,6 +168,19 @@
     }
     .orderDetailsContainerBox {
       .orderDetailsContainerBoxItem {
+        h1 {
+          font-size: 1.2rem;
+        }
+        .items {
+          .items-det-container {
+            .productLink {
+              font-size: 1rem;
+            }
+            .itemQnt {
+              font-size: 0.9rem;
+            }
+          }
+        }
       }
     }
   }
@@ -203,6 +233,33 @@
         }
       }
     }
+    .orderDetailsContainerBox {
+      .orderDetailsContainerBoxItem {
+        h1 {
+          font-size: 1rem;
+        }
+        .items {
+          // display: flex;
+          // flex-direction: column;
+          // align-items: center;
+          .imgItem {
+            width: 80px;
+            height: 80px;
+          }
+          .items-det-container {
+            .productLink {
+              font-size: 0.9rem;
+              display: block;
+            }
+            .itemQnt {
+              font-size: 0.8rem;
+              margin-right: 1rem;
+              margin-top: auto;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -230,6 +287,20 @@
           }
           p {
             font-size: 0.5rem;
+          }
+        }
+      }
+    }
+    .orderDetailsContainerBox {
+      .orderDetailsContainerBoxItem {
+        .items {
+          .items-det-container {
+            .productLink {
+              font-size: 0.8rem;
+            }
+            .itemQnt {
+              font-size: 0.8rem;
+            }
           }
         }
       }
@@ -265,8 +336,17 @@
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .orderDetailsContainer {
     .orderDetailsContainerBox {
       .orderDetailsContainerBoxItem {
+        .items {
+          display: flex;
+          flex-direction: column;
+        }
       }
     }
   }

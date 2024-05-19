@@ -1,0 +1,28 @@
+.location-main{
+  margin: 2rem;
+  padding: 2rem;
+
+
+  .location-down-container{
+    display: flex;
+    margin-top: 2rem;
+    .products-container{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+  .location-link {
+  list-style: none;
+  color: rgb(124, 124, 124);
+  font: 400 0.8vmax;
+  margin: 0.4vmax;
+  cursor: pointer;
+  transition: all 0.5s;
+  &:hover {
+    color: orange;
+  }
+}

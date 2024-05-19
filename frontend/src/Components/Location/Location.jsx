@@ -1,18 +1,17 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { Fragment, useEffect, useState, useRef } from "react";
-import "./Shop.scss";
-import { useSelector, useDispatch } from "react-redux";
-import { getProducts, clearError } from "../../Redux/Actions/productAction";
-import Loader from "../Loader/Loader";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
+import "react-dropdown/style.css";
+import "./Location.scss";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../Loader/Loader";
+import { Slider, Typography } from "@mui/material";
 import ProductCard from "../Home/ProductCard";
-import ProductPagination from "./PaginationComponent/productPagination";
-import Slider from "@mui/material/Slider";
-import Typography from "@mui/material/Typography";
+import { getProducts, clearError } from "../../Redux/Actions/productAction";
 import NotFound from "../../assets/Images/OtherImages/notofund.png";
+import ProductPagination from "../Shop/PaginationComponent/productPagination";
 
-const Shop = ({ match }) => {
+const Location = ({ match }) => {
   const dispatch = useDispatch();
   const containerRef = useRef(null);
 
@@ -21,21 +20,21 @@ const Shop = ({ match }) => {
   const { products, error, loading, productCount, resultPerPage, totalPages } =
     useSelector((state) => state.products);
 
-  const categories = [
+  const locations = [
     "All",
-    "Bags",
-    "Shoes",
-    "Sharees",
-    "Kurttys",
-    "Jewelry",
-    "Wooden",
-    "Ceramic",
+    "Santiniketan",
+    "Krishnanagar",
+    "Jalpaiguri",
+    "Siliguri",
+    "Darjeeling",
+    "Malda",
+    "Coochbehar",
   ];
 
   const [showPriceFilter, setShowPriceFilter] = useState(false);
   const [currentPage, setCurrentPage] = useState(1); // Current page
   const [price, setPrice] = useState([0, 30000]); // Price range
-  const [category, setCategory] = useState("All"); // Category selected
+  const [location, setLocation] = useState("All"); // Location selected
   const [ratings, setRatings] = useState(0); // Ratings
   const [paginationVisible, setPaginationVisible] = useState(true);
 
@@ -45,17 +44,30 @@ const Shop = ({ match }) => {
 
   const priceHandler = (e, newPrice) => {
     setPrice(newPrice);
-    setCurrentPage(1); // Reset to first page on filter change
+    dispatch(
+      getProducts(
+        keyword,
+        currentPage,
+        [newPrice[0], newPrice[1]],
+        "",
+        location === "All" ? "" : location,
+        ratings
+      )
+    );
   };
 
-  const handleCategoryChange = (categoryItem) => {
-    setCategory(categoryItem);
-    setCurrentPage(1); // Reset to first page on filter change
-  };
-
-  const handleRatingChange = (e, newRating) => {
-    setRatings(newRating);
-    setCurrentPage(1); // Reset to first page on filter change
+  const handleLocationChange = (location) => {
+    setLocation(location);
+    dispatch(
+      getProducts(
+        keyword,
+        currentPage,
+        price,
+        "",
+        location === "All" ? "" : location,
+        ratings
+      )
+    );
   };
 
   useEffect(() => {
@@ -64,7 +76,8 @@ const Shop = ({ match }) => {
         keyword,
         currentPage,
         price,
-        category === "All" ? "" : category,
+        "",
+        location === "All" ? "" : location,
         ratings
       )
     );
@@ -72,13 +85,14 @@ const Shop = ({ match }) => {
     if (error) {
       dispatch(clearError());
     }
-  }, [dispatch, error, keyword, currentPage, price, category, ratings]);
+  }, [dispatch, error, keyword, currentPage, price, location, ratings]);
 
   useEffect(() => {
     function handleClickOutside(event) {
       if (
-        containerRef.current && 
-        !containerRef.current.contains(event.target)) {
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
         setShowPriceFilter(false);
       }
     }
@@ -109,10 +123,10 @@ const Shop = ({ match }) => {
               }}
               onClick={() => setShowPriceFilter(!showPriceFilter)}
             >
-              {showPriceFilter ? "Hide Filter" : "Show Filter"}
+              {showPriceFilter ? "Hide location Filter" : "Show location Filter"}
             </button>
             <Typography variant="h4" color="secondary" align="center">
-              Shop From Different Categories
+              Shop From Your Favourite Location
             </Typography>
 
             <div className="products-main-container">
@@ -143,15 +157,15 @@ const Shop = ({ match }) => {
                   max={30000}
                 />
 
-                <Typography className="category-header">Categories</Typography>
-                <ul className="categoryBox">
-                  {categories.map((categoryItem) => (
+                <Typography className="location-header">Locations</Typography>
+                <ul className="locationBox">
+                  {locations.map((locationItem) => (
                     <li
-                      className="category-link"
-                      key={categoryItem}
-                      onClick={() => handleCategoryChange(categoryItem)}
+                      className="location-link"
+                      key={locationItem}
+                      onClick={() => handleLocationChange(locationItem)}
                     >
-                      {categoryItem}
+                      {locationItem}
                     </li>
                   ))}
                 </ul>
@@ -163,7 +177,19 @@ const Shop = ({ match }) => {
                   <Slider
                     className="rating-slider"
                     value={ratings}
-                    onChange={handleRatingChange}
+                    onChange={(e, newRating) => {
+                      setRatings(newRating);
+                      dispatch(
+                        getProducts(
+                          keyword,
+                          currentPage,
+                          price,
+                          "",
+                          location === "All" ? "" : location,
+                          newRating
+                        )
+                      );
+                    }}
                     aria-labelledby="continuous-slider"
                     valueLabelDisplay="auto"
                     min={0}
@@ -191,12 +217,9 @@ const Shop = ({ match }) => {
   );
 };
 
-Shop.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      keyword: PropTypes.string,
-    }),
-  }),
+Location.propTypes = {
+  location: PropTypes.object,
+  match: PropTypes.object,
 };
 
-export default Shop;
+export default Location;
