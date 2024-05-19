@@ -95,7 +95,9 @@ exports.logoutUser = catchAsyncErr(async (req, res, next) => {
 // Forgot password
 
 exports.forgotPassword = catchAsyncErr(async (req, res, next) => {
+
   const { email } = req.body;
+  console.log(email);
   // find the mail id DB
   const user = await User.findOne({ email });
   if (!user) {
@@ -105,11 +107,33 @@ exports.forgotPassword = catchAsyncErr(async (req, res, next) => {
 
   await user.save({ validateBeforeSave: false });
 
-  const resetURL = `${req.protocol}://${req.get(
-    "host"
-  )}/api/v1/password/reset/${token}`;
 
-  const message = `Your password reset link is -->\n\n${resetURL}\n\nIgnore if it was not created by you.`;
+  // ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+  //THIS WAS THE ACCUALL CODE
+  
+  // old
+  // const resetURL = `${req.protocol}://${req.get(
+    //   "host"
+    // )}/api/v1/password/reset/${token}`;
+
+// correct
+    // const resetPasswordUrl = `${req.protocol}://${req.get(
+    //   "host"
+    // )}/password/reset/${resetToken}`;
+
+
+    // ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+
+
+// 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑
+
+//THIS LINE IS FOR TEMPORARAY PURPOSE ONLY WILL WORK ON LOCAL HOST NOT IN PRODUCTION
+const resetURL = `${process.env.FRONTEND_URL}/password/reset/${token}`;
+
+// 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑
+
+
+  const message = `Your password reset link is (tempp) -->\n\n${resetURL}\n\nIgnore if it was not created by you.`;
 
   // console.log(message);
 

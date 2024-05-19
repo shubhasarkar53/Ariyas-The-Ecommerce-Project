@@ -15,7 +15,7 @@ import {
   createReviewReducer
 } from "../Reducers/productReducer";
 
-import { profileReducer, userReducer } from "../Reducers/userReducer";
+import { forgotPasswordReducer, profileReducer, userReducer } from "../Reducers/userReducer";
 import contactReducer from '../Reducers/contactReducer';
 import registerSellerReducer from "../Reducers/registerSellerReducer";
 import { cartReducer } from "../Reducers/cartReducer";
@@ -41,6 +41,7 @@ const reducer = combineReducers({
   orderDetails: orderDetailsReducer,
   createReview: createReviewReducer,
   incomingOrders:incomingOrdersReducer,
+  forgotPassword:forgotPasswordReducer
 });
 
 
