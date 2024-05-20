@@ -48,14 +48,14 @@ exports.loginUser = catchAsyncErr(async (req, res, next) => {
 
   // check is email and password exits or not
   if (!email || !password) {
-    return next(new ErrorHandler(400, "Invalid email or password! 1"));
+    return next(new ErrorHandler(400, "Invalid email or password!"));
   }
 
   const user = await User.findOne({ email: email }).select("+password"); //note
 
   // if such user not found with the same mail id
   if (!user) {
-    return next(new ErrorHandler(400, "Invalid email or password! 2"));
+    return next(new ErrorHandler(400, "Invalid email or password!"));
   }
 
   // if found then
@@ -63,7 +63,7 @@ exports.loginUser = catchAsyncErr(async (req, res, next) => {
 
   // if not matched
   if (!isPasswordMatched) {
-    return next(new ErrorHandler(400, "Invalid email or password! 3 "));
+    return next(new ErrorHandler(400, "Invalid email or password!"));
   }
 
   //If matched

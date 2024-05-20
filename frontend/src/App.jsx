@@ -53,16 +53,21 @@ import Location from "./Components/Location/Location.jsx";
 import ConfirmSeller from "./Components/Seller/Register-Seller/Confirm-Seller/ConfirmSeller.jsx";
 import ConfirmationPage from "./Components/Seller/Register-Seller/Confirm-Seller/ConfirmationPage.jsx";
 // import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
-const App = () => {
-  const { isAuthenticated, user } = useSelector((state) => state.user);
-  useEffect(() => {
-    // if(!isAuthenticated){
-    //   store.dispatch(loadUser())
-    // }
-    store.dispatch(loadUser());
-  }, []); //assumtion:in future there may be problem beacuse of no dependency in the array but curretly ok.
 
-  return (
+// import { useLocation } from "react-router-dom";
+const App = () => {
+  useEffect(() => {
+   
+
+      store.dispatch(loadUser());
+   
+  }, []); 
+
+ 
+
+  
+  
+  return ( 
     <>
       <BrowserRouter>
         <div className="wrapper">

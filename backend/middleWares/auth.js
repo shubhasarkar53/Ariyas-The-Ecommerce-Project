@@ -10,7 +10,8 @@ exports.isAuthenticated = catchAsyncErr(async (req, res, next) => {
 
   if (!token) {
     return next(
-      new ErrorHandler(401, "Something went wrong! Please log in first.")
+
+      new ErrorHandler(401, "You are logged out , Please log in.")
     );
   }
 
