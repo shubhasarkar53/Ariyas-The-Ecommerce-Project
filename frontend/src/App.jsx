@@ -46,6 +46,8 @@ import MyOrders from "./Components/Order/MyOrders.jsx";
 import ViewOrderDetails from "./Components/Order/ViewOrderDetails.jsx";
 import TermsConditions from "./Components/About/TermsConditions.jsx";
 import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
+import ForgotPassword from "./Components/User/ForgotPassword.jsx";
+import ResetPassword from "./Components/User/ResetPassword.jsx";
 // import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
 import Location from "./Components/Location/Location.jsx";
 import ConfirmSeller from "./Components/Seller/Register-Seller/Confirm-Seller/ConfirmSeller.jsx";
@@ -169,7 +171,12 @@ const App = () => {
 
               <ProtectedRoute exact path="/incoming-orders" component={IncomingOrders} />
 
+              <Route exact path="/password/forgot" component={ForgotPassword} />
+
+              <Route exact path="/password/reset/:token" component={ResetPassword} />
+
               <Route exact path="/contact" component={Contact} />
+              
               <Route exact path="/faq" component={FAQs} />
               <Route exact path="/terms-conditions" component={TermsConditions} />
 

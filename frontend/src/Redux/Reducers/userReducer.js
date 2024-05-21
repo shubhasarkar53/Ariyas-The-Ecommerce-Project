@@ -19,6 +19,13 @@ import {
   UPDATE_USER_PASSWORD_SUCCESS,
   UPDATE_USER_PASSWORD_FAIL,
   UPDATE_USER_PASSWORD_RESET,
+  FORGOT_PASSWORD_REQUEST,
+  FORGOT_PASSWORD_SUCCESS,
+  FORGOT_PASSWORD_FAIL,
+  RESET_PASSWORD_REQUEST,
+  RESET_PASSWORD_FAIL,
+  RESET_PASSWORD_SUCCESS,
+  CLEAR_POPUP_MESSAGE,
 } from "../Constants/userConstant";
 
 export const userReducer = (state = { user: {} }, action) => {
@@ -120,6 +127,57 @@ export const profileReducer = (state = {}, action) => {
         isUpdated: false,
       };
 
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+
+    default:
+      return {
+        ...state,
+      };
+  }
+};
+
+
+
+export const forgotPasswordReducer = (state = {}, action) => {
+  switch (action.type) {
+    case FORGOT_PASSWORD_REQUEST:
+    case RESET_PASSWORD_REQUEST:
+      return {
+        loading: true,
+        error:false
+      };
+    case FORGOT_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        success:true,
+        message: action.payload,
+      };
+    case RESET_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        message:"Password Reset Successfull",
+        pwdReset: action.payload,
+      };
+
+    case FORGOT_PASSWORD_FAIL:
+    case RESET_PASSWORD_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+
+    case CLEAR_POPUP_MESSAGE:
+      return{
+        ...state,
+        message:null
+      }
     case CLEAR_ERRORS:
       return {
         ...state,
