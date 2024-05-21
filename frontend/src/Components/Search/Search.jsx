@@ -1,46 +1,54 @@
 /* eslint-disable no-unused-vars */
-import React, { Fragment, useState } from 'react'
-import PropTypes from 'prop-types';
-import "./Search.scss"
-import { useHistory } from 'react-router-dom'; 
+import React, { useState } from 'react';
+import axios from 'axios';
+import './Search.scss';
+import ProductCard from '../Home/ProductCard';
+const SearchForm = () => {
+    const [keyword, setKeyword] = useState('');
+    const [location, setLocation] = useState('');
+    const [products, setProducts] = useState([]);
 
-const Search = () => {
-
-    const [keyword,setKeyword] = useState("");
-
-    const searchSubmithandler = (e)=>{
-        e.preventDefault();
-        if(keyword.trim()){
-            history.push(`/products/${keyword}`);
-        }else{
-            history.push('/products');
+    const handleSearch = async () => {
+        try {
+            const response = await axios.get('/api/v1/products', {
+                params: {
+                    keyword,
+                    location,
+                },
+            });
+            setProducts(response.data.products);
+        } catch (error) {
+            console.error('Error fetching products:', error);
         }
-    }
-
-    const calculateTotalPages = (totalCount, productsPerPage) => {
-      return Math.ceil(totalCount / productsPerPage);
     };
-    
-  return (
-  <Fragment>
-    <form className='search-form'  onSubmit={ searchSubmithandler}>
-      <input 
-      value={keyword}
-      className='search-input'
-      type="text" 
-      id="search" 
-      placeholder="Search Products..."
-      onChange={(e) => setKeyword(e.target.value)}
-       />
-       <input className='search-button' type="submit" value="Search" />
-    </form>
-  </Fragment>
-  )
-}
 
+    return (
+        <div className='search_topdiv'>
+            <input
+                type="text"
+                placeholder="Search by name"
+                value={keyword}
+                onChange={(e) => setKeyword(e.target.value)}
+            />
+            <input
+                type="text"
+                placeholder="Search by location"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+            />
+            <button onClick={handleSearch}>Search</button>
 
-Search.propTypes = {
-    history: PropTypes.object.isRequired
+            <div className='search-res'>
+                {products.length > 0 ? (
+                    products.map((product) => (
+                    <ProductCard key={product._id} product={product} />
+                    ))
+                ) : (
+                    <p>No products found</p>
+                )}
+            </div>
+        </div>
+    );
 };
 
-export default Search
+export default SearchForm;

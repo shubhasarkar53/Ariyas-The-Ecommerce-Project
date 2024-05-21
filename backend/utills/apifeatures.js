@@ -14,6 +14,16 @@ class ApiFeatures {
             },
           }
         : {};
+
+        const location = this.queryStr.location
+        ? {
+            location: {
+              $regex: this.queryStr.location,
+              $options: "i",
+            },
+          }
+        : {};
+  
   
       this.query = this.query.find({ ...keyword });
       return this;

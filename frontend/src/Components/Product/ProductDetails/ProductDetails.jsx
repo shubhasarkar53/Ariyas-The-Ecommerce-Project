@@ -274,7 +274,7 @@ const ProductDetails = ({ match, history }) => {
 
               <div className="right-div">
                 <div className="name">
-                  <h1 id="product_name"> {product.name}</h1>
+                  <h1 id="product_name"> {product.name}({product.location})</h1>
                   <img src={Share} alt="" />
                   {/* <ProductShare/> */}
                 </div>

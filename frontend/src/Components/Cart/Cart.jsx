@@ -86,7 +86,7 @@ const Cart = ({ history }) => {
               <p className="cart-total-price">Total Price</p>
             </div>
 
-            {cartItems && cartItems.reverse().map((item) => (
+            {cartItems && cartItems.map((item) => (
               <div className="cartCardContainer" key={item.product}>
                 <CartItemCard item={item} deleteCartItems={removeCartItemHandler} />
 

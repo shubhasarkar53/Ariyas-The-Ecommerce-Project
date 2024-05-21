@@ -21,6 +21,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import Tooltip from "@mui/material/Tooltip";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { clearCart } from "../../Redux/Actions/cartAction.js";
 
 const Profile = () => {
   const [loadingDelay, setLoadingDelay] = useState(false);
@@ -119,6 +120,7 @@ const Profile = () => {
   }
   function managelogOut() {
     dispatch(logOut());
+    // dispatch(clearCart());
     // console.log("logged out");
     // console.log("loggedout");
   }
