@@ -12,18 +12,18 @@ const userSchema = new mongoose.Schema({
     minlength: 3,
     maxlength: 30,
   },
-  gender:{
-    type:String,
-    enum : ['Male','Female','Others'],
+  gender: {
+    type: String,
+    enum: ["Male", "Female", "Others"],
   },
-  phone:{
-    type:Number,
+  phone: {
+    type: Number,
     required: [true, "Please give a Phone Number"],
     maxlength: 10,
   },
-  dob:{
+  dob: {
     // type:Date
-    type:String //but not proper
+    type: String, //but not proper
   },
   email: {
     type: String,
@@ -61,6 +61,14 @@ const userSchema = new mongoose.Schema({
     default: "user",
   },
 
+  verified: {
+    type: Boolean,
+
+    require: true,
+
+    default: false,
+  },
+
   resetPasswordToken: String,
   resetPasswordExpire: String,
 });
@@ -74,15 +82,16 @@ userSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, 10);
 });
 
-// After register we let user to log in autometically so we need to use token here
+
 
 // JWT token generation
-userSchema.methods.generateJWTToken = function () {
-  const token = jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE,
-  });
-  return token;
-};
+
+  userSchema.methods.generateJWTToken = function () {
+    const token = jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+      expiresIn: process.env.JWT_EXPIRE,
+    });
+    return token;
+  };
 
 
 // Compare Password function
@@ -111,6 +120,5 @@ userSchema.methods.getResetPasswordToken = function () {
   // return token
   return resetToken;
 };
-
 
 module.exports = mongoose.model("User", userSchema);

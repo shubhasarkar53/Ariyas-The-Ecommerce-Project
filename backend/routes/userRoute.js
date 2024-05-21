@@ -1,10 +1,12 @@
 const express = require("express");
-const { registerUser, loginUser, logoutUser, forgotPassword, resetPassword, getAllUser, getUserDetails, updateUserPassword, updateUserDetails, updateUserRole, deleteUser, sendBecomeSellerMessage, contactUsMessage } = require("../controllers/userController");
+const { registerUser, loginUser, logoutUser, forgotPassword, resetPassword, getAllUser, getUserDetails, updateUserPassword, updateUserDetails, updateUserRole, deleteUser, sendBecomeSellerMessage, contactUsMessage, verifyEmailOTP } = require("../controllers/userController");
 const { isAuthenticated, authRole } = require("../middleWares/auth");
 const router = express.Router();
 
 // Register new user
 router.route("/register/new").post(registerUser);
+//verify user email
+router.route("/verify-email").post(verifyEmailOTP);
 // // login user
 router.route("/login").post(loginUser);
 // // logout user
