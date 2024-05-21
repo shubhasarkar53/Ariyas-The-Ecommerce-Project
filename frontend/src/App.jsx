@@ -52,6 +52,7 @@ import ResetPassword from "./Components/User/ResetPassword.jsx";
 import Location from "./Components/Location/Location.jsx";
 import ConfirmSeller from "./Components/Seller/Register-Seller/Confirm-Seller/ConfirmSeller.jsx";
 import ConfirmationPage from "./Components/Seller/Register-Seller/Confirm-Seller/ConfirmationPage.jsx";
+import ConfirmEmailScreen from "./Components/User/ConfirmEmailScreen.jsx";
 // import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
 
 // import { useLocation } from "react-router-dom";
@@ -96,8 +97,7 @@ const App = () => {
 
               <Route exact path="/login" component={Login} />
               <Route exact path="/register/new" component={Register} />
-
-              <Route exact path="/register/new" component={Register} />
+              <Route exact path="/confirm-email" component={ConfirmEmailScreen} />
 
               <Route exact path="/become-seller" component={BecomeSeller} />
               <Route path="/register-seller" component={RegisterSeller} />

@@ -25,7 +25,7 @@ exports.registerUser = catchAsyncErr(async (req, res, next) => {
     phone:phone,
     avatar: {
       publicId: "demoPublicId123",
-      url: "Demourl.com",
+      url: "https://res.cloudinary.com/dd3sjaumq/image/upload/v1716313695/avatars/demo_user/pngwing.com_3_i3xfrs.png",
     },
   });
 //1.generate otp
