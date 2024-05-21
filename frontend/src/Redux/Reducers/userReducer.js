@@ -26,6 +26,10 @@ import {
   RESET_PASSWORD_FAIL,
   RESET_PASSWORD_SUCCESS,
   CLEAR_POPUP_MESSAGE,
+  USER_VERIFY_REQUEST,
+  USER_VERIFY_FAIL,
+  USER_VERIFY_SUCCESS,
+  USER_VERIFY_WRONG_ATTEMP,
 } from "../Constants/userConstant";
 
 export const userReducer = (state = { user: {} }, action) => {
@@ -33,20 +37,39 @@ export const userReducer = (state = { user: {} }, action) => {
     case LOGIN_REQUEST:
     case REGISTER_REQUEST:
     case LOAD_USER_REQUEST:
+    case USER_VERIFY_REQUEST:
       return {
         loading: true,
         isAuthenticated: false,
       };
+
+    // case LOGIN_SUCCESS:
+    // case REGISTER_SUCCESS:
+    // case LOAD_USER_SUCCESS:
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //     isAuthenticated: true,
+    //     user: action.payload,
+    //   };
+
     case LOGIN_SUCCESS:
-    case REGISTER_SUCCESS:
     case LOAD_USER_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        isAuthenticated: true,
-        user: action.payload, //why not LOGIN:action.payload.user
-        // token:action.payload.token
-      };
+    case USER_VERIFY_SUCCESS : // Authenticate the user only after successful email verification
+        return {
+          ...state,
+          loading: false,
+          isAuthenticated: true,
+          user: action.payload,
+        };
+
+    case REGISTER_SUCCESS:
+          return {
+            ...state,
+            loading: false,
+            isAuthenticated: false,
+            user: action.payload,
+          };
 
     case LOGOUT_SUCCESS:
       return {
@@ -57,6 +80,7 @@ export const userReducer = (state = { user: {} }, action) => {
 
     case LOGIN_FAIL:
     case REGISTER_FAIL:
+    case USER_VERIFY_FAIL:
       return {
         ...state,
         loading: false,
@@ -64,6 +88,13 @@ export const userReducer = (state = { user: {} }, action) => {
         user: null,
         error: action.payload,
       };
+    // case USER_VERIFY_WRONG_ATTEMP:{
+    //   return {
+    //     loading: false,
+    //     isAuthenticated: false,
+    //     error: action.payload,
+    //   };
+    // }
 
     case LOAD_USER_FAIL:
       return {

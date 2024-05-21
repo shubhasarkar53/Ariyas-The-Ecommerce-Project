@@ -25,6 +25,10 @@ import {
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAIL,
   CLEAR_POPUP_MESSAGE,
+  USER_VERIFY_REQUEST,
+  USER_VERIFY_SUCCESS,
+  USER_VERIFY_FAIL,
+  USER_VERIFY_WRONG_ATTEMP,
 } from "../Constants/userConstant";
 
 import axios from "axios";
@@ -80,6 +84,32 @@ export const userRegister = (userData) => async (dispatch) => {
       type: REGISTER_FAIL,
       payload: error.response.data.message,
     });
+  }
+};
+
+//verify email
+
+export const verifyEmail = (userId, otp) => async (dispatch) => {
+  try {
+    dispatch({ type: USER_VERIFY_REQUEST });
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const { data } = await axios.post('/api/v1/verify-email', { userId, otp }, config);
+
+    dispatch({ type: USER_VERIFY_SUCCESS, payload: data.user });
+  } catch (error) {
+      dispatch({
+        type: USER_VERIFY_FAIL,
+        payload: error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+      });
+   
   }
 };
 
