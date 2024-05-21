@@ -31,7 +31,7 @@ const ConfirmOrder = ({ history }) => {
   );
   const shippingCharges = subTotal > 1000 ? 0 : 200;
   const tax = subTotal * 0.18;
-  const totalPrice = Math.ceil(subTotal + tax + shippingCharges);
+  const totalPrice = Math.ceil(subTotal + shippingCharges);
 
 
   const orderItems = cartItems.map(item => ({
@@ -219,7 +219,7 @@ const ConfirmOrder = ({ history }) => {
               <div className="final_price">
                 <p className="cartGrossTotal">Total:</p>
                 <p className="cartGrossPrice">
-                  ₹{totalPrice + shippingCharges}
+                  ₹{totalPrice}
                 </p>
               </div>
 

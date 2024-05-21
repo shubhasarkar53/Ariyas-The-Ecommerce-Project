@@ -4,7 +4,9 @@
   align-items: center; 
   margin-top: 2rem;
   margin-bottom: 1rem; 
-
+.input_container{
+  margin-top: 3rem;
+  margin-bottom: 2rem;
   input[type="text"] {
     padding: 0.5rem 1rem; 
     border: 1px solid #ccc;
@@ -29,6 +31,8 @@
       background-color: #cc5500;
     }
   }
+}
+
   .search-res{
     display: flex;
   }
