@@ -110,11 +110,11 @@ const Location = ({ match }) => {
 
   return (
     <Fragment>
+      <Meta title="Shop From Your Favourite Location" />
       {loading ? (
         <Loader />
       ) : (
         <Fragment>
-          <Meta title="Shop From Your Favourite Location" />
           <div className="shop-section">
             <button
               className="price-filter-button"
@@ -125,7 +125,9 @@ const Location = ({ match }) => {
               }}
               onClick={() => setShowPriceFilter(!showPriceFilter)}
             >
-              {showPriceFilter ? "Hide location Filter" : "Show location Filter"}
+              {showPriceFilter
+                ? "Hide location Filter"
+                : "Show location Filter"}
             </button>
             <Typography variant="h4" color="secondary" align="center">
               Shop From Your Favourite Location

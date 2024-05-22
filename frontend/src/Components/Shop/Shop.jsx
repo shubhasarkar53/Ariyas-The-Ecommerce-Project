@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { Fragment, useEffect, useState, useRef } from "react";
 import "./Shop.scss";
@@ -45,32 +46,18 @@ const Shop = ({ match }) => {
 
   const priceHandler = (e, newPrice) => {
     setPrice(newPrice);
-    dispatch(
-      getProducts(
-        keyword,
-        currentPage,
-        [newPrice[0], newPrice[1]],
-        "",
-        location === "All" ? "" : location,
-        ratings
-      )
-    );
+    setCurrentPage(1); // Reset to first page on filter change
   };
 
   const handleCategoryChange = (categoryItem) => {
     setCategory(categoryItem);
-    dispatch(
-      getProducts(
-        keyword,
-        currentPage,
-        price,
-        "",
-        location === "All" ? "" : location,
-        ratings
-      )
-    );
+    setCurrentPage(1); // Reset to first page on filter change
   };
 
+  const handleRatingChange = (e, newRating) => {
+    setRatings(newRating);
+    setCurrentPage(1); // Reset to first page on filter change
+  };
 
   useEffect(() => {
     dispatch(
@@ -78,7 +65,6 @@ const Shop = ({ match }) => {
         keyword,
         currentPage,
         price,
-        "",
         category === "All" ? "" : category,
         ratings
       )
@@ -110,11 +96,11 @@ const Shop = ({ match }) => {
 
   return (
     <Fragment>
+      <Meta title="Shop" />
       {loading ? (
         <Loader />
       ) : (
         <Fragment>
-          <Meta title="Shop" />
           <div className="shop-section">
             <button
               className="price-filter-button"
@@ -177,25 +163,25 @@ const Shop = ({ match }) => {
                     Ratings
                   </Typography>
                   <Slider
-                     className="rating-slider"
-                     value={ratings}
-                     onChange={(e, newRating) => {
-                       setRatings(newRating);
-                       dispatch(
-                         getProducts(
-                           keyword,
-                           currentPage,
-                           price,
-                           "",
-                           category === "All" ? "" : category,
-                           newRating
-                         )
-                       );
-                     }}
-                     aria-labelledby="continuous-slider"
-                     valueLabelDisplay="auto"
-                     min={0}
-                     max={5}
+                   className="rating-slider"
+                   value={ratings}
+                   onChange={(e, newRating) => {
+                     setRatings(newRating);
+                     dispatch(
+                       getProducts(
+                         keyword,
+                         currentPage,
+                         price,
+                         "",
+                         category === "All" ? "" : category,
+                         newRating
+                       )
+                     );
+                   }}
+                   aria-labelledby="continuous-slider"
+                   valueLabelDisplay="auto"
+                   min={0}
+                   max={5}
                   />
                 </div>
               </div>

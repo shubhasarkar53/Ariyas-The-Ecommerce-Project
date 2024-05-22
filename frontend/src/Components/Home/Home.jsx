@@ -7,13 +7,13 @@ import Loader from "../Loader/Loader";
 import ImageCarousel from "../Carousel/Carousel";
 import Meta from "../../Meta";
 
-//import images for carousel
+// Import images for carousel
 import img from "../../assets/Images/Carousel/AdobeStock_219379270_Preview.jpeg";
 import image2 from "../../assets/Images/Carousel/AdobeStock_326340898_Preview.jpeg";
 import image3 from "../../assets/Images/Carousel/AdobeStock_596562754_Preview.jpeg";
 import image4 from "../../assets/Images/Carousel/AdobeStock_655646740_Preview.jpeg";
 
-//import other images
+// Import other images
 import Logo from "../../assets/Images/Home/all_logo.png";
 import ProductCard from "./ProductCard";
 import { Link } from "react-router-dom";
@@ -30,7 +30,7 @@ const Home = () => {
     dispatch(getProducts());
   }, [dispatch]);
 
-  //images, titles and captions for carousel
+  // Images, titles and captions for carousel
   const images = [
     {
       url: img,
@@ -71,6 +71,19 @@ const Home = () => {
     }, 1500);
   };
 
+  // Function to group products by category
+  const groupProductsByCategory = (products) => {
+    return products.reduce((acc, product) => {
+      if (!acc[product.category]) {
+        acc[product.category] = [];
+      }
+      acc[product.category].push(product);
+      return acc;
+    }, {});
+  };
+
+  const groupedProducts = groupProductsByCategory(products);
+
   return (
     <Fragment>
       <Meta
@@ -87,7 +100,6 @@ const Home = () => {
           </div>
 
           <div className="logo-container">
-            {" "}
             <img src={Logo} alt="logo" className="logo" />
           </div>
 
@@ -146,57 +158,18 @@ const Home = () => {
           </div>
 
           <div className="product-row-container">
-            {products && products.length > 0 && (
-              <div className="row">
-                <h1>{products[0] && products[0].category} Item&apos;s</h1>
+            {Object.keys(groupedProducts).map((category, index) => (
+              <div className="row" key={index}>
+                <h1>{category} Item&apos;s</h1>
                 <div className="row-products">
-                  {products.slice(0, 4).map((product) => {
-                    return (
-                      <ProductCard
-                        key={product._id}
-                        product={product}
-                        products={products}
-                      />
-                    );
-                  })}
+                  {groupedProducts[category].slice(0, 4).map((product) => (
+                    <ProductCard key={product._id} product={product} />
+                  ))}
                 </div>
               </div>
-            )}
-
-            {products && products.length > 0 && (
-              <div className="row">
-                <h1>{products[4] && products[4].category} Item&apos;s</h1>
-                <div className="row-products">
-                  {products.slice(4, 8).map((product) => {
-                    return <ProductCard key={product._id} product={product} />;
-                  })}
-                </div>
-              </div>
-            )}
-
-            {products && products.length > 0 && (
-              <div className="row">
-                <h1>{products[8] && products[8].category} Item&apos;s</h1>
-                <div className="row-products">
-                  {products.slice(8, 12).map((product) => {
-                    return <ProductCard key={product._id} product={product} />;
-                  })}
-                </div>
-              </div>
-            )}
-
-            {/* unable to fetch */}
-            {/* {products && products.length > 0 && (
-              <div className="row">
-                <h1>{products[12] && products[12].category} Item&apos;s</h1>
-                <div className="row-products">
-                  {products.slice(12, 16).map((product) => {
-                    return <ProductCard key={product._id} product={product} />;
-                  })}
-                </div>
-              </div>
-            )} */}
+            ))}
           </div>
+
           <div className="explore-more-section">
             <div className="explore">
               <div className="explore-title">

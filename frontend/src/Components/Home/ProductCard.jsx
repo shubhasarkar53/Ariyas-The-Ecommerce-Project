@@ -132,32 +132,32 @@ const ProductCard = ({ product, match }) => {
                 {product.numOfReviews > 1 ? "Reviews" : "Review"})
               </span>
             </div>
-            {/* {isHovered && (
+         
             <div className="carddown-div">
 
-              <div className="cart">
+              {/* <div className="cart">
               
                 <CiShoppingCart  onClick={(e) => {
                   e.preventDefault();
                   addToCartHandler();
                 }} className='productCard-cart'/>
-              </div>
+              </div> */}
 
               <div className='prices-container'>
                 <span className='price-1'>RS. {product.price}</span>
                 <span className='price-2'>Rs. {product.price * randomNo}</span>
               </div>
 
-              <div className="wishlist">
+              {/* <div className="wishlist">
 
                 <RiHeartAddLine  onClick={(e) => {
                   e.preventDefault();
                   addToWishListHandler();
                 }} className='productCard-wishlist'/>
-              </div>
+              </div> */}
 
             </div>
-          )} */}
+       
           </div>
         </Link>
       </div>
@@ -172,17 +172,3 @@ ProductCard.propTypes = {
   products: PropTypes.array,
 };
 export default ProductCard;
-
-//Explain--->
-// This code defines the propTypes for a React component called ProductCard. propTypes are used to ensure that the component receives the correct type of data as props.
-
-// The ProductCard component expects a single prop called product, which should be an object with the following properties:
-
-// name: This should be a string and is required.
-// _id: This should be a string and is required.
-// image: This should be an array and is required.
-// description: This should be a string and is required.
-// price: This should be a number and is required.
-// The isRequired property means that the prop is required and will throw a warning if it is not provided.
-
-// By defining propTypes for the ProductCard component, it helps to ensure that the component is used correctly and can prevent bugs caused by passing the wrong type of data as props.
