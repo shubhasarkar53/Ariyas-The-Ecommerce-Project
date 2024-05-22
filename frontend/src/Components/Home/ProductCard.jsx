@@ -4,8 +4,8 @@ import "./ProductCard.scss";
 import { Link } from "react-router-dom";
 import Rating from "@mui/material/Rating";
 import PropTypes from "prop-types";
-import { RiHeartAddLine } from "react-icons/ri";
-import { CiShoppingCart } from "react-icons/ci";
+// import { RiHeartAddLine } from "react-icons/ri";
+// import { CiShoppingCart } from "react-icons/ci";
 import { addItemsToWishList } from "../../Redux/Actions/wishListAction";
 import { addItemsToCart } from "../../Redux/Actions/cartAction";
 import { toast, ToastContainer } from "react-toastify";
@@ -16,8 +16,8 @@ import { FaHeart, FaShoppingCart } from "react-icons/fa";
 const ProductCard = ({ product, match }) => {
   const dispatch = useDispatch();
 
-  const [isCardDownVisible, setIsCardDownVisible] = useState(false);
-  const [hoveredProductId, setHoveredProductId] = useState(null);
+  // const [isCardDownVisible, setIsCardDownVisible] = useState(false);
+  // const [hoveredProductId, setHoveredProductId] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
   const truncateText = (text, limit) => {
@@ -27,7 +27,7 @@ const ProductCard = ({ product, match }) => {
     }
     return text;
   };
-
+const nor = product.numberOfReviews;
   const options = {
     size: "large",
     value: product ? product.ratings : 0,
@@ -128,36 +128,15 @@ const ProductCard = ({ product, match }) => {
               <Rating {...options} className="rating-options" />
               <span className="detailsBlock-2-span">
                 {" "}
-                ({product.numOfReviews}{" "}
-                {product.numOfReviews > 1 ? "Reviews" : "Review"})
+                ({product.numOfReviews}{nor} {" "}
+                {nor > 1 ? "Reviews" : "Review"})
               </span>
             </div>
          
-            <div className="carddown-div">
-
-              {/* <div className="cart">
-              
-                <CiShoppingCart  onClick={(e) => {
-                  e.preventDefault();
-                  addToCartHandler();
-                }} className='productCard-cart'/>
-              </div> */}
-
-              <div className='prices-container'>
+             <div className='prices-container'>
                 <span className='price-1'>RS. {product.price}</span>
                 <span className='price-2'>Rs. {product.price * randomNo}</span>
               </div>
-
-              {/* <div className="wishlist">
-
-                <RiHeartAddLine  onClick={(e) => {
-                  e.preventDefault();
-                  addToWishListHandler();
-                }} className='productCard-wishlist'/>
-              </div> */}
-
-            </div>
-       
           </div>
         </Link>
       </div>
@@ -172,3 +151,17 @@ ProductCard.propTypes = {
   products: PropTypes.array,
 };
 export default ProductCard;
+
+//Explain--->
+// This code defines the propTypes for a React component called ProductCard. propTypes are used to ensure that the component receives the correct type of data as props.
+
+// The ProductCard component expects a single prop called product, which should be an object with the following properties:
+
+// name: This should be a string and is required.
+// _id: This should be a string and is required.
+// image: This should be an array and is required.
+// description: This should be a string and is required.
+// price: This should be a number and is required.
+// The isRequired property means that the prop is required and will throw a warning if it is not provided.
+
+// By defining propTypes for the ProductCard component, it helps to ensure that the component is used correctly and can prevent bugs caused by passing the wrong type of data as props.
