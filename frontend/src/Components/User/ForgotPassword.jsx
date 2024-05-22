@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import subLoginImg from "../../assets/Images/Login-Signup-page/rightLogin.png";
 import Loader from "../Loader/Loader";

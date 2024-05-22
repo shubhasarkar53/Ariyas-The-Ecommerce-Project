@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import profileSide from "../../assets/Images/Icons/profile icons/pngwing 3.png";
-
+import Meta from "../../Meta";
 
 
 
@@ -78,6 +78,7 @@ const AdminDashboard = () => {
 
   return (
     <>
+      <Meta title="Admin Dashboard" />
       {loading ? (
         <Loader />
       ) : (

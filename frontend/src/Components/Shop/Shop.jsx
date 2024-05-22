@@ -10,6 +10,7 @@ import ProductPagination from "./PaginationComponent/productPagination";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
 import NotFound from "../../assets/Images/OtherImages/notofund.png";
+import Meta from "../../Meta";
 
 const Shop = ({ match }) => {
   const dispatch = useDispatch();
@@ -113,6 +114,7 @@ const Shop = ({ match }) => {
         <Loader />
       ) : (
         <Fragment>
+          <Meta title="Shop" />
           <div className="shop-section">
             <button
               className="price-filter-button"

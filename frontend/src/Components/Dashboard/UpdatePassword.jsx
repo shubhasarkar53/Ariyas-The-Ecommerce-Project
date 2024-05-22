@@ -9,6 +9,7 @@ import { UPDATE_USER_PASSWORD_RESET } from "../../Redux/Constants/userConstant";
 import Loader from "../Loader/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Meta from "../../Meta"
 
 const UpdatePassword = ({ history }) => {
   const { error, loading, isUpdated } = useSelector((state) => state.profile);
@@ -70,6 +71,7 @@ const UpdatePassword = ({ history }) => {
         <Loader />
       ) : (
         <Fragment>
+          <Meta title="Update Password" />
           <div className="container">
             <div className="update-password-container">
               <ToastContainer />

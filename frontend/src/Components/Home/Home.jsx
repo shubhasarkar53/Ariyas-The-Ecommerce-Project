@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "../../Redux/Actions/productAction";
 import Loader from "../Loader/Loader";
 import ImageCarousel from "../Carousel/Carousel";
+import Meta from "../../Meta";
 
 //import images for carousel
 import img from "../../assets/Images/Carousel/AdobeStock_219379270_Preview.jpeg";
@@ -17,7 +18,7 @@ import Logo from "../../assets/Images/Home/all_logo.png";
 import ProductCard from "./ProductCard";
 import { Link } from "react-router-dom";
 
-import './HomeResponsive.scss';
+import "./HomeResponsive.scss";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,6 @@ const Home = () => {
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
-
 
   //images, titles and captions for carousel
   const images = [
@@ -73,6 +73,11 @@ const Home = () => {
 
   return (
     <Fragment>
+      <Meta
+        title="Home | Ariyas"
+        description="Welcome to Ariyas, we offer the best Handcrafted from local articians at affordable prices"
+        keywords="home, products, affordable,handcrafted,sharee,shoes,wooden,ceramic"
+      />
       {loading ? (
         <Loader />
       ) : (
@@ -91,8 +96,9 @@ const Home = () => {
               <div className="top1">
                 <p className="top1-text">HandMade Bags</p>
                 <button
-                  className={`top1-button ${loadingButton === "top1" ? "loading" : ""
-                    }`}
+                  className={`top1-button ${
+                    loadingButton === "top1" ? "loading" : ""
+                  }`}
                   onClick={() => handleButtonClick("top1")}
                 >
                   Bags
@@ -102,8 +108,9 @@ const Home = () => {
               <div className="top2">
                 <p className="top2-text">Hand-Loom Sarees</p>
                 <button
-                  className={`top2-button ${loadingButton === "top2" ? "loading" : ""
-                    }`}
+                  className={`top2-button ${
+                    loadingButton === "top2" ? "loading" : ""
+                  }`}
                   onClick={() => handleButtonClick("top2")}
                 >
                   Sarees
@@ -115,8 +122,9 @@ const Home = () => {
               <div className="bottom1">
                 <p className="bottom1-text">Woodcrafted Items</p>
                 <button
-                  className={`bottom1-button ${loadingButton === "bottom1" ? "loading" : ""
-                    }`}
+                  className={`bottom1-button ${
+                    loadingButton === "bottom1" ? "loading" : ""
+                  }`}
                   onClick={() => handleButtonClick("bottom1")}
                 >
                   Woodcrafts
@@ -126,8 +134,9 @@ const Home = () => {
               <div className="bottom2">
                 <p className="bottom2-text">Clay-Made Items</p>
                 <button
-                  className={`bottom2-button ${loadingButton === "bottom2" ? "loading" : ""
-                    }`}
+                  className={`bottom2-button ${
+                    loadingButton === "bottom2" ? "loading" : ""
+                  }`}
                   onClick={() => handleButtonClick("bottom2")}
                 >
                   Clay-made
@@ -142,7 +151,13 @@ const Home = () => {
                 <h1>{products[0] && products[0].category} Item&apos;s</h1>
                 <div className="row-products">
                   {products.slice(0, 4).map((product) => {
-                    return <ProductCard key={product._id} product={product} products={products} />;
+                    return (
+                      <ProductCard
+                        key={product._id}
+                        product={product}
+                        products={products}
+                      />
+                    );
                   })}
                 </div>
               </div>
@@ -186,19 +201,35 @@ const Home = () => {
             <div className="explore">
               <div className="explore-title">
                 <h2>Explore more</h2>
-                <h3>Explore and enrich the cultural heritage of our Indian civilization.</h3>
-                <p>Explore our meticulously curated collection of traditional goods, each crafted with precision and imbued with centuries of heritage. From exquisite handloom sarees to intricately carved wooden artifacts, Ariyas showcases the finest craftsmanship India has to offer.</p>
+                <h3>
+                  Explore and enrich the cultural heritage of our Indian
+                  civilization.
+                </h3>
+                <p>
+                  Explore our meticulously curated collection of traditional
+                  goods, each crafted with precision and imbued with centuries
+                  of heritage. From exquisite handloom sarees to intricately
+                  carved wooden artifacts, Ariyas showcases the finest
+                  craftsmanship India has to offer.
+                </p>
                 <div className="btn-explore">
-                  <Link to="/shop"><button>Bags</button></Link>
-                  <Link to="/shop"><button>Sarees</button></Link>
-                  <Link to="/shop"><button>Wooden Items</button></Link>
-                  <Link to="/shop"><button>Clay Products</button></Link>
+                  <Link to="/shop">
+                    <button>Bags</button>
+                  </Link>
+                  <Link to="/shop">
+                    <button>Sarees</button>
+                  </Link>
+                  <Link to="/shop">
+                    <button>Wooden Items</button>
+                  </Link>
+                  <Link to="/shop">
+                    <button>Clay Products</button>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       )}
     </Fragment>
   );

@@ -5,6 +5,7 @@ import { addNewAddress, loadAddress } from "../../../Redux/Actions/addressAction
 import { useHistory } from "react-router-dom";
 import "./NewAddress.scss";
 import { toast } from 'react-toastify';
+import Meta from "../../../Meta";
 const NewAddress = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -151,6 +152,7 @@ const NewAddress = () => {
 
   return (
     <>
+    <Meta title="New Address" />
       <div className="new-address-container">
         <h1>Add a New Address</h1>
         <div className="form-container">

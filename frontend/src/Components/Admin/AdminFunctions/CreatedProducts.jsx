@@ -13,6 +13,7 @@ import { CREATE_PRODUCT_RESET } from "../../../Redux/Constants/productConstants"
 import Loader from "../../Loader/Loader";
 import "./CreatedProducts.scss"
 import DotLoader from "../../Loader/DotLoader";
+import Meta from "../../../Meta";
 const CreatedProducts = () => {
 
   const dispatch = useDispatch();
@@ -55,6 +56,7 @@ const CreatedProducts = () => {
 
   return (
     <>
+      <Meta title="Your Products" />
       {
         loading ? <DotLoader /> :
           (

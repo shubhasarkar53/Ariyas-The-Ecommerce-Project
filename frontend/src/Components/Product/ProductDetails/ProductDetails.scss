@@ -334,6 +334,28 @@ $gray: #a5a5a5;
     }
   }
 }
+.share-container {
+  position: relative;
+  display: inline-block;
+}
+
+.share-buttons {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: flex;
+  gap: 8px;
+  background: white;
+  padding: 8px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.share-icon {
+  cursor: pointer;
+}
+
 
 @media screen and (max-width: 768px) {
   .top-div {

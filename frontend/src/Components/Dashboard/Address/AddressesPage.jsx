@@ -9,6 +9,7 @@ import Loader from "../../Loader/Loader.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PropTypes from "prop-types";
+import Meta from "../../../Meta.jsx"
 
 const AddressesPage = ({ history }) => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const AddressesPage = ({ history }) => {
       {
         loading ? (<Loader />) :
           (<>
+            <Meta title="Addresses" />
             <ToastContainer />
             <div className="container">
               <div className="addressesContainer">

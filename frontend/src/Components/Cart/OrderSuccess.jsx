@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "./OrderSuccess.scss";
 import PropTypes from "prop-types";
 import Loader from "../Loader/Loader";
-
+import Meta from "../../Meta";
 const OrderSuccess = ({ history }) => {
   const { user } = useSelector((state) => state.user);
   const { order, loading } = useSelector((state) => state.order);
@@ -16,6 +16,7 @@ const OrderSuccess = ({ history }) => {
         <Loader />
       ) : (
         <Fragment>
+          <Meta title="Order Success" />
           <div className="wrapper_confirm">
 
             <div className="order__success">

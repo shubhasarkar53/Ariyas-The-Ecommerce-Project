@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { submitFormData, uploadDocumentSuccess } from '../../../Redux/Actions/registerSellerAction';
 import './RegisterSellerResponse.scss';
-
+import Meta from "../../../Meta";
 const RegisterSeller = () => {
   const history = useHistory();
   const { user, loading, error, isAuthenticated } = useSelector(
@@ -307,6 +307,7 @@ const RegisterSeller = () => {
 
   return (
     <>
+    <Meta title="Register Seller"/>
       <div className="register-seller-container">
         <div className="reg-img-mail-section">
           <div className="extra-container">

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 
 import { useHistory } from "react-router-dom";
@@ -16,6 +17,7 @@ import "./IncomingOrders.scss";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import { UPDATE_INCOMING_ORDER_STATUS_REQUEST, UPDATE_INCOMING_ORDER_STATUS_RESET } from "../../../Redux/Constants/incomingOrdersConstants";
+import Meta from "../../../Meta";
 const IncomingOrders = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -119,6 +121,7 @@ function submitStatusHandler(orderId,productId){
 
   return (
     <>
+      <Meta title="Incoming Orders" />
       {loading ? (
         <DotLoader />
       ) : (

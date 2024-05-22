@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import './BecomeSeller.scss';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import './BecomeSellerAnimation.scss';
-
+import Meta from "../../Meta";
 const BecomeSeller = () => {
   const history = useHistory();
   // const [loadingLogin, setLoadingLogin] = useState(false);
@@ -37,6 +37,7 @@ const BecomeSeller = () => {
   };
   return (
     <>
+      <Meta title="Become Seller" />
       {
         loading ? (
           <div className="become-seller-animation">

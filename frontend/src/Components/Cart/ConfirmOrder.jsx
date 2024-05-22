@@ -10,6 +10,7 @@ import { createOrder, clearErrors } from "../../Redux/Actions/orderAction";
 import { clearCart } from "../../Redux/Actions/cartAction";
 import { ToastContainer, toast } from "react-toastify";
 import DotLoader from "../Loader/DotLoader";
+import Meta from "../../Meta";
 
 const ConfirmOrder = ({ history }) => {
   const { cartItems, shippingInfo } = useSelector((state) => state.cart);
@@ -118,6 +119,7 @@ const ConfirmOrder = ({ history }) => {
         <DotLoader />
       ) : (
         <Fragment>
+          <Meta title="Confirm Order" />
           <CheckoutSteps activeStep={1} />
           <div className="confirmOrderPage">
             <div className="confirmshippingAddress">

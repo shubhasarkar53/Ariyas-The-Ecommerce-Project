@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import PropTypes from 'prop-types';
-
-//import image
+import Meta from "../../Meta";
+// import image
 import emptycart from '../../assets/Images/Icons/CartPage/emptycart.png'
 
 const Cart = ({ history }) => {
@@ -18,7 +18,6 @@ const Cart = ({ history }) => {
 
   // Get the cart items from the redux store
   const { cartItems } = useSelector((state) => state.cart);
-
 
   // remove the cart items function
   const removeCartItemHandler = (id) => {
@@ -64,13 +63,14 @@ const Cart = ({ history }) => {
     dispatch(addItemsToCart(id, newQty));
   }
 
-  //create a checkout handler 
+  // create a checkout handler 
   const checkoutHandler = () => {
     history.push('/login?redirect=shipping');
   }
 
   return (
     <Fragment>
+      <Meta title="Your Shopping Cart - Ariyas" description="Review the items in your cart and proceed to checkout." />
       {cartItems.length === 0 ? (
         <div className="emptyCart-container">
           <h1>Your Cart is Empty</h1>
@@ -116,8 +116,6 @@ const Cart = ({ history }) => {
               </div>
 
             </div>
-
-
           </div>
           <ToastContainer />
         </Fragment>
@@ -125,7 +123,6 @@ const Cart = ({ history }) => {
     </Fragment>
   );
 };
-
 
 Cart.propTypes = {
   history: PropTypes.object.isRequired

@@ -7,6 +7,7 @@ import aboutImg1 from '../../assets/Images/Carousel/AdobeStock_500191794_Preview
 import './AboutAnimation.scss';
 import Loader from '../Loader/Loader';
 import { Link } from 'react-router-dom';
+import Meta from "../../Meta";
 
 const About = () => {
   const [loading, setLoading] = useState(true);
@@ -34,6 +35,7 @@ const About = () => {
         <div>{error}</div>
       ) : (
         <div className="about-container">
+          <Meta title="About Us" />
           <div className="first-part">
             <div className="image-section">
               <img src={aboutImage} alt="about image" />

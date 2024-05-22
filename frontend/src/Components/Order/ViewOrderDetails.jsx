@@ -11,7 +11,7 @@ import { Typography, Button } from "@mui/material";
 import Logo from "../../assets/Images/Navbar/logo.png";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-
+import Meta from "../../Meta";
 const ViewOrderDetails = ({ match }) => {
   const { order, loading, error } = useSelector((state) => state.orderDetails);
   const { user } = useSelector((state) => state.user);
@@ -117,6 +117,7 @@ const ViewOrderDetails = ({ match }) => {
         <Loader />
       ) : (
         <Fragment>
+          <Meta title={`View Order Details - ${order && order._id}`} />
           <div className="orderDetailsContainer">
             <h1>{user.name}&apos;s Order Details</h1>
             <div className="orderDetailsHeader">

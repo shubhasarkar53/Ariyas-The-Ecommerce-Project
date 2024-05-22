@@ -16,7 +16,7 @@ import {
 import { CREATE_PRODUCT_RESET, EDIT_PRODUCT_RESET } from "../../../Redux/Constants/productConstants";
 import Loader from "../../Loader/Loader";
 import "./CreateProduct.scss";
-
+import Meta from "../../../Meta"
 
 
 // Icons import
@@ -142,6 +142,7 @@ const EditProduct = ({ history }) => {
 
   return (
     <>
+      <Meta title="Edit Product" />
       {loading ? (
         <DotLoader />
       ) : (

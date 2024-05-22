@@ -5,6 +5,7 @@ import faq_img from "../../assets/Images/OtherImages/FAQs-cuate.png";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import Loader from "../Loader/Loader";
 import { useSelector } from "react-redux";
+import Meta from "../../Meta"
 
 
 const FAQs = () => {
@@ -51,6 +52,7 @@ const FAQs = () => {
       {
         loading ? (<Loader />) : (
           <Fragment>
+            <Meta title="FAQs" description="Frequently Asked Questions" />
             <div className="faq">
               <div className="top-faq">
                 <div className="faq-left-div">

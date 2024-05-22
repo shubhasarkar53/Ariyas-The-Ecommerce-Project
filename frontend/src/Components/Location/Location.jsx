@@ -10,6 +10,7 @@ import ProductCard from "../Home/ProductCard";
 import { getProducts, clearError } from "../../Redux/Actions/productAction";
 import NotFound from "../../assets/Images/OtherImages/notofund.png";
 import ProductPagination from "../Shop/PaginationComponent/productPagination";
+import Meta from "../../Meta";
 
 const Location = ({ match }) => {
   const dispatch = useDispatch();
@@ -113,6 +114,7 @@ const Location = ({ match }) => {
         <Loader />
       ) : (
         <Fragment>
+          <Meta title="Shop From Your Favourite Location" />
           <div className="shop-section">
             <button
               className="price-filter-button"

@@ -6,6 +6,7 @@ import Loader from "../Loader/Loader";
 import { myOrders } from "../../Redux/Actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import Meta from "../../Meta";
 const MyOrders = ({ history }) => {
   const dispatch = useDispatch();
 
@@ -71,6 +72,7 @@ const MyOrders = ({ history }) => {
         <Loader />
       ) : (
         <Fragment>
+          <Meta title={`${user && user.name}-Order's`}/>
           <div className="orders-container">
             <h1 className="myOrdersHeading">{user.name}&apos;s Orders</h1>
             <div className="myOrdersContainer">
