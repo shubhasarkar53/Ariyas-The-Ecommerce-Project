@@ -12,6 +12,7 @@ import "./Login.scss"
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Meta from "../../Meta";
 
 const Register = ({ history }) => {
   // const loading = false;
@@ -81,6 +82,7 @@ const Register = ({ history }) => {
 
   return (
     <>
+      <Meta title="Ariyas | Register" />
       {loading ? (
         <Loader />
       ) : (

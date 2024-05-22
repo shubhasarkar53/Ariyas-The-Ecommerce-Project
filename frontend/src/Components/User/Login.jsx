@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
-
+import Meta from "../../Meta";
 const Login = ({ history, location }) => {
   const dispatch = useDispatch();
   const { loading, isAuthenticated, error, token } = useSelector(
@@ -74,6 +74,7 @@ const Login = ({ history, location }) => {
 
   return (
     <>
+      <Meta title="Login | Ariyas | Artisans Portal" />
       {loading ? (
         <Loader />
       ) : (

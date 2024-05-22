@@ -112,9 +112,11 @@ const MyOrders = ({ history }) => {
                       <h3>
                         Payment Status:{" "}
                         <span>
-                          {order.isPaid
+                          {/* {order.isPaid
                             ? order.paidAt.substring(0, 10)
-                            : "Not Paid"}
+                            : "Not Paid"} */}
+                            {/* make the payment status paid after the order status will be delivered  */}
+                            {order.orderStatus === "delivered" ? "Paid" : "Not Paid"}
                         </span>
 
                       </h3>

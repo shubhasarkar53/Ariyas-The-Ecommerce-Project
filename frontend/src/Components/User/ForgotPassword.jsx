@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { clearError, forgotPasswordAction } from '../../Redux/Actions/userAction';
+import Meta from "../../Meta";
 function ForgotPassword() {
     const dispatch = useDispatch();
     const { loading,error,message,success} = useSelector(
@@ -49,6 +50,7 @@ function ForgotPassword() {
 
     return (
         <>
+        <Meta title="Forgot Password" />
           {loading ? (
             <Loader />
           ) : (
