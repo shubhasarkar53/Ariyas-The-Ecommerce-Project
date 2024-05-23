@@ -18,6 +18,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import { UPDATE_INCOMING_ORDER_STATUS_REQUEST, UPDATE_INCOMING_ORDER_STATUS_RESET } from "../../../Redux/Constants/incomingOrdersConstants";
 import Meta from "../../../Meta";
+import { Typography } from "@mui/material";
 const IncomingOrders = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -129,7 +130,9 @@ function submitStatusHandler(orderId,productId){
           <div className="profile-container">
             <ToastContainer />
             <div className="profile-title">
-              <h2>Incoming Orders</h2>
+            <Typography variant="h4" className="typoH" align="center">
+              Incoming Orders
+            </Typography>
             </div>
             <div className="profile-det-container">
               {/* Left side of the profile */}

@@ -14,6 +14,7 @@ import { UPDATE_USER_RESET } from "../../Redux/Constants/userConstant.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Meta from "../../Meta.jsx"
+import { Typography } from "@mui/material";
 
 const UpdateProfile = ({ history }) => {
   const { user } = useSelector((state) => state.user);
@@ -110,7 +111,9 @@ const UpdateProfile = ({ history }) => {
         <>
           <Meta title={`Edit Profile - ${user?.name}`} />
           <div className="profile-title">
-            <h2>Edit Profile</h2>
+          <Typography variant="h4" className="typoH" align="center">
+              Edit Profile
+            </Typography>
           </div>
           <div className="update-profile-container">
             <ToastContainer />

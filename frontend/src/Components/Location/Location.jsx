@@ -129,7 +129,7 @@ const Location = ({ match }) => {
                 ? "Hide location Filter"
                 : "Show location Filter"}
             </button>
-            <Typography variant="h4" color="secondary" align="center">
+            <Typography variant="h3" className="typoH" align="center">
               Shop From Your Favourite Location
             </Typography>
 

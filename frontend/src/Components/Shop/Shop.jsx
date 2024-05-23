@@ -113,7 +113,7 @@ const Shop = ({ match }) => {
             >
               {showPriceFilter ? "Hide Filter" : "Show Filter"}
             </button>
-            <Typography variant="h4" color="secondary" align="center">
+            <Typography variant="h3" className="typoH" align="center">
               Shop From Different Categories
             </Typography>
 

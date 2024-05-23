@@ -24,6 +24,7 @@ import cat from "../../../assets/Images/Icons/createProduct/cat.png";
 import stock from "../../../assets/Images/Icons/createProduct/stock.png";
 import location from "../../../assets/Images/Icons/createProduct/loc.png";
 import Meta from "../../../Meta";
+import { Typography } from "@mui/material";
 const CreateNewProduct = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -118,7 +119,9 @@ const CreateNewProduct = () => {
           <div className="profile-container">
             <ToastContainer />
             <div className="profile-title">
-              <h2>Create New Product</h2>
+            <Typography variant="h4" className="typoH" align="center">
+             Create New Product
+            </Typography>
             </div>
             <div className="profile-det-container-restyled">
               {/* Left side of the profile */}

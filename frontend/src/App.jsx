@@ -54,23 +54,17 @@ import ConfirmSeller from "./Components/Seller/Register-Seller/Confirm-Seller/Co
 import ConfirmationPage from "./Components/Seller/Register-Seller/Confirm-Seller/ConfirmationPage.jsx";
 import ConfirmEmailScreen from "./Components/User/ConfirmEmailScreen.jsx";
 // import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
-
+import ScrollToTop from "./ScrollToTop.js";
 // import { useLocation } from "react-router-dom";
 const App = () => {
   useEffect(() => {
-   
+    store.dispatch(loadUser());
+  }, []);
 
-      store.dispatch(loadUser());
-   
-  }, []); 
-
- 
-
-  
-  
-  return ( 
+  return (
     <>
       <BrowserRouter>
+        <ScrollToTop />
         <div className="wrapper">
           <section className="header-part">
             <Header />
@@ -86,13 +80,13 @@ const App = () => {
                 path="/products/:keyword"
                 render={(props) => <Shop {...props} />}
               />
-               {/* <Route
+              {/* <Route
                 path="/products/:location"
                 render={(props) => <Shop {...props} />}
               /> */}
 
               {/* <Route path="/products/:keyword" component={Shop} /> */}
-            
+
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/wishlist" component={WishList} />
               <Route exact path="/about" component={About} />
@@ -101,13 +95,16 @@ const App = () => {
 
               <Route exact path="/login" component={Login} />
               <Route exact path="/register/new" component={Register} />
-              <Route exact path="/confirm-email" component={ConfirmEmailScreen} />
+              <Route
+                exact
+                path="/confirm-email"
+                component={ConfirmEmailScreen}
+              />
 
               <Route exact path="/become-seller" component={BecomeSeller} />
               <Route path="/register-seller" component={RegisterSeller} />
               <Route path="/confirm-seller" component={ConfirmSeller} />
               <Route path="/confirmation-page" component={ConfirmationPage} />
-
 
               <ProtectedRoute exact path="/profile" component={Profile} />
               <ProtectedRoute
@@ -174,16 +171,28 @@ const App = () => {
                 component={ViewOrderDetails}
               />
 
-              <ProtectedRoute exact path="/incoming-orders" component={IncomingOrders} />
+              <ProtectedRoute
+                exact
+                path="/incoming-orders"
+                component={IncomingOrders}
+              />
 
               <Route exact path="/password/forgot" component={ForgotPassword} />
 
-              <Route exact path="/password/reset/:token" component={ResetPassword} />
+              <Route
+                exact
+                path="/password/reset/:token"
+                component={ResetPassword}
+              />
 
               <Route exact path="/contact" component={Contact} />
-              
+
               <Route exact path="/faq" component={FAQs} />
-              <Route exact path="/terms-conditions" component={TermsConditions} />
+              <Route
+                exact
+                path="/terms-conditions"
+                component={TermsConditions}
+              />
 
               {/* This will catch all the routes that do not exist */}
               <Route component={PageNotFound} />
