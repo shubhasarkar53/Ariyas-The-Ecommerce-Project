@@ -17,12 +17,12 @@ import {
 
 import { forgotPasswordReducer, profileReducer, userReducer } from "../Reducers/userReducer";
 import contactReducer from '../Reducers/contactReducer';
-import registerSellerReducer from "../Reducers/registerSellerReducer";
 import { cartReducer } from "../Reducers/cartReducer";
 import { addressReducer } from "../Reducers/addressReducer";
 import { wishlistReducer } from '../Reducers/wishlistReducer';
 import { orderReducer,myOrderReducer,orderDetailsReducer } from "../Reducers/orderReducer";
 import incomingOrdersReducer from "../Reducers/incomingOrderReducer";
+import { registerSellerReducer } from "../Reducers/registerSellerReducer";
 // Reducers
 const reducer = combineReducers({
   products: productReducer,
