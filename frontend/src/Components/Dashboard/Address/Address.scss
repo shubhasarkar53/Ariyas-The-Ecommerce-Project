@@ -1,7 +1,7 @@
 a {
   text-decoration: none;
 }
-.container {
+.containerAddress {
   width: 100%;
   // border: 2px solid rebeccapurple;
 }
@@ -22,6 +22,18 @@ a {
   align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
+  transform: translateY(20px);
+  animation: slideInFromLeft 1.5s ease-out;
+  @keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
 }
 
 .plusicon {

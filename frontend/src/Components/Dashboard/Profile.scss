@@ -4,7 +4,18 @@ a {
 
 .profile-container {
   width: 100%;
-  height: fit-content;
+  height: fit-content;transform: translateY(20px);
+  animation: fadeInUp 1.5s ease-out forwards;
+  @keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
 }
 
 .profile-title {
@@ -108,6 +119,18 @@ a {
   grid-gap: 1.2rem;
   margin-top: 2rem;
   grid-column-gap: 3rem;
+  transform: translateY(20px);
+  animation: slideInFromLeft 2s ease-out;
+  @keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
 }
 
 .profile-slot {

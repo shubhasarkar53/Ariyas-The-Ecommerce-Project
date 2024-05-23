@@ -3,7 +3,18 @@
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  margin: 2rem;
+  margin: 2rem;transform: translateY(20px);
+  animation: fadeInUp 1.5s ease-out forwards;
+  @keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
   .myOrdersHeading {
     font-size: 2rem;
     font-weight: 400;
