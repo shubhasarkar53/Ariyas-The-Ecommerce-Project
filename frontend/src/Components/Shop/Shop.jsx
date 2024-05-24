@@ -10,8 +10,8 @@ import ProductCard from "../Home/ProductCard";
 import ProductPagination from "./PaginationComponent/productPagination";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
-import { Rating } from "@mui/material";
 import NotFound from "../../assets/Images/OtherImages/notofund.png";
+import Meta from "../../Meta";
 
 const Shop = ({ match }) => {
   const dispatch = useDispatch();
@@ -33,43 +33,53 @@ const Shop = ({ match }) => {
     "Ceramic",
   ];
 
-
   const [showPriceFilter, setShowPriceFilter] = useState(false);
-
-  /// pagination
   const [currentPage, setCurrentPage] = useState(1); // Current page
   const [price, setPrice] = useState([0, 30000]); // Price range
-  const [category, setCategory] = useState(""); // Category selected
+  const [category, setCategory] = useState("All"); // Category selected
   const [ratings, setRatings] = useState(0); // Ratings
   const [paginationVisible, setPaginationVisible] = useState(true);
+
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
   const priceHandler = (e, newPrice) => {
     setPrice(newPrice);
-    const [minPrice, maxPrice] = newPrice;
-    dispatch(
-      getProducts(keyword, currentPage, [minPrice, maxPrice], category, ratings)
-    );
+    setCurrentPage(1); // Reset to first page on filter change
+  };
+
+  const handleCategoryChange = (categoryItem) => {
+    setCategory(categoryItem);
+    setCurrentPage(1); // Reset to first page on filter change
+  };
+
+  const handleRatingChange = (e, newRating) => {
+    setRatings(newRating);
+    setCurrentPage(1); // Reset to first page on filter change
   };
 
   useEffect(() => {
-    dispatch(getProducts(keyword, currentPage, price, category, ratings));
+    dispatch(
+      getProducts(
+        keyword,
+        currentPage,
+        price,
+        category === "All" ? "" : category,
+        ratings
+      )
+    );
 
     if (error) {
       dispatch(clearError());
     }
   }, [dispatch, error, keyword, currentPage, price, category, ratings]);
 
-
-
   useEffect(() => {
     function handleClickOutside(event) {
       if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target)
-      ) {
+        containerRef.current && 
+        !containerRef.current.contains(event.target)) {
         setShowPriceFilter(false);
       }
     }
@@ -79,13 +89,14 @@ const Shop = ({ match }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
   useEffect(() => {
     setPaginationVisible(products.length > 0);
   }, [products]);
-  console.log(products);
 
   return (
     <Fragment>
+      <Meta title="Shop" />
       {loading ? (
         <Loader />
       ) : (
@@ -100,20 +111,11 @@ const Shop = ({ match }) => {
               }}
               onClick={() => setShowPriceFilter(!showPriceFilter)}
             >
-              {showPriceFilter ? "Hide Price Filter" : "Show Price Filter"}
+              {showPriceFilter ? "Hide Filter" : "Show Filter"}
             </button>
-            <p className="title">Shop</p>
-            {/* <div className="bar"></div> */}
-            {/* <Row products={products}  loading={loading} error={error} /> */}
-
-            {/* <div className="products-main-container">
-              <div className="products-container">
-                {products &&
-                  products.map((product) => {
-                    return <ProductCard key={product._id} product={product} />;
-                  })}
-              </div>
-            </div> */}
+            <Typography variant="h3" className="typoH" align="center">
+              Shop From Different Categories
+            </Typography>
 
             <div className="products-main-container">
               <div className="products-container">
@@ -131,8 +133,7 @@ const Shop = ({ match }) => {
             </div>
 
             {showPriceFilter && (
-              <div ref={containerRef} className="price-filter-container ">
-                {/* Price Filter */}
+              <div ref={containerRef} className="price-filter-container">
                 <Typography className="price-header">Price</Typography>
                 <Slider
                   className="main-slider"
@@ -144,37 +145,43 @@ const Shop = ({ match }) => {
                   max={30000}
                 />
 
-                {/* category filter */}
-
                 <Typography className="category-header">Categories</Typography>
                 <ul className="categoryBox">
-                  {categories.map((category) => (
+                  {categories.map((categoryItem) => (
                     <li
                       className="category-link"
-                      key={category}
-                      onClick={() => setCategory(category)}
+                      key={categoryItem}
+                      onClick={() => handleCategoryChange(categoryItem)}
                     >
-                      {category}
+                      {categoryItem}
                     </li>
                   ))}
                 </ul>
 
-
-                {/* Ratings Filter */}
                 <div className="rating-filter">
                   <Typography component="legend" className="rating-header">
                     Ratings
                   </Typography>
                   <Slider
-                    className="rating-slider"
-                    value={ratings}
-                    onChange={(e, newRating) => {
-                      setRatings(newRating);
-                    }}
-                    aria-labelledby="continuous-slider"
-                    valueLabelDisplay="auto"
-                    min={0}
-                    max={5}
+                   className="rating-slider"
+                   value={ratings}
+                   onChange={(e, newRating) => {
+                     setRatings(newRating);
+                     dispatch(
+                       getProducts(
+                         keyword,
+                         currentPage,
+                         price,
+                         "",
+                         category === "All" ? "" : category,
+                         newRating
+                       )
+                     );
+                   }}
+                   aria-labelledby="continuous-slider"
+                   valueLabelDisplay="auto"
+                   min={0}
+                   max={5}
                   />
                 </div>
               </div>
@@ -183,6 +190,8 @@ const Shop = ({ match }) => {
             {paginationVisible && (
               <div className="paginationBox">
                 <ProductPagination
+                  resultPerPage={resultPerPage}
+                  productsCount={productCount}
                   totalPages={totalPages}
                   currentPage={currentPage}
                   onPageChange={handlePageChange}

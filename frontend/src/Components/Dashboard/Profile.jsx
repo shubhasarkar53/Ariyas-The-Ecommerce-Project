@@ -21,6 +21,9 @@ import EditIcon from "@mui/icons-material/Edit";
 import Tooltip from "@mui/material/Tooltip";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { clearCart } from "../../Redux/Actions/cartAction.js";
+import Meta from "../../Meta.jsx"
+import { Typography } from "@mui/material";
 
 const Profile = () => {
   const [loadingDelay, setLoadingDelay] = useState(false);
@@ -119,6 +122,7 @@ const Profile = () => {
   }
   function managelogOut() {
     dispatch(logOut());
+    // dispatch(clearCart());
     // console.log("logged out");
     // console.log("loggedout");
   }
@@ -132,9 +136,12 @@ const Profile = () => {
         <Loader />
       ) : (
         <>
+          <Meta title={`My Profile - ${user?.name}`} />
           <div className="profile-container">
             <div className="profile-title">
-              <h2>My Profile</h2>
+            <Typography variant="h3" className="typoH" align="center">
+              My Profile
+            </Typography>
             </div>
             <div className="profile-det-container">
               <ToastContainer />

@@ -7,7 +7,7 @@ import { submitContactForm } from '../../Redux/Actions/contactAction';
 import { ToastContainer, toast } from 'react-toastify';
 import sendingMessage from '../../assets/Gifs/giphy.gif';
 import Loader from './../Loader/Loader';
-
+import Meta from "../../Meta";
 import axios from 'axios';
 
 const Contact = () => {
@@ -139,11 +139,13 @@ const Contact = () => {
 
   return (
     <>
+    <Meta title="Contact Us" />
       <ToastContainer />
       {loading ? (
         <Loader />
       ) : (
         <>
+          
           {showContactAnimation && (
             <div className="contact-animation">
               <div className="contact-animation">

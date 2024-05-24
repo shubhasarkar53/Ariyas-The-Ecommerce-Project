@@ -21,6 +21,19 @@ header {
     -webkit-justify-content: space-between;
     justify-content: space-between;
     margin: 0 auto;
+    transform: translateY(20px);
+    animation: fadeInUp 1.5s ease-out forwards;
+  
+  @keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
   }
 
   .left-nav {

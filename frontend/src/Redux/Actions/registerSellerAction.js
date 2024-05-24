@@ -1,17 +1,28 @@
-import { UPLOAD_DOCUMENT_SUCCESS, SUBMIT_FORM_DATA, UPDATE_FORM_DATA } from "../Constants/registerSellerConstants";
+import axios from 'axios';
+import { REGISTER_SELLER_FAIL, REGISTER_SELLER_REQUEST, REGISTER_SELLER_SUCCESS } from '../Constants/registerSellerConstants';
 
-export const updateFormData = (formData) => ({
-  type: UPDATE_FORM_DATA,
-  payload: formData,
-});
+export const registerSeller = (formData) => async (dispatch) => {
+    try {
+        dispatch({ type: REGISTER_SELLER_REQUEST });
 
-export const uploadDocumentSuccess = (documentUrl) => ({
-  type: UPLOAD_DOCUMENT_SUCCESS,
-  payload: documentUrl,
-});
+        const config = {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        };
 
-export const submitFormData = (formData) => ({
-  type: SUBMIT_FORM_DATA,
-  payload: formData,
-});
+        const { data } = await axios.post('/api/v1/register-seller', formData, config);
 
+        dispatch({
+            type: REGISTER_SELLER_SUCCESS,
+            payload: data
+        });
+    } catch (error) {
+        dispatch({
+            type: REGISTER_SELLER_FAIL,
+            payload: error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+        });
+    }
+};

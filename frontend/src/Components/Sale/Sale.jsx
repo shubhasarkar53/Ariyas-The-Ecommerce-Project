@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../Loader/Loader';
 import { FaGifts } from "react-icons/fa6";
 import { Link, useHistory } from 'react-router-dom';
+import Meta from "../../Meta";
 
 const Sale = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const Sale = () => {
           <div>{error}</div>
         ) : (
           <>
+            <Meta title="Sale" />
             <div className="sale-container">
               <h1 className="sale-h1">Sale</h1>
               <SaleCards products={products} isButtonClicked={isButtonClicked} onButtonClick={handleButtonClick} />

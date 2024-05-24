@@ -1,10 +1,15 @@
 const express = require("express");
-const { registerUser, loginUser, logoutUser, forgotPassword, resetPassword, getAllUser, getUserDetails, updateUserPassword, updateUserDetails, updateUserRole, deleteUser, sendBecomeSellerMessage, contactUsMessage } = require("../controllers/userController");
+const { registerUser, loginUser, logoutUser, forgotPassword, resetPassword, getAllUser, getUserDetails, updateUserPassword, updateUserDetails, updateUserRole, deleteUser, sendBecomeSellerMessage, contactUsMessage, verifyEmailOTP } = require("../controllers/userController");
 const { isAuthenticated, authRole } = require("../middleWares/auth");
+// const { registerSeller } = require("../controllers/sellerController");
+// const { upload } = require("../middleWares/multer");
+const { registerSeller } = require("../controllers/sellerController");
 const router = express.Router();
 
 // Register new user
 router.route("/register/new").post(registerUser);
+//verify user email
+router.route("/verify-email").post(verifyEmailOTP);
 // // login user
 router.route("/login").post(loginUser);
 // // logout user
@@ -28,7 +33,9 @@ router.route("/admin/update/role/:id").put(isAuthenticated,authRole("admin"),upd
 // delete user/seller
 router.route("/admin/user/delete/:id").delete(isAuthenticated,authRole("admin"),deleteUser);
 // Become a Seller request
-router.route("/user/becomeSeller").post(isAuthenticated,sendBecomeSellerMessage);
+// router.route("/user/becomeSeller").post(isAuthenticated,sendBecomeSellerMessage);
+// seller register 
+router.route("/register-seller").post(isAuthenticated,registerSeller);
 // Contact us message request
 router.route("/user/contactUs").post(contactUsMessage);
 

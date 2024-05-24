@@ -4,17 +4,24 @@ import React, { useState, useEffect } from "react";
 import "./Login.scss";
 import subLoginImg from "../../assets/Images/Login-Signup-page/rightLogin.png";
 import { useDispatch, useSelector } from "react-redux";
-import { userLogin, clearError } from "../../Redux/Actions/userAction";
+import { userLogin, clearError, clearPopupMessage } from "../../Redux/Actions/userAction";
 import Loader from "../Loader/Loader";
 import PropTypes from 'prop-types';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { Link } from "react-router-dom";
+import Meta from "../../Meta";
 const Login = ({ history, location }) => {
   const dispatch = useDispatch();
   const { loading, isAuthenticated, error, token } = useSelector(
     (state) => state.user
   );
+  const { pwdReset,message} = useSelector(
+    (state) => state.forgotPassword
+  );
+
+
+ 
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
@@ -46,10 +53,28 @@ const Login = ({ history, location }) => {
     if (isAuthenticated) {
       history.push(redirect);
     }
-  }, [dispatch, error, history, isAuthenticated,redirect]);
+
+
+    if(message){
+      toast.success(message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light"
+        });
+
+        dispatch(clearPopupMessage());
+    }
+
+  }, [dispatch, error, history, isAuthenticated,redirect,pwdReset]);
 
   return (
     <>
+      <Meta title="Login | Ariyas | Artisans Portal" />
       {loading ? (
         <Loader />
       ) : (
@@ -91,6 +116,9 @@ const Login = ({ history, location }) => {
                   </button>
                 </div>
               </form>
+              <div className="forgotContainer">
+                <Link to={"/password/forgot"}>Forgot Password?</Link>
+              </div>
             </div>
           </div>
           <div className="pic-login">

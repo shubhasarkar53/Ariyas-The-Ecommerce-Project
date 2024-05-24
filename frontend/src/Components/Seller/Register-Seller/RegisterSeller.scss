@@ -1,703 +1,77 @@
 .register-seller-container {
-  width: 100vmax;
-  height: fit-content;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-  .reg-img-mail-section {
-    margin: 2rem 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.register-seller-title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
 
-    .extra-container {
-      display: flex;
-      padding: 1rem 1rem;
-      width: 70%;
-      border-radius: 12px;
-      margin: 1rem 0;
-      box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
-        6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-        12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
-        22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
-        41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
-        100px 100px 80px rgba(0, 0, 0, 0.07);
-      transition: all 0.3s ease-in-out;
+.loading,
+.error,
+.success {
+  text-align: center;
+  margin-bottom: 15px;
+}
 
-      &:hover {
-        background-color: rgba(53, 52, 52, 0.103);
-      }
+.error {
+  color: red;
+}
 
-      img {
-        width: 70px;
-        height: 70px;
-        margin-right: 1rem;
-        border-radius: 50%;
-        box-shadow: 2px 1px 1.5px -0.5px rgba(128, 128, 128, 0.148),
-          3px 2px 9.5px -0.3px rgba(128, 128, 128, 0.234),
-          1px 5px 3.5px -0.4px rgba(128, 128, 128, 0.129),
-          6px 7px 4.5px -0.1px rgba(128, 128, 128, 0.089);
-      }
+.success {
+  color: green;
+}
 
-      p {
-        display: flex;
-        align-items: center;
-      }
-    }
+.register-seller-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-input {
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.form-button {
+  padding: 12px 20px;
+  font-size: 1.2em;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .register-seller-container {
+    padding: 10px;
   }
 
-  .seller-profile-form {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    height: fit-content;
-
-    .pradeep-side {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      img {
-        width: 200px;
-        height: 200px;
-      }
-    }
-
-    .seller-form {
-      box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
-        6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-        12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
-        22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
-        41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
-        100px 100px 80px rgba(0, 0, 0, 0.07);
-      text-align: start;
-      width: 100%;
-      padding-left: 1rem;
-      margin-left: 2rem;
-      margin-right: 2rem;
-      padding: 1rem 2rem;
-      margin-bottom: 2rem;
-
-      h2 {
-        margin-top: 1rem;
-      }
-
-      .shop-det-date {
-        margin-top: 2rem;
-        display: flex;
-        justify-content: space-between;
-
-        .shop-name {
-          display: flex;
-          flex: 1;
-          flex-direction: column;
-
-          label {
-            margin-bottom: 0.5rem;
-            padding-left: 0.5rem;
-            font-size: 0.9rem;
-          }
-
-          input {
-            width: 80%;
-            font-size: 0.9rem;
-            padding: 0.5rem 0.7rem;
-            border-radius: 10px;
-            background: rgba(207, 207, 207, 0.4);
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-          }
-        }
-
-        .dob {
-          display: flex;
-          flex: 1;
-          flex-direction: column;
-
-          label {
-            margin-bottom: 0.5rem;
-            padding-left: 0.5rem;
-            font-size: 0.9rem;
-          }
-
-          input {
-            width: 60%;
-            font-size: 0.9rem;
-            padding: 0.5rem 0.7rem;
-            border-radius: 10px;
-            background: rgba(207, 207, 207, 0.4);
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-          }
-        }
-      }
-
-      .form-reg-name {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        margin-top: 2rem;
-
-        #first-name,
-        #middle-name,
-        #last-name {
-          width: 100%;
-
-          input {
-            width: 100%;
-            padding: 0.5rem 0.7rem;
-            border-radius: 10px;
-            background: rgba(207, 207, 207, 0.4);
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-            font-size: 0.9rem;
-          }
-
-          label {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 0.5rem;
-            padding-left: 0.5rem;
-            font-size: 0.9rem;
-          }
-        }
-
-        #first-name {
-          padding-right: 1rem;
-        }
-
-        #middle-name {
-          padding-right: 1rem;
-        }
-      }
-
-      .form-phone {
-        width: 100%;
-        margin-top: 2rem;
-        display: flex;
-        flex-direction: column;
-
-        label {
-          margin-left: 0.3rem;
-          margin-bottom: 0.5rem;
-          font-size: 0.9rem;
-        }
-
-        .phone-section {
-          display: flex;
-          justify-content: flex-start;
-          gap: 1.5rem;
-        }
-
-        .phone-sect-1 {
-          display: flex;
-          align-items: center;
-
-          .input-dropdown {
-            .dropdown-options {
-              padding: 0.5rem 0.2rem;
-              font-size: 0.8rem;
-              border: none;
-            }
-          }
-
-          input {
-            padding: 0.5rem 0.7rem;
-            border-radius: 10px;
-            background: rgba(207, 207, 207, 0.4);
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-            font-size: 0.9rem;
-          }
-
-          button {
-            padding: 0.5rem 0.7rem;
-            margin-left: 0.5rem;
-            background-color: transparent;
-            box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.066),
-              4px 5px 2px 2px rgba(0, 0, 0, 0.079);
-            border-radius: 0.5rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.4s ease-in-out;
-
-            &:hover {
-              background-color: orange;
-              color: white;
-            }
-          }
-        }
-
-        .phone-sect-2 {
-          display: flex;
-          // margin-left: 7rem;
-
-          input {
-            padding: 0.5rem 0.7rem;
-            border-radius: 10px;
-            background: rgba(207, 207, 207, 0.4);
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-            font-size: 0.9rem;
-          }
-
-          .btn-verify {
-            button {
-              padding: 0.5rem 0.7rem;
-              margin-left: 1rem;
-              background-color: transparent;
-              box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.066),
-                4px 5px 2px 2px rgba(0, 0, 0, 0.079);
-              border-radius: 0.5rem;
-              border: none;
-              cursor: pointer;
-              transition: all 0.4s ease-in-out;
-
-              &:hover {
-                background-color: orange;
-                color: white;
-              }
-            }
-          }
-        }
-      }
-
-      .form-email {
-        display: flex;
-        flex-direction: column;
-        margin-top: 2rem;
-        width: 100%;
-
-        label {
-          margin-left: 0.3rem;
-          margin-bottom: 0.5rem;
-          font-size: 0.9rem;
-        }
-
-        .email-section {
-          display: flex;
-          justify-content: flex-start;
-          gap: 2rem;
-
-          .email-sect-1 {
-            display: flex;
-            input {
-              padding: 0.5rem 0.7rem;
-              border-radius: 10px;
-              background: rgba(207, 207, 207, 0.4);
-              box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-              font-size: 0.9rem;
-            }
-
-            button {
-              padding: 0.5rem 0.7rem;
-              margin-left: 1rem;
-              background-color: transparent;
-              box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.066),
-                4px 5px 2px 2px rgba(0, 0, 0, 0.079);
-              border-radius: 0.5rem;
-              border: none;
-              cursor: pointer;
-              transition: all 0.4s ease-in-out;
-
-              &:hover {
-                background-color: orange;
-                color: white;
-              }
-            }
-          }
-
-          .email-sect-2 {
-            display: flex;
-            input {
-              padding: 0.5rem 0.7rem;
-              border-radius: 10px;
-              background: rgba(207, 207, 207, 0.4);
-              box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-              font-size: 0.9rem;
-            }
-
-            button {
-              padding: 0.5rem 0.7rem;
-              margin-left: 1rem;
-              background-color: transparent;
-              box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.066),
-                4px 5px 2px 2px rgba(0, 0, 0, 0.079);
-              border-radius: 0.5rem;
-              border: none;
-              cursor: pointer;
-              transition: all 0.4s ease-in-out;
-
-              &:hover {
-                background-color: orange;
-                color: white;
-              }
-            }
-          }
-        }
-      }
-
-      .form-aadhar {
-        display: flex;
-        margin-top: 2rem;
-        width: 100%;
-
-        .aadhar-section {
-          display: flex;
-          justify-content: flex-start;
-
-          .aadhar-sect-1 {
-            display: flex;
-            flex-direction: column;
-
-            label {
-              margin-left: 0.3rem;
-              margin-bottom: 0.5rem;
-              font-size: 0.9rem;
-            }
-
-            input {
-              padding: 0.5rem 0.7rem;
-              border-radius: 10px;
-              background: rgba(207, 207, 207, 0.4);
-              box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-              font-size: 0.9rem;
-            }
-          }
-
-          .aadhar-sect-2 {
-            label {
-              margin-left: 0.3rem;
-              margin-bottom: 0.5rem;
-              font-size: 0.9rem;
-            }
-
-            margin-left: 5rem;
-            display: flex;
-            flex-direction: column;
-
-            button {
-              width: fit-content;
-              padding: 0.5rem 0.7rem;
-              margin-left: 1rem;
-              background-color: transparent;
-              box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.066),
-                4px 5px 2px 2px rgba(0, 0, 0, 0.079);
-              border-radius: 0.5rem;
-              border: none;
-              cursor: pointer;
-              transition: all 0.4s ease-in-out;
-
-              &:hover {
-                background-color: orange;
-                color: white;
-              }
-            }
-          }
-        }
-      }
-
-      .form-pan {
-        display: flex;
-        width: 100%;
-        margin-top: 2rem;
-
-        .pan-section {
-          display: flex;
-          justify-content: flex-start;
-
-          .pan-sect-1 {
-            label {
-              margin-left: 0.3rem;
-              margin-bottom: 0.5rem;
-              font-size: 0.9rem;
-            }
-
-            display: flex;
-            flex-direction: column;
-
-            input {
-              padding: 0.5rem 0.7rem;
-              border-radius: 10px;
-              background: rgba(207, 207, 207, 0.4);
-              box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-              font-size: 0.9rem;
-            }
-          }
-
-          .pan-sect-2 {
-            display: flex;
-            flex-direction: column;
-            margin-left: 6rem;
-
-            label {
-              margin-left: 0.3rem;
-              margin-bottom: 0.5rem;
-              font-size: 0.9rem;
-            }
-
-            .input-pan {
-              display: flex;
-
-              input {
-                padding: 0.5rem 0.7rem;
-                border-radius: 10px;
-                background: rgba(207, 207, 207, 0.4);
-                box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-                font-size: 0.9rem;
-              }
-
-              button {
-                width: fit-content;
-                padding: 0.5rem 0.7rem;
-                margin-left: 1rem;
-                background-color: transparent;
-                box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.066),
-                  4px 5px 2px 2px rgba(0, 0, 0, 0.079);
-                border-radius: 0.5rem;
-                border: none;
-                cursor: pointer;
-                transition: all 0.4s ease-in-out;
-
-                &:hover {
-                  background-color: orange;
-                  color: white;
-                }
-              }
-            }
-          }
-        }
-      }
-
-      .form-commercial-address {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-
-        label {
-          margin-left: 0.3rem;
-          margin-bottom: 0.5rem;
-          font-size: 0.9rem;
-        }
-
-        margin-top: 2rem;
-
-        .commercial-section {
-          margin-right: 10rem;
-          display: flex;
-          justify-content: space-between;
-          flex-direction: column;
-          width: 70%;
-
-          .comm-sect-1,
-          .comm-sect-2,
-          .comm-sect-3 {
-            display: flex;
-            flex-direction: column;
-
-            label {
-              margin-left: 0.3rem;
-              margin-bottom: 0.5rem;
-              font-size: 0.9rem;
-            }
-
-            input {
-              padding: 0.5rem 0.7rem;
-              border-radius: 10px;
-              background: rgba(207, 207, 207, 0.4);
-              box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-              font-size: 0.9rem;
-              width: 100%;
-              margin-bottom: 1rem;
-            }
-          }
-        }
-
-        .address-section {
-          margin-top: 2rem;
-          display: flex;
-          flex-direction: column;
-
-          .address-sect-1,
-          .address-sect-2,
-          .address-sect-3 {
-            display: flex;
-            flex-direction: column;
-
-            label {
-              margin-left: 0.3rem;
-              margin-bottom: 0.5rem;
-              font-size: 0.9rem;
-            }
-
-            input {
-              width: 70%;
-              padding: 0.5rem 0.7rem;
-              border-radius: 10px;
-              background: rgba(207, 207, 207, 0.4);
-              box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-              font-size: 0.9rem;
-            }
-          }
-
-          .address-sect-2,
-          .address-sect-3 {
-            margin-top: 1rem;
-          }
-
-          .address-sect-4 {
-            display: flex;
-            margin-top: 1rem;
-
-            .location-details {
-              display: flex;
-              flex-direction: column;
-
-              label {
-                margin-left: 0.3rem;
-                margin-bottom: 0.5rem;
-                font-size: 0.9rem;
-              }
-
-              input {
-                padding: 0.5rem 0.7rem;
-                border-radius: 10px;
-                background: rgba(207, 207, 207, 0.4);
-                box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-                font-size: 0.9rem;
-              }
-            }
-
-            .choose-state {
-              display: flex;
-              flex-direction: column;
-              margin-left: 9rem;
-
-              label {
-                margin-left: 0.3rem;
-                margin-bottom: 0.5rem;
-                font-size: 0.9rem;
-              }
-
-              select {
-                padding: 0.3rem 0.4rem;
-                background: rgba(207, 207, 207, 0.4);
-                border-radius: 0.4rem;
-              }
-            }
-          }
-
-          .address-sect-5 {
-            margin-top: 2rem;
-            display: flex;
-            flex-direction: column;
-
-            label {
-              margin-left: 0.3rem;
-              margin-bottom: 0.5rem;
-              letter-spacing: 0.1rem;
-              font-size: 0.9rem;
-            }
-
-            button {
-              margin-top: 0.7rem;
-              margin-left: 1.5rem;
-              width: fit-content;
-              padding: 0.5rem 0.7rem;
-              background-color: transparent;
-              box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.066),
-                4px 5px 2px 2px rgba(0, 0, 0, 0.079);
-              border-radius: 0.5rem;
-              border: none;
-              cursor: pointer;
-              transition: all 0.4s ease-in-out;
-
-              &:hover {
-                background-color: orange;
-                color: white;
-              }
-            }
-          }
-        }
-      }
-
-      .form-upload-account-details {
-        margin-top: 2rem;
-        display: flex;
-        flex-direction: column;
-
-        p {
-          text-align: center;
-          letter-spacing: 0.1rem;
-        }
-
-        .btn-account-upload {
-          display: flex;
-          justify-content: center;
-
-          button {
-            margin-top: 1rem;
-            width: fit-content;
-            padding: 0.5rem 0.7rem;
-            background-color: transparent;
-            box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.066),
-              4px 5px 2px 2px rgba(0, 0, 0, 0.079);
-            border-radius: 0.5rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.4s ease-in-out;
-
-            &:hover {
-              background-color: orange;
-              color: white;
-            }
-          }
-        }
-      }
-
-      .form-gst {
-        margin-top: 2rem;
-        display: flex;
-        flex-direction: column;
-        label {
-          margin-left: 0.3rem;
-          margin-bottom: 0.5rem;
-          font-size: 0.9rem;
-        }
-        button {
-          width: fit-content;
-          padding: 0.5rem 0.7rem;
-          margin-left: 1rem;
-          background-color: transparent;
-          box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.066),
-            4px 5px 2px 2px rgba(0, 0, 0, 0.079);
-          border-radius: 0.5rem;
-          border: none;
-          cursor: pointer;
-          transition: all 0.4s ease-in-out;
-          &:hover {
-            background-color: orange;
-            color: white;
-          }
-        }
-      }
-
-      .btn-submit-div {
-        display: flex;
-        justify-content: flex-end;
-        margin-right: 1rem;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        .submit-btn {
-          width: fit-content;
-          padding: 0.5rem 0.7rem;
-          margin-left: 1rem;
-          background-color: transparent;
-          box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.066),
-            4px 5px 2px 2px rgba(0, 0, 0, 0.079);
-          border-radius: 0.5rem;
-          border: none;
-          cursor: pointer;
-          transition: all 0.4s ease-in-out;
-
-          &:hover {
-            background-color: orange;
-            color: white;
-          }
-        }
-      }
-    }
+  .form-input {
+    font-size: 0.9em;
+  }
+
+  .form-button {
+    font-size: 1em;
   }
 }

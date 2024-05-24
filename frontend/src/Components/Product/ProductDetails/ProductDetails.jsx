@@ -3,15 +3,11 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  clearError,
-  getProductDetails,
-  newReview,
-} from "../../../Redux/Actions/productAction";
+import { clearError, getProductDetails, newReview } from "../../../Redux/Actions/productAction";
 import Cod from "../../../assets/Images/Icons/cod.png";
 import Fast from "../../../assets/Images/Icons/fast.png";
 import Secure from "../../../assets/Images/Icons/secure.png";
-import Share from "../../../assets/Images/Icons/share.png";
+import ShareIcon from "../../../assets/Images/Icons/share.png";
 import Wish from "../../../assets/Images/Icons/profile icons/wishlist.png";
 import PropTypes from "prop-types";
 import { Rating } from "@mui/material";
@@ -22,49 +18,33 @@ import { addItemsToCart } from "../../../Redux/Actions/cartAction";
 import { addItemsToWishList } from "../../../Redux/Actions/wishListAction";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {
-  Box,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  IconButton,
-  TextField,
-} from "@mui/material";
-import {
-  NEW_REVIEW_RESET,
-} from "../../../Redux/Constants/productConstants";
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, IconButton } from "@mui/material";
+import { NEW_REVIEW_RESET } from "../../../Redux/Constants/productConstants";
 import axios from "axios";
-
-// import ProductShare from './Share'
+import Meta from "../../../Meta";
+import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const ProductDetails = ({ match, history }) => {
   const dispatch = useDispatch();
 
-  //define states
-  const [itemCount, setItemCount] = React.useState(1);
-  const [quantity, setQuantity] = React.useState(1);
-  const [rating, setRating] = React.useState(0);
-  const [comment, setComment] = React.useState("");
-  const [open, setOpen] = React.useState(false);
+  // Define states
+  const [quantity, setQuantity] = useState(1);
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState("");
+  const [open, setOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const [shareVisible, setShareVisible] = useState(false);
 
   // Get the product details from Redux
-  const { product, error, loading } = useSelector(
-    (state) => state.productDetails
-  );
-
-
+  const { product, error, loading } = useSelector((state) => state.productDetails);
   const seller = product.user;
-
-
-  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`/api/v1/me/${seller}`); // Assuming your API endpoint for fetching user data
-        setUser(response.data); // Assuming response.data contains user information
+        const response = await axios.get(`/api/v1/me/${seller}`);
+        setUser(response.data);
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -74,19 +54,8 @@ const ProductDetails = ({ match, history }) => {
   }, [seller]);
 
   // Get the review details from Redux
-  const {
-    error: reviewError,
-    success,
-  } = useSelector((state) => state.createReview);
+  const { error: reviewError, success } = useSelector((state) => state.createReview);
 
-
-  // if (loading) {
-  //   console.log("loading");
-  // } else {
-  //   console.log("product:", product);
-  // }
-
-  // pre defined options for rating
   const options = {
     size: "large",
     value: product ? product.ratings : 0,
@@ -94,7 +63,6 @@ const ProductDetails = ({ match, history }) => {
     precision: 0.5,
   };
 
-  // increase quantity functions
   const increaseQuantity = () => {
     if (product.stock <= quantity) {
       toast.error("Cannot add more items. Insufficient stock.", {
@@ -109,11 +77,9 @@ const ProductDetails = ({ match, history }) => {
       return;
     }
 
-    const qty = quantity + 1;
-    setQuantity(qty);
+    setQuantity(quantity + 1);
   };
 
-  // decrease quantity functions
   const decreaseQuantity = () => {
     if (1 >= quantity) {
       toast.error("Minimum quantity reached. Cannot decrease further.", {
@@ -129,29 +95,23 @@ const ProductDetails = ({ match, history }) => {
       return;
     }
 
-    const qty = quantity - 1;
-    setQuantity(qty);
+    setQuantity(quantity - 1);
   };
 
-  // add to cart func
   const addToCartHandler = () => {
     if (!product.name || !quantity) return;
     dispatch(addItemsToCart(match.params.id, quantity));
-    toast.success(
-      `${quantity} ${quantity > 1 ? "items" : "item"} added to cart`,
-      {
-        position: "bottom-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      }
-    );
+    toast.success(`${quantity} ${quantity > 1 ? "items" : "item"} added to cart`, {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   };
-
 
   const handleOpen = () => {
     setOpen(true);
@@ -161,7 +121,6 @@ const ProductDetails = ({ match, history }) => {
     setOpen(false);
   };
 
-  // submit review function
   const handleSubmit = () => {
     const myForm = new FormData();
     myForm.set("rating", rating);
@@ -171,7 +130,6 @@ const ProductDetails = ({ match, history }) => {
     setOpen(false);
   };
 
-  // add to wishlist func
   const addToWishListHandler = () => {
     if (!product.name) return;
     dispatch(addItemsToWishList(match.params.id));
@@ -187,23 +145,19 @@ const ProductDetails = ({ match, history }) => {
     });
   };
 
-  //buy now function
   const buyNowHandler = () => {
     if (!product.name || !quantity) return;
     dispatch(addItemsToCart(match.params.id, quantity));
-    toast.success(
-      `${quantity} ${quantity > 1 ? "items" : "item"} added to cart`,
-      {
-        position: "bottom-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      }
-    );
+    toast.success(`${quantity} ${quantity > 1 ? "items" : "item"} added to cart`, {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
     history.push("/cart");
   };
 
@@ -252,40 +206,60 @@ const ProductDetails = ({ match, history }) => {
     dispatch(getProductDetails(match.params.id));
   }, [dispatch, match.params.id, error, reviewError, success]);
 
+  const productUrl = `${window.location.origin}/product/${match.params.id}`;
+  const productDetails = `Check out this product: ${product.name}\nPrice: ${product.price}\nURL: ${productUrl}`;
+
   return (
     <Fragment>
       {loading ? (
         <Loader />
       ) : (
         <Fragment>
-          {/*start page wrapper section */}
+          <Meta title={`${product.name} -- Ariyas`} />
           <div className="ProductDetailsContainer">
-            {/* start of top div section */}
             <div className="top-div">
               <div className="left-div">
                 <Carousel autoPlay interval={3000}>
-                  {product &&
-                    product.image &&
-                    product.image.map((item, i) => (
-                      <img key={item.url} src={item.url} alt={`${i} Slide`} />
-                    ))}
+                  {product && product.image && product.image.map((item, i) => (
+                    <img key={item.url} src={item.url} alt={`${i} Slide`} />
+                  ))}
                 </Carousel>
               </div>
 
               <div className="right-div">
                 <div className="name">
-                  <h1 id="product_name"> {product.name}</h1>
-                  <img src={Share} alt="" />
-                  {/* <ProductShare/> */}
+                  <h1 id="product_name"> {product.name}({product.location})</h1>
+                  <div
+                    className="share-container"
+                    onMouseEnter={() => setShareVisible(true)}
+                    onMouseLeave={() => setShareVisible(false)}
+                    onClick={() => setShareVisible(!shareVisible)}
+                  >
+                    <img src={ShareIcon} alt="Share" className="share-icon" />
+                    {shareVisible && (
+                      <div className="share-buttons">
+                        <FacebookShareButton url={productUrl} quote={productDetails}>
+                          <FacebookIcon size={32} round />
+                        </FacebookShareButton>
+                        <TwitterShareButton url={productUrl} title={productDetails}>
+                          <TwitterIcon size={32} round />
+                        </TwitterShareButton>
+                        <WhatsappShareButton url={productUrl} title={productDetails}>
+                          <WhatsappIcon size={32} round />
+                        </WhatsappShareButton>
+                        <CopyToClipboard text={productDetails}>
+                          <IconButton onClick={() => toast.success("Product details copied to clipboard!")}>
+                            <img src={ShareIcon} alt="Copy to clipboard" />
+                          </IconButton>
+                        </CopyToClipboard>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 <div className="ratings">
                   <Rating {...options} />
-                  <span className="detailsBlock-2-span">
-                    {" "}
-                    ({product.numOfReviews}{" "}
-                    {product.numOfReviews > 1 ? "Reviews" : "Review"})
-                  </span>
+                  <span className="detailsBlock-2-span"> ({product.numOfReviews} {product.numOfReviews > 1 ? "Reviews" : "Review"})</span>
                 </div>
 
                 <div className="price">
@@ -298,21 +272,8 @@ const ProductDetails = ({ match, history }) => {
                 </div>
 
                 <div className="buttondiv">
-                  <button
-                    disabled={product.countInStock < 1 ? true : false}
-                    className="buynow"
-                    onClick={buyNowHandler}
-                  >
-                    Buy Now
-                  </button>
-
-                  <button
-                    disabled={product.countInStock < 1 ? true : false}
-                    className="addtocart"
-                    onClick={addToCartHandler}
-                  >
-                    Add to Cart
-                  </button>
+                  <button disabled={product.countInStock < 1} className="buynow" onClick={buyNowHandler}>Buy Now</button>
+                  <button disabled={product.countInStock < 1} className="addtocart" onClick={addToCartHandler}>Add to Cart</button>
 
                   <div className="horizontal-quantity-wishlist">
                     <div className="quantity">
@@ -320,13 +281,10 @@ const ProductDetails = ({ match, history }) => {
                       <input readOnly type="number" value={quantity} />
                       <button onClick={increaseQuantity}>+</button>
                     </div>
-
                     <div className="wishlist">
                       <img onClick={addToWishListHandler} src={Wish} alt="" />
                     </div>
-
                   </div>
-
                 </div>
 
                 <div className="icons">
@@ -345,13 +303,12 @@ const ProductDetails = ({ match, history }) => {
                 </div>
               </div>
             </div>
-            {/* end of top div section */}
 
-            {/* start of down div section */}
             <div className="downdiv">
               <div className="description">
-                Description:<p> {product.description}</p>
-                Seller:<p>{seller}</p>
+                <p>Description:<span> {product.description}</span></p>
+                <p>Seller:<span>{seller}</span></p>
+                <p>Location:<span>{product.location}</span></p>
               </div>
 
               <div className="reviews">
@@ -359,20 +316,12 @@ const ProductDetails = ({ match, history }) => {
 
                 <div className="createReviewContainer">
                   <Box>
-                    <Button variant="contained" onClick={handleOpen} className="review-button">
-                      Leave a Review
-                    </Button>
+                    <Button variant="contained" onClick={handleOpen} className="review-button">Leave a Review</Button>
                     <Dialog open={open} onClose={handleClose}>
                       <DialogTitle className="reviews-comment">Leave a Review</DialogTitle>
                       <DialogContent>
                         <Box>
-                          <Rating
-                            name="rating"
-                            value={rating}
-                            onChange={(event, newValue) => {
-                              setRating(newValue);
-                            }}
-                          />
+                          <Rating name="rating" value={rating} onChange={(event, newValue) => setRating(newValue)} />
                         </Box>
                         <TextField
                           multiline
@@ -387,13 +336,7 @@ const ProductDetails = ({ match, history }) => {
                       </DialogContent>
                       <DialogActions>
                         <Button onClick={handleClose}>Cancel</Button>
-                        <Button
-                          onClick={handleSubmit}
-                          variant="contained"
-                          color="primary"
-                        >
-                          Submit
-                        </Button>
+                        <Button onClick={handleSubmit} variant="contained" color="primary">Submit</Button>
                       </DialogActions>
                     </Dialog>
                   </Box>
@@ -401,38 +344,21 @@ const ProductDetails = ({ match, history }) => {
 
                 {product.reviews && product.reviews[0] ? (
                   <div className="review">
-                    {product.reviews &&
-                      product.reviews.map((review, index) => (
-                        <ReviewCard key={index} review={review} /> // Add a unique "key" prop to the ReviewCard component
-                      ))}
+                    {product.reviews && product.reviews.map((review, index) => (
+                      <ReviewCard key={index} review={review} />
+                    ))}
                   </div>
                 ) : (
                   <p className="noreview">No Reviews Yet</p>
                 )}
               </div>
             </div>
-            {/* end of down div section */}
           </div>
-          {/*end page wrapper section */}
-
           <ToastContainer />
         </Fragment>
       )}
     </Fragment>
   );
 };
-
-
-// ------------------------------------
-// commented by shubha
-// ------------------------------------
-// ProductDetails.propTypes = {
-//   // getProductDetails: PropTypes.func.isRequired,
-//   // product: PropTypes.object.isRequired,
-//   // history: PropTypes.object.isRequired,
-//   // match: PropTypes.object.isRequired,
-// };
-
-// export default ProductDetails;
 
 export default ProductDetails;

@@ -6,6 +6,19 @@
     font-size: 2rem;
     text-align: center;
     margin-top: 2rem;
+    transform: translateY(20px);
+    animation: fadeInUp 1.5s ease-out forwards;
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
   }
 }
 
@@ -14,6 +27,17 @@
   padding: 2rem;
   border-radius: 5px;
   // box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  animation: slideInFromLeft 2s ease-out;
+  @keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
 }
 
 form {

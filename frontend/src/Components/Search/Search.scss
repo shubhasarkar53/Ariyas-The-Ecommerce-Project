@@ -1,50 +1,40 @@
-$textColor: #212121;
-$textWhite: #fafafa;
-$secondaryTextColor: #4d4d4d;
-$orangeTextColor: #d47f00;
-
-.search-form {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem auto;
-  position: relative;
-
-  .search-input {
-    flex: 1;
-    padding: 1rem;
+.search_topdiv {
+  display: flex; 
+  flex-direction: column;
+  align-items: center; 
+  margin-top: 2rem;
+  margin-bottom: 1rem; 
+.input_container{
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  input[type="text"] {
+    padding: 0.5rem 1rem; 
     border: 1px solid #ccc;
-    border-radius: 10px;
-    margin-right: 1rem;
-    font-size: 1.2rem;
-    width: 70%;
-    transition: border-color 0.3s ease;
+    border-radius: 4px;
+    margin-right: 1rem; 
+    flex: 1;
 
-    &:focus {
-      border: 2px solid orange;
-      outline: none;
-    }
-
-    &::placeholder {
-      color: #b5b5b5;
+    &:placeholder { 
+      color: #999;
     }
   }
 
-  .search-button {
-    padding: 1rem;
-    border: 1px solid $orangeTextColor;
-    border-radius: 10px;
-    background-color: $orangeTextColor;
-    color: #fff;
-    font-size: 16px;
+  button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #ff6600;
+    color: #fff; 
     cursor: pointer;
-    margin-top: 1.5rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
 
     &:hover {
-      background-color: orange;
-      border: 1px solid orange;
+      background-color: #cc5500;
     }
   }
 }
+
+  .search-res{
+    display: flex;
+  }
+}
+

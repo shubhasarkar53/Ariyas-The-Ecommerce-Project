@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 
@@ -18,6 +17,8 @@ import "./IncomingOrders.scss";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import { UPDATE_INCOMING_ORDER_STATUS_REQUEST, UPDATE_INCOMING_ORDER_STATUS_RESET } from "../../../Redux/Constants/incomingOrdersConstants";
+import Meta from "../../../Meta";
+import { Typography } from "@mui/material";
 const IncomingOrders = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -121,6 +122,7 @@ const IncomingOrders = () => {
 
   return (
     <>
+      <Meta title="Incoming Orders" />
       {loading ? (
         <DotLoader />
       ) : (
@@ -128,7 +130,9 @@ const IncomingOrders = () => {
           <div className="profile-container">
             <ToastContainer />
             <div className="profile-title">
-              <h2>Incoming Orders</h2>
+              <Typography variant="h4" className="typoH" align="center">
+                Incoming Orders
+              </Typography>
             </div>
             <div className="profile-det-container">
               {/* Left side of the profile */}

@@ -46,21 +46,24 @@ import MyOrders from "./Components/Order/MyOrders.jsx";
 import ViewOrderDetails from "./Components/Order/ViewOrderDetails.jsx";
 import TermsConditions from "./Components/About/TermsConditions.jsx";
 import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
-// import Location from "./Components/Location/Location.jsx";
-import ConfirmSeller from "./Components/Seller/Register-Seller/Confirm-Seller/ConfirmSeller.jsx";
-import ConfirmationPage from "./Components/Seller/Register-Seller/Confirm-Seller/ConfirmationPage.jsx";
+import ForgotPassword from "./Components/User/ForgotPassword.jsx";
+import ResetPassword from "./Components/User/ResetPassword.jsx";
+// import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
+import Location from "./Components/Location/Location.jsx";
+
+import ConfirmEmailScreen from "./Components/User/ConfirmEmailScreen.jsx";
+// import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
+import ScrollToTop from "./ScrollToTop.js";
+// import { useLocation } from "react-router-dom";
 const App = () => {
-  const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
-    // if(!isAuthenticated){
-    //   store.dispatch(loadUser())
-    // }
     store.dispatch(loadUser());
-  }, []); //assumtion:in future there may be problem beacuse of no dependency in the array but curretly ok.
+  }, []);
 
   return (
     <>
       <BrowserRouter>
+        <ScrollToTop />
         <div className="wrapper">
           <section className="header-part">
             <Header />
@@ -76,9 +79,13 @@ const App = () => {
                 path="/products/:keyword"
                 render={(props) => <Shop {...props} />}
               />
+              {/* <Route
+                path="/products/:location"
+                render={(props) => <Shop {...props} />}
+              /> */}
+
               {/* <Route path="/products/:keyword" component={Shop} /> */}
-              <Route path="/products/:keyword" component={Shop} />
-              <Route path="/products/:location" component={Shop} />
+
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/wishlist" component={WishList} />
               <Route exact path="/about" component={About} />
@@ -87,14 +94,14 @@ const App = () => {
 
               <Route exact path="/login" component={Login} />
               <Route exact path="/register/new" component={Register} />
+              <Route
+                exact
+                path="/confirm-email"
+                component={ConfirmEmailScreen}
+              />
 
-              <Route exact path="/register/new" component={Register} />
-
-              <Route exact path="/become-seller" component={BecomeSeller} />
-              <Route path="/register-seller" component={RegisterSeller} />
-              <Route path="/confirm-seller" component={ConfirmSeller} />
-              <Route path="/confirmation" component={ConfirmationPage} />
-
+              <ProtectedRoute exact path="/become-seller" component={BecomeSeller} />
+              <ProtectedRoute path="/register-seller" component={RegisterSeller} />
 
               <ProtectedRoute exact path="/profile" component={Profile} />
               <ProtectedRoute
@@ -161,11 +168,28 @@ const App = () => {
                 component={ViewOrderDetails}
               />
 
-              <ProtectedRoute exact path="/incoming-orders" component={IncomingOrders} />
+              <ProtectedRoute
+                exact
+                path="/incoming-orders"
+                component={IncomingOrders}
+              />
+
+              <Route exact path="/password/forgot" component={ForgotPassword} />
+
+              <Route
+                exact
+                path="/password/reset/:token"
+                component={ResetPassword}
+              />
 
               <Route exact path="/contact" component={Contact} />
+
               <Route exact path="/faq" component={FAQs} />
-              <Route exact path="/terms-conditions" component={TermsConditions} />
+              <Route
+                exact
+                path="/terms-conditions"
+                component={TermsConditions}
+              />
 
               {/* This will catch all the routes that do not exist */}
               <Route component={PageNotFound} />

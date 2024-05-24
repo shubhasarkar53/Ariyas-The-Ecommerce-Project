@@ -11,7 +11,8 @@ import { useSelector } from 'react-redux';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import profileSide from "../../assets/Images/Icons/profile icons/pngwing 3.png";
-
+import Meta from "../../Meta";
+import { Typography } from '@mui/material';
 
 
 
@@ -78,6 +79,7 @@ const AdminDashboard = () => {
 
   return (
     <>
+      <Meta title="Admin Dashboard" />
       {loading ? (
         <Loader />
       ) : (
@@ -85,7 +87,9 @@ const AdminDashboard = () => {
           <div className="profile-container">
             <ToastContainer />
             <div className="profile-title">
-              <h2>Admin Dashboard</h2>
+            <Typography variant="h3" className="typoH" align="center">
+              Admin Dashboard
+            </Typography>
             </div>
             <div className="profile-det-container">
 

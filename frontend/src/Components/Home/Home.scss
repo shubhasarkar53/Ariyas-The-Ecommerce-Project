@@ -4,6 +4,19 @@
 $categoriText: white;
 
 .home-container {
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s ease-out forwards;
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   .carousel-container {
     width: 100vmax;
     margin: 0 auto;
@@ -255,16 +268,22 @@ $categoriText: white;
       }
 
       .row-products {
-        // display: grid;
-        // grid-template-columns: 1fr 1fr 1fr 1fr;
-        // grid-gap: 2rem;
-        // align-self: start;
-        // width: 80%;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 5rem;
+        align-self: start;
+        width: 80%;
+        animation: fadeInUp 1.5s ease-out forwards;
+      }
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     }
   }

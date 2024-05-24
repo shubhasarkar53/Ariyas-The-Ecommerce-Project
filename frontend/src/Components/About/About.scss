@@ -4,6 +4,18 @@ $secondaryTextColor: #4d4d4d;
 $orangeTextColor: #d47f00;
 $backgroundPrimaryColor: rgba(13, 191, 250, 0.083);
 .about-container {
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s ease-out forwards;
+  @keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
   .first-part {
     display: flex;
     justify-content: space-evenly;

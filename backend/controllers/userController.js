@@ -1,42 +1,118 @@
 const { catchAsyncErr } = require("../middleWares/catchAsyncError");
 const User = require("../models/User");
+const VerificationToken = require("../models/VerificationToken");
 const sendToken = require("../utills/jwtToken");
 const ErrorHandler = require("../utills/errorHandler");
-const { sendMail } = require("../utills/sendMail");
+const { sendMail, generateEmailTemplate, generateEmailVerifiedTemplate } = require("../utills/sendMail");
 const crypto = require("crypto");
 const SellerInfo = require("../models/SellerInfo");
 const { sendContactUsMail } = require("../utills/sendContactUsMail");
 // const cloudinary = require('cloudinary').v2;
 const cloudinary = require('cloudinary');
+const { generateOTP } = require("../utills/generateOTP");
+const { isValidObjectId } = require("mongoose");
 
 
 // Register User
 exports.registerUser = catchAsyncErr(async (req, res, next) => {
   const { name, email, password , phone} = req.body;
-  
-// creating user using the data given in the body
 
-  const user = await User.create({
+// creating user using the data given in the body
+  const user = new User({
     name: name,
     email: email,
     password: password,
     phone:phone,
     avatar: {
       publicId: "demoPublicId123",
-      url: "Demourl.com",
+      url: "https://res.cloudinary.com/dd3sjaumq/image/upload/v1716313695/avatars/demo_user/pngwing.com_3_i3xfrs.png",
     },
   });
+//1.generate otp
+  const OTP = generateOTP();
+//2. Create entry into varification token DB with the OTP
+  const verificationToken = new VerificationToken({
+    owner:user._id,
+    token:OTP
+  })
+  await verificationToken.save();
 
-  //   Get the token to login as soon as register
+  //creating entry of user into User collection
+  await user.save();
 
-  sendToken(user, 201, res);
+  //send OTP to email for verification
+  try {
+    await sendMail({
+      email: user.email,
+      subject: `Verify Your Email Account - ARIYAS`,
+      html: generateEmailTemplate(OTP,user.name),
+    });
+  } catch (error) {
+    return next(new ErrorHandler(400, error.message));
+  }
 
-  // const token = user.generateJWTToken();
-  // res.status(201).json({
-  //   success: true,
-  //   user,
-  //   token,
-  // });
+  res.status(200).json({
+    success: true,
+    message: `Verification mail send successfully to ${user.email}`,
+    user
+  });
+});
+
+
+
+//Verify email OTP controller
+
+exports.verifyEmailOTP = catchAsyncErr(async (req, res, next) => {
+  const { userId,otp } = req.body;
+
+    if(!userId || !otp.trim()){
+      return next(new ErrorHandler(400, "Invalid Request, Missing Parameters!"));
+    }
+    if(!isValidObjectId(userId)){
+      return next(new ErrorHandler(400, "User Id not valid!"));
+    }
+  //find the user first 
+    const user = await User.findById(userId);
+    if(!user){
+      return next(new ErrorHandler(400, "Sorry,User not Found!"));
+    }
+    if(user.verified){
+      return next(new ErrorHandler(400, "This user is already verified."));
+    }
+  // 1.compare entered otp with "VerifyToken" db's token
+      const tokenEntity = await VerificationToken.findOne({owner:user._id});
+
+      if(!tokenEntity){
+        return next(new ErrorHandler(400, "Token not found!"));
+      }
+      const isTokenMatched = await tokenEntity.compareToken(otp)
+
+      if(!isTokenMatched){
+        return next(new ErrorHandler(400, "Please provide a valid token!"));
+      }
+  //2.If true then
+            // 2.1 overwrite verified field of User Db with true value
+            user.verified = true;
+    // 2.2 Delete "VerifyToken" db's entry search using UserID
+            await VerificationToken.findByIdAndDelete(tokenEntity._id);
+
+            await user.save();
+
+    // 2.3 Send Successfull mail
+          try {
+            await sendMail({
+              email: user.email,
+              subject: `Verification Successful - ARIYAS`,
+              html: generateEmailVerifiedTemplate(user.name),
+            });
+          } catch (error) {
+            return next(new ErrorHandler(400, error.message));
+          }
+
+      
+      //   Get the token to login as soon as register
+
+      sendToken(user, 201, res);
 });
 
 // Login  User
@@ -48,14 +124,14 @@ exports.loginUser = catchAsyncErr(async (req, res, next) => {
 
   // check is email and password exits or not
   if (!email || !password) {
-    return next(new ErrorHandler(400, "Invalid email or password! 1"));
+    return next(new ErrorHandler(400, "Invalid email or password!"));
   }
 
   const user = await User.findOne({ email: email }).select("+password"); //note
 
   // if such user not found with the same mail id
   if (!user) {
-    return next(new ErrorHandler(400, "Invalid email or password! 2"));
+    return next(new ErrorHandler(400, "Invalid email or password!"));
   }
 
   // if found then
@@ -63,19 +139,11 @@ exports.loginUser = catchAsyncErr(async (req, res, next) => {
 
   // if not matched
   if (!isPasswordMatched) {
-    return next(new ErrorHandler(400, "Invalid email or password! 3 "));
+    return next(new ErrorHandler(400, "Invalid email or password!"));
   }
 
   //If matched
   sendToken(user, 200, res);
-
-  // const token = user.generateJWTToken();
-
-  // res.status(200).json({
-  //   success: true,
-  //   msg: "login succesfull",
-  //   token,
-  // });
 });
 
 // Log out user
@@ -95,7 +163,9 @@ exports.logoutUser = catchAsyncErr(async (req, res, next) => {
 // Forgot password
 
 exports.forgotPassword = catchAsyncErr(async (req, res, next) => {
+
   const { email } = req.body;
+  console.log(email);
   // find the mail id DB
   const user = await User.findOne({ email });
   if (!user) {
@@ -105,11 +175,33 @@ exports.forgotPassword = catchAsyncErr(async (req, res, next) => {
 
   await user.save({ validateBeforeSave: false });
 
-  const resetURL = `${req.protocol}://${req.get(
-    "host"
-  )}/api/v1/password/reset/${token}`;
 
-  const message = `Your password reset link is -->\n\n${resetURL}\n\nIgnore if it was not created by you.`;
+  // ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+  //THIS WAS THE ACCUALL CODE
+  
+  // old
+  // const resetURL = `${req.protocol}://${req.get(
+    //   "host"
+    // )}/api/v1/password/reset/${token}`;
+
+// correct
+    // const resetPasswordUrl = `${req.protocol}://${req.get(
+    //   "host"
+    // )}/password/reset/${resetToken}`;
+
+
+    // ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+
+
+// 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑
+
+//THIS LINE IS FOR TEMPORARAY PURPOSE ONLY WILL WORK ON LOCAL HOST NOT IN PRODUCTION
+const resetURL = `${process.env.FRONTEND_URL}/password/reset/${token}`;
+
+// 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑
+
+
+  const message = `Your password reset link is (tempp) -->\n\n${resetURL}\n\nIgnore if it was not created by you.`;
 
   // console.log(message);
 

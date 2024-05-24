@@ -191,6 +191,14 @@ $gray: #a5a5a5;
     width: 100%;
     font-size: 1.5rem;
     margin: 4rem;
+    p{
+      font-size: 1.5rem;
+      font-weight: 500;
+      span{
+        font-size: 1.4rem;
+        font-weight: 300;
+      }
+    }
   }
   .reviews {
     display: flex;
@@ -317,15 +325,37 @@ $gray: #a5a5a5;
     width: 100%;
     .description {
       padding: 1rem 3rem;
-      h3 {
-        font-size: 1.5rem;
-      }
       p {
         font-size: 1.1rem;
+        span {
+          font-size: 1rem;
+        }
       }
     }
   }
 }
+.share-container {
+  position: relative;
+  display: inline-block;
+}
+
+.share-buttons {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: flex;
+  gap: 8px;
+  background: white;
+  padding: 8px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.share-icon {
+  cursor: pointer;
+}
+
 
 @media screen and (max-width: 768px) {
   .top-div {

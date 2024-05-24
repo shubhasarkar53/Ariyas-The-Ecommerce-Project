@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import './TermsConditions.scss'
 import { Link } from 'react-router-dom'
 import Loader from '../Loader/Loader';
-
+import Meta from '../../Meta'
 const TermsConditions = () => {
 
   const [isLoading, setIsLoading] = useState(true);
@@ -19,6 +19,7 @@ const TermsConditions = () => {
 
   return (
     <>
+      <Meta title="Terms & Conditions" />
       {isLoading ? (
         <Loader />
       ) : (

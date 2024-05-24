@@ -12,11 +12,13 @@ import "./Login.scss"
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Meta from "../../Meta";
 
 const Register = ({ history }) => {
   // const loading = false;
   const dispatch = useDispatch();
-  const { loading, error, isAuthenticated } = useSelector(state => state.user);
+  const { loading, error } = useSelector(state => state.user);
+  const registeredUser = useSelector(state => state.user.user);
 
   const [user, setUser] = useState({
     fullName: "",
@@ -56,21 +58,7 @@ const Register = ({ history }) => {
     myFromData.set("email", registerEmail);
     myFromData.set("phone", registerPhone);
     myFromData.set("password", registerPass);
-    // myFromData.set("confirmRegisterPass",confirmRegisterPass);
-    // console.log( "inside:",fullName,registerEmail,phone,registerPass,confirmRegisterPass);
     dispatch(userRegister(myFromData));
-
-
-
-    //     if (isAuthenticated) {
-    //         toast.success("Registration Successful",{
-    //             position: "bottom-center",
-    //             autoClose: 3000,
-    //           });
-    //         history.push("/");
-    //     }
-    // },[dispatch,toast,error,history,isAuthenticated])
-
   }
 
 
@@ -83,17 +71,18 @@ const Register = ({ history }) => {
       dispatch(clearError());
     }
 
-    if (isAuthenticated) {
-      toast.success("Registration Successful", {
+    if (registeredUser) {
+      toast.success("Confirm You Email to Register Sucessfully", {
         position: "bottom-center",
         autoClose: 3000,
       });
-      history.push("/");
+      history.push('/confirm-email');
     }
-  }, [dispatch, toast, error, history, isAuthenticated])
+  }, [dispatch, toast, error, history, registeredUser])
 
   return (
     <>
+      <Meta title="Ariyas | Register" />
       {loading ? (
         <Loader />
       ) : (

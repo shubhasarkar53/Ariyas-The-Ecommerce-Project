@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import emptyWishList from '../../assets/Images/Icons/CartPage/emptycart.png';
 import { Link } from 'react-router-dom';
 import Loader from '../Loader/Loader';
+import Meta from  "../../Meta";
 const WishList = () => {
 
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ const WishList = () => {
 
   return (
     <Fragment>
+      <Meta title="WishList" />
       {loading ? (
         <Loader />
       ) : (

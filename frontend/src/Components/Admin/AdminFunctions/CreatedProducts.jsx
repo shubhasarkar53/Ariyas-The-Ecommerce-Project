@@ -18,6 +18,8 @@ import { CREATE_PRODUCT_RESET } from "../../../Redux/Constants/productConstants"
 import Loader from "../../Loader/Loader";
 import "./CreatedProducts.scss";
 import DotLoader from "../../Loader/DotLoader";
+import Meta from "../../../Meta";
+import { Typography } from "@mui/material";
 const CreatedProducts = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -56,15 +58,9 @@ const CreatedProducts = () => {
     history.push(`/edit-product/${productId}`);
   }
 
-  const truncateText = (text, maxLength) => {
-    if (text.length <= maxLength) {
-      return text;
-    }
-    return text.slice(0, maxLength) + "...";
-  };
-
   return (
     <>
+      <Meta title="Your Products" />
       {loading ? (
         <DotLoader />
       ) : (
@@ -72,7 +68,9 @@ const CreatedProducts = () => {
           <div className="profile-container">
             <ToastContainer />
             <div className="profile-title">
-              <h2>Your Products</h2>
+              <Typography variant="h4" className="typoH" align="center">
+                Your Products
+              </Typography>
             </div>
             <div className="profile-det-container">
               {/* Left side of the profile */}
@@ -83,7 +81,7 @@ const CreatedProducts = () => {
               {/*Created Products */}
               <div className="created-product-container">
                 <div className="created-product-headings">
-                  <h3 className="created-product-heading">Product</h3>
+                  <h3 className="created-product-heading">ProductImage</h3>
                   <h3 className="created-product-heading">ProductId</h3>
                   <h3 className="created-product-heading">Name</h3>
                   <h3 className="created-product-heading">Stock</h3>
@@ -100,8 +98,8 @@ const CreatedProducts = () => {
                         >
                           <img src={`${product.image[0].url}`} alt="image" />
                         </Link>
-                        <p>{truncateText(product._id, 5)}</p>
-                        <p>{truncateText(product.name, 10)}</p>
+                        <p>{product._id}</p>
+                        <p>{product.name}</p>
                         <p>{product.stock}</p>
                         <p>Rs. {product.price}</p>
                         <div className="create-product-actions">

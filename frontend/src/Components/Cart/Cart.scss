@@ -68,7 +68,19 @@
     align-items: center;
     gap: 1rem;
     // margin: auto;
+    transform: translateY(20px);
+    animation: fadeInUp 1.5s ease-out forwards;
     width: 100%;
+    @keyframes fadeInUp {
+      0% {
+          opacity: 0;
+          transform: translateY(20px);
+      }
+      100% {
+          opacity: 1;
+          transform: translateY(0);
+      }
+    }
     .quantity {
       button {
         border-radius: 8px;
@@ -113,6 +125,8 @@
     margin: 2rem 5rem;
     font-size: 1.5rem;
     font-weight: 500;
+    transform: translateY(20px);
+    animation: fadeInUp 1.5s ease-out forwards;
     .bar {
       width: 100%;
       height: 3px;
