@@ -1,9 +1,7 @@
-// registerSellerReducer.js
-import { UPLOAD_DOCUMENT_SUCCESS } from '../Constants/registerSellerConstants';
-import { SUBMIT_FORM_DATA } from '../Constants/registerSellerConstants';
+import { UPLOAD_DOCUMENT_SUCCESS, SUBMIT_FORM_DATA } from '../Constants/registerSellerConstants';
 
 const initialState = {
-  uploadedDocument: null,
+  uploadedDocuments: [],
   formData: null,
 };
 
@@ -12,7 +10,7 @@ const registerSellerReducer = (state = initialState, action) => {
     case UPLOAD_DOCUMENT_SUCCESS:
       return {
         ...state,
-        uploadedDocument: action.payload,
+        uploadedDocuments: [...state.uploadedDocuments, action.payload],
       };
     case SUBMIT_FORM_DATA:
       return {
@@ -25,3 +23,5 @@ const registerSellerReducer = (state = initialState, action) => {
 };
 
 export default registerSellerReducer;
+
+

@@ -1,9 +1,6 @@
 .register-seller-container {
   width: 100vmax;
   height: fit-content;
-  .error {
-    color: crimson;
-  }
 
   .reg-img-mail-section {
     margin: 2rem 0;
@@ -14,7 +11,7 @@
     .extra-container {
       display: flex;
       padding: 1rem 1rem;
-      width: 50%;
+      width: 70%;
       border-radius: 12px;
       margin: 1rem 0;
       box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
@@ -50,13 +47,17 @@
   .seller-profile-form {
     display: flex;
     justify-content: space-evenly;
-    width: 100vmax;
+    width: 100%;
     height: fit-content;
 
     .pradeep-side {
       display: flex;
       justify-content: flex-start;
       align-items: center;
+      img {
+        width: 200px;
+        height: 200px;
+      }
     }
 
     .seller-form {
@@ -67,11 +68,12 @@
         41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
         100px 100px 80px rgba(0, 0, 0, 0.07);
       text-align: start;
-      width: 50%;
+      width: 100%;
       padding-left: 1rem;
       margin-left: 2rem;
       margin-right: 2rem;
       padding: 1rem 2rem;
+      margin-bottom: 2rem;
 
       h2 {
         margin-top: 1rem;
@@ -90,6 +92,7 @@
           label {
             margin-bottom: 0.5rem;
             padding-left: 0.5rem;
+            font-size: 0.9rem;
           }
 
           input {
@@ -110,6 +113,7 @@
           label {
             margin-bottom: 0.5rem;
             padding-left: 0.5rem;
+            font-size: 0.9rem;
           }
 
           input {
@@ -132,7 +136,6 @@
         #first-name,
         #middle-name,
         #last-name {
-          flex: 1.5;
           width: 100%;
 
           input {
@@ -149,6 +152,7 @@
             flex-direction: column;
             margin-bottom: 0.5rem;
             padding-left: 0.5rem;
+            font-size: 0.9rem;
           }
         }
 
@@ -170,12 +174,13 @@
         label {
           margin-left: 0.3rem;
           margin-bottom: 0.5rem;
+          font-size: 0.9rem;
         }
 
         .phone-section {
           display: flex;
           justify-content: flex-start;
-          gap: 2rem;
+          gap: 1.5rem;
         }
 
         .phone-sect-1 {
@@ -184,7 +189,7 @@
 
           .input-dropdown {
             .dropdown-options {
-              padding: 0.5rem;
+              padding: 0.5rem 0.2rem;
               font-size: 0.8rem;
               border: none;
             }
@@ -200,7 +205,7 @@
 
           button {
             padding: 0.5rem 0.7rem;
-            margin-left: 1rem;
+            margin-left: 0.5rem;
             background-color: transparent;
             box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.066),
               4px 5px 2px 2px rgba(0, 0, 0, 0.079);
@@ -258,6 +263,7 @@
         label {
           margin-left: 0.3rem;
           margin-bottom: 0.5rem;
+          font-size: 0.9rem;
         }
 
         .email-section {
@@ -266,6 +272,7 @@
           gap: 2rem;
 
           .email-sect-1 {
+            display: flex;
             input {
               padding: 0.5rem 0.7rem;
               border-radius: 10px;
@@ -293,6 +300,7 @@
           }
 
           .email-sect-2 {
+            display: flex;
             input {
               padding: 0.5rem 0.7rem;
               border-radius: 10px;
@@ -337,6 +345,7 @@
             label {
               margin-left: 0.3rem;
               margin-bottom: 0.5rem;
+              font-size: 0.9rem;
             }
 
             input {
@@ -352,9 +361,10 @@
             label {
               margin-left: 0.3rem;
               margin-bottom: 0.5rem;
+              font-size: 0.9rem;
             }
 
-            margin-left: 9rem;
+            margin-left: 5rem;
             display: flex;
             flex-direction: column;
 
@@ -392,6 +402,7 @@
             label {
               margin-left: 0.3rem;
               margin-bottom: 0.5rem;
+              font-size: 0.9rem;
             }
 
             display: flex;
@@ -409,11 +420,12 @@
           .pan-sect-2 {
             display: flex;
             flex-direction: column;
-            margin-left: 10rem;
+            margin-left: 6rem;
 
             label {
               margin-left: 0.3rem;
               margin-bottom: 0.5rem;
+              font-size: 0.9rem;
             }
 
             .input-pan {
@@ -457,15 +469,17 @@
         label {
           margin-left: 0.3rem;
           margin-bottom: 0.5rem;
+          font-size: 0.9rem;
         }
 
         margin-top: 2rem;
 
         .commercial-section {
-          margin-right: 15rem;
+          margin-right: 10rem;
           display: flex;
           justify-content: space-between;
-          width: 100%;
+          flex-direction: column;
+          width: 70%;
 
           .comm-sect-1,
           .comm-sect-2,
@@ -476,6 +490,7 @@
             label {
               margin-left: 0.3rem;
               margin-bottom: 0.5rem;
+              font-size: 0.9rem;
             }
 
             input {
@@ -484,6 +499,8 @@
               background: rgba(207, 207, 207, 0.4);
               box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
               font-size: 0.9rem;
+              width: 100%;
+              margin-bottom: 1rem;
             }
           }
         }
@@ -502,10 +519,11 @@
             label {
               margin-left: 0.3rem;
               margin-bottom: 0.5rem;
+              font-size: 0.9rem;
             }
 
             input {
-              width: 50%;
+              width: 70%;
               padding: 0.5rem 0.7rem;
               border-radius: 10px;
               background: rgba(207, 207, 207, 0.4);
@@ -530,6 +548,7 @@
               label {
                 margin-left: 0.3rem;
                 margin-bottom: 0.5rem;
+                font-size: 0.9rem;
               }
 
               input {
@@ -549,6 +568,7 @@
               label {
                 margin-left: 0.3rem;
                 margin-bottom: 0.5rem;
+                font-size: 0.9rem;
               }
 
               select {
@@ -568,6 +588,7 @@
               margin-left: 0.3rem;
               margin-bottom: 0.5rem;
               letter-spacing: 0.1rem;
+              font-size: 0.9rem;
             }
 
             button {
@@ -633,6 +654,7 @@
         label {
           margin-left: 0.3rem;
           margin-bottom: 0.5rem;
+          font-size: 0.9rem;
         }
         button {
           width: fit-content;

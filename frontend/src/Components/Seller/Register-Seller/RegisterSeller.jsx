@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+
 import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './RegisterSeller.scss';
@@ -6,8 +7,12 @@ import profileSide from '../../../assets/Images/Icons/profile icons/pngwing 3.pn
 import regSeller from '../../../assets/Images/Icons/profile icons/userImg.png'
 import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
+import { updateFormData } from '../../../Redux/Actions/registerSellerAction';
 import { submitFormData, uploadDocumentSuccess } from '../../../Redux/Actions/registerSellerAction';
 import './RegisterSellerResponse.scss';
+import axios from 'axios';
+import { sendFormSubmissionEmailToAuth } from '../../../../../backend/apii';
+
 
 const RegisterSeller = () => {
   const history = useHistory();
@@ -34,63 +39,77 @@ const RegisterSeller = () => {
     houseDet: '',
     houseAddress: '',
     townAdd: '',
+    state: 'West Bengal'
   });
 
-  const [phoneOTP, setPhoneOTP] = useState('');
-  const [emailOTP, setEmailOTP] = useState('');
   const [phoneVerified, setPhoneVerified] = useState(false);
   const [emailVerified, setEmailVerified] = useState(false);
 
-  useEffect(() => {
-    const isValidAccess = history.location.state && history.location.state.fromBecomeSeller;
+  // useEffect(() => {
+  //   const isValidAccess = history.location.state && history.location.state.fromBecomeSeller;
 
-    if (!isValidAccess) {
-      // This will forcefully redirect to the become-seller page rather than giving direct access to the register-seller page
-      history.replace('/become-seller');
-    }
-  }, [history]);
+  //   if (!isValidAccess) {
+  //     // This will forcefully redirect to the become-seller page rather than giving direct access to the register-seller page
+  //     history.replace('/become-seller');
+  //   }
+  // }, [history]);
 
-  const [shopName, setShopName] = useState();
-  const [dob, setDob] = useState();
-  const [firstName, setFirstName] = useState();
-  const [middleName, setMiddleName] = useState();
-  const [lastName, setLastName] = useState();
+  const [shopName, setShopName] = useState('');
+  const [dob, setDob] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [middleName, setMiddleName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [verifyPhone, setVerifyPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [verifyEmail, setVerifyEmail] = useState('');
+  const [aadhar, setAadhar] = useState('');
+  const [pan, setPan] = useState('');
+  const [pinCode, setPinCode] = useState('');
+  const [postOffice, setPostOffice] = useState('');
+  const [policeStation, setPoliceStation] = useState('');
+  const [houseDet, setHouseDet] = useState('');
+  const [houseAddress, setHouseAddress] = useState('');
+  const [landmark, setLandmark] = useState('');
+  const [townAdd, setTownAdd] = useState('');
 
-  const [phone, setPhone] = useState();
-  const [verifyPhone, setVerifyPhone] = useState();
+  const validateFields = () => {
+    const requiredFields = [
+      { field: formData.shopName, errorMessage: 'Shop/Agency name is required' },
+      { field: formData.dob, errorMessage: 'Date of Birth is required' },
+      { field: formData.firstName, errorMessage: 'First Name is required' },
+      { field: formData.lastName, errorMessage: 'Last Name is required' },
+      { field: formData.phone, errorMessage: 'Phone number is required' },
+      { field: formData.email, errorMessage: 'Email ID is required' },
+      { field: formData.aadhar, errorMessage: 'Aadhar number is required' },
+      { field: formData.pan, errorMessage: 'PAN number is required' },
+      { field: formData.pinCode, errorMessage: 'Pincode is required' },
+      { field: formData.postOffice, errorMessage: 'Post Office is required' },
+      { field: formData.policeStation, errorMessage: 'Police Station is required' },
+      { field: formData.houseDet, errorMessage: 'House details are required' },
+      { field: formData.houseAddress, errorMessage: 'House address is required' },
+      { field: formData.townAdd, errorMessage: 'Town/City is required' },
+    ];
 
-  const [email, setEmail] = useState();
-  const [verifyEmail, setVerifyEmail] = useState();
+    let isValid = true;
 
-  const [aadhar, setAadhar] = useState();
+    requiredFields.forEach(({ field, errorMessage }) => {
+      if (!field) {
+        toast.error(errorMessage, {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        isValid = false;
+      }
+    });
 
-  const [pan, setPan] = useState();
-
-  const [pinCode, setPinCode] = useState();
-  const [postOffice, setPostOffice] = useState();
-  const [policeStation, setPoliceStation] = useState();
-
-  const [houseDet, setHouseDet] = useState();
-  const [houseAddress, setHouseAddress] = useState();
-  const [landmark, setLandmark] = useState();
-  const [townAdd, setTownAdd] = useState();
-
-  const [toastMessage, setToastMessage] = useState('');
-
-  const [shopNameError, setShopNameError] = useState('');
-  const [dobError, setDobError] = useState('');
-  const [firstNameError, setFirstNameError] = useState('');
-  const [lastNameError, setLastNameError] = useState('');
-  const [phoneError, setPhoneError] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [aadharError, setAadharError] = useState('');
-  const [panError, setPanError] = useState('');
-  const [pinCodeError, setPinCodeError] = useState('');
-  const [postOfficeError, setPostOfficeError] = useState('');
-  const [policeStationError, setPoliceStationError] = useState('');
-  const [houseDetError, setHouseDetError] = useState('');
-  const [houseAddressError, setHouseAddressError] = useState('');
-  const [townAddError, setTownAddError] = useState('');
+    return isValid;
+  };
 
   const handleUpload = (type, event) => {
     event.preventDefault();
@@ -156,151 +175,83 @@ const RegisterSeller = () => {
     input.click();
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    let isValid = true;
 
-    const fieldsToValidate = [
-      { field: shopName, setError: setShopNameError, errorMessage: 'Shop/Agency name is required' },
-      { field: dob, setError: setDobError, errorMessage: 'Date of Birth is required' },
-      { field: firstName, setError: setFirstNameError, errorMessage: 'First Name is required' },
-      { field: lastName, setError: setLastNameError, errorMessage: 'Last Name is required' },
-      { field: phone, setError: setPhoneError, errorMessage: 'Phone number is required' },
-      { field: email, setError: setEmailError, errorMessage: 'Email ID is required' },
-      { field: aadhar, setError: setAadharError, errorMessage: 'Aadhar number is required' },
-      { field: pan, setError: setPanError, errorMessage: 'PAN number is required' },
-      { field: pinCode, setError: setPinCodeError, errorMessage: 'Pincode is required' },
-      { field: postOffice, setError: setPostOfficeError, errorMessage: 'Post Office is required' },
-      { field: policeStation, setError: setPoliceStationError, errorMessage: 'Police Station is required' },
-      { field: houseDet, setError: setHouseDetError, errorMessage: 'House details are required' },
-      { field: houseAddress, setError: setHouseAddressError, errorMessage: 'House address is required' },
-      { field: townAdd, setError: setTownAddError, errorMessage: 'Town/City is required' },
-    ];
+    if (validateFields()) {
+      dispatch(submitFormData(formData));
+      dispatch(updateFormData(formData));
 
-    fieldsToValidate.forEach(({ field, setError, errorMessage }) => {
-      switch (field) {
-        case '':
-        case null:
-        case undefined:
-          setError(errorMessage);
-          isValid = false;
-          break;
-        default:
-          setError('');
+      try {
+        // Call sendEmail function
+        await sendEmail(formData);
+
+        // Show success message to user
+        toast.success('Form submitted successfully! An email has been sent to the company.');
+
+        // Redirect to confirmation page
+        history.push('/confirm-seller');
+      } catch (error) {
+        console.error('Error sending email:', error);
+        // Handle error (e.g., show error message to user)
+        toast.error('Error sending confirmation email. Please try again later.');
       }
-    });
+    }
 
-    if (isValid) {
-      // Perform form submission logic here
-      // For example, you can dispatch an action to submit the form data
-      dispatch(submitFormData(
-        {
-          shopName: shopName,
-          dob: dob,
-          firstName: firstName,
-          middleName: middleName,
-          lastName: lastName,
-          phone: phone,
-          email: email,
-          aadhar: aadhar,
-          pan: pan,
-          pinCode: pinCode,
-          postOffice: postOffice,
-          policeStation: policeStation,
-          houseDet: houseDet,
-          houseAddress: houseAddress,
-          townAdd: townAdd,
-        }
-      )); // Replace 'formData' with the actual data to submit
+    // if (validateFields()) {
+    //   dispatch(submitFormData(formData));
+    //   dispatch(updateFormData(formData));
+
+
+    //   try {
+    //     // Call sendEmail function
+    //     await sendEmail(formData);
+
+    //     // Show success message to user
+    //     toast.success('Form submitted successfully! An email has been sent to the company.');
+
+    //     // Redirect to confirmation page
+    //     history.push('/confirm-seller');
+    //   } catch (error) {
+    //     console.error('Error sending email:', error);
+    //     // Handle error (e.g., show error message to user)
+    //     toast.error('Error sending email. Please try again later.');
+    //   }
+    // }
+  };
+
+  const sendEmail = async (formData) => {
+    try {
+      // Call API function to send email with form details
+      const response = await sendFormSubmissionEmailToAuth(formData);
+      console.log(response); // Log the response from the server
+
+      // Show success toast notification
+      toast.success('Email sent successfully!', {
+        position: "top-center",
+        autoClose: 3000, // Close the notification after 3 seconds
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+      // Redirect to Confirm seller page after successful form submission
       history.push('/confirm-seller');
-    }
-  };
+    } catch (error) {
+      console.error("Error submitting form:", error);
 
-
-
-  const handleSendOTP = (type) => {
-    if (type === 'phone') {
-      toast.success('OTP sent to phone number',
-        {
-          position: 'top-center',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        }
-      );
-    } else if (type === 'email') {
-      toast.success('OTP sent to email',
-        {
-          position: 'top-center',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        }
-      );
-    }
-  };
-
-  const handleVerifyOTP = (type) => {
-    if (type === 'phone') {
-      if (verifyPhone === '123456') {
-        setPhoneVerified(true);
-        toast.success('Phone number verified',
-          {
-            position: 'top-center',
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          }
-        );
-      } else {
-        toast.error('Invalid OTP',
-          {
-            position: 'top-center',
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          }
-        );
-      }
-    } else if (type === 'email') {
-      if (verifyEmail === '123456') {
-        setEmailVerified(true);
-        toast.success('Email verified',
-          {
-            position: 'top-center',
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          }
-        );
-      } else {
-        toast.error('Invalid OTP',
-          {
-            position: 'top-center',
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          }
-        );
-      }
+      // Show error toast notification
+      toast.error('Error sending email. Please try again later.', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -331,7 +282,7 @@ const RegisterSeller = () => {
                   onChange={(e) => setShopName(e.target.value)}
                   required
                 />
-                {shopNameError && <p className="error">{shopNameError}</p>}
+                {/* {shopNameError && <p className="error">{shopNameError}</p>} */}
               </div>
               <div className="dob">
                 <label htmlFor="">Date of Birth as per Aadhar card*</label>
@@ -340,7 +291,7 @@ const RegisterSeller = () => {
                   onChange={(e) => setDob(e.target.value)}
                   required
                 />
-                {dobError && <p className="error">{dobError}</p>}
+                {/* {dobError && <p className="error">{dobError}</p>} */}
               </div>
             </div>
             <div className="form-reg-name">
@@ -351,7 +302,7 @@ const RegisterSeller = () => {
                   onChange={(e) => setFirstName(e.target.value)}
                   required
                 />
-                {firstNameError && <p className='error'>{firstNameError}</p>}
+                {/* {firstNameError && <p className='error'>{firstNameError}</p>} */}
               </div>
               <div id="middle-name">
                 <label htmlFor="">Middle Name</label>
@@ -367,7 +318,7 @@ const RegisterSeller = () => {
                   onChange={(e) => setLastName(e.target.value)}
                   required
                 />
-                {lastName && <p className='error'>{lastNameError}</p>}
+                {/* {lastName && <p className='error'>{lastNameError}</p>} */}
               </div>
             </div>
 
@@ -392,8 +343,8 @@ const RegisterSeller = () => {
                     />
 
                   </div>
-                  {phoneError && <p className='error'>{phoneError}</p>}
-                  <button type="button" onClick={() => handleSendOTP('phone')}
+                  {/* {phoneError && <p className='error'>{phoneError}</p>} */}
+                  <button type="button"
                     disabled={phoneVerified}
                   >Send OTP</button>
                 </div>
@@ -404,7 +355,7 @@ const RegisterSeller = () => {
                     disabled={phoneVerified}
                   />
                   <div className="btn-verify">
-                    <button type="button" onClick={() => handleVerifyOTP('phone')}
+                    <button type="button"
                       disabled={phoneVerified}
                     >Verify</button>
                   </div>
@@ -422,8 +373,8 @@ const RegisterSeller = () => {
                     required
                     disabled={emailVerified}
                   />
-                  {emailError && <p className="error">{emailError}</p>}
-                  <button type="button" onClick={() => handleSendOTP('email')}
+                  {/* {emailError && <p className="error">{emailError}</p>} */}
+                  <button type="button"
                     disabled={emailVerified}
                   >Send OTP</button>
                 </div>
@@ -433,7 +384,7 @@ const RegisterSeller = () => {
                     onChange={(e) => setVerifyEmail(e.target.value)}
                     disabled={emailVerified}
                   />
-                  <button type="button" onClick={() => handleVerifyOTP('email')}
+                  <button type="button"
                     disabled={emailVerified}
                   >Verify</button>
                 </div>
@@ -448,7 +399,7 @@ const RegisterSeller = () => {
                     onChange={(e) => setAadhar(e.target.value)}
                     required
                   />
-                  {aadharError && <p className="error">{aadharError}</p>}
+                  {/* {aadharError && <p className="error">{aadharError}</p>} */}
                 </div>
                 <div className="aadhar-sect-2">
                   <label>Upload both side picture of Aadhar Card *</label>
@@ -466,7 +417,7 @@ const RegisterSeller = () => {
                     onChange={(e) => setPan(e.target.value)}
                     required
                   />
-                  {panError && <p className='error'>{panError}</p>}
+                  {/* {panError && <p className='error'>{panError}</p>} */}
                 </div>
                 <div className="pan-sect-2">
                   <label>Upload both side picture of PAN Card *</label>
@@ -487,7 +438,7 @@ const RegisterSeller = () => {
                     onChange={(e) => setPinCode(e.target.value)}
                     required
                   />
-                  {pinCodeError && <p className='error'>{pinCodeError}</p>}
+                  {/* {pinCodeError && <p className='error'>{pinCodeError}</p>} */}
                 </div>
                 <div className="comm-sect-2">
                   <label>Post Office</label>
@@ -496,7 +447,7 @@ const RegisterSeller = () => {
                     onChange={(e) => setPostOffice(e.target.value)}
                     required
                   />
-                  {postOfficeError && <p className='error'>{postOfficeError}</p>}
+                  {/* {postOfficeError && <p className='error'>{postOfficeError}</p>} */}
                 </div>
                 <div className="comm-sect-3">
                   <label>Police Station</label>
@@ -505,7 +456,7 @@ const RegisterSeller = () => {
                     onChange={(e) => setPoliceStation(e.target.value)}
                     required
                   />
-                  {policeStationError && <p className='error'>{policeStationError}</p>}
+                  {/* {policeStationError && <p className='error'>{policeStationError}</p>} */}
                 </div>
               </div>
               <div className="address-section">
@@ -516,7 +467,7 @@ const RegisterSeller = () => {
                     onChange={(e) => setHouseDet(e.target.value)}
                     required
                   />
-                  {houseDetError && <p className='error'>{houseDetError}</p>}
+                  {/* {houseDetError && <p className='error'>{houseDetError}</p>} */}
                 </div>
                 <div className="address-sect-2">
                   <label>Area, Street, Sector, Village</label>
@@ -525,7 +476,7 @@ const RegisterSeller = () => {
                     onChange={(e) => setHouseAddress(e.target.value)}
                     required
                   />
-                  {houseAddressError && <p className='error'>{houseAddressError}</p>}
+                  {/* {houseAddressError && <p className='error'>{houseAddressError}</p>} */}
                 </div>
                 <div className="address-sect-3">
                   <label>Landmark</label>
@@ -543,7 +494,7 @@ const RegisterSeller = () => {
                       onChange={(e) => setTownAdd(e.target.value)}
                       required
                     />
-                    {townAddError && <p className='error'>{townAddError}</p>}
+                    {/* {townAddError && <p className='error'>{townAddError}</p>} */}
                   </div>
                   <div className="choose-state">
                     <label>Choose a State</label>

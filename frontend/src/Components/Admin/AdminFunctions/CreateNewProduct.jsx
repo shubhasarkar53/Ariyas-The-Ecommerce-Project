@@ -226,7 +226,7 @@ const CreateNewProduct = () => {
                       name="productLocation"
                     />
                   </div>
-                  <label htmlfor="productImg">Upload a Product Image</label>
+                  <label htmlfor="productImg" className="upload-img">Upload a Product Image</label>
                   <input
                     type="file"
                     accept="image/*"

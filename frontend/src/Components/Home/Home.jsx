@@ -141,7 +141,7 @@ const Home = () => {
               <div className="row">
                 <h1>{products[0] && products[0].category} Item&apos;s</h1>
                 <div className="row-products">
-                  {products.slice(0, 4).map((product) => {
+                  {products.slice(0, 5).map((product) => {
                     return <ProductCard key={product._id} product={product} products={products} />;
                   })}
                 </div>
@@ -152,7 +152,7 @@ const Home = () => {
               <div className="row">
                 <h1>{products[4] && products[4].category} Item&apos;s</h1>
                 <div className="row-products">
-                  {products.slice(4, 8).map((product) => {
+                  {products.slice(4, 9).map((product) => {
                     return <ProductCard key={product._id} product={product} />;
                   })}
                 </div>
@@ -163,7 +163,7 @@ const Home = () => {
               <div className="row">
                 <h1>{products[8] && products[8].category} Item&apos;s</h1>
                 <div className="row-products">
-                  {products.slice(8, 12).map((product) => {
+                  {products.slice(7, 12).map((product) => {
                     return <ProductCard key={product._id} product={product} />;
                   })}
                 </div>
