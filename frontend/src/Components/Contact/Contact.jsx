@@ -139,12 +139,13 @@ const Contact = () => {
 
   return (
     <>
+    <Meta title="Contact Us" />
       <ToastContainer />
       {loading ? (
         <Loader />
       ) : (
         <>
-          <Meta title="Contact Us" />
+          
           {showContactAnimation && (
             <div className="contact-animation">
               <div className="contact-animation">

@@ -5,6 +5,7 @@ const errorMiddleWare = require("./middleWares/error");
 const fileUpload = require("express-fileupload");
 const bodyParser = require("body-parser");
 const nodemailer = require('nodemailer');
+
 // * route import 
 const productRoute = require("./routes/productRoute");
 const userRoute = require("./routes/userRoute");
@@ -26,45 +27,18 @@ app.use("/api/v1", addressRoute);
 app.use("/api/v1", returnRoute);
 app.use("/api/v1", blogRoute);
 
-// Email sending functionality
-// const sendEmail = async (to, subject, text) => {
-//   const transporter = nodemailer.createTransport({
-//     service: "gmail",
-//     auth: {
-//       user: process.env.EMAIL_USER,
-//       pass: process.env.EMAIL_PASSWORD,
-//     },
-//   });
-
-//   const mailOptions = {
-//     from: process.env.EMAIL_USER,
-//     to,
-//     subject,
-//     text,
-//   };
-
-//   await transporter.sendMail(mailOptions);
-// };
+// ---------------------------------------------------------------------------------------------------
 
 // Route for handling contact form submission and sending email
 app.post("/api/v1/contact", async (req, res) => {
   const { firstName, lastName, phone, email, message } = req.body;
 
-  // Nodemailer setup
-  // const transporter = nodemailer.createTransport({
-  //   service: "gmail",
-  //   auth: {
-  //     user: process.env.EMAIL_USER,
-  //     pass: process.env.EMAIL_PASSWORD,
-  //   },
-  // });
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465, // or 587 for TLS
     secure: true, // true for 465, false for other ports
     auth: {
-      // user: process.env.EMAIL_USER, // Your Gmail email address
-      // pass: process.env.EMAIL_PASSWORD, // App Password generated for Nodemailer
+
       user: process.env.AUTH_USER,
       pass: process.env.AUTH_PASSWORD
     },
@@ -93,6 +67,11 @@ app.post("/api/v1/contact", async (req, res) => {
     res.status(500).json({ error: "Error sending message. Please try again later." });
   }
 });
+
+
+// ---------------------------------------------------------------------------------------------------
+
+
 
 
 // module.exports = { app, sendEmail };

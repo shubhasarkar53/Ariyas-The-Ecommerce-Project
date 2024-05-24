@@ -1,27 +1,15 @@
-// registerSellerReducer.js
-import { UPLOAD_DOCUMENT_SUCCESS } from '../Constants/registerSellerConstants';
-import { SUBMIT_FORM_DATA } from '../Constants/registerSellerConstants';
+import { REGISTER_SELLER_FAIL, REGISTER_SELLER_REQUEST, REGISTER_SELLER_SUCCESS } from "../Constants/registerSellerConstants";
 
-const initialState = {
-  uploadedDocument: null,
-  formData: null,
-};
 
-const registerSellerReducer = (state = initialState, action) => {
+export const registerSellerReducer = (state = {}, action) => {
   switch (action.type) {
-    case UPLOAD_DOCUMENT_SUCCESS:
-      return {
-        ...state,
-        uploadedDocument: action.payload,
-      };
-    case SUBMIT_FORM_DATA:
-      return {
-        ...state,
-        formData: action.payload,
-      };
+    case REGISTER_SELLER_REQUEST:
+      return { loading: true };
+    case REGISTER_SELLER_SUCCESS:
+      return { loading: false, success: true, data: action.payload };
+    case REGISTER_SELLER_FAIL:
+      return { loading: false, error: action.payload };
     default:
       return state;
   }
 };
-
-export default registerSellerReducer;

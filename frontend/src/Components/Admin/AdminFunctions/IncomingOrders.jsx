@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 
@@ -25,7 +26,7 @@ const IncomingOrders = () => {
   const { user } = useSelector((state) => state.user);
   // const { incomingOrders } = useSelector(state => state.order);
 
-  const { error, incomingOrders, loading , isUpdated} = useSelector(
+  const { error, incomingOrders, loading, isUpdated } = useSelector(
     (state) => state.incomingOrders
   );
 
@@ -38,15 +39,15 @@ const IncomingOrders = () => {
     totalOrderAmmountOfSeller: orders.orderItems
       .filter((item) => item.seller === user._id)
       .reduce((prev, curr) => prev + curr.quantity * curr.price, 0),
-    currentSellerStatus:orders.sellerStatus.filter((item) => item.seller === user._id)
+    currentSellerStatus: orders.sellerStatus.filter((item) => item.seller === user._id)
   }));
   console.log("incomingOrdersForSeller:", incomingOrdersForSeller);
 
 
-  
 
 
-  
+
+
 
   useEffect(() => {
     //dispatch icoming order action
@@ -79,7 +80,7 @@ const IncomingOrders = () => {
     //    if(isDeliverd){
     //     // some code
     //    }
-  }, [dispatch,error,isUpdated]);
+  }, [dispatch, error, isUpdated]);
 
 
 
@@ -93,29 +94,29 @@ const IncomingOrders = () => {
 
 
 
-const[orderStatusMap,setOrderStatusMap] = useState({});
+  const [orderStatusMap, setOrderStatusMap] = useState({});
 
 
-function handleStatusChange(productId,newStatus){
-    setOrderStatusMap(prevState=>(
+  function handleStatusChange(productId, newStatus) {
+    setOrderStatusMap(prevState => (
       {
         ...prevState,
-        [productId]:newStatus
+        [productId]: newStatus
       }
     ))
-};
+  };
 
 
 
-function submitStatusHandler(orderId,productId){
+  function submitStatusHandler(orderId, productId) {
     console.log("clicked")
     // console.log("orderStatus:",orderStatus);
     // console.log(orderStatusMap);
-    console.log(orderId,orderStatusMap[productId],user._id);
+    console.log(orderId, orderStatusMap[productId], user._id);
     // updateSellerOrderStatus acton dispatch()
-    dispatch(updateIncomingOrderStatus(orderId,orderStatusMap[productId],user._id)); //orderid , newStatus, sellerId
+    dispatch(updateIncomingOrderStatus(orderId, orderStatusMap[productId], user._id)); //orderid , newStatus, sellerId
 
-}
+  }
 
 
 
@@ -130,9 +131,9 @@ function submitStatusHandler(orderId,productId){
           <div className="profile-container">
             <ToastContainer />
             <div className="profile-title">
-            <Typography variant="h4" className="typoH" align="center">
-              Incoming Orders
-            </Typography>
+              <Typography variant="h4" className="typoH" align="center">
+                Incoming Orders
+              </Typography>
             </div>
             <div className="profile-det-container">
               {/* Left side of the profile */}
@@ -146,7 +147,7 @@ function submitStatusHandler(orderId,productId){
                   <h3 className="created-product-heading">OrderId</h3>
                   <h3 className="created-product-heading">Status</h3>
                   <h3 className="created-product-heading">Payment Method</h3>
-                  <h3 className="created-product-heading">Ammount</h3>
+                  <h3 className="created-product-heading">Amount</h3>
                   <h3 className="created-product-heading">Action</h3>
                 </div>
 
@@ -166,14 +167,14 @@ function submitStatusHandler(orderId,productId){
                             >
                               <p>{item._id}</p>
                               <p>{
-                                item.currentSellerStatus.every((item)=>item.status === "shipped")
+                                item.currentSellerStatus.every((item) => item.status === "shipped")
                                   ? "Shipped"
-                                  : item.currentSellerStatus.every((item)=>item.status === "delivered")
-                                  ? "Delivered"
-                                  : "Processing"
-                                }</p>
+                                  : item.currentSellerStatus.every((item) => item.status === "delivered")
+                                    ? "Delivered"
+                                    : "Processing"
+                              }</p>
 
-                                {/* {
+                              {/* {
                                   item.currentSellerStatus.every((item)=>item.status === "shipped") ? <p>"Shipped"</p>
                                 } */}
                               {/* <p>{item.orderStatus}</p> */}
@@ -233,15 +234,15 @@ function submitStatusHandler(orderId,productId){
                                                 Seller Order Status:
                                               </label>
                                               <div className="seller-order-status-container">
-                                                <select 
-                                                id={`sellerOrderStatus${order._id}`}  //cartproductID
-                                                // value={orderStatusMap[order._id]}
-                                                value={
-                                                  item.currentSellerStatus.every(item => item.status === "shipped") ? "shipped" :
-                                                  item.currentSellerStatus.every(item => item.status === "delivered") ? "delivered" :
-                                                  "processing"
-                                                }
-                                                onChange={(e)=>handleStatusChange(order._id,e.target.value)}
+                                                <select
+                                                  id={`sellerOrderStatus${order._id}`}  //cartproductID
+                                                  // value={orderStatusMap[order._id]}
+                                                  value={
+                                                    item.currentSellerStatus.every(item => item.status === "shipped") ? "shipped" :
+                                                      item.currentSellerStatus.every(item => item.status === "delivered") ? "delivered" :
+                                                        "processing"
+                                                  }
+                                                  onChange={(e) => handleStatusChange(order._id, e.target.value)}
                                                 >
                                                   <option value="processing">
                                                     Processing
@@ -254,9 +255,9 @@ function submitStatusHandler(orderId,productId){
                                                   </option>
                                                 </select>
 
-                                                <button onClick={() => submitStatusHandler(item._id,order._id)} className="order-status-btn" type="sumbit">Save Changes</button>
+                                                <button onClick={() => submitStatusHandler(item._id, order._id)} className="order-status-btn" type="sumbit">Save Changes</button>
                                               </div>
-                                              
+
                                             </div>
                                           </li>
                                         ))}

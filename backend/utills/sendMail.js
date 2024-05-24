@@ -19,6 +19,7 @@ exports.sendMail = catchAsyncErr(async ( options ) => {
     subject: options.subject, // Subject line
     text: options.message, // plain text body
     html: options.html, // html body
+    attachments:options.attachments //attachments
   });
 });
 

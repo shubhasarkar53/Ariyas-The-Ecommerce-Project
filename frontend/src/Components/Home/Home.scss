@@ -7,16 +7,16 @@ $categoriText: white;
   transform: translateY(20px);
   animation: fadeInUp 1.5s ease-out forwards;
 
-@keyframes fadeInUp {
-  0% {
+  @keyframes fadeInUp {
+    0% {
       opacity: 0;
       transform: translateY(20px);
-  }
-  100% {
+    }
+    100% {
       opacity: 1;
       transform: translateY(0);
+    }
   }
-}
   .carousel-container {
     width: 100vmax;
     margin: 0 auto;
@@ -259,11 +259,12 @@ $categoriText: white;
   }
 
   .product-row-container {
-    margin-left: 10rem;
+    margin-left: 1rem;
     .row {
       h1 {
         margin-bottom: 2rem;
         margin-top: 3rem;
+        margin-left: 4rem;
       }
 
       .row-products {
@@ -276,12 +277,12 @@ $categoriText: white;
       }
       @keyframes fadeInUp {
         0% {
-            opacity: 0;
-            transform: translateY(20px);
+          opacity: 0;
+          transform: translateY(20px);
         }
         100% {
-            opacity: 1;
-            transform: translateY(0);
+          opacity: 1;
+          transform: translateY(0);
         }
       }
     }

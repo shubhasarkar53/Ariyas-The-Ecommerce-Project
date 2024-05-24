@@ -108,9 +108,8 @@ const Home = () => {
               <div className="top1">
                 <p className="top1-text">HandMade Bags</p>
                 <button
-                  className={`top1-button ${
-                    loadingButton === "top1" ? "loading" : ""
-                  }`}
+                  className={`top1-button ${loadingButton === "top1" ? "loading" : ""
+                    }`}
                   onClick={() => handleButtonClick("top1")}
                 >
                   Bags
@@ -120,9 +119,8 @@ const Home = () => {
               <div className="top2">
                 <p className="top2-text">Hand-Loom Sarees</p>
                 <button
-                  className={`top2-button ${
-                    loadingButton === "top2" ? "loading" : ""
-                  }`}
+                  className={`top2-button ${loadingButton === "top2" ? "loading" : ""
+                    }`}
                   onClick={() => handleButtonClick("top2")}
                 >
                   Sarees
@@ -134,9 +132,8 @@ const Home = () => {
               <div className="bottom1">
                 <p className="bottom1-text">Woodcrafted Items</p>
                 <button
-                  className={`bottom1-button ${
-                    loadingButton === "bottom1" ? "loading" : ""
-                  }`}
+                  className={`bottom1-button ${loadingButton === "bottom1" ? "loading" : ""
+                    }`}
                   onClick={() => handleButtonClick("bottom1")}
                 >
                   Woodcrafts
@@ -146,9 +143,8 @@ const Home = () => {
               <div className="bottom2">
                 <p className="bottom2-text">Clay-Made Items</p>
                 <button
-                  className={`bottom2-button ${
-                    loadingButton === "bottom2" ? "loading" : ""
-                  }`}
+                  className={`bottom2-button ${loadingButton === "bottom2" ? "loading" : ""
+                    }`}
                   onClick={() => handleButtonClick("bottom2")}
                 >
                   Clay-made

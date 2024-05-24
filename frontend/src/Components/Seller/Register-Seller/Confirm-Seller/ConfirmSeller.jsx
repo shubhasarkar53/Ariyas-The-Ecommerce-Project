@@ -1,36 +1,98 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './ConfirmSeller.scss';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { updateFormData } from '../../../../Redux/Actions/registerSellerAction';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { sendFormSubmissionEmail } from '../../../../../../backend/apii/index.js';
 
 const ConfirmSeller = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
-  // Retrieve form data from the Redux store
   const formData = useSelector((state) => state.registerSeller.formData);
+  const uploadedDocuments = useSelector((state) => state.registerSeller.uploadedDocuments);
 
-  const handleSubmit = () => {
-    history.push('/confirmation-page');
+  const handleUpdate = () => {
+    dispatch(updateFormData(formData));
+    history.push({
+      pathname: '/register-seller',
+      state: { formData: formData },
+    });
+  }
+  // const handleUpdate = () => {
+  //   // Pass only necessary form data fields as state when navigating to RegisterSeller
+  //   const updatedFormData = {
+  //     shopName: formData.shopName,
+  //     dob: formData.dob,
+  //     firstName: formData.firstName,
+  //     lastName: formData.lastName,
+  //     phone: formData.phone,
+  //     email: formData.email,
+  //     aadhar: formData.aadhar,
+  //     pan: formData.pan,
+  //     pinCode: formData.pinCode,
+  //     postOffice: formData.postOffice,
+  //     policeStation: formData.policeStation,
+  //     houseDet: formData.houseDet,
+  //     houseAddress: formData.houseAddress,
+  //     townAdd: formData.townAdd,
+  //   };
+
+  //   history.push({
+  //     pathname: '/register-seller',
+  //     state: { formData: updatedFormData },
+  //   });
+  // };
+
+  const handleSubmit = async () => {
+    try {
+      // Dispatch action to update form data (if needed)
+      dispatch(updateFormData(formData));
+
+      // Call API function to send email with form details
+      const response = await sendFormSubmissionEmail(formData);
+      console.log(response); // Log the response from the server
+      // Redirect to ConfirmationPage after successful form submission
+      history.push('/confirmation');
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Handle error if form submission fails
+    }
   };
+
+
 
   return (
     <>
       <div className="confirm-seller-container">
         <div className="confirm-container">
-
           <h2>Confirm Seller Details</h2>
           <div className="bar"></div>
           <div className="confirm-details">
             {Object.entries(formData).map(([key, value]) => (
-              <p key={key}>
-                {key.charAt(0).toUpperCase() + key.slice(1)}: {value}
-              </p>
+              <>
+                <p key={key}>
+                  {key.charAt(0).toUpperCase() + key.slice(1)}: {value}
+                </p>
+                {uploadedDocuments && (
+                  <div className="uploaded-documents">
+                    <h3>Uploaded Documents:</h3>
+                    <ul>
+                      {uploadedDocuments.map((document, index) => (
+                        <li key={index}>{document}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </>
             ))}
           </div>
           <div className="update-details">
             <p>Update your details if necessary</p>
-            <button>Update</button>
+            <button onClick={handleUpdate}>Update</button>
           </div>
           <div className="final-submit">
             <p>
