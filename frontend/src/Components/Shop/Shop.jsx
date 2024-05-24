@@ -78,7 +78,7 @@ const Shop = ({ match }) => {
   useEffect(() => {
     function handleClickOutside(event) {
       if (
-        containerRef.current && 
+        containerRef.current &&
         !containerRef.current.contains(event.target)) {
         setShowPriceFilter(false);
       }
@@ -113,8 +113,8 @@ const Shop = ({ match }) => {
             >
               {showPriceFilter ? "Hide Filter" : "Show Filter"}
             </button>
-            <Typography variant="h3" className="typoH" align="center">
-              Shop From Different Categories
+            <Typography variant="h3" className="typoH" align="center" style={{ textDecoration: "underline", fontSize: "2.1rem", fontWeight: "bolder", letterSpacing: "0.2rem", color: "#373737" }}>
+              SHOP
             </Typography>
 
             <div className="products-main-container">
@@ -163,25 +163,25 @@ const Shop = ({ match }) => {
                     Ratings
                   </Typography>
                   <Slider
-                   className="rating-slider"
-                   value={ratings}
-                   onChange={(e, newRating) => {
-                     setRatings(newRating);
-                     dispatch(
-                       getProducts(
-                         keyword,
-                         currentPage,
-                         price,
-                         "",
-                         category === "All" ? "" : category,
-                         newRating
-                       )
-                     );
-                   }}
-                   aria-labelledby="continuous-slider"
-                   valueLabelDisplay="auto"
-                   min={0}
-                   max={5}
+                    className="rating-slider"
+                    value={ratings}
+                    onChange={(e, newRating) => {
+                      setRatings(newRating);
+                      dispatch(
+                        getProducts(
+                          keyword,
+                          currentPage,
+                          price,
+                          "",
+                          category === "All" ? "" : category,
+                          newRating
+                        )
+                      );
+                    }}
+                    aria-labelledby="continuous-slider"
+                    valueLabelDisplay="auto"
+                    min={0}
+                    max={5}
                   />
                 </div>
               </div>
