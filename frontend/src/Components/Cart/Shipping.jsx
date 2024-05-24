@@ -42,7 +42,7 @@ const Shipping = ({ history }) => {
 
   const addressSubmitHandler = (e) => {
     e.preventDefault();
-    if (!selectedAddressId || !addresses) {
+    if (!selectedAddressId || !addresses || addresses.length === 0) {
       toast.error("Please select an address", {
         position: "top-center",
         autoClose: 5000,
@@ -133,7 +133,11 @@ const Shipping = ({ history }) => {
               );
             })}
           <div className="buttonDiv">
-            <button onClick={addressSubmitHandler} className="address-btn">
+            <button
+              onClick={addressSubmitHandler}
+              className="address-btn"
+              disabled={!selectedAddressId}
+            >
               Continue to Payment
             </button>
           </div>

@@ -11,6 +11,7 @@ const userRoute = require("./routes/userRoute");
 const orderRoute = require("./routes/orderRoute");
 const addressRoute = require("./routes/addressRoute");
 const returnRoute = require("./routes/returnRoute");
+const blogRoute = require("./routes/blogRoute");
 // * middleware
 app.use(express.json());
 app.use(cookieParser());
@@ -23,6 +24,7 @@ app.use("/api/v1", userRoute);
 app.use("/api/v1", orderRoute);
 app.use("/api/v1", addressRoute);
 app.use("/api/v1", returnRoute);
+app.use("/api/v1", blogRoute);
 
 // Email sending functionality
 // const sendEmail = async (to, subject, text) => {
