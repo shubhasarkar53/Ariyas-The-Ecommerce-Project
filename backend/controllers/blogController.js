@@ -28,7 +28,7 @@ exports.createNewBlog = catchAsyncErr(async (req, res, next) => {
     if (req.body.image !== "") {
         console.log("entered into if ")
         const myCloud = await cloudinary.v2.uploader.upload(req.body.image, {
-            folder: "productsImg",
+            folder: "blogesImg",
             width: 150,
             crop: "scale",
             quality: 'auto:low'
@@ -139,3 +139,4 @@ exports.myblogs = catchAsyncErr(async (req, res, next) => {
       sellerAllBlogs
     });
   });
+

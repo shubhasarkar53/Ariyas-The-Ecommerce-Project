@@ -1,5 +1,5 @@
 const express = require("express");
-const { isAuthenticated, authRole, isProductOwner } = require("../middleWares/auth");
+const { isAuthenticated, authRole } = require("../middleWares/auth");
 const { getAllBlogs, createNewBlog, updateBlog, deleteBlog } = require("../controllers/blogController");
 const router = express.Router();
 
