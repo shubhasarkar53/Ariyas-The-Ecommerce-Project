@@ -7,6 +7,7 @@ const fs = require('fs');
 const { sellerRegSendMail } = require("../utills/sellerRegSendMail");
 const SellerInfo = require("../models/SellerInfo"); //Schema
 const ErrorHandler = require("../utills/errorHandler");
+const User = require("../models/User");
 
 
 // Ensure the directory exists
@@ -155,3 +156,30 @@ exports.registerSeller = catchAsyncErr(async (req, res, next) => {
         return next(error);
     }
 });
+
+
+
+exports.getAllRequestedSeller = catchAsyncErr(async (req,res,next) => {
+    const sellers = await SellerInfo.find().populate('user', 'role');
+  if (!sellers) {
+    return next(new ErrorHandler("User not availabe", 400));
+  }
+  res.status(200).json({
+    success: true,
+    sellers,
+  });
+})
+
+
+exports.getAllVerifiedseller = catchAsyncErr(async (req,res,next) => {
+    const verifiedSellers = await User.find({role:"seller"});
+  if (!verifiedSellers) {
+    return next(new ErrorHandler("User not availabe", 400));
+  }
+  res.status(200).json({
+    success: true,
+    verifiedSellers,
+  });
+})
+
+
