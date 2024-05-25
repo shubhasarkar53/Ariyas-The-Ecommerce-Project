@@ -5,12 +5,14 @@ const errorMiddleWare = require("./middleWares/error");
 const fileUpload = require("express-fileupload");
 const bodyParser = require("body-parser");
 const nodemailer = require('nodemailer');
+
 // * route import 
 const productRoute = require("./routes/productRoute");
 const userRoute = require("./routes/userRoute");
 const orderRoute = require("./routes/orderRoute");
 const addressRoute = require("./routes/addressRoute");
 const returnRoute = require("./routes/returnRoute");
+const blogRoute = require("./routes/blogRoute");
 // * middleware
 app.use(express.json());
 app.use(cookieParser());
@@ -23,6 +25,7 @@ app.use("/api/v1", userRoute);
 app.use("/api/v1", orderRoute);
 app.use("/api/v1", addressRoute);
 app.use("/api/v1", returnRoute);
+app.use("/api/v1", blogRoute);
 
 // ---------------------------------------------------------------------------------------------------
 
@@ -35,7 +38,7 @@ app.post("/api/v1/contact", async (req, res) => {
     port: 465, // or 587 for TLS
     secure: true, // true for 465, false for other ports
     auth: {
-     
+
       user: process.env.AUTH_USER,
       pass: process.env.AUTH_PASSWORD
     },

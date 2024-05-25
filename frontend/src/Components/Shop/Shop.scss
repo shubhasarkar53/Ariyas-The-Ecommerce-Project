@@ -47,7 +47,7 @@
       width: 100%;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      margin: 0 10rem;
+      margin: 0 2rem;
       grid-gap: -0.8rem;
       margin-top: 3rem;
       gap: 1rem;
@@ -66,17 +66,17 @@
       }
     }
   }
-  .not-found-container{
+  .not-found-container {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    .NotFound{
+    .NotFound {
       width: 30rem;
     }
-    .notfoundText{
+    .notfoundText {
       font-size: 1.5rem;
-      font-weight: 500; 
+      font-weight: 500;
     }
   }
 }

@@ -5,7 +5,7 @@ a {
 .profile-container {
   width: 100%;
   height: fit-content;transform: translateY(20px);
-  animation: fadeInUp 1.5s ease-out forwards;
+  animation: fadeInUp 0.5s ease-in-out forwards;
   @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -33,6 +33,10 @@ a {
 .img-profile img {
   width: 70px;
   height: 70px;
+  box-shadow: 2px 1px 1.5px -0.5px rgba(128, 128, 128, 0.148),
+          3px 2px 9.5px -0.3px rgba(128, 128, 128, 0.234),
+          1px 5px 3.5px -0.4px rgba(128, 128, 128, 0.129),
+          6px 7px 4.5px -0.1px rgba(128, 128, 128, 0.089);
 }
 
 .profile-det-container {
@@ -119,18 +123,19 @@ a {
   grid-gap: 1.2rem;
   margin-top: 2rem;
   grid-column-gap: 3rem;
-  transform: translateY(20px);
-  animation: slideInFromLeft 2s ease-out;
-  @keyframes slideInFromLeft {
-    0% {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
+  // transform: translateY(20px);
+  // animation: slideInFromLeft 2s ease-out;
+//   @keyframes slideInFromLeft {
+//     0% {
+//       transform: translateX(-100%);
+//       opacity: 0;
+//     }
+//     100% {
+//       transform: translateX(0);
+//       opacity: 1;
+//     }
+//   }
+// }
 }
 
 .profile-slot {

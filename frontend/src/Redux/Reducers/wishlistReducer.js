@@ -1,3 +1,5 @@
+
+
 /* eslint-disable no-unused-vars */
 import { ADD_TO_WISH_LIST, REMOVE_WISH_LIST_ITEM, MOVE_TO_CART } from "../Constants/wishListConstants";
 
@@ -31,7 +33,7 @@ export const wishlistReducer = (state = { wishlistItems: [], cartItems: [] }, ac
                     i => i.product !== action.payload
                 ),
             };
-            
+
         //pending work
         // case MOVE_TO_CART:
         //     {
@@ -62,7 +64,7 @@ export const wishlistReducer = (state = { wishlistItems: [], cartItems: [] }, ac
             }
             return state;
         }
-        
+
 
         default:
             return state;

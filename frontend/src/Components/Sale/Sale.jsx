@@ -38,7 +38,7 @@ const Sale = () => {
           <>
             <Meta title="Sale" />
             <div className="sale-container">
-              <h1 className="sale-h1">Sale</h1>
+              <h1 className="sale-h1" style={{ textDecoration: "underline", color: "#373737", fontSize: "2.1rem", letterSpacing: "0.2rem" }}>SALE</h1>
               <SaleCards products={products} isButtonClicked={isButtonClicked} onButtonClick={handleButtonClick} />
             </div>
 
