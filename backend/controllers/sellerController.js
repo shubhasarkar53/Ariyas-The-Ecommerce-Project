@@ -5,6 +5,8 @@ const path = require('path');
 const fs = require('fs');
 
 const { sellerRegSendMail } = require("../utills/sellerRegSendMail");
+const SellerInfo = require("../models/SellerInfo"); //Schema
+const ErrorHandler = require("../utills/errorHandler");
 
 
 // Ensure the directory exists
@@ -31,6 +33,19 @@ const handleFileUpload = (file, uploadsDir) => {
     });
 };
 
+// Helper function to delete files
+const deleteFiles = (filePaths) => {
+    filePaths.forEach(filePath => {
+        fs.unlink(filePath, (err) => {
+            if (err) {
+                console.error(`Failed to delete file: ${filePath}`, err);
+            } else {
+                console.log(`Successfully deleted file: ${filePath}`);
+            }
+        });
+    });
+};
+
 exports.registerSeller = catchAsyncErr(async (req, res, next) => {
     const files = req.files;
     const uploadsDir = path.join(__dirname, 'files');
@@ -44,18 +59,12 @@ exports.registerSeller = catchAsyncErr(async (req, res, next) => {
     // Check if all required text fields are present
     for (let field of requiredFields) {
         if (!req.body[field]) {
-            return res.status(400).json({
-                success: false,
-                message: `Field ${field} is required.`
-            });
+            return next(new ErrorHandler(400, `Field ${field} is required.`));
         }
     }
 
     if (!files) {
-        return res.status(400).json({
-            success: false,
-            message: "No files were uploaded."
-        });
+        return next(new ErrorHandler(400, "No files were uploaded."));
     }
 
     const fileFields = [
@@ -74,7 +83,7 @@ exports.registerSeller = catchAsyncErr(async (req, res, next) => {
                     attachments.push(result);
                     filePaths.push(result.path);
                 }).catch(err => {
-                    throw new Error(`Failed to upload file: ${fileField}`);
+                    return next(new ErrorHandler(400, `Failed to upload file: ${fileField}`));
                 })
             );
         }
@@ -82,6 +91,32 @@ exports.registerSeller = catchAsyncErr(async (req, res, next) => {
 
     try {
         await Promise.all(fileHandlers);
+
+        const duplicateMail = await SellerInfo.findOne({ email: req.body.email });
+        if (duplicateMail) {
+            throw new ErrorHandler(400, `You have already requested to become a seller.`);
+        }
+
+        // Create a new SellerInfo instance
+        const sellerInfo = new SellerInfo({
+            user: req.user.id, //  user info from the request
+            agencyName: req.body.agencyName,
+            name: req.body.name,
+            phone: req.body.phone,
+            email: req.body.email,
+            aadharNumber: req.body.aadharNumber,
+            panNumber: req.body.panNumber,
+            pincode: req.body.pincode,
+            postOffice: req.body.postOffice,
+            policeStation: req.body.policeStation,
+            address: req.body.address,
+            landmark: req.body.landmark,
+            town: req.body.town,
+            state: req.body.state,
+        });
+
+        // Save the seller info to the database
+        await sellerInfo.save();
 
         const emailOptions = {
             email: req.body.email, // Admin's email address or seller's email
@@ -100,28 +135,23 @@ exports.registerSeller = catchAsyncErr(async (req, res, next) => {
         // Send email
         await sellerRegSendMail(emailOptions);
 
-        // Delete files after 15 seconds
-        setTimeout(() => {
-            filePaths.forEach(filePath => {
-                fs.unlink(filePath, (err) => {
-                    if (err) {
-                        console.error(`Failed to delete file: ${filePath}`, err);
-                    } else {
-                        console.log(`Successfully deleted file: ${filePath}`);
-                    }
-                });
-            });
-        }, 10000); // 10 seconds delay
+        // Schedule file deletion after 10 seconds
+        setTimeout(() => deleteFiles(filePaths), 10000); // 10 seconds delay
 
         res.status(201).json({
             success: true,
-            message: "Files uploaded, email sent, and files will be deleted in 10 seconds"
+            message: "Files uploaded & email sent successfully.",
         });
+
     } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            success: false,
-            message: "File upload or email sending failed"
-        });
+        // Delete files immediately if there's an error
+        deleteFiles(filePaths);
+
+        // If the error is not an instance of ErrorHandler, create one
+        if (!(error instanceof ErrorHandler)) {
+            error = new ErrorHandler(500, error);
+        }
+
+        return next(error);
     }
 });

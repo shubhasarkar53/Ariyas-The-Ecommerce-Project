@@ -1,0 +1,68 @@
+// src/components/UpdateAuthorization.scss
+.update-authorization {
+    text-align: center;
+    padding: 20px;
+  
+    .search-bar {
+      margin-bottom: 20px;
+  
+      input {
+        width: 300px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+  
+      button {
+        padding: 10px;
+        border: none;
+        background-color: #f1f1f1;
+        cursor: pointer;
+  
+        i {
+          font-size: 16px;
+        }
+      }
+    }
+  
+    .update-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+  
+      .email-input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 200px;
+      }
+  
+      .authorization-select {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+  
+      .update-button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+  
+    .footer-left {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 14px;
+      color: #777;
+    }
+  
+    // Additional styles for Diwali lamps
+    background: url('/path/to/diwali-lamp.png') no-repeat bottom left, url('/path/to/diwali-lamp.png') no-repeat bottom right;
+    background-size: 100px 100px;
+  }
+  

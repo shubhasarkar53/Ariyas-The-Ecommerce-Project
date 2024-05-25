@@ -42,6 +42,11 @@
 .form-label {
   margin-top: 10px;
   font-weight: bold;
+  .label-span{
+    font-weight: 300;
+    font-size: 0.8rem;
+    color: green;
+  }
 }
 
 .form-button {

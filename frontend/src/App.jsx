@@ -54,6 +54,7 @@ import Location from "./Components/Location/Location.jsx";
 import ConfirmEmailScreen from "./Components/User/ConfirmEmailScreen.jsx";
 // import IncomingOrders from "./Components/Admin/AdminFunctions/IncomingOrders.jsx";
 import ScrollToTop from "./ScrollToTop.js";
+import UpdateAuthorization from "./Components/Admin/AdminFunctions/UpdateAuth.jsx";
 // import { useLocation } from "react-router-dom";
 const App = () => {
   useEffect(() => {
@@ -139,6 +140,11 @@ const App = () => {
                 exact
                 path="/yourProducts"
                 component={CreatedProducts}
+              />
+              <ProtectedRoute
+                exact
+                path="/authorization"
+                component={UpdateAuthorization}
               />
               <ProtectedRoute
                 exact
