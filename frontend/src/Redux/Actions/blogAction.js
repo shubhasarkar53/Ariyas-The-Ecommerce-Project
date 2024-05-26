@@ -90,8 +90,8 @@ export const createBlog = (blogData) => async (dispatch) => {
     try {
         dispatch({ type: CREATE_BLOG_REQUEST });
         const { data } = await axios.post("/api/v1/blog/new",
-         blogData, 
-         config);
+            blogData,
+            config);
         dispatch({
             type: CREATE_BLOG_SUCCESS,
             payload: data
@@ -105,18 +105,18 @@ export const createBlog = (blogData) => async (dispatch) => {
     }
 };
 
-export const editCreatedBlog = (blogId,updateBlogData) => async(dispatch)=>{
+export const editCreatedBlog = (blogId, updateBlogData) => async (dispatch) => {
     dispatch({ type: EDIT_BLOG_REQUEST });
 
     const config = {
-        headers: {"Content-Type": "multipart/form-data"},
+        headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
-      };
+    };
 
     try {
-        const { data } = await axios.put(`/api/v1/blog/${blogId}`, 
-        updateBlogData,
-        config);
+        const { data } = await axios.put(`/api/v1/blog/${blogId}`,
+            updateBlogData,
+            config);
         dispatch({
             type: EDIT_BLOG_SUCCESS,
             payload: data.success
@@ -133,11 +133,11 @@ export const editCreatedBlog = (blogId,updateBlogData) => async(dispatch)=>{
 };
 
 
-export const deleteCreatedBlog = (blogId) => async(dispatch) =>{
+export const deleteCreatedBlog = (blogId) => async (dispatch) => {
     try {
-        dispatch({type:DELETE_BLOG_REQUEST});
+        dispatch({ type: DELETE_BLOG_REQUEST });
 
-        const {data} = await axios.delete(`/api/v1/blog/${blogId}`);
+        const { data } = await axios.delete(`/api/v1/blog/${blogId}`);
 
         dispatch({
             type: DELETE_BLOG_SUCCESS,
@@ -153,32 +153,31 @@ export const deleteCreatedBlog = (blogId) => async(dispatch) =>{
     }
 };
 
-export const getYourProducts = () => async (dispatch) => {
+export const getYourBlogs = () => async (dispatch) => {
     try {
-      dispatch({ type: LOAD_CREATED_BLOG_REQUEST });
-  
-      const link = `/api/v1/blogs/me`;
-  
-      const { data } = await axios.get(link, {
-        headers: {
-          "Content-type": "application/json",
-        },
-        withCredentials: true,
-      });
-  
-      dispatch({
-        type: LOAD_CREATED_BLOG_SUCCESS,
-        payload: data.sellerAllBlogs, //ALSO WORKS FOR ADMIN
-      });
+        dispatch({ type: LOAD_CREATED_BLOG_REQUEST });
+
+        const link = `/api/v1/blogs/me`;
+
+        const { data } = await axios.get(link, {
+            headers: {
+                "Content-type": "application/json",
+            },
+            withCredentials: true,
+        });
+
+        dispatch({
+            type: LOAD_CREATED_BLOG_SUCCESS,
+            payload: data.sellerAllBlogs, //ALSO WORKS FOR ADMIN
+        });
     } catch (error) {
-      dispatch({
-        type: LOAD_CREATED_BLOG_FAIL,
-        payload: error.response.data.message,
-      });
+        dispatch({
+            type: LOAD_CREATED_BLOG_FAIL,
+            payload: error.response.data.message,
+        });
     }
-  };
-  
+};
+
 export const clearError = () => async (dispatch) => {
     dispatch({ type: CLEAR_ERRORS });
-  };
-  
+};
