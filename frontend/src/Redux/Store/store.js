@@ -24,6 +24,7 @@ import { orderReducer,myOrderReducer,orderDetailsReducer } from "../Reducers/ord
 import incomingOrdersReducer from "../Reducers/incomingOrderReducer";
 import { registerSellerReducer } from "../Reducers/registerSellerReducer";
 import { requestedSellerReducer } from "../Reducers/sellerReducer";
+import {blogReducer,blogDetailsReducer,createBlogReducer,loadCreatedBlogReducer} from "../Reducers/blogReducer";
 // Reducers
 const reducer = combineReducers({
   products: productReducer,
@@ -43,7 +44,11 @@ const reducer = combineReducers({
   orderDetails: orderDetailsReducer,
   createReview: createReviewReducer,
   incomingOrders:incomingOrdersReducer,
-  forgotPassword:forgotPasswordReducer
+  forgotPassword:forgotPasswordReducer,
+  blog:blogReducer,
+  blogDetails:blogDetailsReducer,
+  createBlog:createBlogReducer,
+  createdBlogs:loadCreatedBlogReducer
 });
 
 
@@ -80,6 +85,16 @@ let initialState = {
   orderDetails: {
     orderDetails: localStorage.getItem("orderDetails")
       ? JSON.parse(localStorage.getItem("orderDetails"))
+      : [],
+  },
+  blog: {
+    blogInfo: localStorage.getItem("blogInfo")
+      ? JSON.parse(localStorage.getItem("blogInfo"))
+      : [],
+  },
+  blogDetails: {
+    blogDetails: localStorage.getItem("blogDetails")
+      ? JSON.parse(localStorage.getItem("blogDetails"))
       : [],
   },
 };

@@ -5,6 +5,9 @@ import yourProducts from "../../assets/Images/Icons/Admin dashboard/products1.pn
 import createProducts from "../../assets/Images/Icons/Admin dashboard/products2.png";
 import incomingOrders from "../../assets/Images/Icons/Admin dashboard/orders1.png";
 import reviews from "../../assets/Images/Icons/Admin dashboard/reviews1.png";
+import Blog1 from "../../assets/Images/Icons/Admin dashboard/Blog-1.png";
+// import Blog2 from "../../assets/Images/Icons/Admin dashboard/blog-2.png";
+import Blog3 from "../../assets/Images/Icons/Admin dashboard/createBlog.png"; 
 import authorization from "../../assets/Images/Icons/Admin dashboard/Authorizarion1.png";
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -41,6 +44,18 @@ const AdminDashboard = () => {
       text: "Manage and View Your Incoming Orders",
       func: manageIncomingOrders,
     },
+    {
+      icon: Blog3,
+      title: "Blog",
+      text: "Create New Blog",
+      func: newbloges,
+    },
+    {
+      icon: Blog1,
+      title: "Your Blog's",
+      text: "Manage and View Your Blog's",
+      func: managebloges,
+    }
     // {
     //   icon: reviews,
     //   title: "Products Review",
@@ -60,11 +75,19 @@ const AdminDashboard = () => {
   function manageIncomingOrders() {
     history.push("/incoming-orders")
   }
-  function manageReviews() {
-    history.push("/manageReviews")
-  }
+  // function manageReviews() {
+  //   history.push("/manageReviews")
+  // }
   function manageAuthorization() {
     history.push("/authorization")
+  }
+
+  function newbloges() {
+    history.push("/blog/new")
+  }
+
+  function managebloges() {
+    history.push("/blog/manage")
   }
 
   if (user.role === "admin") {

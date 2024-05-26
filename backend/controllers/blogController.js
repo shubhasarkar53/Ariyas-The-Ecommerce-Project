@@ -24,6 +24,7 @@ exports.getAllBlogs = catchAsyncErr(async (req, res, next) => {
 
 exports.createNewBlog = catchAsyncErr(async (req, res, next) => {
     req.body.user = req.user.id;
+    console.log("Image Data:", req.body.image);
 
     if (req.body.image !== "") {
         console.log("entered into if ")

@@ -13,6 +13,6 @@ router.route("/blog/new").post(isAuthenticated, authRole("admin", "seller"), cre
 router.route("/blog/:id").put(isAuthenticated, authRole("admin", "seller"), updateBlog)
     .delete(isAuthenticated, authRole("admin", "seller"), deleteBlog);
 
-//  get products cerated by seller or admin 
+//  get blogs cerated by seller or admin 
 router.route("/blogs/me").get(isAuthenticated, authRole("admin", "seller"), getAllBlogs);
 module.exports = router

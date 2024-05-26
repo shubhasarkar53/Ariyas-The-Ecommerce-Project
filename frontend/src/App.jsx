@@ -56,6 +56,10 @@ import ConfirmEmailScreen from "./Components/User/ConfirmEmailScreen.jsx";
 import ScrollToTop from "./ScrollToTop.js";
 import UpdateAuthorization from "./Components/Admin/AdminFunctions/UpdateAuth.jsx";
 // import { useLocation } from "react-router-dom";
+import BlogPage from "./Components/Blog/BlogPage/BlogPage.jsx";
+import BlogDetails from "./Components/Blog/BlogDetails/BlogDetails.jsx";
+import CreateBlogs from "./Components/Admin/AdminFunctions/CreateBlogs.jsx";
+import CreatedBlogs from "./Components/Admin/AdminFunctions/CreatedBlogs.jsx";
 const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
@@ -75,6 +79,7 @@ const App = () => {
               <Route exact path="/sale" component={Sale} />
               <Route exact path="/shop" component={Shop} />
               <Route exact path="/location" component={Location} />
+              <Route exact path="/blog" component={BlogPage} />
 
               <Route
                 path="/products/:keyword"
@@ -178,6 +183,18 @@ const App = () => {
                 exact
                 path="/incoming-orders"
                 component={IncomingOrders}
+              />
+
+              <ProtectedRoute
+                exact
+                path="/blog/new"
+                component={CreateBlogs}
+              />
+
+              <ProtectedRoute
+                exact
+                path="/blog/manage"
+                component={CreatedBlogs}
               />
 
               <Route exact path="/password/forgot" component={ForgotPassword} />

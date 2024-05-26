@@ -22,6 +22,13 @@ cloudinary.config({
    api_secret : process.env.CLODINARY_SECRET
 });
 
+
+// cloudinary.config({
+//    cloud_name_2 : process.env.CLOUDINARY_NAME_2,
+//    api_key_2    : process.env.CLODINARY_APIKEY_2,
+//    api_secret_2 : process.env.CLODINARY_SECRET_2
+// });
+
 const dbConnect = require("./config/database");
 
 const app = require("./app");
