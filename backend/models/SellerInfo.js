@@ -1,131 +1,84 @@
 // create a schema for address  
 const mongoose = require('mongoose');
+const validateLength = (value, length) => {
+  return value.toString().length === length;
+};
+
 const sellerInfoSchema = new mongoose.Schema({
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required:[true, "Please fill all the fields"],
+  user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: [true, "Please fill all the fields"],
+  },
+  agencyName: {
+      type: String,
+      required: [true, "Please fill all the fields"],
+  },
+  name: {
+      type: String,
+      required: [true, "Please fill all the fields"],
+      minlength: [3, "Name should be greater than 3 characters."],
+      maxlength: [30, "Name should be within 30 characters."]
+  },
+  phone: {
+      type: Number,
+      required: [true, "Please fill all the fields"],
+      validate: {
+          validator: (value) => validateLength(value, 10),
+          message: "Phone Number should be 10 digits."
       },
-      shopName: {
-        type: String,
-        required:[true, "Please fill all the fields"],
+  },
+  email: {
+      type: String,
+      required: [true, "Please fill all the fields"],
+      unique: true,
+  },
+  aadharNumber: {
+      type: Number,
+      required: [true, "Please fill all the fields"],
+      validate: {
+          validator: (value) => validateLength(value, 12),
+          message: "Aadhar Number should be 12 digits."
       },
-      dob: {
-        type: Date,
-        required:[true, "Please fill all the fields"],
+      unique: true,
+  },
+  panNumber: {
+      type: String,
+      required: [true, "Please fill all the fields"],
+      minlength: [10, "Pan Number should be 10 characters."],
+      maxlength: [10, "Pan Number should be 10 characters."],
+      unique: true,
+  },
+  pincode: {
+      type: Number,
+      required: [true, "Please fill all the fields"],
+      validate: {
+          validator: (value) => validateLength(value, 6),
+          message: "Pincode should be 6 digits."
       },
-      firstName: {
-        type: String,
-        required:[true, "Please fill all the fields"],
-      },
-      middleName: {
-        type: String,
-      },
-      lastName: {
-        type: String,
-        required:[true, "Please fill all the fields"],
-      },
-      phoneNumber: {
-        type: Number,
-        required:[true, "Please fill all the fields"],
-      },
-      email:{
-          type: String,
-          required:[true, "Please fill all the fields"],
-      },
-      addharNumber: {
-          type: Number,
-          required:[true, "Please fill all the fields"],
-      },
-      addharImg: {
-        publicId: {
-          type: String,
-          required: true,
-        },
-        url: {
-          type: String,
-          required: true,
-        },
-      },
-      PAN: {
-          type: String,
-          required:[true, "Please fill all the fields"],
-      },
-      PANImg: {
-        publicId: {
-          type: String,
-          required: true,
-        },
-        url: {
-          type: String,
-          required: true,
-        },
-      },
-      pincode:{
-        type: Number,
-        required:[true, "Please fill all the fields"],
-      },
-      postOffice:{
-        type: String,
-        required:[true, "Please fill all the fields"],
-      },
-      policeStation:{
-        type: String,
-        required:[true, "Please fill all the fields"],
-      },
-      flat:{
-        type: String,
-        required:[true, "Please fill all the fields"],
-      },
-      area:{
-        type: String,
-        required:[true, "Please fill all the fields"],
-      },
-      landmark:{
-        type: String,
-      },
-      city:{
-        type: String,
-        required:[true, "Please fill all the fields"],
-      },
-      state:{
-        type: String,
-        required:[true, "Please fill all the fields"],
-      },
-      addressProof: {
-        publicId: {
-          type: String,
-          required: true,
-        },
-        url: {
-          type: String,
-          required: true,
-        },
-      },
-      bankDetails: {
-        publicId: {
-          type: String,
-          required: true,
-        },
-        url: {
-          type: String,
-          required: true,
-        },
-      },
-      GSTCertificate: {
-        publicId: {
-          type: String,
-          required: true,
-        },
-        url: {
-          type: String,
-          required: true,
-        },
-      },
-      country: {
-        type: String,
-        required:[true, "Please fill all the fields"],
-        default:"IN"
-      },
+  },
+  postOffice: {
+      type: String,
+      required: [true, "Please fill all the fields"],
+  },
+  policeStation: {
+      type: String,
+      required: [true, "Please fill all the fields"],
+  },
+  address: {
+      type: String,
+      required: [true, "Please fill all the fields"],
+  },
+  landmark: {
+      type: String,
+  },
+  town: {
+      type: String,
+      required: [true, "Please fill all the fields"],
+  },
+  state: {
+      type: String,
+      required: [true, "Please fill all the fields"],
+  },
 });
 module.exports = mongoose.model('SellerInfo', sellerInfoSchema);
