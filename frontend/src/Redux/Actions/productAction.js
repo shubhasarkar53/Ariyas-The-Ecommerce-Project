@@ -26,6 +26,7 @@ import {
   NEW_REVIEW_FAIL,
 } from "../Constants/productConstants";
 
+//action to get all products
 export const getProducts =
   (
     keyword = "",

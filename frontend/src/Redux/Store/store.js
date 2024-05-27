@@ -45,7 +45,7 @@ const reducer = combineReducers({
   createReview: createReviewReducer,
   incomingOrders:incomingOrdersReducer,
   forgotPassword:forgotPasswordReducer,
-  blog:blogReducer,
+  blogs:blogReducer,
   blogDetails:blogDetailsReducer,
   createBlog:createBlogReducer,
   createdBlogs:loadCreatedBlogReducer
@@ -85,16 +85,6 @@ let initialState = {
   orderDetails: {
     orderDetails: localStorage.getItem("orderDetails")
       ? JSON.parse(localStorage.getItem("orderDetails"))
-      : [],
-  },
-  blog: {
-    blogInfo: localStorage.getItem("blogInfo")
-      ? JSON.parse(localStorage.getItem("blogInfo"))
-      : [],
-  },
-  blogDetails: {
-    blogDetails: localStorage.getItem("blogDetails")
-      ? JSON.parse(localStorage.getItem("blogDetails"))
       : [],
   },
 };

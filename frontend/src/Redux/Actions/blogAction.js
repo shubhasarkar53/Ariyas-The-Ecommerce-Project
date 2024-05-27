@@ -31,15 +31,20 @@ import {
 
 } from "../Constants/blogConstants";
 
-
+//action to get all blogs
 export const getBlogs = () => async (dispatch) => {
 
     try {
 
         dispatch({ type: ALL_BLOG_REQUEST });
 
-        const { data } = await axios.get("/api/v1/blogs");
-
+        const { data } = await axios.get("/api/v1/blogs",{
+            headers: {
+                "Content-type": "application/json",
+            },
+            withCredentials: true
+        });
+        console.log(data);
         dispatch({
             type: ALL_BLOG_SUCCESS,
             payload: data
@@ -49,7 +54,8 @@ export const getBlogs = () => async (dispatch) => {
 
         dispatch({
             type: ALL_BLOG_FAIL,
-            payload: error.response.data.message ? error.response.data.message : error.message
+            payload: error.response.data.message ? 
+            error.response.data.message : error.message
         });
 
     }
