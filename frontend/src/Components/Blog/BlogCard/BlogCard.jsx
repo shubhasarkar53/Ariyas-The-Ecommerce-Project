@@ -7,7 +7,7 @@ import "./BlogCard.scss";
 const BlogCard = ({ blog }) => {
   return (
     <Fragment>
-      <Link to={`/blog/${blog._id}`} className="blog-card">
+      <Link to={`/blog/${blog._id}`} >
         <div className="blog-card" key={blog._id}>
           <div className="blog-card-img">
             <img src={blog.image[0].url} alt={blog.title} />
@@ -15,9 +15,6 @@ const BlogCard = ({ blog }) => {
           <div className="blog-card-details">
             <h3>{blog.title}</h3>
             <p>{blog.description}</p>
-            <Link to={`/blog/${blog._id}`}>
-              <button>Read More</button>
-            </Link>
           </div>
         </div>
       </Link>
