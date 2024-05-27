@@ -259,7 +259,7 @@ const EditProduct = ({ history }) => {
                       name="productLocation"
                     />
                   </div>
-                  <label htmlFor="productImg">Upload a Product Image</label>
+                  <label htmlFor="productImg" className="upload-img">Upload a Product Image <span>(*Please Upload Image Less than 500KB)</span></label>
                   <input
                     type="file"
                     accept="image/*"

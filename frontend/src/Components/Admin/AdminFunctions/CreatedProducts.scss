@@ -73,7 +73,14 @@
     transition: all 0.3s ease-in;
   }
 }
-
+.upload-img{
+  font-weight: 500;
+  span{
+    font-weight: 400;
+    font-size: small;
+    color: green;
+  }
+}
 .create-product-actions {
   button {
     border: none;
