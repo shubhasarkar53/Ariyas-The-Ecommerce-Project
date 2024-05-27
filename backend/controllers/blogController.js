@@ -9,9 +9,7 @@ const cloudinary = require('cloudinary');
 //Controller for Get All blogs 
 exports.getAllBlogs = catchAsyncErr(async (req, res, next) => {
     const blogCount = await Blog.countDocuments();
-    const apiFeature = new apiFeatures(Blog.find(), req.query)
-        .search()
-        .filter();
+    const apiFeature = new apiFeatures(Blog.find(), req.query);
     const blogs = await apiFeature.query;
     res.status(200).json({
         success: true,
