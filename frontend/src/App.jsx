@@ -80,6 +80,7 @@ const App = () => {
               <Route exact path="/shop" component={Shop} />
               <Route exact path="/location" component={Location} />
               <Route exact path="/blog" component={BlogPage} />
+              <Route exact path="/blogs/:id" component={BlogDetails} />
 
               <Route
                 path="/products/:keyword"
@@ -97,6 +98,7 @@ const App = () => {
               <Route exact path="/about" component={About} />
               <Route exact path="/search" component={Search} />
               <Route exact path="/product/:id" component={ProductDetails} />
+
 
               <Route exact path="/login" component={Login} />
               <Route exact path="/register/new" component={Register} />

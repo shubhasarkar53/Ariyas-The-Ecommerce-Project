@@ -207,7 +207,7 @@ const ProductDetails = ({ match, history }) => {
   }, [dispatch, match.params.id, error, reviewError, success]);
 
   const productUrl = `${window.location.origin}/product/${match.params.id}`;
-  const productDetails = `Check out this product: ${product.name}\nPrice: ${product.price}\nURL: ${productUrl}`;
+  const productDetails = `Check out this product: ${product.name}\nPrice: ${product.price}\n${productUrl}`;
 
   return (
     <Fragment>
