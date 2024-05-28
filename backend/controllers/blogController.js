@@ -40,9 +40,9 @@ exports.createNewBlog = catchAsyncErr(async (req, res, next) => {
         console.log("entered into if ")
         const myCloud = await cloudinary.v2.uploader.upload(req.body.image, {
             folder: "blogesImg",
-            width: 150,
-            crop: "scale",
-            quality: 'auto:low'
+            quality: 'auto:best',
+            format: 'webp',
+            resource_type:"auto",
         })
         console.log("Uploadded to cn");
         req.body.image = {

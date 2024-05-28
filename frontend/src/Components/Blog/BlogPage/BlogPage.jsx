@@ -9,15 +9,33 @@ import Meta from "../../../Meta";
 import Loader from "../../Loader/Loader";
 import { Link } from "react-router-dom";
 import imageheader from "../../../assets/Images/Blog/blog header.webp";
+import gsap from "gsap";
 
 const BlogPage = ({ match }) => {
   const dispatch = useDispatch();
   const { loading, blogs } = useSelector((state) => state.blogs);
-  // console.log(blogs.blog.image);
+
   useEffect(() => {
     dispatch(getBlogs());
     dispatch(clearError());
   }, [dispatch]);
+
+  useEffect(() => {
+    gsap.from(".jelly-text", {
+      duration: 1.5,
+      y: 50,
+      opacity: 0,
+      ease: "bounce.out",
+    });
+
+    gsap.from(".blog-page-container .blog-card", {
+      duration: 1,
+      y: 20,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "power2.out",
+    });
+  }, [blogs]);
 
   return (
     <Fragment>
