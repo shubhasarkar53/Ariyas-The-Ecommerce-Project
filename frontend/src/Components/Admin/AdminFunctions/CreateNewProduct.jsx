@@ -101,7 +101,7 @@ const CreateNewProduct = () => {
       // dispatch(loadAddress());
       history.push("/admin");
       toast.success("Product Created Successfully!", {
-        position: "top-center",
+        position: "bottom-center",
         autoClose: 3000,
       });
 
@@ -151,7 +151,7 @@ const CreateNewProduct = () => {
                     />
                   </div>
                   <div className="create-product-form-group">
-                    <label htmlfor="productPrice">
+                    <label htmlFor="productPrice">
                       <img src={price} alt="" />
                     </label>
 
@@ -166,7 +166,7 @@ const CreateNewProduct = () => {
                     />
                   </div>
                   <div className="create-product-form-group">
-                    <label htmlfor="productDescription">
+                    <label htmlFor="productDescription">
                       <img src={des} alt="" />
                     </label>
 
@@ -181,7 +181,7 @@ const CreateNewProduct = () => {
                     ></textarea>
                   </div>
                   <div className="create-product-form-group">
-                    <label htmlfor="productCategory">
+                    <label htmlFor="productCategory">
                       <img src={cat} alt="" />
                     </label>
                     <select
@@ -202,7 +202,7 @@ const CreateNewProduct = () => {
                     </select>
                   </div>
                   <div className="create-product-form-group">
-                    <label htmlfor="productQuantity">
+                    <label htmlFor="productQuantity">
                       <img src={stock} alt="" />
                     </label>
 
@@ -217,7 +217,7 @@ const CreateNewProduct = () => {
                     />
                   </div>
                   <div className="create-product-form-group">
-                    <label htmlfor="productLocation">
+                    <label htmlFor="productLocation">
                       <img src={location} alt="" />
                     </label>
                     <input
@@ -230,7 +230,7 @@ const CreateNewProduct = () => {
                       name="productLocation"
                     />
                   </div>
-                  <label htmlfor="productImg" className="upload-img">Upload a Product Image</label>
+                  <label htmlFor="productImg" className="upload-img">Upload a Product Image <span>(*Please Upload Image Less than 500KB)</span></label>
                   <input
                     type="file"
                     accept="image/*"

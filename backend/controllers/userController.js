@@ -346,9 +346,9 @@ exports.updateUserDetails = catchAsyncErr(async(req,res,next)=>{
     
     const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar,{
       folder: "avatars",
-      width:150,
-      crop:"scale",
-      quality: 'auto:low'
+      quality: 'auto:good',
+      format: 'webp',
+      resource_type:"auto",
     })
     // console.log("Uploadded to cn");
     userDetails.avatar={
