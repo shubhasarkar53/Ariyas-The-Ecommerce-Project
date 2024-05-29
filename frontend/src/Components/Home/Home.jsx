@@ -35,19 +35,19 @@ const Home = () => {
       url: img,
       title: "Ariyas - Discover Local Treasures",
       caption: "Preserving Heritage, Crafting Elegance. Explore premium quality traditional goods that celebrate our rich cultural heritage. Embrace the essence of tradition with every purchase. Unveil the beauty of our heritage at Ariyas - Your Gateway to Timeless Elegance.",
-      link: "/",
+      link: "/shop",
     },
     {
       url: image2,
       title: "Ariyas - Discover Local Treasures",
       caption: "Buy & Sell Local Goods",
-      link: "/",
+      link: "/shop",
     },
     {
       url: image3,
       title: "Ariyas - Discover Local Treasures",
       caption: "Empower Local Artician's",
-      link: "/",
+      link: "/shop",
     },
   ];
   const [loadingButton, setLoadingButton] = useState(null);

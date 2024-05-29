@@ -261,13 +261,17 @@ $categoriText: white;
   .product-row-container {
     margin-left: 1rem;
     .row {
+
       h1 {
+        width: 80%;
+        margin: 0 auto;
         margin-bottom: 2rem;
         margin-top: 3rem;
-        margin-left: 4rem;
       }
 
       .row-products {
+        // border: 2px solid red;
+        margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-gap: 5rem;
