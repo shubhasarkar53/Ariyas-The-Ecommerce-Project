@@ -8,6 +8,7 @@ import './AboutAnimation.scss';
 import Loader from '../Loader/Loader';
 import { Link } from 'react-router-dom';
 import Meta from "../../Meta";
+import TeamSection from './TeamSection';
 
 const About = () => {
   const [loading, setLoading] = useState(true);
@@ -90,6 +91,9 @@ const About = () => {
               <img src={aboutImg1} alt="Image about" />
             </div>
           </div>
+
+          {/* //team members container */}
+          <TeamSection />
         </div>
       )}
     </>
