@@ -85,11 +85,16 @@
             font-weight: 500;
           }
           .incoming-order-item-visible-more-left-lower-item-left {
+            width: 9.5rem;
+            height: 9.5rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
+           object-fit: cover;
             img {
-              border-radius: 10px;
+              max-width: 100%;
+              overflow: hidden;
+              border-radius: 1.5rem;
             }
           }
           .incoming-order-item-visible-more-left-lower-item-right {

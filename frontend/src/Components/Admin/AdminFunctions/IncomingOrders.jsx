@@ -20,6 +20,9 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import { UPDATE_INCOMING_ORDER_STATUS_REQUEST, UPDATE_INCOMING_ORDER_STATUS_RESET } from "../../../Redux/Constants/incomingOrdersConstants";
 import Meta from "../../../Meta";
 import { Typography } from "@mui/material";
+
+
+
 const IncomingOrders = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -42,9 +45,6 @@ const IncomingOrders = () => {
     currentSellerStatus: orders.sellerStatus.filter((item) => item.seller === user._id)
   }));
   console.log("incomingOrdersForSeller:", incomingOrdersForSeller);
-
-
-
 
 
 
@@ -80,7 +80,7 @@ const IncomingOrders = () => {
     //    if(isDeliverd){
     //     // some code
     //    }
-  }, [dispatch, error, isUpdated]);
+  }, [dispatch, error, isUpdated]); //////////////orderStatusMap
 
 
 
