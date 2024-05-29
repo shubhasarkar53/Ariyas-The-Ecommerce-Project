@@ -18,6 +18,18 @@ exports.getAllBlogs = catchAsyncErr(async (req, res, next) => {
     });
 });
 
+//Conteroller for get single blog using id
+exports.getSingleBlog = catchAsyncErr(async (req, res, next) => {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) {
+        return next(new ErrorHandler(404, "Blog Not Found"));
+    }
+    res.status(200).json({
+        success: true,
+        blog,
+    });
+});
+
 //controller  for create a product for --Admin/seller access
 
 exports.createNewBlog = catchAsyncErr(async (req, res, next) => {
@@ -28,9 +40,9 @@ exports.createNewBlog = catchAsyncErr(async (req, res, next) => {
         console.log("entered into if ")
         const myCloud = await cloudinary.v2.uploader.upload(req.body.image, {
             folder: "blogesImg",
-            width: 150,
-            crop: "scale",
-            quality: 'auto:low'
+            quality: 'auto:best',
+            format: 'webp',
+            resource_type:"auto",
         })
         console.log("Uploadded to cn");
         req.body.image = {

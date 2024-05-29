@@ -18,6 +18,7 @@
     "@stripe/stripe-js": "^3.3.0",
     "antd": "^5.14.2",
     "axios": "^1.6.7",
+    "gsap": "^3.12.5",
     "http-proxy-middleware": "^2.0.6",
     "js-cookie": "^3.0.5",
     "jspdf": "^2.5.1",

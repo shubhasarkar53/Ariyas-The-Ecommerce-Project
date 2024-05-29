@@ -1,0 +1,87 @@
+// src/components/Blog/BlogDetails/blogDetails.scss
+
+.blog-details {
+  width: 100%;
+  margin: 0 auto;
+  padding: 5rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+
+  .blog-hero-sec {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .blog-details-img {
+    flex: 1;
+    max-width: 40%;
+    margin-right: 20px;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .blog-content {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+
+    .blog-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      animation: jelly-animation 0.6s cubic-bezier(.68,-0.55,.27,1.55) 1;
+    }
+
+    p {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      line-height: 1.5;
+
+      .dec_span {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes jelly-animation {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  30% {
+    transform: scale(1.25, 0.75);
+  }
+  40% {
+    transform: scale(0.75, 1.25);
+  }
+  50% {
+    transform: scale(1.15, 0.85);
+  }
+  65% {
+    transform: scale(0.95, 1.05);
+  }
+  75% {
+    transform: scale(1.05, 0.95);
+  }
+}
