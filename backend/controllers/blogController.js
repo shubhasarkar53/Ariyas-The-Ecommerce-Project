@@ -34,10 +34,10 @@ exports.getSingleBlog = catchAsyncErr(async (req, res, next) => {
 
 exports.createNewBlog = catchAsyncErr(async (req, res, next) => {
     req.body.user = req.user.id;
-    console.log("Image Data:", req.body.image);
+    // console.log("Image Data:", req.body.image);
 
     if (req.body.image !== "") {
-        console.log("entered into if ")
+        // console.log("entered into if ")
         const myCloud = await cloudinary.v2.uploader.upload(req.body.image, {
             folder: "blogesImg",
             quality: 'auto:best',
@@ -49,7 +49,7 @@ exports.createNewBlog = catchAsyncErr(async (req, res, next) => {
             publicId: myCloud.public_id,
             url: myCloud.secure_url
         }
-        console.log("avatr obj edted with pId and Url");
+        // console.log("avatr obj edted with pId and Url");
 
     }
 
