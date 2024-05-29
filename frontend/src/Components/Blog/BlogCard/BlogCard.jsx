@@ -42,6 +42,8 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./BlogCard.scss";
+import { SlCalender } from "react-icons/sl";
+import { FaLocationArrow } from "react-icons/fa";
 
 const BlogPost = ({ blog }) => {
   const truncateText = (text, limit) => {
@@ -68,8 +70,8 @@ const BlogPost = ({ blog }) => {
           <div className="content-section">
             <div className="author-info">
               <div className="author-details">
-                <h4>Location - {blog.location}</h4>
-                <p>Date - {formattedDate}</p>
+                <h4><FaLocationArrow /> {blog.location}</h4>
+                <p><SlCalender /> {formattedDate}</p>
               </div>
             </div>
             <h1>{blog.title}</h1>

@@ -7,9 +7,9 @@ import Loader from "../../Loader/Loader";
 import "./blogDetails.scss";
 import Meta from "../../../Meta";
 import { toast } from "react-toastify";
-import { gsap } from "gsap";
 import PropTypes from "prop-types";
-
+import { SlCalender } from "react-icons/sl";
+import { FaLocationArrow } from "react-icons/fa";
 const BlogDetails = ({ match, history }) => {
   const dispatch = useDispatch();
   const { blog, error, loading } = useSelector((state) => state.blogDetails);
@@ -27,11 +27,9 @@ const BlogDetails = ({ match, history }) => {
     }
   }, [dispatch, match.params.id, error]);
 
-  // useEffect(() => {
-  //   if (blog) {
-  //     gsap.from(blogDetailsRef.current, { opacity: 0, duration: 1, y: 20 });
-  //   }
-  // }, [blog]);
+  
+  const date = new Date(blog.createdAt);
+  const formattedDate = date.toISOString().slice(0, 10);
 
   return (
     <Fragment>
@@ -51,9 +49,9 @@ const BlogDetails = ({ match, history }) => {
               </div>
               <div className="blog-content">
                 <h1 className="blog-title">{blog.title}</h1>
-                <p><span className="dec_span">Location:</span> {blog.location}</p>
+                <p><span className="dec_span"><FaLocationArrow /></span> {blog.location}</p>
                 <p><span className="dec_span">Description:</span> {blog.description}</p>
-                <p><span className="dec_span">Created At:</span> {blog.createdAt}</p>
+                <p><span className="dec_span"><SlCalender /></span> {formattedDate}</p>
               </div>
             </div>
           </div>
