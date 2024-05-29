@@ -8,10 +8,9 @@ import ImageCarousel from "../Carousel/Carousel";
 import Meta from "../../Meta";
 
 // Import images for carousel
-import img from "../../assets/Images/Carousel/AdobeStock_219379270_Preview.jpeg";
-import image2 from "../../assets/Images/Carousel/AdobeStock_326340898_Preview.jpeg";
-import image3 from "../../assets/Images/Carousel/AdobeStock_596562754_Preview.jpeg";
-import image4 from "../../assets/Images/Carousel/AdobeStock_655646740_Preview.jpeg";
+import img from "../../assets/Images/Carousel/bg.jpg";
+import image2 from "../../assets/Images/Carousel/bg2final.jpg";
+import image3 from "../../assets/Images/Carousel/bg3final.jpg";
 
 // Import other images
 import Logo from "../../assets/Images/Home/all_logo.png";
@@ -35,7 +34,7 @@ const Home = () => {
     {
       url: img,
       title: "Ariyas - Discover Local Treasures",
-      caption: "Products With GI Tag's",
+      caption: "Preserving Heritage, Crafting Elegance. Explore premium quality traditional goods that celebrate our rich cultural heritage. Embrace the essence of tradition with every purchase. Unveil the beauty of our heritage at Ariyas - Your Gateway to Timeless Elegance.",
       link: "/",
     },
     {
@@ -48,12 +47,6 @@ const Home = () => {
       url: image3,
       title: "Ariyas - Discover Local Treasures",
       caption: "Empower Local Artician's",
-      link: "/",
-    },
-    {
-      url: image4,
-      title: "Ariyas - Discover Local Treasures",
-      caption: "Start Your Journey Today",
       link: "/",
     },
   ];
