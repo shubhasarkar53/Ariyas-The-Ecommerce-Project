@@ -1,3 +1,4 @@
+
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { RiSecurePaymentFill } from "react-icons/ri";
@@ -32,12 +33,16 @@ const Footer = () => {
               <div className="list-item1">Secure Payment</div>
             </div>
 
+            <div className="sline"></div>
+
             <div className="element">
               <div className="symbol2">
                 <FaShippingFast />
               </div>
               <div className="list-item2">Express Shipping</div>
             </div>
+
+            <div className="sline"></div>
 
             <div className="element">
               <div className="symbol3">
@@ -48,8 +53,8 @@ const Footer = () => {
           </div>
           <div className="line"></div>
 
-
           <div className="footer-middle">
+
             <div className="ariyas">
               <h3>Ariyas</h3>
               <p>
@@ -73,69 +78,54 @@ const Footer = () => {
             <div className="footer-det-container">
               <div className="shop">
                 <h3>Shop</h3>
-                <div className="shop-links">
-                  {["Bags", "Dress", "Clay Items", "Wooden Items"].map(
-                    (item, index) => {
-                      return (
-                        <a href="#" key={index}>
-                          {item}
-                        </a>
-                      );
-                    }
-                  )}
-                </div>
+                {["Bags", "Dress", "Clay Items", "Wooden Items"].map(
+                  (item, index) => {
+                    return (
+                      <a href="#" key={index}>
+                        {item}
+                      </a>
+                    );
+                  }
+                )}
               </div>
 
               <div className="about">
                 <h3>About</h3>
-                <div className="about-links">
-                  {[
-                    { label: "About Us", path: "/about" },
-                    { label: "Privacy Policy", path: "/privacy-policy" },
-                    { label: "Terms & Conditions", path: "/terms-conditions" },
-                    { label: "Become a Seller", path: "/become-seller" },
-                    { label: "Wishlist", path: "/wishlist" },
-                  ].map((item, index) => {
-                    return (
-                      <Link to={item.path} key={index}>
-                        {item.label}
-                      </Link>
-                    );
-                  })}
-
-                </div>
+                {[
+                  { label: "About Us", path: "/about" },
+                  { label: "Privacy Policy", path: "/privacy-policy" },
+                  { label: "Terms & Conditions", path: "/terms-conditions" },
+                  { label: "Become a Seller", path: "/become-seller" },
+                  { label: "Wishlist", path: "/wishlist" },
+                ].map((item, index) => {
+                  return (
+                    <Link to={item.path} key={index}>
+                      {item.label}
+                    </Link>
+                  );
+                })}
               </div>
 
               <div className="need-help">
                 <h3>Need Help?</h3>
-                <div className="need-links">
-                  {[
-                    { label: "Contact Us", path: "/contact" },
-                    { label: "FAQs", path: "/faq" },
-                  ].map((item, index) => {
-                    return (
-                      <Link to={item.path} key={index}>
-                        {item.label}
-                      </Link>
-                    );
-                  })}
-
-                </div>
+                {[
+                  { label: "Contact Us", path: "/contact" },
+                  { label: "FAQs", path: "/faq" },
+                ].map((item, index) => {
+                  return (
+                    <Link to={item.path} key={index}>
+                      {item.label}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
-          </div>
-
-          <div className="footer-bottom">
-            <p>
-              Copyright © 2024. All Rights Reserved
-            </p>
           </div>
         </div>
       </div>
 
+      <div className="footer-bottom">Copyright © 2024. All Rights Reserved</div>
     </>
-
-
   );
 };
 
