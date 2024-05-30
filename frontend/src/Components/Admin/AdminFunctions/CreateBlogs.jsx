@@ -110,8 +110,10 @@ const CreateBlogs = () => {
                 />
               </div>
               <div>
-                <input
+                <textarea
                   type="text"
+                  rows="5"
+                  cols="60"
                   placeholder="Description"
                   required
                   name="blogDescription"

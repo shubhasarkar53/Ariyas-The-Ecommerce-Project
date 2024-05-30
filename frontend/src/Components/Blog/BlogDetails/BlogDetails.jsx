@@ -28,8 +28,8 @@ const BlogDetails = ({ match, history }) => {
   }, [dispatch, match.params.id, error]);
 
   
-  const date = new Date(blog.createdAt);
-  const formattedDate = date.toISOString().slice(0, 10);
+  // const date = new Date(blog.createdAt);
+  // const formattedDate = date.toISOString().slice(0, 10);
 
   return (
     <Fragment>
@@ -51,7 +51,7 @@ const BlogDetails = ({ match, history }) => {
                 <h1 className="blog-title">{blog.title}</h1>
                 <p><span className="dec_span"><FaLocationArrow /></span> {blog.location}</p>
                 <p><span className="dec_span">Description:</span> {blog.description}</p>
-                <p><span className="dec_span"><SlCalender /></span> {formattedDate}</p>
+                <p><span className="dec_span"><SlCalender /></span> {blog.createdAt}</p>
               </div>
             </div>
           </div>

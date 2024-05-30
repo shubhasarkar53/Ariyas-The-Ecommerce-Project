@@ -37,6 +37,17 @@ const BlogPage = ({ match }) => {
     });
   }, [blogs]);
 
+  useEffect(() => {
+    if (blogs.length === 0) {
+      gsap.from(".no-blogs-text", {
+        duration: 1.5,
+        y: 50,
+        opacity: 0,
+        ease: "bounce.out",
+      });
+    }
+  }, [blogs]);
+
   return (
     <Fragment>
       <Meta title="Ariyas | Blog" />
@@ -60,9 +71,13 @@ const BlogPage = ({ match }) => {
               />
             </div>
             <div className="blog-page-container">
-              {blogs.map((blog) => (
-                <BlogCard blog={blog} key={blog._id} />
-              ))}
+              {blogs.length > 0 ? (
+                blogs.map((blog) => <BlogCard blog={blog} key={blog._id} />)
+              ) : (
+                <div className="no-blogs-text">
+                  <h2>Currently, no blogs are available</h2>
+                </div>
+              )}
             </div>
           </div>
         </Fragment>

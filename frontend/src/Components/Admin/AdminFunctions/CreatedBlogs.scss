@@ -128,3 +128,26 @@
     font-size: 1.1rem;
     font-weight: 500;
   }
+
+  .no_blogs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+  }
+  
+  .animated_text {
+    font-size: 1.5rem;
+    color: #888;
+    animation: fadeIn 1.5s ease-in-out infinite alternate;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0.5;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  

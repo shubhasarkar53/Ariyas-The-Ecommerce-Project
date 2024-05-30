@@ -70,7 +70,7 @@ const CreatedBlogs = () => {
               <Typography variant="h3">Your Blogs</Typography>
             </div>
             <div className="created_blogs_container">
-              {blogs &&
+              {blogs && blogs.length > 0 ? (
                 blogs.map((blog) => (
                   <div className="created_blogs_card" key={blog._id}>
                     <div className="created_blogs_card_title">
@@ -84,14 +84,14 @@ const CreatedBlogs = () => {
                     </div>
                     <div className="created_blogs_card_footer">
                       <div className="created_blogs_card_footer_top">
-                      <Typography variant="body2" fontSize="1rem">
-                        <span className="span_tag">CreatedAt:</span>
-                        {blog.createdAt.substring(0, 10)}
-                      </Typography>
-                      <Typography variant="body2" fontSize="1rem">
-                        <span className="span_tag">Location:</span>
-                        {blog.location}
-                      </Typography>
+                        <Typography variant="body2" fontSize="1rem">
+                          <span className="span_tag">CreatedAt:</span>
+                          {blog.createdAt.substring(0, 10)}
+                        </Typography>
+                        <Typography variant="body2" fontSize="1rem">
+                          <span className="span_tag">Location:</span>
+                          {blog.location}
+                        </Typography>
                       </div>
                       <Typography variant="body2" fontSize="1rem">
                         <span className="span_tag">ID:</span>
@@ -119,7 +119,14 @@ const CreatedBlogs = () => {
                       </button>
                     </div>
                   </div>
-                ))}
+                ))
+              ) : (
+                <div className="no_blogs">
+                  <Typography variant="h5" className="animated_text">
+                    Currently no blogs are available.
+                  </Typography>
+                </div>
+              )}
             </div>
           </div>
         </Fragment>
