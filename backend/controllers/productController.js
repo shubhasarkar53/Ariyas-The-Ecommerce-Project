@@ -50,12 +50,10 @@ exports.createNewProducts = catchAsyncErr(async (req, res, next) => {
       format: 'webp',
       resource_type:"auto",
     })
-    console.log("Uploadded to cn");
     req.body.image={
       publicId:myCloud.public_id,
       url:myCloud.secure_url
     }
-    console.log("avatr obj edted with pId and Url");
 
   }
 
@@ -65,107 +63,6 @@ exports.createNewProducts = catchAsyncErr(async (req, res, next) => {
     product,
   });
 });
-
-// exports.createNewProducts = catchAsyncErr(async (req, res, next) => {
-//   req.body.user = req.user.id;
-
-//   if (req.body.image && req.body.image !== "") {
-//     console.log("Entered into image upload block");
-
-
-//     if (!isValidBase64(req.body.image)) {
-//       return next(new ErrorHandler(400, "Invalid image data provided"));
-//     }
-
-//     try {
-//       const myCloud = await cloudinary.uploader.upload(req.body.image, {
-//         folder: "productsImg",
-//         quality: 'auto:best',
-//         format: 'webp',
-//         resource_type: "auto",
-//       });
-//       console.log("Uploaded to Cloudinary");
-//       req.body.image = {
-//         publicId: myCloud.public_id,
-//         url: myCloud.secure_url
-//       };
-//       console.log("Avatar object updated with publicId and URL");
-//     } catch (error) {
-//       console.error('Cloudinary upload error:', error);
-//       return next(new ErrorHandler(500, `Error uploading image to Cloudinary: ${error.message}`));
-//     }
-//   }
-
-//   try {
-//     const product = await Product.create(req.body);
-//     res.status(201).json({
-//       success: true,
-//       product,
-//     });
-//   } catch (error) {
-//     console.error('Product creation error:', error);
-//     return next(new ErrorHandler(500, "Error creating product"));
-//   }
-// });
-
-
-
-
-
-
-
-
-
-// ======================================================================================
-
-//Controller for update product --Admin ---SELLER(updated)  ✅
-// exports.updateProduct = catchAsyncErr(async (req, res, next) => { 
-//   let product = await Product.findById(req.params.id);
-//   if (!product) {
-//     return next(new ErrorHandler(404, "product Not Found"));
-//   }
-//   if (
-//     req.user.id.toString() !== product.user.toString() &&
-//     req.user.role !== "admin"
-//   ) {
-//     return next(
-//       new ErrorHandler(401, "You are not authorized to update this product")
-//     );
-//   }
-
-
-//   if(req.body.image!==""){
-//     const theProduct = await Product.findById(req.params.id)
-//     //remove old image from cloudinary
-//     // console.log("skipping If");
-//     if(theProduct.image.publicId){
-//       const imgId = theProduct.image.publicId;
-//       await cloudinary.v2.uploader.destroy(imgId);
-//     }
-//     // console.log("skipped If");
-//     // console.log("Uploading to cn");
-    
-//     const myCloud = await cloudinary.v2.uploader.upload(req.body.image,{
-//       folder: "productsImg",
-//       quality: 'auto:best',
-//       format: 'webp',
-//       resource_type:"auto",
-//     })
-//     req.body.image={
-//       publicId:myCloud.public_id,
-//       url:myCloud.secure_url
-//     }
-//   }
-//   product = await Product.findByIdAndUpdate(req.params.id, req.body, {
-//     new: true,
-//     runValidators: true,
-//     useFindAndModify: false,
-//   });
-//   res.status(200).json({
-//     success: true,
-//     product,
-//   });
-// });
 
 // Controller for update product --Admin ---SELLER(updated) ✅
 exports.updateProduct = catchAsyncErr(async (req, res, next) => {
@@ -179,7 +76,6 @@ exports.updateProduct = catchAsyncErr(async (req, res, next) => {
   }
 
   if (req.body.image && req.body.image !== "") {
-    console.log("Processing new image upload");
     if (product.image && product.image[0].publicId) {
       try {
         await cloudinary.v2.uploader.destroy(product.image[0].publicId);
@@ -215,7 +111,6 @@ exports.updateProduct = catchAsyncErr(async (req, res, next) => {
       useFindAndModify: false,
     });
   } catch (error) {
-    console.error('Product update error:', error); // Log the detailed error
     return next(new ErrorHandler(500, "Error updating product details"));
   }
 
@@ -233,9 +128,6 @@ exports.deleteProduct = catchAsyncErr(async (req, res, next) => {
   if (!product) {
     return next(new ErrorHandler(404, "product Not Found"));
   }
-  // console.log(isProductOwner);
-  // console.log(req.user.id.toString() !== product.user.toString());
-  // console.log(req.user.role !== "admin");
 
   if (
     req.user.id.toString() !== product.user.toString() &&
@@ -250,15 +142,15 @@ exports.deleteProduct = catchAsyncErr(async (req, res, next) => {
     if (product.image && product.image[0].publicId) {
       try {
         await cloudinary.v2.uploader.destroy(product.image[0].publicId);
-        // console.log("Product image deleted successfully from Cloudinary");
+
       } catch (error) {
-        // console.error('Cloudinary destroy error:', error); // Log the detailed error
+
         return next(new ErrorHandler(500, "Error deleting product image from Cloudinary"));
       }
     }
 
 
-  // await Product.findOneAndDelete({ _id: req.params.id });
+
   product = await Product.findByIdAndDelete(req.params.id);
 
 

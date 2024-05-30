@@ -44,7 +44,7 @@ exports.createNewBlog = catchAsyncErr(async (req, res, next) => {
             format: 'webp',
             resource_type:"auto",
         })
-        console.log("Uploadded to cn");
+        // console.log("Uploadded to cn");
         req.body.image = {
             publicId: myCloud.public_id,
             url: myCloud.secure_url

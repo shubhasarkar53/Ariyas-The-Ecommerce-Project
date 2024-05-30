@@ -23,15 +23,17 @@ const Location = ({ match }) => {
 
   const locations = [
     "All",
-    "Santiniketan",
+    "Shantiniketan",
     "Krishnanagar",
     "Jalpaiguri",
     "Siliguri",
     "Darjeeling",
     "Malda",
     "Coochbehar",
+    "Kolkata",
+    "Maynaguri",
   ];
-
+  
   const [showPriceFilter, setShowPriceFilter] = useState(false);
   const [currentPage, setCurrentPage] = useState(1); // Current page
   const [price, setPrice] = useState([0, 30000]); // Price range
