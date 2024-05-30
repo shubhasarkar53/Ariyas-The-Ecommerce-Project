@@ -79,7 +79,8 @@ const Shop = ({ match }) => {
     function handleClickOutside(event) {
       if (
         containerRef.current &&
-        !containerRef.current.contains(event.target)) {
+        !containerRef.current.contains(event.target)
+      ) {
         setShowPriceFilter(false);
       }
     }
@@ -113,8 +114,8 @@ const Shop = ({ match }) => {
             >
               {showPriceFilter ? "Hide Filter" : "Show Filter"}
             </button>
-            <Typography variant="h3" className="typoH" align="center" style={{ textDecoration: "underline", fontSize: "2.1rem", fontWeight: "bolder", letterSpacing: "0.2rem", color: "#373737" }}>
-              SHOP
+            <Typography variant="h3" className="typoH" align="center">
+              Shop From Your Favourite Categories
             </Typography>
 
             <div className="products-main-container">

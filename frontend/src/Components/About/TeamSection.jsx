@@ -15,9 +15,9 @@ const teamMembers = [
   },
   {
     name: "Subhra Sundar Sinha",
-    title: "UI/UX Designer & Backend Developer.",
+    title: "UI/UX Designer & Full stack Developer.",
     description:
-      "Expertise in UI/UX design and backend development to create seamless user experiences.",
+      "Expertise in Full stack development to create seamless user experiences.",
     image: "https://res.cloudinary.com/dd3sjaumq/image/upload/v1717006817/contributors/ifkg4y7h_qvvnne.png",
     github: "https://github.com/PavilionRYZ",
     linkedin: "https://www.linkedin.com/in/subhra-sundar-sinha-779538181/",
