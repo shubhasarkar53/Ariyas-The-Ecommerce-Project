@@ -3,7 +3,7 @@ const User = require("../models/User");
 const VerificationToken = require("../models/VerificationToken");
 const sendToken = require("../utills/jwtToken");
 const ErrorHandler = require("../utills/errorHandler");
-const { sendMail, generateEmailTemplate, generateEmailVerifiedTemplate } = require("../utills/sendMail");
+const { sendMail, generateEmailTemplate, generateEmailVerifiedTemplate, generateUpdateRoleEmailTemplate } = require("../utills/sendMail");
 const crypto = require("crypto");
 const SellerInfo = require("../models/SellerInfo");
 const { sendContactUsMail } = require("../utills/sendContactUsMail");
@@ -393,6 +393,17 @@ exports.updateUserRole = catchAsyncErr(async(req,res,next)=>{
     success:true,
     updatedUser
   })
+
+  try {
+    await sendMail({
+      email: user.email,
+      subject: `Your are Now a Verified ${req.body.role} ${user.name} - ARIYAS`,
+      html: generateUpdateRoleEmailTemplate(user.name,req.body.role),
+    });
+  } catch (error) {
+    return next(new ErrorHandler(400, error.message));
+  }
+
 })
 
 //  Delete user --ADMIN ✅
