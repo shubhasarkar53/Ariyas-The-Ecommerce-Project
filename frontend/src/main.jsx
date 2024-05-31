@@ -5,9 +5,9 @@ import App from './App.jsx'
 import { Provider } from 'react-redux';
 import store from "../src/Redux/Store/store.js";
 
-document.addEventListener('contextmenu', (e) => {
-  e.preventDefault();
-});
+// document.addEventListener('contextmenu', (e) => {
+//   e.preventDefault();
+// });
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
