@@ -4,49 +4,10 @@ const Address = require("../models/Address");
 const ErrorHandler = require("../utills/errorHandler");
 const { catchAsyncErr } = require("../middleWares/catchAsyncError");
 const User = require("../models/User");
+const { sendMail, generateOrderSuccesEmailTemplate } = require("../utills/sendMail");
 
 //controller for create new order ✌ Done
 
-// exports.createNewOrder = catchAsyncErr(async (req, res, next) => {
-//   const {
-//     orderItems,
-//     shippingInfo,
-//     paymentInfo,
-//     paidAt,     // 🔴 need to be fixed from API  🔴
-//     itemsPrice,
-//     shippingPrice,
-//     totalPrice,
-//     deliveredAt,  // 🔴 need to be fixed from API  🔴
-//   } = req.body;
-
-//   // Retrieve the user
-//   const user = await User.findById(req.user._id)
-//   // console.log(user);
-//  // Retrieve the user's saved address
-//   const userAddress = await Address.findById(user.address);
-//   // console.log(userAddress);
-
-//   const newOrder = await Order.create({
-//     orderItems,
-//     // shippingInfo:userAddress,
-//     itemsPrice,
-//     shippingPrice,
-//     totalPrice,
-//     shippingInfo,
-//     paymentInfo,
-//     // paidAt,            // 🔴 need to be fixed from API  🔴
-//     orderBy: user,  // user changed to orderBy
-//   });
-
-//   if (!newOrder || !userAddress) {
-//     return next(new ErrorHandler(404, "Order not created"));
-//   }
-
-//   res.status(200).json({
-//     success: true,
-//     newOrder,
-//   });
-// });
 
 // Controller to create a new order (Ft.Shubha)
 
@@ -86,6 +47,18 @@ exports.createNewOrder = catchAsyncErr(async (req, res, next) => {
     sellerStatus: sellerStatuses,
   });
   const newOrder = await createdOrder.save();
+
+
+  try {
+    await sendMail({
+      email: req.user.email,
+      subject: `Order Successful - ARIYAS`,
+      html: generateOrderSuccesEmailTemplate(req.user.name,newOrder),
+    });
+  } catch (error) {
+    return next(new ErrorHandler(400, error.message));
+  }
+
 
   res.status(200).json({
     success: true,
