@@ -223,3 +223,48 @@ export const newReview = (reviewData) => async (dispatch) => {
 export const clearError = () => async (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
 };
+
+
+export const getProductswp =
+  (
+    keyword = "",
+    currentPage = 1,
+    filteredPrice = [0, 30000],
+    category = "",
+    location = "",
+    ratings = 0
+  ) =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: ALL_PRODUCT_REQUEST });
+
+      let link =  `/api/v1/productsall?keyword=${keyword}&page=${currentPage}&price[gte]=${filteredPrice[0]}&price[lte]=${filteredPrice[1]}&ratings[gte]=${ratings}`;
+
+
+      if (category) {
+        link += `&category=${category}`;
+      }
+  
+      if (location) {
+        link += `&location=${location}`;
+      }
+
+      const { data } = await axios.get(link, {
+        headers: {
+          "Content-type": "application/json",
+        },
+        withCredentials: true,
+      });
+      // console.log(data);
+
+      dispatch({
+        type: ALL_PRODUCT_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: ALL_PRODUCT_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };

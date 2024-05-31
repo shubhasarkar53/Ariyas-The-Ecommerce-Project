@@ -310,3 +310,17 @@ exports.getProductsOfSeller = catchAsyncErr(async (req, res, next) => {
     sellerAllProducts,
   });
 });
+
+//Controller for Get All products without limit
+exports.getAllProductswp = catchAsyncErr(async (req, res, next) => {
+  
+  const apiFeature = new apiFeatures(Product.find(), req.query)
+    .search()
+    .filter();
+
+  const products = await apiFeature.query;
+  res.status(200).json({
+    success: true,
+    products,
+  });
+});

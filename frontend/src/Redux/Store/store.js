@@ -12,7 +12,8 @@ import {
   productDetailsReducer,
   createProductReducer,
   loadCreatedProductReducer,
-  createReviewReducer
+  createReviewReducer,
+  productReducer2
 } from "../Reducers/productReducer";
 
 import { forgotPasswordReducer, profileReducer, userReducer } from "../Reducers/userReducer";
@@ -48,7 +49,8 @@ const reducer = combineReducers({
   blogs:blogReducer,
   blogDetails:blogDetailsReducer,
   createBlog:createBlogReducer,
-  createdBlogs:loadCreatedBlogReducer
+  createdBlogs:loadCreatedBlogReducer,
+  productsall:productReducer2
 });
 
 

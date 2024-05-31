@@ -10,6 +10,7 @@ const {
   deleteReview,
   getProductsOfSeller,
   myProducts,
+  getAllProductswp
 } = require("../controllers/productController");
 const { isAuthenticated, authRole, isProductOwner } = require("../middleWares/auth");
 const router = express.Router();
@@ -18,6 +19,10 @@ const router = express.Router();
 // get all product
 router.route("/products")
   .get(getAllProducts);
+
+// get all product
+router.route("/productsall")
+  .get(getAllProductswp);
 
 // get single product
 router.route("/product/:id")

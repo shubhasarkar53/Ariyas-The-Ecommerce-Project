@@ -2,7 +2,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "./Home.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { getProducts } from "../../Redux/Actions/productAction";
+import { getProductswp } from "../../Redux/Actions/productAction";
 import Loader from "../Loader/Loader";
 import ImageCarousel from "../Carousel/Carousel";
 import Meta from "../../Meta";
@@ -26,7 +26,7 @@ const Home = () => {
   );
 
   useEffect(() => {
-    dispatch(getProducts());
+    dispatch(getProductswp());
   }, [dispatch]);
 
   // Images, titles and captions for carousel

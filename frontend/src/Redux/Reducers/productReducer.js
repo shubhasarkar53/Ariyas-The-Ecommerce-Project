@@ -27,6 +27,10 @@ import {
   NEW_REVIEW_SUCCESS,
   NEW_REVIEW_FAIL,
   NEW_REVIEW_RESET,
+  ALL_PRODUCT_REQUEST2,
+  ALL_PRODUCT_SUCCESS2,
+  ALL_PRODUCT_FAIL2,
+  CLEAR_ERRORS2,
 } from "../Constants/productConstants";
 
 export const productReducer = (state = { products: [] }, action) => {
@@ -216,6 +220,32 @@ export const createReviewReducer = (state = {}, action) => {
   }
 };
 
+
+export const productReducer2 = (state = { products: [] }, action) => {
+  switch (action.type) {
+    case ALL_PRODUCT_REQUEST2:
+      return {
+        loading: true,
+        products: [],
+      };
+    case ALL_PRODUCT_SUCCESS2:
+      return {
+        loading: false,
+      };
+    case ALL_PRODUCT_FAIL2:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case CLEAR_ERRORS2:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return state;
+  }
+};
 
 
 
