@@ -3,7 +3,7 @@
 Welcome to **Ariya's**, an ecommerce platform dedicated to selling handcrafted products to empower local artisans. This repository contains the source code for the Ariya's website, developed as our final year group project using the MERN stack.
 
 ## Live URL
-Visit the live website: [Ariyas-shop.com](https://www.ariyas-shop.com)
+Visit the live website: [Ariyas-shop.com](https://www.ariyas-shop.com){The website currently is not Hosted}
 
 ## Project Overview
 Ariya's is built using the following technologies:
