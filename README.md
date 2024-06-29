@@ -1,3 +1,8 @@
+![Home-ui](https://github.com/shubhasarkar53/Ariyas-The-Ecommerce-Project/assets/72126523/57153049-2928-4666-9b42-1889a9a07629)
+![Ui-User_Dash](https://github.com/shubhasarkar53/Ariyas-The-Ecommerce-Project/assets/72126523/ec47e1da-4879-4dfc-b297-574c9f575f63)
+![Ui-Register](https://github.com/shubhasarkar53/Ariyas-The-Ecommerce-Project/assets/72126523/4a65b069-7f33-43ae-9dab-cc1ccb878625)
+![shop](https://github.com/shubhasarkar53/Ariyas-The-Ecommerce-Project/assets/72126523/402cf6de-5840-4fb8-a76e-f999cdc47327)
+
 
 ```markdown
 # 🎨 Ariya's - Handcrafted Products Ecommerce Website
@@ -28,14 +33,6 @@ Ariya's is built using the following technologies:
 - 📸 Image uploading and storage using Cloudinary
 - 📱 Responsive design for mobile and desktop
 
-## 📸 Screenshots
-
-Here are some screenshots of our application:
-
-![Home-ui](https://github.com/shubhasarkar53/Ariyas-The-Ecommerce-Project/assets/72126523/57153049-2928-4666-9b42-1889a9a07629)
-![Ui-User_Dash](https://github.com/shubhasarkar53/Ariyas-The-Ecommerce-Project/assets/72126523/ec47e1da-4879-4dfc-b297-574c9f575f63)
-![Ui-Register](https://github.com/shubhasarkar53/Ariyas-The-Ecommerce-Project/assets/72126523/4a65b069-7f33-43ae-9dab-cc1ccb878625)
-![shop](https://github.com/shubhasarkar53/Ariyas-The-Ecommerce-Project/assets/72126523/402cf6de-5840-4fb8-a76e-f999cdc47327)
 
 ## 🛠️ Installation
 To run this project locally, follow these steps:
