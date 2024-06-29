@@ -1,0 +1,91 @@
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$background-color: #f8f9fa;
+$border-color: #e0e0e0;
+$button-color: #2ecc71;
+$button-hover-color: #27ae60;
+$error-color: #e74c3c;
+$success-color: #2ecc71;
+
+.createProductContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $background-color;
+  animation: fadeIn 1s ease-in-out;
+
+  .createProductForm {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    animation: slideIn 0.5s ease-out;
+
+    h3 {
+      color: $primary-color;
+      margin-bottom: 1.5rem;
+    }
+
+    input[type="file"] {
+      margin-bottom: 1rem;
+    }
+
+    input[type="text"],
+    input[type="file"] {
+      width: calc(100% - 2rem);
+      padding: 0.5rem 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid $border-color;
+      border-radius: 5px;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
+      }
+    }
+
+    #createProductBtn {
+      padding: 0.5rem 2rem;
+      background-color: $button-color;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $button-hover-color;
+      }
+
+      &:disabled {
+        background-color: lighten($button-color, 20%);
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

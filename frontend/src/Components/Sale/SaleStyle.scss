@@ -1,0 +1,551 @@
+$textColor: #212121;
+$textWhite: #fafafa;
+$secondaryTextColor: #4d4d4d;
+$orangeTextColor: #d47f00;
+
+.sales-container {
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s ease-out forwards;
+@keyframes fadeInUp {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+  .sale-container {
+    width: 100%;
+    height: fit-content;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .sale-h1 {
+      padding: 3rem 0;
+      font-size: 3rem;
+      text-align: center;
+      h1 {
+        margin-top: -1rem !important;
+        font-weight: 200 !important;
+      }
+    }
+  }
+
+  .gift-container {
+    height: fit-content;
+    background-color: rgba(240, 248, 255, 0.659);
+    width: 100%;
+  }
+
+  .gift-section {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 10rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+
+    .gift-card-title {
+      display: flex;
+      justify-content: space-around;
+      padding: 1rem;
+      width: 100%;
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      .fagift-icon {
+        font-size: 4rem;
+        color: orange;
+        border: 2px solid orange;
+        border-radius: 50%;
+        padding: 0.5rem;
+        margin-right: 1rem;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .gift-title {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 1.5px;
+    line-height: 1.4;
+  }
+
+  .gift-title h2 {
+    font-size: 2.5rem;
+  }
+
+  .gift-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    margin-right: 1rem;
+  }
+
+  .divider {
+    height: 15vh;
+    width: 1px solid gray;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+  }
+
+  .gift-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .gift-btn button {
+    padding: 1rem 1rem;
+    color: $textWhite;
+    background-color: $orangeTextColor;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s linear;
+
+    &:hover {
+      background-color: orange;
+    }
+  }
+
+  .sale-snap {
+    height: fit-content;
+    width: 100%;
+  }
+
+  .sale-snap-container {
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.582),
+        rgba(0, 0, 0, 0.417)
+      ),
+      url("../../assets/Images/Carousel/AdobeStock_453480765_Preview.jpeg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 6rem 0;
+    color: $textWhite;
+    text-align: center;
+  }
+
+  .sale-snap-container h1,
+  .sale-snap-container p {
+    margin-bottom: 2rem !important;
+  }
+
+  .sale-snap-container h1 {
+    font-family: "Poppins", sans-serif;
+    font-size: 3rem;
+    font-weight: normal;
+  }
+
+  .sale-snap-container p {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: lighter;
+  }
+
+  .btn-snap-sale button {
+    border: none;
+    padding: 0.7rem 1rem;
+    font-size: 0.8rem;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    cursor: pointer;
+    font-weight: 400;
+    transition: all 0.4s linear;
+  }
+
+  .btn-snap-sale button:hover {
+    background-color: orange;
+    color: $textWhite;
+  }
+
+  .sale-view-container {
+    margin: 0 1.5rem;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .sale-division {
+    width: 100%;
+    height: fit-content;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  .sale-division #sale-div-img1 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.418), rgba(0, 0, 0, 0.45)),
+      url("../../assets/Images/Carousel/AdobeStock_613244753_Preview.jpeg");
+    background-position: center;
+    background-size: cover;
+  }
+
+  .sale-division #sale-div-img2 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.449), rgba(0, 0, 0, 0.45)),
+      url("../../assets/Images/Carousel/AdobeStock_546564435_Preview.jpeg");
+    background-position: center;
+    background-size: cover;
+  }
+
+  .sale-title-div {
+    padding: 2.5rem 0;
+    color: $textWhite;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.8rem;
+    letter-spacing: 2px;
+  }
+
+  .sale-title-div h2,
+  .sale-title-div p,
+  .sale-title-div .btn-div-sale {
+    margin-bottom: 1rem;
+  }
+
+  .sale-title-div h2 {
+    font-size: 2rem;
+  }
+
+  .sale-title-div .btn-div-sale {
+    padding: 0.9rem;
+    font-size: 1rem;
+    background-color: transparent;
+    border: 2px solid $textWhite;
+    color: $textWhite;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: $textWhite;
+      color: $secondaryTextColor;
+    }
+  }
+
+  .btn-div-sale {
+    &.loading {
+      cursor: not-allowed;
+
+      &:after {
+        content: "...";
+        display: inline-block;
+        width: 1em;
+        margin-left: 0.3em;
+        animation: loadingDots 1s infinite;
+      }
+    }
+  }
+
+  @keyframes loadingDots {
+    0%,
+    20% {
+      content: "...";
+    }
+
+    40% {
+      content: ".. ";
+    }
+
+    60% {
+      content: ".  ";
+    }
+
+    80%,
+    100% {
+      content: "   ";
+    }
+  }
+
+  .sale-title-div p {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .sale-view-offer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 5rem;
+
+    .sales-card-view {
+      width: 60%;
+
+      .sales-title-section {
+        display: flex;
+        justify-content: space-between;
+
+        .sellers-link {
+          display: flex;
+          align-items: center;
+          font-size: 1.2rem;
+          color: $secondaryTextColor !important;
+          transition: all 0.2s ease-in-out;
+
+          &:hover {
+            color: $orangeTextColor !important;
+            border-bottom: 2px solid $orangeTextColor;
+          }
+        }
+      }
+
+      .details-container {
+        display: flex;
+        justify-content: center;
+
+        .details {
+          width: 90%;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-gap: 1.5rem;
+          align-self: start;
+          margin-top: 2rem;
+
+          .sales-card {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 0.8rem;
+            transition: all 0.4s ease-in-out;
+            overflow: hidden;
+            position: relative;
+            transition: height 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+
+            &:hover {
+              box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+                6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+                12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+                22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+                41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+                100px 100px 80px rgba(0, 0, 0, 0.07);
+              transform: translateY(-30px);
+            }
+
+            .img-detail {
+              display: flex;
+              justify-content: center;
+              position: relative;
+              overflow: hidden;
+              width: 100%;
+
+              &::before {
+                content: "";
+                display: block;
+                padding-top: 90%;
+              }
+
+              &:hover .icon-container {
+                // display: flex;
+                opacity: 1;
+              }
+
+              &:hover img {
+                filter: brightness(75%);
+                transform: scale(1.1);
+              }
+
+              img {
+                // width: 250px;
+                // height: 200px;
+                // object-fit: cover;
+                // background-position: center;
+                // background-size: cover;
+                // transition: all 0.4s ease-in-out;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: all 0.4s ease-in-out;
+                overflow: hidden;
+                background-position: center;
+                background-size: cover;
+              }
+
+              .icon-container {
+                position: absolute;
+                top: 50%;
+                right: 50%;
+                transform: translate(50%, -50%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 0.5rem;
+                z-index: 1;
+                opacity: 0;
+                transition: opacity 0.3s, transform 0.3s;
+              }
+
+              button {
+                background: white;
+                border: white;
+
+                .wishlist-icon,
+                .cart-icon {
+                  width: 15px;
+                  height: 15px;
+                  color: grey;
+                  border-radius: 50%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  flex-direction: column;
+                  cursor: pointer;
+                  margin: 10px;
+                  transition: background-color 0.3s, transform 0.3s, color 0.4s;
+
+                  &:hover {
+                    transform: scale(1.1);
+                    color: $orangeTextColor;
+                  }
+                }
+              }
+            }
+
+            .sales-title {
+              text-align: center;
+
+              .sale-title-links {
+                margin: 0;
+                font-size: 1.1rem;
+                color: $secondaryTextColor;
+                transition: color 0.4s ease-in-out;
+                display: flex;
+                justify-content: center;
+                margin-top: 0.3rem;
+                margin-bottom: 0.6rem;
+
+                &:hover {
+                  color: $orangeTextColor;
+                }
+              }
+
+              .price {
+                // display: flex;
+                // justify-content: center;
+                display: flex;
+                justify-content: center;
+                margin-top: 0.5rem;
+                /* Adjust spacing */
+
+                p {
+                  margin: 0;
+                  color: $secondaryTextColor;
+                  padding-right: 0.7rem;
+
+                  .discount-sale {
+                    color: $orangeTextColor;
+                  }
+                }
+
+                .price-cut {
+                  text-decoration: line-through;
+                  color: $secondaryTextColor;
+                }
+              }
+            }
+
+            .ratings {
+              display: flex;
+              opacity: 1;
+              align-items: center;
+              justify-content: center;
+              gap: 0.5rem;
+              font-size: 1rem;
+              margin-top: 0.5rem;
+
+              .rating-options {
+                color: orange;
+
+                .MuiRating-iconEmpty {
+                  color: orange;
+                }
+
+                .MuiRating-iconHover {
+                  color: gold;
+                }
+
+                .MuiSvgIcon-root {
+                  font-size: 1rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// .carddown-div {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   padding: 0.5rem;
+//   gap: 0.3rem;
+//   width: 100%;
+//   transition: all 0.3s ease-in-out;
+//   opacity: 0;
+//   transform: translateY(20px);
+
+//   .cart {
+//     width: 15%;
+
+//     .productCard-cart {
+//       width: 35px;
+//       cursor: pointer;
+//     }
+//   }
+
+//   .prices-container {
+//     width: 70%;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: space-between;
+//     font-size: 14px;
+//     font-weight: 300;
+//     line-height: 30px;
+//   }
+
+//   .price-1 {
+//     font-weight: 500;
+//   }
+
+//   .price-2 {
+//     color: #777777;
+//     text-decoration: line-through;
+//   }
+
+//   .wishlist {
+//     width: 15%;
+
+//     .productCard-wishlist {
+//       width: 35px;
+//       cursor: pointer;
+//     }
+//   }
+// }
+
+// .sales-card:hover .carddown-div {
+//   opacity: 1;
+//   transform: translateY(0);
+// }
+
+// .hidden {
+//   display: none;
+// }

@@ -1,0 +1,171 @@
+.incomng-orders-main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.incoming-order-product-headings {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+  background-color: #ffe8e8;
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+  width: 100%;
+  align-items: center;
+  padding: 1em;
+}
+
+.incoming-order-item-container {
+  // border: 1px solid magenta;
+  // background-color: beige;
+  width: 100%;
+}
+.incoming-order-item {
+  margin-block: 1em;
+}
+.incoming-order-item-visible {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+  background-color: #ffe8e8;
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+  width: 100%;
+  align-items: center;
+  padding: 1em;
+}
+.incoming-order-item-visible-more {
+  width: 100%;
+  display: flex;
+  background-color: #fff8f8;
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+  width: 100%;
+  // align-items: center;
+  padding: 1em;
+  ul,
+  li {
+    list-style: none;
+  }
+
+  .incoming-order-item-visible-more-left {
+    // background-color: red;
+    width: 70%;
+    height: auto;
+
+    .incoming-order-item-visible-more-left-upper {
+      // background-color: rgb(149, 255, 0);
+      width: 70%;
+      // height: 50%;
+      padding-bottom: 1em;
+      .incoming-order-item-visible-more-left-upper-first {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+    .incoming-order-item-visible-more-left-lower {
+      // background-color: rgb(8, 93, 2);
+      width: 100%;
+      // height: 50%;
+      .item-heading {
+        margin-block: 1em;
+        font-weight: 600;
+      }
+
+      .incoming-order-item-visible-more-left-lower-item-container {
+        // border: 1px solid rgb(255, 0, 157);
+        margin-bottom: 1em;
+
+        .incoming-order-item-visible-more-left-lower-item {
+          display: flex;
+          gap: 1em;
+          margin-bottom: 1em;
+          b {
+            font-weight: 500;
+          }
+          .incoming-order-item-visible-more-left-lower-item-left {
+            width: 9.5rem;
+            height: 9.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+           object-fit: cover;
+            img {
+              max-width: 100%;
+              overflow: hidden;
+              border-radius: 1.5rem;
+            }
+          }
+          .incoming-order-item-visible-more-left-lower-item-right {
+            // background-color: rgb(118, 118, 118);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 0.5em;
+            .incoming-order-item-visible-more-right-lower-PQ-container {
+              display: flex;
+              width: 100%;
+              gap: 1.5em;
+            }
+          }
+        }
+      }
+    }
+  }
+  .incoming-order-item-visible-more-right {
+    // background-color: rgb(33, 6, 74);
+    width: 30%;
+    height: 325px;
+  }
+}
+.seller-order-status-container {
+  select {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    margin-right: 0.8em;
+    outline: none;
+    max-width: 60%;
+    border: none;
+    padding: 8px;
+    border-radius: 10px;
+    background: rgba(207, 207, 207, 0.4);
+  }
+
+  .order-status-btn {
+    font-size: 1rem;
+    padding: 0.5em;
+    background-color: white;
+    cursor: pointer;
+    border: 1px solid gray;
+    transition: all 0.2s ease-in-out;
+    border-radius: 10px;
+
+    &:hover {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.25);
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .created-product-container {
+    .incoming-order-product-headings {
+      .created-product-heading {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .created-product-container {
+    .incoming-order-product-headings {
+      .created-product-heading {
+        font-size: 0.85rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,205 @@
+$bg-img: url("../../assets/Images/Login\ page/main.png");
+$textColor: #212121;
+$textWhite: #fafafa;
+$secondaryTextColor: #4d4d4d;
+$orangeTextColor: #d47f00;
+$btnColor: #ffd60a;
+
+.loginContainer {
+  // border: 2px solid red;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 2em 0;
+}
+// Not working currently
+.overlay {
+  background-color: #212121;
+  z-index: 1;
+}
+.main-login {
+  padding: 2em;
+  border-radius: 35px;
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2), -2px -2px 10px rgba(0, 0, 0, 0.2);
+
+  .login-upper {
+    // border: 2px solid pink;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 1em 0;
+  }
+  .login-highligt {
+    color: #ffae36;
+  }
+
+  .login-lower {
+    h2 {
+      padding: 2em 0;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      color: $textColor;
+      gap: 1em;
+
+      input {
+        color: $textWhite;
+        padding: 1em 0;
+        padding-left: 2em;
+        border-radius: 8px;
+        color: $secondaryTextColor;
+        background: #b5b5b589;
+        box-shadow: 0px -1px 0px 0px rgba(255, 255, 255, 0.18) inset;
+        outline: none;
+        border: none;
+      }
+    }
+  }
+  // below section vule gechi
+  .main-login::before {
+    content: "";
+    background: $bg-img;
+    overflow: hidden;
+  }
+
+  .btn-container {
+    padding: 2em 0;
+  }
+  .logInSign-btn {
+    border-radius: 8px;
+    background-color: orange;
+    // box-shadow: -0.5px -1.5px 0px 0px rgba(0, 0, 0, 0.12) inset;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    color: $textWhite;
+    text-align: center;
+    border: 0;
+    cursor: pointer;
+    transition: all linear 0.4s;
+  }
+  .logInSign-btn:hover {
+    background-color: $orangeTextColor;
+    box-shadow: -1px -2px 0px 0px rgba(0, 0, 0, 0.12) inset;
+  }
+}
+
+.pic-login {
+  // border: 2px solid rebeccapurple;
+  padding: 1em;
+  overflow: hidden;
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+  // box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2),
+  //     -2px -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.forgotContainer{
+  text-align: right;
+  a{
+    text-decoration: none;
+    text-decoration: underline;
+    color: #a36302;
+  }
+}
+
+//  class for forgot password page
+.width-30{
+  width: 30%;
+}
+
+
+
+
+
+@media screen and (max-width: 1200px) {
+  .loginContainer {
+    .main-login {
+      width: 50%;
+      .login-upper {
+        .login-txt {
+          font-size: 0.9rem;
+          span {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+    .pic-login {
+      width: 45%;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .loginContainer {
+    .main-login {
+      width: 65%;
+      .login-upper {
+        .login-txt {
+          font-size: 0.8rem;
+          span {
+            font-size: 0.8rem;
+          }
+        }
+      }
+      .login-lower {
+        h2 {
+          font-size: 1rem !important;
+        }
+        form {
+          label {
+            font-size: 0.8rem !important;
+          }
+        }
+      }
+    }
+    .pic-login {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .loginContainer {
+    .main-login {
+      width: 75%;
+      h1 {
+        font-size: 1.2rem !important;
+      }
+      .login-upper {
+        .login-txt {
+          font-size: 0.65rem;
+          span {
+            font-size: 0.65rem;
+          }
+        }
+      }
+      .login-lower {
+        form {
+          input {
+            padding: 0.7em 0;
+            padding-left: 1.6em;
+            font-size: 0.7rem;
+          }
+        }
+        .btn-container {
+          .logInSign-btn {
+            font-size: 12px;
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,260 @@
+// Variables for theme colors
+$primary-color: #f6b80f;
+$secondary-color: #2ecc71;
+$background-color: #f4f4f4;
+$text-color: #333;
+
+.profile-container {
+  height: fit-content;
+}
+// restyled
+.profile-det-container-restyled {
+  display: flex;
+  justify-content: space-between;
+  /* height: 90vh; */
+  align-items: center;
+  margin: 1rem 3rem;
+}
+
+.create-product-form-container {
+  margin: 0 auto;
+  width: 80%;
+  max-width: 700px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2), -2px -2px 10px rgba(0, 0, 0, 0.2);
+}
+.create-product-form-container-title {
+  text-align: center;
+  margin-top: 1.5em;
+}
+
+.create-product-form {
+  padding: 3em;
+
+  input[type="file"]::file-selector-button {
+    font-size: 1rem;
+    padding: 0.5em;
+    margin: 1em;
+    background-color: white;
+    cursor: pointer;
+    border: 1px solid gray;
+    transition: all 0.2s ease-in-out;
+    border-radius: 10px;
+  }
+
+  button[type="submit"] {
+    background-color: $primary-color;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 1.5em 0;
+  }
+
+  button[type="submit"]:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+.upload-img {
+  font-size: 1rem !important;
+  margin-top: 1.5rem;
+}
+.create-product-form-group {
+  padding: 0.5em 0;
+  display: flex;
+  align-items: center;
+  label {
+    width: 90px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  textarea,
+  select {
+    width: 100%;
+    padding-left: 2.5em;
+    height: 60px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: rgba(207, 207, 207, 0.4);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  }
+  textarea {
+    padding: 1.5em 2.5em;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .profile-det-container-restyled {
+    margin: 1rem 2.5rem;
+    .ext-left-profile,
+    .ext-right-profile {
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .profile-det-container-restyled {
+    margin: 1rem 2rem;
+    .ext-left-profile,
+    .ext-right-profile {
+      img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .profile-det-container-restyled {
+    margin: 1rem 1.5rem;
+    .ext-left-profile,
+    .ext-right-profile {
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    .create-product-form-container {
+      .create-product-form-container-title {
+        font-size: 1.35rem;
+      }
+      .create-product-form {
+        .create-product-form-group {
+          label {
+            width: 70px;
+            img {
+              width: 60px;
+              height: 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 700px) {
+  .profile-det-container-restyled {
+    margin: 1rem;
+    .create-product-form-container {
+      .create-product-form-container-title {
+        font-size: 1.1rem;
+      }
+      .create-product-form {
+        .create-product-form-group {
+          label {
+            width: 60px;
+            img {
+              width: 50px;
+              height: 40px;
+            }
+          }
+          input[type="text"],
+          input[type="number"],
+          textarea,
+          select {
+            font-size: 0.75rem;
+            option {
+              font-size: 0.7rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile-det-container-restyled {
+    margin: 1rem 0.5rem;
+    .ext-left-profile,
+    .ext-right-profile {
+      img {
+        display: none;
+      }
+    }
+    .create-product-form-container {
+      .create-product-form {
+        padding: 2.5em;
+        .create-product-form-group {
+          label {
+            width: 60px;
+            margin-left: -1rem;
+            img {
+              width: 50px;
+              height: 40px;
+            }
+          }
+          input[type="text"],
+          input[type="number"],
+          textarea,
+          select {
+            padding-left: 1em;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .profile-det-container-restyled {
+    margin: 0.8rem 0;
+    .create-product-form-container {
+      width: 90%;
+      .create-product-form {
+        .upload-img {
+          font-size: 0.85rem !important;
+        }
+        input[type="file"]::file-selector-button {
+          font-size: 0.8rem;
+        }
+        button[type="submit"] {
+          margin: 1.1em 0;
+          font-size: 0.75rem;
+        }
+        .create-product-form-group {
+          label {
+            margin-left: -1.5rem;
+            width: 50px;
+            img {
+              width: 40px;
+              height: 30px;
+            }
+          }
+          input[type="text"],
+          input[type="number"],
+          textarea,
+          select {
+            height: 50px;
+            font-size: 0.65rem;
+            option {
+              font-size: 0.55rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Optional: Custom styling for select dropdown arrow
+// select {
+//   appearance: none;
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   background-image: url('data:image/svg+xml;utf8,<svg fill="#3498db" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+//   background-repeat: no-repeat;
+//   background-position: right 8px top 50%;
+//   background-size: 16px auto;
+//   padding-right: 30px;
+// }

@@ -1,0 +1,35 @@
+.become-seller-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; 
+  
+    .dot {
+      width: 10px;
+      height: 10px;
+      background-color: #000;
+      border-radius: 50%;
+      margin: 0 5px;
+      animation: dotAnimation 1s infinite;
+    }
+  
+    @keyframes dotAnimation {
+      0%,
+      20% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  }
+  

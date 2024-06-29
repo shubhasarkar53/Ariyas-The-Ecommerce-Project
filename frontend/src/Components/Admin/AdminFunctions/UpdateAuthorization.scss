@@ -1,0 +1,69 @@
+// src/components/UpdateAuthorization.scss
+.update-authorization {
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+
+  .update-auth-heading {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+    background-color: #f0f0f0; // Optional: Add background color for visual separation
+    border-bottom: 1px solid #ddd; // Optional: Add border for separation
+    margin: 0 auto;
+    max-width: 80%;
+
+    h3 {
+      margin: 0;
+      text-align: center;
+    }
+  }
+
+  .update-authContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd; // Optional: Add border for separation
+    background-color: #FFE8E8;
+    border-radius: 5px;
+    margin: 1em auto;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+    max-width: 80%;
+
+    p, select {
+      margin: 0;
+      text-align: center;
+    }
+
+    select {
+      border-radius: 10px;
+      padding: 2px 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .update-auth-heading,
+    .update-authContainer {
+      grid-template-columns: 1fr;
+      max-width: 100%;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .update-auth-heading,
+    .update-authContainer {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 90%;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .update-auth-heading,
+    .update-authContainer {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 50%;
+    }
+  }
+}
