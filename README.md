@@ -45,14 +45,14 @@ To run this project locally, follow these steps:
 
 2. **Install dependencies for both client and server**:
    ```bash
-   cd client
+   cd frontend
    npm install
-   cd ../server
+   cd ../backend
    npm install
    ```
 
 3. **Set up environment variables**:
-   - Create a `.env` file in the `server` directory.
+   - Create a `.env` file in the `backend` directory.
    - Add the necessary environment variables:
      ```env
      MONGO_URI=your_mongo_connection_string
@@ -64,10 +64,10 @@ To run this project locally, follow these steps:
 
 4. **Start the development servers**:
    ```bash
-   cd server
+   cd backend
    npm run dev
-   cd ../client
-   npm start
+   cd ../frontend
+   npm run dev
    ```
 
 ## 👥 Contributors
