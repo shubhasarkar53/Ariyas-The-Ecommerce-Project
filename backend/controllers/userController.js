@@ -199,7 +199,7 @@ exports.forgotPassword = catchAsyncErr(async (req, res, next) => {
 // const resetURL = `${process.env.FRONTEND_URL}/password/reset/${token}`;
 const resetURL = `${req.protocol}://${req.get(
       "host"
-    )}/password/reset/${token}`;
+    )}/api/v1/password/reset/${token}`;
 
 // 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑
 
