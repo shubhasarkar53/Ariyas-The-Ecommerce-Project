@@ -17,7 +17,6 @@ exports.createReturnRequest = catchAsyncErr(async (req, res, next)=> {
     if (!order) {
         return next(new ErrorHandler(401,"order not found"));
       }
-      console.log(order);
 
     // Check if the order belongs to the logged in user
     if (order.user.toString() !== req.user._id.toString()) {
@@ -39,7 +38,7 @@ exports.createReturnRequest = catchAsyncErr(async (req, res, next)=> {
 
     // fetch the product creator id from the orders
     const product = await Product.findById(order.orderItems[0].product);
-    console.log(product);
+
     const productCreatorId = product.user.toString();
 
 
@@ -76,7 +75,7 @@ exports.getAllReturnRequest = catchAsyncErr(async (req, res, next) => {
 
     //  Fetch all orders related to the seller's products
     const orders = await Order.find({ 'orderItems.product': { $in: await Product.find({ user: sellerId }).distinct('_id') } });
-    console.log(orders);
+  
 
     //  Extract unique product IDs from these orders
     const productIds = orders.flatMap(order => order.orderItems.map(item => item.product));

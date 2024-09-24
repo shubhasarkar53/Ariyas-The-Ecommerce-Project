@@ -54,7 +54,7 @@ const ConfirmSeller = () => {
 
       // Call API function to send email with form details
       const response = await sendFormSubmissionEmail(formData);
-      console.log(response); // Log the response from the server
+
       // Redirect to ConfirmationPage after successful form submission
       history.push('/confirmation');
     } catch (error) {

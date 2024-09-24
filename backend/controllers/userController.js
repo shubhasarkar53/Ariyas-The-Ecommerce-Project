@@ -165,7 +165,7 @@ exports.logoutUser = catchAsyncErr(async (req, res, next) => {
 exports.forgotPassword = catchAsyncErr(async (req, res, next) => {
 
   const { email } = req.body;
-  console.log(email);
+
   // find the mail id DB
   const user = await User.findOne({ email });
   if (!user) {

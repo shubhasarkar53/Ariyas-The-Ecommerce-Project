@@ -2,7 +2,7 @@
 // Whole code is changed.Do merge only my part.
 // New agian
 
-require("dotenv").config({ path: "backend/config/config.env" });
+require("dotenv").config({ path: "config/config.env" });
 
 //<------- uncaught ref err ------->
 
@@ -23,11 +23,7 @@ cloudinary.config({
 });
 
 
-// cloudinary.config({
-//    cloud_name_2 : process.env.CLOUDINARY_NAME_2,
-//    api_key_2    : process.env.CLODINARY_APIKEY_2,
-//    api_secret_2 : process.env.CLODINARY_SECRET_2
-// });
+
 
 const dbConnect = require("./config/database");
 

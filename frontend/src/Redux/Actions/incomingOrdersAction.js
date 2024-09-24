@@ -21,11 +21,11 @@ export const updateIncomingOrderStatus = (orderId,newStatus,sellerId) => async (
     try {
      
         dispatch({type:UPDATE_INCOMING_ORDER_STATUS_REQUEST});
-        console.log(orderId,newStatus,sellerId);
+
         const config = { headers: { "Content-Type": "application/json" } };
 
         const {data} = await axios.put(`/api/v1/update-order-status/seller/${orderId}`,{sellerId,newStatus},config);
-        console.log(data)
+
         dispatch({type:UPDATE_INCOMING_ORDER_STATUS_SUCCESS, payload:data.success})
     } catch (error) {
         dispatch({ type: UPDATE_INCOMING_ORDER_STATUS_FAIL, 

@@ -16,7 +16,7 @@ function ForgotPassword() {
 
     function mailSubmit(e){
         e.preventDefault();
-        console.log(email)
+
         dispatch(forgotPasswordAction(email))
         
     }

@@ -44,7 +44,7 @@ const Contact = () => {
       });
       // Handle success response
       toast.success(response.data.message);
-      console.log("Message sent successfully");
+
     } catch (error) {
       // Handle error response
       toast.error(`Error: ${error.response.data.error}`);
@@ -94,7 +94,7 @@ const Contact = () => {
 
       // Form submission successful
       toast.success('Message sent successfully!');
-      console.log("Message sent successfully");
+
 
       // Reload the page after successful form submission
       window.location.reload();

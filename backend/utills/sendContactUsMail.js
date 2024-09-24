@@ -12,8 +12,7 @@ exports.sendContactUsMail = catchAsyncErr(async ( options ) => {
     },
   });
 
-  console.log(options);
-  console.log(options.email);
+
   const info = await transporter.sendMail({
     from:options.email, // sender address
     to:process.env.SMTP_USER , // list of receivers

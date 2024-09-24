@@ -33,7 +33,7 @@ const IncomingOrders = () => {
     (state) => state.incomingOrders
   );
 
-  console.log("orders", incomingOrders);
+
 
 
   const incomingOrdersForSeller = incomingOrders.map((orders) => ({
@@ -44,7 +44,7 @@ const IncomingOrders = () => {
       .reduce((prev, curr) => prev + curr.quantity * curr.price, 0),
     currentSellerStatus: orders.sellerStatus.filter((item) => item.seller === user._id)
   }));
-  console.log("incomingOrdersForSeller:", incomingOrdersForSeller);
+
 
 
 
@@ -59,7 +59,7 @@ const IncomingOrders = () => {
         position: "bottom-center",
         autoClose: 3000,
       });
-      console.log("useeffect:", error);
+
       dispatch(clearError());
     }
 
@@ -112,7 +112,7 @@ const IncomingOrders = () => {
     console.log("clicked")
     // console.log("orderStatus:",orderStatus);
     // console.log(orderStatusMap);
-    console.log(orderId, orderStatusMap[productId], user._id);
+
     // updateSellerOrderStatus acton dispatch()
     dispatch(updateIncomingOrderStatus(orderId, orderStatusMap[productId], user._id)); //orderid , newStatus, sellerId
 

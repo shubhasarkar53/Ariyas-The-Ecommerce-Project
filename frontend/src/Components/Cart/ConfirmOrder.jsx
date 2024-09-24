@@ -40,9 +40,6 @@ const ConfirmOrder = ({ history }) => {
     seller: item.seller // Assuming you have seller information in each cart item
   }));
 
-  console.log("----------------------------------")
-  console.log("cartitems:", cartItems)
-  console.log("----------------------------------")
 
 
   const order = {

@@ -37,7 +37,7 @@ function ResetPassword({ history, match }) {
 
     // console.log(passwords);
     // dispatch
-    console.log(match.params.token, newPasswords);
+
     dispatch(resetPasswordAction(match.params.token, newPasswords));
   }
 

@@ -44,7 +44,7 @@ export const getBlogs = () => async (dispatch) => {
             },
             withCredentials: true
         });
-        console.log(data);
+
         dispatch({
             type: ALL_BLOG_SUCCESS,
             payload: data

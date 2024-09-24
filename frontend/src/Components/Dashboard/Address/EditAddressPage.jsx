@@ -39,7 +39,7 @@ const EditAddressPage = () => {
 
   function handleUpdateAddSubmit(e) {
     e.preventDefault();
-    console.log("Form Submitted!");
+
 
     const addressData = new FormData();
 
@@ -80,7 +80,7 @@ const EditAddressPage = () => {
         position: "bottom-center",
         autoClose: 3000,
       });
-      console.log("useeffect:", error);
+
       dispatch(clearError());
     }
 

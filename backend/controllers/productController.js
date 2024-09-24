@@ -43,7 +43,7 @@ exports.createNewProducts = catchAsyncErr(async (req, res, next) => {
   req.body.user = req.user.id;
   
   if(req.body.image && req.body.image!==""){
-    console.log("entered into if ")
+    // console.log("entered into if ")
     const myCloud = await cloudinary.v2.uploader.upload(req.body.image,{
       folder: "productsImg",
       quality: 'auto:best',
@@ -70,7 +70,7 @@ exports.updateProduct = catchAsyncErr(async (req, res, next) => {
   if (!product) {
     return next(new ErrorHandler(404, "Product Not Found"));
   }
-  console.log("The product you want to edit:", product);
+  // console.log("The product you want to edit:", product);
   if (req.user.id.toString() !== product.user.toString() && req.user.role !== "admin") {
     return next(new ErrorHandler(401, "You are not authorized to update this product"));
   }
@@ -179,7 +179,7 @@ exports.productRatingReview = catchAsyncErr(async (req, res, next) => {
   const isReviewed = product.reviews.find(
     (rev) => rev.user.toString() === req.user._id.toString()
   );
-  console.log(isReviewed);
+  // console.log(isReviewed);
   if (isReviewed) {
     product.reviews.forEach((rev) => {
       if (rev.user.toString() === req.user._id.toString()) {
@@ -236,10 +236,9 @@ exports.deleteReview = catchAsyncErr(async (req, res, next) => {
   const newReviews = product.reviews.filter(
     (rev) => rev._id.toString() !== req.query.id.toString()
   ); //"id"- refers to the review id which we will provide from frontend
-  console.log("new review array length", newReviews.length);
+  // console.log("new review array length", newReviews.length);
   let avg = 0;
 
-  console.log("Here");
 
   if (newReviews.length > 0) {
     //here we wrap it in a if condition it will not run if the newReview array length is 0

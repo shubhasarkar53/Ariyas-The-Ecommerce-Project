@@ -69,7 +69,6 @@ const CreateNewProduct = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("submitted");
 
     const myFormData = new FormData();
     myFormData.set("name", productName);
@@ -92,7 +91,7 @@ const CreateNewProduct = () => {
         position: "bottom-center",
         autoClose: 3000,
       });
-      console.log("useeffect:", error);
+
       dispatch(clearError());
     }
 

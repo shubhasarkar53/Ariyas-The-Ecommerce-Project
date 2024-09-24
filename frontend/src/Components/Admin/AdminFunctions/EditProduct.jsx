@@ -130,7 +130,7 @@ const EditProduct = ({ history }) => {
         position: "bottom-center",
         autoClose: 3000,
       });
-      console.log("useeffect:", error);
+
       dispatch(clearError());
     }
     // *****************************************

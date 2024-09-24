@@ -212,7 +212,7 @@ export const updateUserPassword = (userData) => async (dispatch) => {
 //Forgot password
 
 export const forgotPasswordAction = (email) => async (dispatch) => {
-  console.log(email);
+
   try {
     dispatch({ type: FORGOT_PASSWORD_REQUEST });
     
@@ -221,7 +221,7 @@ export const forgotPasswordAction = (email) => async (dispatch) => {
     };
 
     const { data } = await axios.post('/api/v1/password/forgot', { email }, config);
-    console.log(data);
+
 
     dispatch({
       type: FORGOT_PASSWORD_SUCCESS,
