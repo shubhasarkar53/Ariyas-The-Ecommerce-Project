@@ -196,12 +196,15 @@ exports.forgotPassword = catchAsyncErr(async (req, res, next) => {
 // 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑
 
 //THIS LINE IS FOR TEMPORARAY PURPOSE ONLY WILL WORK ON LOCAL HOST NOT IN PRODUCTION
-const resetURL = `${process.env.FRONTEND_URL}/password/reset/${token}`;
+// const resetURL = `${process.env.FRONTEND_URL}/password/reset/${token}`;
+const resetURL = `${req.protocol}://${req.get(
+      "host"
+    )}/password/reset/${resetToken}`;
 
 // 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑
 
 
-  const message = `Your password reset link is (tempp) -->\n\n${resetURL}\n\nIgnore if it was not created by you.`;
+  const message = `Your password reset link is  -->\n\n${resetURL}\n\nIgnore if it was not created by you.`;
 
   // console.log(message);
 
