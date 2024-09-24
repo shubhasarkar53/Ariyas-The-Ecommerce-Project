@@ -5,7 +5,7 @@ const errorMiddleWare = require("./middleWares/error");
 const fileUpload = require("express-fileupload");
 const bodyParser = require("body-parser");
 const nodemailer = require('nodemailer');
-
+const cors = require("cors")
 // * route import 
 const productRoute = require("./routes/productRoute");
 const userRoute = require("./routes/userRoute");
@@ -15,6 +15,14 @@ const returnRoute = require("./routes/returnRoute");
 const blogRoute = require("./routes/blogRoute");
 // * middleware
 app.use(express.json());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || "http://localhost:5173", 
+    credentials: true, // Allow cookies and headers if you're using them
+    methods: "GET,POST,PUT,DELETE", // Specify allowed HTTP methods
+    allowedHeaders: "Content-Type,Authorization", // Specify allowed headers
+  })
+);
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());

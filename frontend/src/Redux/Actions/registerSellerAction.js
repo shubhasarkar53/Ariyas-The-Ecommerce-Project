@@ -1,4 +1,5 @@
-import axios from 'axios';
+
+import instanceAxios from '../../utills/axios';
 import { CLEAR_ERRORS, REGISTER_SELLER_FAIL, REGISTER_SELLER_REQUEST, REGISTER_SELLER_SUCCESS } from '../Constants/registerSellerConstants';
 
 export const registerSeller = (formData) => async (dispatch) => {
@@ -11,7 +12,7 @@ export const registerSeller = (formData) => async (dispatch) => {
             }
         };
 
-        const { data } = await axios.post('/api/v1/register-seller', formData, config);
+        const { data } = await instanceAxios.post('/api/v1/register-seller', formData, config);
 
         dispatch({
             type: REGISTER_SELLER_SUCCESS,

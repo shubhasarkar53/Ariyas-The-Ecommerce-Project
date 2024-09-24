@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { ADD_TO_WISH_LIST, REMOVE_WISH_LIST_ITEM, MOVE_TO_CART } from "../Constants/wishListConstants";
 import { ADD_TO_CART } from "../Constants/cartConstants";
-import axios from 'axios';
+import instanceAxios from "../../utills/axios";
+
 //Add to wish list
 export const addItemsToWishList = (id) => async (dispatch, getState) => {
-    const { data } = await axios.get(`/api/v1/product/${id}`);
+    const { data } = await instanceAxios.get(`/api/v1/product/${id}`);
     dispatch({
         type: ADD_TO_WISH_LIST,
         payload: {
@@ -30,7 +31,7 @@ export const removeItemsFromWishList = (id) => async (dispatch, getState) => {
 //Move Item From Wishlist To Cart
 //pending work
 // export const moveToCart = (id) => async (dispatch, getState) => {
-//     const { data } = await axios.get(`/api/v1/product/${id}`);
+//     const { data } = await instanceAxios.get(`/api/v1/product/${id}`);
 //     dispatch({
 //         type: MOVE_TO_CART,
 //         payload: {

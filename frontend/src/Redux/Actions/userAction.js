@@ -1,3 +1,4 @@
+import instanceAxios from "../../utills/axios";
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -31,7 +32,7 @@ import {
   USER_VERIFY_WRONG_ATTEMP,
 } from "../Constants/userConstant";
 
-import axios from "axios";
+
 
 //Login User action
 export const userLogin = (email, password) => async (dispatch) => {
@@ -41,7 +42,7 @@ export const userLogin = (email, password) => async (dispatch) => {
       headers: { "Content-type": "application/json" },
       withCredentials: true,
     };
-    const { data } = await axios.post(
+    const { data } = await instanceAxios.post(
       "/api/v1/login",
       { email, password },
       config
@@ -71,7 +72,7 @@ export const userRegister = (userData) => async (dispatch) => {
       headers: { "Content-type": "application/json" },
       withCredentials: true,
     };
-    const { data } = await axios.post("/api/v1/register/new", userData, config);
+    const { data } = await instanceAxios.post("/api/v1/register/new", userData, config);
     // console.log(data);
 
     dispatch({
@@ -99,7 +100,7 @@ export const verifyEmail = (userId, otp) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.post('/api/v1/verify-email', { userId, otp }, config);
+    const { data } = await instanceAxios.post('/api/v1/verify-email', { userId, otp }, config);
 
     dispatch({ type: USER_VERIFY_SUCCESS, payload: data.user });
   } catch (error) {
@@ -118,7 +119,7 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const { data } = await axios.get("/api/v1/me");
+    const { data } = await instanceAxios.get("/api/v1/me");
     // console.log("Load user data", data);
 
     dispatch({
@@ -136,7 +137,7 @@ export const loadUser = () => async (dispatch) => {
 // Logout Action
 export const logOut = () => async (dispatch) => {
   try {
-    axios.get("/api/v1/logout");
+    instanceAxios.get("/api/v1/logout");
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
     dispatch({ type: LOGOUT_FAIL, payload: error.response.data.message });
@@ -160,7 +161,7 @@ export const updateUserProfile = (userData) => async (dispatch) => {
     const config = { headers: { "Content-Type": "multipart/form-data" } };
     // Sending the request to server and get response back
 
-    const { data } = await axios.put(
+    const { data } = await instanceAxios.put(
       "/api/v1/me/update/profile",
       userData,
       config
@@ -189,7 +190,7 @@ export const updateUserPassword = (userData) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
     // Sending the request to server and get response back
 
-    const { data } = await axios.put(
+    const { data } = await instanceAxios.put(
       "/api/v1/password/update",
       userData,
       config
@@ -220,7 +221,7 @@ export const forgotPasswordAction = (email) => async (dispatch) => {
       headers: { 'Content-Type': 'application/json' }
     };
 
-    const { data } = await axios.post('/api/v1/password/forgot', { email }, config);
+    const { data } = await instanceAxios.post('/api/v1/password/forgot', { email }, config);
 
 
     dispatch({
@@ -243,7 +244,7 @@ export const resetPasswordAction = (resetToken,passwords) => async (dispatch) =>
 
     const config = { headers: { "Content-Type": "application/json" } };
   
-    const { data } = await axios.put(
+    const { data } = await instanceAxios.put(
       `/api/v1/password/reset/${resetToken}`,
       passwords,
       config

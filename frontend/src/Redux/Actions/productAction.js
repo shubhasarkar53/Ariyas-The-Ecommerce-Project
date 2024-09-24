@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
-import axios from "axios";
 
+
+import instanceAxios from "../../utills/axios";
 import {
   ALL_PRODUCT_SUCCESS,
   ALL_PRODUCT_REQUEST,
@@ -51,7 +52,7 @@ export const getProducts =
         link += `&location=${location}`;
       }
 
-      const { data } = await axios.get(link, {
+      const { data } = await instanceAxios.get(link, {
         headers: {
           "Content-type": "application/json",
         },
@@ -77,7 +78,7 @@ export const getYourProducts = () => async (dispatch) => {
 
     const link = `/api/v1/products/me`;
 
-    const { data } = await axios.get(link, {
+    const { data } = await instanceAxios.get(link, {
       headers: {
         "Content-type": "application/json",
       },
@@ -100,7 +101,7 @@ export const getYourProducts = () => async (dispatch) => {
 export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
-    const { data } = await axios.get(`/api/v1/product/${id}`);
+    const { data } = await instanceAxios.get(`/api/v1/product/${id}`);
     // console.log(data);
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -117,7 +118,7 @@ export const getProductDetails = (id) => async (dispatch) => {
 export const searchProducts = (keyword) => async (dispatch) => {
   try {
     dispatch({ type: ALL_PRODUCT_REQUEST });
-    const { data } = await axios.get(
+    const { data } = await instanceAxios.get(
       `/api/v1/products/search?keyword=${keyword}`
     );
     // console.log(data);
@@ -137,7 +138,7 @@ export const createProductAction = (productData) => async (dispatch) => {
   const config = { headers: { "Content-Type": "multipart/form-data" } };
   try {
     dispatch({ type: CREATE_PRODUCT_REQUEST });
-    const { data } = await axios.post(
+    const { data } = await instanceAxios.post(
       "/api/v1/product/new",
       productData,
       config
@@ -160,7 +161,7 @@ export const editCreatedProduct = (productId, updatedProductData) => async (disp
       headers: {"Content-Type": "multipart/form-data"},
       withCredentials: true,
     };
-    const {data} = await axios.put(`/api/v1/product/${productId}`, updatedProductData,config );
+    const {data} = await instanceAxios.put(`/api/v1/product/${productId}`, updatedProductData,config );
 
     dispatch({
       type: EDIT_PRODUCT_SUCCESS,
@@ -179,7 +180,7 @@ export const deleteCreatedProduct = (productId) => async(dispatch) =>{
   try {
       dispatch({type:DELETE_PRODUCT_REQUEST});
 
-      const {data} = await axios.delete(`/api/v1/product/${productId}`);
+      const {data} = await instanceAxios.delete(`/api/v1/product/${productId}`);
 
       dispatch({
         type: DELETE_PRODUCT_SUCCESS,
@@ -205,7 +206,7 @@ export const newReview = (reviewData) => async (dispatch) => {
       withCredentials: true,
     };
 
-    const { data } = await axios.put(`/api/v1/review`, reviewData,config);
+    const { data } = await instanceAxios.put(`/api/v1/review`, reviewData,config);
 
     dispatch({ type: NEW_REVIEW_SUCCESS,
        payload: data.success });
@@ -249,7 +250,7 @@ export const getProductswp =
         link += `&location=${location}`;
       }
 
-      const { data } = await axios.get(link, {
+      const { data } = await instanceAxios.get(link, {
         headers: {
           "Content-type": "application/json",
         },

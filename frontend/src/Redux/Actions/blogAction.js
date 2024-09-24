@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-import axios from "axios";
+
+import instanceAxios from "../../utills/axios"
 
 import {
     ALL_BLOG_REQUEST,
@@ -38,7 +39,7 @@ export const getBlogs = () => async (dispatch) => {
 
         dispatch({ type: ALL_BLOG_REQUEST });
 
-        const { data } = await axios.get("/api/v1/blogs",{
+        const { data } = await instanceAxios.get("/api/v1/blogs",{
             headers: {
                 "Content-type": "application/json",
             },
@@ -68,7 +69,7 @@ export const getBlogDetails = (id) => async (dispatch) => {
 
         dispatch({ type: BLOG_DETAILS_REQUEST });
 
-        const { data } = await axios.get(`/api/v1/blog/${id}`);
+        const { data } = await instanceAxios.get(`/api/v1/blog/${id}`);
 
         dispatch({
             type: BLOG_DETAILS_SUCCESS,
@@ -95,7 +96,7 @@ export const createBlog = (blogData) => async (dispatch) => {
 
     try {
         dispatch({ type: CREATE_BLOG_REQUEST });
-        const { data } = await axios.post("/api/v1/blog/new",
+        const { data } = await instanceAxios.post("/api/v1/blog/new",
             blogData,
             config);
         dispatch({
@@ -120,7 +121,7 @@ export const editCreatedBlog = (blogId, updateBlogData) => async (dispatch) => {
     };
 
     try {
-        const { data } = await axios.put(`/api/v1/blog/${blogId}`,
+        const { data } = await instanceAxios.put(`/api/v1/blog/${blogId}`,
             updateBlogData,
             config);
         dispatch({
@@ -143,7 +144,7 @@ export const deleteCreatedBlog = (blogId) => async (dispatch) => {
     try {
         dispatch({ type: DELETE_BLOG_REQUEST });
 
-        const { data } = await axios.delete(`/api/v1/blog/${blogId}`);
+        const { data } = await instanceAxios.delete(`/api/v1/blog/${blogId}`);
 
         dispatch({
             type: DELETE_BLOG_SUCCESS,
@@ -165,7 +166,7 @@ export const getYourBlogs = () => async (dispatch) => {
 
         const link = `/api/v1/blogs/me`;
 
-        const { data } = await axios.get(link, {
+        const { data } = await instanceAxios.get(link, {
             headers: {
                 "Content-type": "application/json",
             },

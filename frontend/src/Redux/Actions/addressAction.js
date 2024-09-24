@@ -1,4 +1,6 @@
-import axios from "axios";
+
+import instanceAxios from "../../utills/axios";
+
 import {
     ADDRESS_DELETE_FAIL,
     ADDRESS_DELETE_REQUEST,
@@ -22,7 +24,7 @@ export const  addNewAddress= (addressData) => async(dispatch)=>{
             headers: { "Content-type": "application/json" },
             withCredentials: true,
           };
-        const {data} = await axios.post("/api/v1/new/address", addressData,config);
+        const {data} = await instanceAxios.post("/api/v1/new/address", addressData,config);
         // console.log(data.saveAddress);
         
         dispatch({type:NEW_ADDRESS_SUCCESS,payload:data.saveAddress})
@@ -38,7 +40,7 @@ export const deleteAddress = (addressId) => async(dispatch) =>{
     try {
         dispatch({type:ADDRESS_DELETE_REQUEST});
 
-        const {data} = await axios.delete(`/api/v1/address/delete/${addressId}`);
+        const {data} = await instanceAxios.delete(`/api/v1/address/delete/${addressId}`);
 
         dispatch({
           type: ADDRESS_DELETE_SUCCESS,
@@ -64,7 +66,7 @@ export const editAddress = (addressId, updatedAddressData) => async (dispatch) =
         headers: { "Content-type": "application/json" },
         withCredentials: true,
       };
-      const {data} = await axios.put(`/api/v1/address/update/${addressId}`, updatedAddressData,config );
+      const {data} = await instanceAxios.put(`/api/v1/address/update/${addressId}`, updatedAddressData,config );
 
       dispatch({
         type: EDIT_ADDRESS_SUCCESS,
@@ -85,7 +87,7 @@ export const  loadAddress= () => async(dispatch)=>{
     try {
         dispatch({type:LOAD_ADDRESS_REQUEST} )
 
-        const {data} = await axios.get("/api/v1/address/me");
+        const {data} = await instanceAxios.get("/api/v1/address/me");
         // console.log(data.userAddresses);
         
         dispatch({type:LOAD_ADDRESS_SUCCESS,payload:data.userAddresses})

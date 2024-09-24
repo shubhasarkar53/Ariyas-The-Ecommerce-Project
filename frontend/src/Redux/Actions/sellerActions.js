@@ -1,5 +1,5 @@
-import axios from "axios";
 
+import instanceAxios from "../../utills/axios";
 import {
   GET_REQ_SELLER_FAIL,
   GET_REQ_SELLER_REQUEST,
@@ -15,7 +15,7 @@ export const getAllRequestedSellerAction = () => async (dispatch) => {
 
     const link = `/api/v1/get-req-sellers`;
 
-    const { data } = await axios.get(link);
+    const { data } = await instanceAxios.get(link);
     // console.log(data);
 
     dispatch({
@@ -33,7 +33,7 @@ export const getAllRequestedSellerAction = () => async (dispatch) => {
 export const updateSellerRole = (sellerId, newRole) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_SELLER_ROLE_REQUEST });
-    const { data } = await axios.put(`api/v1/admin/update/role/${sellerId}`, {
+    const { data } = await instanceAxios.put(`api/v1/admin/update/role/${sellerId}`, {
       role: newRole,
     });
     dispatch({ type: UPDATE_SELLER_ROLE_SUCCESS, payload: data.success });

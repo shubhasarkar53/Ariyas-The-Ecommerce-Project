@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
+import instanceAxios from '../../utills/axios';
 import { ADD_TO_CART, REMOVE_CART_ITEM, SAVE_SHIPPING_INFO, CLEAR_CART } from '../Constants/cartConstants';
-import axios from 'axios';
+
 
 
 //Add to cart 
 export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
 
-    const { data } = await axios.get(`/api/v1/product/${id}`);
+    const { data } = await instanceAxios.get(`/api/v1/product/${id}`);
 
     dispatch({
         type: ADD_TO_CART,
