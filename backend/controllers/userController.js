@@ -148,15 +148,31 @@ exports.loginUser = catchAsyncErr(async (req, res, next) => {
 
 // Log out user
 
+// exports.logoutUser = catchAsyncErr(async (req, res, next) => {
+//   res.cookie("token", null, {
+//     expires: new Date(Date.now()),
+//     httpOnly: true,
+//   });
+
+//   res.status(200).json({
+//     success: true,
+//     message: "Logged Out !!",
+//   });
+// });
 exports.logoutUser = catchAsyncErr(async (req, res, next) => {
-  res.cookie("token", null, {
-    expires: new Date(Date.now()),
-    httpOnly: true,
-  });
+
+  res
+    .cookie("token","", {
+      expires: new Date(Date.now()),
+      httpOnly: true,
+      sameSite:process.env.NODE_ENV==="development"?"lax":"none",
+      secure:process.env.NODE_ENV==="development"?false:true,
+    })
 
   res.status(200).json({
     success: true,
     message: "Logged Out !!",
+    sameSite:process.env.NODE_ENV,
   });
 });
 
@@ -268,17 +284,17 @@ exports.resetPassword = catchAsyncErr(async (req, res, next) => {
 
 // Log out user
 
-exports.logoutUser = catchAsyncErr(async (req, res, next) => {
-  res.cookie("token", null, {
-    expires: new Date(Date.now()),
-    httpOnly: true,
-  });
+// exports.logoutUser = catchAsyncErr(async (req, res, next) => {
+//   res.cookie("token", null, {
+//     expires: new Date(Date.now()),
+//     httpOnly: true,
+//   });
 
-  res.status(200).json({
-    success: true,
-    message: "Logged Out !!",
-  });
-});
+//   res.status(200).json({
+//     success: true,
+//     message: "Logged Out !!",
+//   });
+// });
 
 // get all users ✅
 exports.getAllUser = catchAsyncErr(async (req, res, next) => {
