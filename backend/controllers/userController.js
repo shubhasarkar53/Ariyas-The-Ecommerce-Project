@@ -3,38 +3,42 @@ const User = require("../models/User");
 const VerificationToken = require("../models/VerificationToken");
 const sendToken = require("../utills/jwtToken");
 const ErrorHandler = require("../utills/errorHandler");
-const { sendMail, generateEmailTemplate, generateEmailVerifiedTemplate, generateUpdateRoleEmailTemplate } = require("../utills/sendMail");
+const {
+  sendMail,
+  generateEmailTemplate,
+  generateEmailVerifiedTemplate,
+  generateUpdateRoleEmailTemplate,
+} = require("../utills/sendMail");
 const crypto = require("crypto");
 const SellerInfo = require("../models/SellerInfo");
 const { sendContactUsMail } = require("../utills/sendContactUsMail");
 // const cloudinary = require('cloudinary').v2;
-const cloudinary = require('cloudinary');
+const cloudinary = require("cloudinary");
 const { generateOTP } = require("../utills/generateOTP");
 const { isValidObjectId } = require("mongoose");
 
-
 // Register User
 exports.registerUser = catchAsyncErr(async (req, res, next) => {
-  const { name, email, password , phone} = req.body;
+  const { name, email, password, phone } = req.body;
 
-// creating user using the data given in the body
+  // creating user using the data given in the body
   const user = new User({
     name: name,
     email: email,
     password: password,
-    phone:phone,
+    phone: phone,
     avatar: {
       publicId: "demoPublicId123",
       url: "https://res.cloudinary.com/dd3sjaumq/image/upload/v1716313695/avatars/demo_user/pngwing.com_3_i3xfrs.png",
     },
   });
-//1.generate otp
+  //1.generate otp
   const OTP = generateOTP();
-//2. Create entry into varification token DB with the OTP
+  //2. Create entry into varification token DB with the OTP
   const verificationToken = new VerificationToken({
-    owner:user._id,
-    token:OTP
-  })
+    owner: user._id,
+    token: OTP,
+  });
   await verificationToken.save();
 
   //creating entry of user into User collection
@@ -45,7 +49,7 @@ exports.registerUser = catchAsyncErr(async (req, res, next) => {
     await sendMail({
       email: user.email,
       subject: `Verify Your Email Account - ARIYAS`,
-      html: generateEmailTemplate(OTP,user.name),
+      html: generateEmailTemplate(OTP, user.name),
     });
   } catch (error) {
     return next(new ErrorHandler(400, error.message));
@@ -54,65 +58,62 @@ exports.registerUser = catchAsyncErr(async (req, res, next) => {
   res.status(200).json({
     success: true,
     message: `Verification mail send successfully to ${user.email}`,
-    user
+    user,
   });
 });
-
-
 
 //Verify email OTP controller
 
 exports.verifyEmailOTP = catchAsyncErr(async (req, res, next) => {
-  const { userId,otp } = req.body;
+  const { userId, otp } = req.body;
 
-    if(!userId || !otp.trim()){
-      return next(new ErrorHandler(400, "Invalid Request, Missing Parameters!"));
-    }
-    if(!isValidObjectId(userId)){
-      return next(new ErrorHandler(400, "User Id not valid!"));
-    }
-  //find the user first 
-    const user = await User.findById(userId);
-    if(!user){
-      return next(new ErrorHandler(400, "Sorry,User not Found!"));
-    }
-    if(user.verified){
-      return next(new ErrorHandler(400, "This user is already verified."));
-    }
+  if (!userId || !otp.trim()) {
+    return next(new ErrorHandler(400, "Invalid Request, Missing Parameters!"));
+  }
+  if (!isValidObjectId(userId)) {
+    return next(new ErrorHandler(400, "User Id not valid!"));
+  }
+  //find the user first
+  const user = await User.findById(userId);
+  if (!user) {
+    return next(new ErrorHandler(400, "Sorry,User not Found!"));
+  }
+  if (user.verified) {
+    return next(new ErrorHandler(400, "This user is already verified."));
+  }
   // 1.compare entered otp with "VerifyToken" db's token
-      const tokenEntity = await VerificationToken.findOne({owner:user._id});
+  const tokenEntity = await VerificationToken.findOne({ owner: user._id });
 
-      if(!tokenEntity){
-        return next(new ErrorHandler(400, "Token not found!"));
-      }
-      const isTokenMatched = await tokenEntity.compareToken(otp)
+  if (!tokenEntity) {
+    return next(new ErrorHandler(400, "Token not found!"));
+  }
+  const isTokenMatched = await tokenEntity.compareToken(otp);
 
-      if(!isTokenMatched){
-        return next(new ErrorHandler(400, "Please provide a valid token!"));
-      }
+  if (!isTokenMatched) {
+    return next(new ErrorHandler(400, "Please provide a valid token!"));
+  }
   //2.If true then
-            // 2.1 overwrite verified field of User Db with true value
-            user.verified = true;
-    // 2.2 Delete "VerifyToken" db's entry search using UserID
-            await VerificationToken.findByIdAndDelete(tokenEntity._id);
+  // 2.1 overwrite verified field of User Db with true value
+  user.verified = true;
+  // 2.2 Delete "VerifyToken" db's entry search using UserID
+  await VerificationToken.findByIdAndDelete(tokenEntity._id);
 
-            await user.save();
+  await user.save();
 
-    // 2.3 Send Successfull mail
-          try {
-            await sendMail({
-              email: user.email,
-              subject: `Verification Successful - ARIYAS`,
-              html: generateEmailVerifiedTemplate(user.name),
-            });
-          } catch (error) {
-            return next(new ErrorHandler(400, error.message));
-          }
+  // 2.3 Send Successfull mail
+  try {
+    await sendMail({
+      email: user.email,
+      subject: `Verification Successful - ARIYAS`,
+      html: generateEmailVerifiedTemplate(user.name),
+    });
+  } catch (error) {
+    return next(new ErrorHandler(400, error.message));
+  }
 
-      
-      //   Get the token to login as soon as register
+  //   Get the token to login as soon as register
 
-      sendToken(user, 201, res);
+  sendToken(user, 201, res);
 });
 
 // Login  User
@@ -149,15 +150,21 @@ exports.loginUser = catchAsyncErr(async (req, res, next) => {
 // Log out user
 
 exports.logoutUser = catchAsyncErr(async (req, res, next) => {
-  res.cookie("token", null, {
-    // expires: new Date(Date.now()),
-    // httpOnly: true,
+  // res.cookie("token", null, {
+  //   // expires: new Date(Date.now()),
+  //   // httpOnly: true,
 
-    magAge:0,
-    httpOnly: true,
-      secure: true, // Ensure this is true if your site is running over HTTPS
-      sameSite: 'none', // This allows cross-site cookies
-      partitioned:true,
+  //   maxAge:0,
+  //   httpOnly: true,
+  //     secure: true, // Ensure this is true if your site is running over HTTPS
+  //     sameSite: 'none', // This allows cross-site cookies
+  //     partitioned:true,
+  // });
+
+  res.cookie("token", "", {
+    expires: new Date(Date.now()),
+    sameSite: process.env.NODE_ENV === "Development" ? "lax" : "none",
+    secure: process.env.NODE_ENV === "Development" ? false : true,
   });
 
   res.status(200).json({
@@ -169,7 +176,6 @@ exports.logoutUser = catchAsyncErr(async (req, res, next) => {
 // Forgot password
 
 exports.forgotPassword = catchAsyncErr(async (req, res, next) => {
-
   const { email } = req.body;
 
   // find the mail id DB
@@ -181,34 +187,30 @@ exports.forgotPassword = catchAsyncErr(async (req, res, next) => {
 
   await user.save({ validateBeforeSave: false });
 
-
   // ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
   //THIS WAS THE ACCUALL CODE
-  
+
   // old
   // const resetURL = `${req.protocol}://${req.get(
-    //   "host"
-    // )}/api/v1/password/reset/${token}`;
+  //   "host"
+  // )}/api/v1/password/reset/${token}`;
 
-// correct
-    // const resetPasswordUrl = `${req.protocol}://${req.get(
-    //   "host"
-    // )}/password/reset/${resetToken}`;
+  // correct
+  // const resetPasswordUrl = `${req.protocol}://${req.get(
+  //   "host"
+  // )}/password/reset/${resetToken}`;
 
+  // ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
 
-    // ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+  // 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑
 
+  //THIS LINE IS FOR TEMPORARAY PURPOSE ONLY WILL WORK ON LOCAL HOST NOT IN PRODUCTION
+  const resetURL = `${process.env.FRONTEND_URL}/password/reset/${token}`;
+  // const resetURL = `${req.protocol}://${req.get(
+  //       "host"
+  //     )}/api/v1/password/reset/${token}`;
 
-// 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑
-
-//THIS LINE IS FOR TEMPORARAY PURPOSE ONLY WILL WORK ON LOCAL HOST NOT IN PRODUCTION
-const resetURL = `${process.env.FRONTEND_URL}/password/reset/${token}`;
-// const resetURL = `${req.protocol}://${req.get(
-//       "host"
-//     )}/api/v1/password/reset/${token}`;
-
-// 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑
-
+  // 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑
 
   const message = `Your password reset link is  -->\n\n${resetURL}\n\nIgnore if it was not created by you.`;
 
@@ -271,7 +273,6 @@ exports.resetPassword = catchAsyncErr(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 
-
 // Log out user
 
 exports.logoutUser = catchAsyncErr(async (req, res, next) => {
@@ -321,130 +322,124 @@ exports.updateUserPassword = catchAsyncErr(async (req, res, next) => {
   }
 
   if (newPassword !== confirmPassword) {
-    return next(new ErrorHandler(400, "Both password and confirm password should match"));
+    return next(
+      new ErrorHandler(400, "Both password and confirm password should match")
+    );
   }
 
   user.password = newPassword;
   await user.save(); //must have to save to see the changes
-  sendToken(user,200,res);
+  sendToken(user, 200, res);
 });
 
-// Update user's profile details 
-exports.updateUserDetails = catchAsyncErr(async(req,res,next)=>{
-
+// Update user's profile details
+exports.updateUserDetails = catchAsyncErr(async (req, res, next) => {
   const userDetails = {
-    name : req.body.name,
+    name: req.body.name,
     gender: req.body.gender,
     phone: req.body.phone,
     // avatar:req.body.avatar
     // dob: req.body.dob,
-  }
+  };
 
   // console.log("From backedn",userDetails);
 
-  if(req.body.avatar!==""){
+  if (req.body.avatar !== "") {
     const user = await User.findById(req.user.id);
     //remove old image from cloudinary
     // console.log("skipping If");
-    if(user.avatar.publicId!=="demoPublicId123"){
+    if (user.avatar.publicId !== "demoPublicId123") {
       const imgId = user.avatar.publicId;
       await cloudinary.v2.uploader.destroy(imgId);
     }
     // console.log("skipped If");
     // console.log("Uploading to cn");
-    
-    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar,{
-      folder: "avatars",
-      quality: 'auto:good',
-      format: 'webp',
-      resource_type:"auto",
-    })
-    // console.log("Uploadded to cn");
-    userDetails.avatar={
-      publicId:myCloud.public_id,
-      url:myCloud.secure_url
-    }
-    // console.log("avatr obj edted with pId and Url");
 
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+      folder: "avatars",
+      quality: "auto:good",
+      format: "webp",
+      resource_type: "auto",
+    });
+    // console.log("Uploadded to cn");
+    userDetails.avatar = {
+      publicId: myCloud.public_id,
+      url: myCloud.secure_url,
+    };
+    // console.log("avatr obj edted with pId and Url");
   }
 
-  const updatedUser = await User.findByIdAndUpdate(req.user.id,userDetails,{
-    new:true,
-    runValidators:true,
+  const updatedUser = await User.findByIdAndUpdate(req.user.id, userDetails, {
+    new: true,
+    runValidators: true,
     useFindAndModify: false,
-  })
+  });
 
   res.status(200).json({
-    success:true,
-    updatedUser
-  })
+    success: true,
+    updatedUser,
+  });
 });
 
 // Update user's Role --ADMIN ✅
-exports.updateUserRole = catchAsyncErr(async(req,res,next)=>{
-
+exports.updateUserRole = catchAsyncErr(async (req, res, next) => {
   const userDetails = {
-    role:req.body.role,
+    role: req.body.role,
     // add more if need
-  }
+  };
   const user = await User.findById(req.params.id);
-  if(!user){
+  if (!user) {
     return next(new ErrorHandler(404, "User not found"));
   }
 
-  const updatedUser = await User.findByIdAndUpdate(req.params.id,userDetails,{
-    new:true,
-    runValidators:true,
+  const updatedUser = await User.findByIdAndUpdate(req.params.id, userDetails, {
+    new: true,
+    runValidators: true,
     // one line forgot
-  })
+  });
 
   res.status(200).json({
-    success:true,
-    updatedUser
-  })
+    success: true,
+    updatedUser,
+  });
 
   try {
     await sendMail({
       email: user.email,
       subject: `Your are Now a Verified ${req.body.role} ${user.name} - ARIYAS`,
-      html: generateUpdateRoleEmailTemplate(user.name,req.body.role),
+      html: generateUpdateRoleEmailTemplate(user.name, req.body.role),
     });
   } catch (error) {
     return next(new ErrorHandler(400, error.message));
   }
-
-})
+});
 
 //  Delete user --ADMIN ✅
-exports.deleteUser = catchAsyncErr(async(req,res,next)=>{
-
+exports.deleteUser = catchAsyncErr(async (req, res, next) => {
   const user = await User.findById(req.params.id);
-  if(!user){
+  if (!user) {
     return next(new ErrorHandler(404, "User not found"));
   }
 
   const updatedUser = await User.findByIdAndRemove(req.params.id);
 
   res.status(200).json({
-    success:true,
-    message:"User Deleted successfully."
-  })
-})
-
+    success: true,
+    message: "User Deleted successfully.",
+  });
+});
 
 // Contact us
-exports.contactUsMessage = catchAsyncErr(async(req,res,next)=>{
+exports.contactUsMessage = catchAsyncErr(async (req, res, next) => {
+  const { firstName, lastName, phoneNumber, email, message } = req.body;
 
-  const { firstName, lastName,phoneNumber,email,message} = req.body;
-
-  const  mailContent = new SellerInfo ({
+  const mailContent = new SellerInfo({
     firstName,
     lastName,
     phoneNumber,
     email,
-    message
+    message,
   });
-  
 
   // const sellerInfo = await SellerInfo.create(infoByUser);
   // console.log(sellerInfo);
@@ -464,6 +459,4 @@ exports.contactUsMessage = catchAsyncErr(async(req,res,next)=>{
   } catch (error) {
     return next(new ErrorHandler(400, error.message));
   }
-
-})
-
+});

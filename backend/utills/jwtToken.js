@@ -12,13 +12,21 @@ const sendToken = (user, statusCode, res) => {
 
     // };
     const options = {
-      magAge:1000*60*60*24*30,
       httpOnly: true,
-        secure: true, // Ensure this is true if your site is running over HTTPS
-        sameSite: 'none', // This allows cross-site cookies
-        partitioned:true,
+      maxAge: 15 * 60 * 1000,
+      sameSite:process.env.NODE_ENV==="Development"?"lax":"none",
+      secure:process.env.NODE_ENV==="Development"?false:true,
 
     };
+
+    // res
+    // .cookie("token", token, {
+    //   httpOnly: true,
+    //   maxAge: 15 * 60 * 1000,
+    //   sameSite:process.env.NODE_ENV==="Development"?"lax":"none",
+    //   secure:process.env.NODE_ENV==="Development"?false:true,
+    // })
+
   
     res.status(statusCode).cookie("token", token , options).json({
       success: true,
