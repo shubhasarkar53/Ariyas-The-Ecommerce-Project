@@ -1,0 +1,251 @@
+.update-profile-container {
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+}
+.left-deep,
+.right-deep {
+  display: flex;
+  align-items: center;
+}
+.update-img-profile {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center;
+  img {
+    width: 100%;
+  }
+}
+.update-img-profile-option {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+}
+.edit-avatar-container {
+  // border: 2px solid orange;
+  border-radius: 10px;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.25);
+  margin-bottom: 2em;
+  p {
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+  button,
+  input::file-selector-button {
+    font-size: 1rem;
+    padding: 0.5em;
+    background-color: white;
+    cursor: pointer;
+    border: 1px solid gray;
+    transition: all 0.2s ease-in-out;
+    border-radius: 10px;
+  }
+  button:hover {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.25);
+  }
+}
+.update-profile-det-container {
+  width: 80%;
+}
+.edit-profile-details-form {
+  // border: 2px solid red;
+  width: 100%;
+  margin: 2em 0;
+}
+.edit-profile-title {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 96% */
+  letter-spacing: 2.5px;
+  margin: 2em 0;
+}
+.form-inputs {
+  font-size: 1.2rem;
+  // border : 2px solid green;
+  margin: 0 auto;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5em;
+  label {
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 120% */
+    letter-spacing: 2px;
+  }
+  input,
+  select {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    padding: 1em 1.5em;
+    border-radius: 10px;
+    background: rgba(207, 207, 207, 0.4);
+  }
+}
+
+.edit-profile-btn-container {
+  // border: 2px solid orange;
+  margin: 0 auto;
+
+  button {
+    font-size: 1rem;
+    padding: 1em;
+    background-color: white;
+    cursor: pointer;
+    border: 1px solid gray;
+    transition: all 0.2s ease-in-out;
+    border-radius: 10px;
+  }
+  button:hover {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.25);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .update-profile-container {
+    .left-deep,
+    .right-deep {
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+    .update-profile-det-container {
+      form {
+        .form-inputs {
+          font-size: 1.11rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .update-profile-container {
+    .left-deep,
+    .right-deep {
+      img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+    .update-profile-det-container {
+      form {
+        .form-inputs {
+          font-size: 0.9rem;
+          input,
+          select {
+            font-size: 0.9rem;
+          }
+          label {
+            font-size: 0.9rem;
+          }
+          .edit-profile-btn-container {
+            button {
+              font-size: 0.9rem;
+              padding: 0.85em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .update-profile-container {
+    display: flex;
+    justify-content: center;
+    .left-deep,
+    .right-deep {
+      img {
+        display: none;
+      }
+    }
+    .update-profile-det-container {
+      width: 90%;
+      form {
+        .edit-profile-title {
+          font-size: 1.1rem;
+        }
+        .edit-avatar-container {
+          padding: 0.5em;
+          gap: 1.5em;
+          .update-img-profile {
+            width: 4.5rem;
+            height: 4.5rem;
+          }
+          .update-img-profile-option {
+            label {
+              font-size: 0.9rem;
+            }
+          }
+          p {
+            font-size: 0.9rem;
+          }
+          button,
+          input::file-selector-button {
+            font-size: 0.8rem;
+          }
+        }
+        .form-inputs {
+          width: 70%;
+          input,
+          select,
+          label {
+            font-size: 0.85rem;
+          }
+          .edit-profile-btn-container {
+            button {
+              font-size: 0.75rem;
+              padding: 0.7em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .update-profile-container {
+    .update-profile-det-container {
+      form {
+        .edit-profile-title {
+          font-size: 0.9rem;
+        }
+        .edit-avatar-container {
+          display: flex;
+          flex-direction: column;
+          .update-img-profile-option {
+            align-items: center;
+            button,
+            input::file-selector-button {
+              width: 100%;
+              display: flex;
+              justify-content: center;
+            }
+          }
+        }
+        .form-inputs {
+          width: 90%;
+        }
+      }
+    }
+  }
+}

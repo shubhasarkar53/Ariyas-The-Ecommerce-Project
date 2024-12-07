@@ -1,0 +1,30 @@
+.stepper-tab {
+  margin-top: 3rem;
+}
+.ico {
+  font-size: 2rem;
+}
+.det-ico {
+  font-size: 1rem !important;
+}
+
+@media screen and (max-width: 500px) {
+  .ico {
+    font-size: 1.5rem;
+  }
+  .det-ico {
+    font-size: 0.8rem !important;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .det-ico {
+    font-size: 0.6rem !important;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .det-ico {
+    font-size: 0.5rem !important;
+  }
+}

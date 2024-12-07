@@ -1,0 +1,517 @@
+// * {
+//   box-sizing: border-box;
+//   margin: 0;
+//   padding: 0;
+// }
+
+// .footer {
+//   width: 100%;
+//   height: fit-content;
+//   box-shadow: 0.2rem 0.3rem 0.5rem rgba(80, 80, 80, 0.258) inset;
+//   .footer-container {
+//     display: flex;
+//     flex-direction: column;
+//     min-height: fit-content;
+//     .footer-top {
+//       display: flex;
+//       justify-content: space-evenly;
+//       align-items: center;
+//       gap: 1.5em;
+//       .element {
+//         margin-top: 1rem;
+//         margin-bottom: 0.5rem;
+//         display: flex;
+//         justify-content: center;
+//         .symbol1,
+//         .symbol2,
+//         .symbol3 {
+//           color: orange;
+//           font-size: 1.6rem;
+//           margin-right: 0.2rem;
+//         }
+//         .list-item1,
+//         .list-item2,
+//         .list-item3 {
+//           margin-top: 0.2rem;
+//         }
+//       }
+//     }
+//     .footer-middle {
+//       // box-shadow: 0.2rem 0.3rem 0.5rem rgba(80, 80, 80, 0.258) inset;
+//       min-height: 50vh;
+//       display: flex;
+//       justify-content: space-around;
+//       padding: 4rem 5rem;
+
+//       .ariyas {
+//         width: 40%;
+//         h3 {
+//           font-size: 1.1rem;
+//           margin-bottom: 0.5rem;
+//         }
+//         p {
+//           font-size: 0.9rem;
+//           margin-bottom: 1rem;
+//         }
+//         .social-media {
+//           a {
+//             text-decoration: none;
+//             color: rgb(87, 87, 87);
+//             font-size: 1.1rem;
+//             margin-right: 0.5rem;
+//             cursor: pointer;
+//             transition: color 0.35s linear;
+//             &:hover {
+//               color: orange;
+//             }
+//           }
+//         }
+//       }
+//       .footer-det-container {
+//         display: flex;
+//         justify-content: space-between;
+//         width: 40%;
+//         .shop,
+//         .about,
+//         .need-help {
+//           h3 {
+//             font-size: 1.1rem;
+//             margin-bottom: 0.5rem;
+//           }
+//           .shop-links,
+//           .about-links,
+//           .need-links {
+//             display: flex;
+//             flex-direction: column;
+//             justify-content: space-between;
+//             gap: 0.4rem;
+//             font-size: 0.8rem;
+//             a {
+//               color: rgb(74, 74, 74);
+//               cursor: pointer;
+//               &:hover {
+//                 color: orange;
+//                 text-decoration: underline;
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//     .footer-bottom {
+//       // box-shadow: 0.2rem 0.3rem 0.5rem rgba(80, 80, 80, 0.258) inset;
+//       display: flex;
+//       width: 100%;
+//       justify-content: center;
+//       align-items: center;
+//       height: 2rem;
+//       color: rgb(86, 86, 86);
+//       p {
+//         font-size: 0.7rem;
+//         letter-spacing: 0.08rem;
+//       }
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 1000px) {
+//   .footer {
+//     .footer-container {
+//       .footer-middle {
+//         display: flex;
+//         flex-direction: column;
+//         gap: 2rem;
+//         min-height: 100vh;
+//         .ariyas {
+//           width: 100%;
+//           display: flex;
+//           flex-direction: column;
+//           align-items: center;
+//           height: fit-content;
+//           h3 {
+//             text-align: center;
+//           }
+//           p {
+//             text-align: center;
+//           }
+//         }
+//         .footer-det-container {
+//           width: 100%;
+//           justify-content: space-evenly;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 768px) {
+//   .footer {
+//     .footer-container {
+//       .footer-top {
+//         .element {
+//           justify-content: center;
+//           .symbol1,
+//           .symbol2,
+//           .symbol3 {
+//             font-size: 1.2rem;
+//           }
+//           .list-item1,
+//           .list-item2,
+//           .list-item3 {
+//             font-size: 0.7rem;
+//           }
+//         }
+//       }
+//       .footer-middle {
+//         min-height: 60vh;
+//         .ariyas {
+//           h3 {
+//             font-size: 0.9rem;
+//           }
+//           p {
+//             font-size: 0.7rem;
+//           }
+//         }
+//         .footer-det-container {
+//           display: grid;
+//           grid-template-columns: repeat(2, 1fr);
+//           justify-items: center;
+//           gap: 1rem;
+//           .shop,
+//           .about,
+//           .need-help {
+//             h3 {
+//               font-size: 0.9rem;
+//             }
+//             .shop-links,
+//             .about-links,
+//             .need-links {
+//               font-size: 0.7rem;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// @media screen and (max-width: 650px) {
+//   .footer {
+//     .footer-container {
+//       .footer-middle {
+//         padding: 2rem 3.5rem;
+//       }
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 500px) {
+//   .footer {
+//     .footer-container {
+//       .footer-top {
+//         .element {
+//           .symbol1,
+//           .symbol2,
+//           .symbol3 {
+//             font-size: 1rem;
+//           }
+//           .list-item1,
+//           .list-item2,
+//           .list-item3 {
+//             font-size: 0.6rem;
+//           }
+//         }
+//       }
+//       .footer-middle {
+//         padding: 1.5rem 2.5rem;
+//       }
+//       .footer-bottom {
+//         p {
+//           font-size: 0.6rem;
+//         }
+//       }
+//     }
+//   }
+// }
+
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+.footer {
+  width: 100%;
+  // border: 2px solid red;
+  // height: auto;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+  padding: 20px;
+  // margin-top: 5rem;
+  text-align: center;
+
+  // margin-top: auto;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 1em;
+  width: 80%;
+  // border: 2px solid rgb(0, 255, 38);
+}
+.footer-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  gap: 1em;
+}
+.element {
+  display: flex;
+  gap: 2em;
+}
+.sline {
+  width: 1px;
+  height: 2rem;
+  background-color: gray;
+  margin: 0 0.5rem;
+}
+.line {
+  width: 100%;
+  height: 1.5px;
+  background-color: gray;
+  margin: 0.5rem 0;
+}
+.list-item1,
+.list-item2,
+.list-item3 {
+  display: flex;
+  align-items: center;
+}
+.symbol1,
+.symbol2,
+.symbol3 {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  color: orange;
+}
+.footer-middle {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+  font-size: 18px;
+  margin-top: 1em;
+  padding: 2rem;
+  padding-left: 0;
+  padding-right: 0;
+}
+.ariyas {
+  // border: 2px solid rgb(162, 255, 0);
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  h3 {
+    font-size: 1.2rem;
+  }
+  p {
+    font-size: 13px;
+    line-height: 30px;
+    font-weight: 500;
+    color: #000000;
+    text-align: left;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .social-media {
+    display: flex;
+    gap: 1rem;
+    a {
+      text-decoration: none;
+      color: #000000;
+      font-size: 1.3rem;
+      &:hover {
+        color: #cd8849;
+      }
+    }
+  }
+}
+.footer-det-container {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  .shop,
+  .need-help,
+  .about {
+    h3 {
+      font-size: 1.2rem;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    font-weight: 300;
+    color: rgb(60, 60, 60);
+    gap: 1rem;
+    a {
+      text-decoration: none;
+      color: #000000;
+      font-size: 12px;
+      text-align: center;
+      &:hover {
+        color: #cd8849;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.footer-bottom {
+  width: 100%;
+  height: 2rem;
+  bottom: 0;
+  position: relative;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 1400px) {
+  .footer {
+    .footer-container {
+      .footer-middle {
+        flex-direction: column;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        .ariyas {
+          display: flex;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+          p {
+            text-align: center;
+          }
+        }
+        .footer-det-container {
+          width: 100%;
+          .shop,
+          .about,
+          .need-help {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .footer-top {
+    font-size: 15px;
+    gap: 0.8em;
+    .element {
+      gap: 1.5em;
+      .symbol1,
+      .symbol2,
+      .symbol3 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .footer-middle {
+    .ariyas {
+      p {
+        font-size: 13px;
+      }
+      .social-media {
+        a {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer-top {
+    font-size: 13px;
+    gap: 0.5em;
+    .element {
+      gap: 1rem;
+      .symbol1,
+      .symbol2,
+      .symbol3 {
+        font-size: 1rem;
+      }
+    }
+  }
+  .footer-middle {
+    .footer-det-container {
+      .shop,
+      .about,
+      .need-help {
+        h3 {
+          font-size: 1rem;
+        }
+        a {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .footer-top {
+    margin-bottom: -0.4rem;
+    font-size: 12px;
+    gap: 0.3em;
+    .element {
+      gap: 0.8rem;
+      .symbol1,
+      .symbol2,
+      .symbol3 {
+        font-size: 0.8rem;
+      }
+    }
+  }
+  .footer-middle {
+    margin-top: -0.9rem;
+    .ariyas {
+      p {
+        margin-top: -0.3rem;
+        font-size: 10px;
+        line-height: 1.1rem;
+      }
+    }
+  }
+  .footer-bottom {
+    margin-top: -0.6rem;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .footer-top {
+    font-size: 10px;
+    gap: 0.3em;
+    .element {
+      gap: 0.4rem;
+      .symbol1,
+      .symbol2,
+      .symbol3 {
+        font-size: 0.4rem;
+      }
+    }
+  }
+}

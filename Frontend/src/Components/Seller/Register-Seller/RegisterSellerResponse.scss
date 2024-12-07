@@ -1,0 +1,29 @@
+@media screen and (max-width: 1200px) {
+  .seller-form {
+    .form-phone,
+    .form-email {
+      .phone-section,
+      .email-section {
+        display: flex;
+        flex-direction: column;
+
+        .phone-sect-2 {
+          margin-left: 3rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1140px) {
+  .register-seller-container {
+    .seller-profile-form {
+      .pradeep-side {
+        img {
+          width: 150px;
+          height: 150px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,218 @@
+//Controller for create new order
+exports.createNewOrder = catchAsyncErr(async (req, res, next) => {
+  const {
+    usrId,
+    orderItems,
+    itemsPrice,
+    shippingPrice,
+    totalPrice,
+    paymentInfo,
+  } = req.body;
+
+     // Retrieve the user
+     const user = await User.findById(req.user._id)
+      console.log(user);
+     // Retrieve the user's saved address
+      const userAddress = await Address.findById(user.address);
+      console.log(userAddress);
+
+
+    // Create an array of Product objects from the orderItems array
+    const products = await Promise.all(orderItems.map(async (item) => {
+      const product = await Product.findById(item.product);
+      return {
+        name: product.name,
+        quantity: item.quantity,
+        image: product.image,
+        price: product.price,
+        product: product._id
+      };
+    }));
+    console.log(products);
+
+    //Create a new Order object and save it to the database
+  const newOrder = await Order.create({
+    user:user,  
+    orderItems:products,
+    shippingInfo:userAddress,
+    itemsPrice,
+    shippingPrice,
+    totalPrice,
+    paymentInfo,
+    paidAt: Date.now(),
+  });
+
+  if (!newOrder || !userAddress) {
+    return next(new ErrorHandler(404, "Order not created"));
+  }
+  // Update the product schema
+      await Promise.all(orderItems.map(async (item) => {
+        const product = await Product.findById(item.product);
+        product.countInStock -= item.quantity;
+        await product.save();
+      }));
+
+
+  res.status(201).json({
+    success: true,
+    newOrder,
+  });
+});
+
+
+return ------>
+
+// get the logged in user from req object
+    const user = req.user._id;
+    // check if there is any order with status "Delivered" or "Return
+    // Initiated". If yes then throw an error
+    let orders = await Order.find({ user: user , status : {$in : ['Delivered','Return Initiated']}});
+    if(orders.length > 0){
+        return next(new ErrorHandler(400, 'Return request already submited'));
+    }
+    // get the order id and reason from req.body
+      const { orderId, reason } = req.body;
+
+  
+      // Check if the order exists
+      const order = await Order.findById(orderId);
+      if (!order) {
+        return next(new ErrorHandler(404, 'Order not found'));
+      }
+
+      
+      // Check if the order belongs to the user
+      if (order.user.toString() !== user) {
+        return next(new ErrorHandler(401, 'Not authorized to create a return request for this order'));
+      }
+
+      //check if the return request already submited
+      const returnRequestSubmited = await Return.findOne({ orderId: orderId });
+      if (returnRequestSubmited) {
+        return next(new ErrorHandler(400, 'Return request already submited'));
+      }
+
+      //fetch product seller id from the products in ordered items array
+      const orderArr = await Order.findById(orderId);
+      const sellerId = orderArr.orderItems[0].product.user;
+      console.log("SellerId------>",sellerId);
+
+  
+      // Check if the order is within the return window (e.g., 7 days)
+      const returnWindowInDays = 7;
+      const currentDate = new Date();
+      const deliveryDate = order.deliveredAt || order.createdAt; 
+      const daysSinceDelivery = Math.floor((currentDate - deliveryDate) / (1000 * 60 * 60 * 24));
+  
+      if (daysSinceDelivery > returnWindowInDays) {
+        return next(new ErrorHandler(400, 'Return window has expired'));
+      }
+  
+      // Create a return request
+
+      const returnRequest = new Return({
+        orderId,
+        userId: user, // Assuming user ID is available in req.user
+        reason,
+        sellerId
+      });
+  
+      await returnRequest.save();
+
+
+      async function createReturnOrder(req, res) {
+  const { orderId, reason } = req.body;
+
+  const order = await Order.findById(orderId);
+
+  if (!order) {
+    return res.status(404).json({
+      message: 'Order not found'
+    });
+  }
+
+  const returnOrder = new ReturnOrder({
+    orderId,
+    reason,
+    status: 'pending'
+  });
+
+  await returnOrder.save();
+
+  return res.status(200).json({
+    message: 'Return order created successfully'
+  });
+}
+
+
+
+---------------------------------Return-----------------
+  // Check if the order exists
+    const order = await Order.findById(req.params.id);
+
+    // console.log(order);
+     
+    if (!order) {
+      return next(new ErrorHandler(401, "Order not found"));
+    }
+
+    // check if the user is owner of this order
+    if (req.user._id.toString() !== order.user.toString()) {
+      return next(new ErrorHandler(401, "Order not found"));
+    }
+
+    // Check if the return request has already been submitted
+    const existingReturnRequest = await Return.findOne({
+      order: req.params.id,
+    });
+
+    if (existingReturnRequest) {
+      return next(new ErrorHandler(401,"A return request has already been submitted for this order"));
+    }
+
+  const { reason } = req.body;
+    // Fetch the product seller ID from the products in the ordered items array
+    const product = await Product.findOne({ _id: order.orderItems[0].product });
+    const sellerId = product.user;
+
+    // Check if the order is within the return window (e.g., 7 days)
+    const returnWindow = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
+    const orderDate = new Date(order.createdAt).getTime();
+    const currentDate = new Date().getTime();
+    if (currentDate - orderDate > returnWindow) {
+      return next(new ErrorHandler(401,"The return window for this order has expired"));
+    }
+
+    // Create a return request
+    const returnRequest = new Return({
+      order: orderId,
+      user: user,
+      seller: sellerId,
+      reason,
+    });
+    await returnRequest.save();
+  
+      res.status(200).json({
+        success: true,
+        message: 'Return request created successfully',
+      });
+
+
+---------------------
+const Return = require('../models/return');
+
+exports.getSellerReturnRequests = async (req, res) => {
+    // Check if the user is a seller
+    const user = await User.findById(req.user._id);
+    if (!user.isSeller) {
+        return res.status(403).json({ message: 'Unauthorized' });
+    }
+
+    // Fetch all return requests for the seller's products
+    const returnRequests = await Return.find({ sellerId: req.user._id });
+
+    res.status(200).json({ returnRequests });
+};
+
+
+    

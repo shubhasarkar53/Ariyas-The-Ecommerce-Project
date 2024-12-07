@@ -1,0 +1,251 @@
+.new-address-container {
+  margin: 0 auto;
+  width: 60%;
+
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+    transform: translateY(20px);
+    animation: fadeInUp 1.5s ease-out forwards;
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+}
+
+.form-container {
+  // background-color: #f2f2f2;
+  padding: 2rem;
+  border-radius: 5px;
+  // box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  animation: slideInFromLeft 2s ease-out;
+  @keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+
+  .newAddressForm-input-fields {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #fff;
+    //   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+
+    label {
+      margin-bottom: 0.5rem;
+      margin-left: 0.3rem;
+      font-style: normal;
+      font-weight: 500;
+      // line-height: 24px; /* 120% */
+      letter-spacing: 2px;
+    }
+
+    input,
+    select {
+      // border: none;
+      // padding: 1rem;
+      // margin-bottom: 0.5rem;
+      // background-color: transparent;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+      font-size: 1rem;
+      outline: none;
+      border: none;
+      padding: 1em 1.5em;
+      border-radius: 10px;
+      background: rgba(207, 207, 207, 0.4);
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  button[type="submit"] {
+    // background-color: #4caf50;
+    background-color: orange;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    padding: 1em 1.5em;
+    transition: all 0.4s linear;
+  }
+
+  button[type="submit"]:hover {
+    // background-color: #347436;
+    background-color: darkorange;
+  }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.newAddressForm button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.newAddressForm button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+  h3 {
+    color: white;
+  }
+
+  .dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .dot {
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      background-color: #f5f4f4;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .form-container {
+    .newAddressForm {
+      .newAddressForm-input-fields {
+        label {
+          font-size: 0.8rem;
+        }
+
+        input,
+        select {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .new-address-container {
+    width: 62%;
+    h1 {
+      font-size: 1.3rem;
+    }
+    .form-container {
+      .newAddressForm {
+        .newAddressForm-input-fields {
+          label {
+            font-size: 0.7rem;
+          }
+          input,
+          select {
+            font-size: 0.7rem;
+            padding: -0.2em -0.3em;
+          }
+        }
+        button {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .new-address-container {
+    width: 69%;
+    .form-container {
+      .newAddressForm {
+        button {
+          padding: 0.8em 1.2em;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .new-address-container {
+    width: 80%;
+    h1 {
+      font-size: 1rem;
+    }
+    .form-container {
+      .newAddressForm {
+        padding: -1.5rem -1.5rem !important ;
+        .newAddressForm-input-fields {
+          label,
+          input,
+          select {
+            font-size: 0.65rem;
+          }
+        }
+        button {
+          padding: 0.6em 1em;
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .new-address-container {
+    width: 90%;
+  }
+}

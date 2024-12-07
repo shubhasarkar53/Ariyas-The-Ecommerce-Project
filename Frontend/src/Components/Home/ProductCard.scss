@@ -1,0 +1,297 @@
+$textColor: #212121;
+$textWhite: #fafafa;
+$secondaryTextColor: #4d4d4d;
+$orangeTextColor: #d47f00;
+
+.card-container {
+  margin: 2rem;
+  .card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    transition: all 0.4s ease-in-out;
+    overflow: hidden;
+    position: relative;
+    transition: height 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+
+    &:hover {
+      box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+        6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+        12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+        22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+        41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+        100px 100px 80px rgba(0, 0, 0, 0.07);
+      transform: translateY(-30px);
+    }
+  }
+}
+
+.card-layout-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  .imgContainer {
+    // display: flex;
+    // justify-content: center;
+    // overflow: hidden;
+    // position: relative;
+    // flex-direction: column;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+
+    &::before {
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+
+    &:hover img {
+      filter: brightness(75%);
+      transform: scale(1.1);
+    }
+
+    img {
+      // width: 100%;
+      // height: 250px;
+      // object-fit: cover;
+      // background-position: center;
+      // background-size: cover;
+      // transition: all 0.4s ease-in-out;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.4s ease-in-out;
+      overflow: hidden;
+      background-position: center;
+      background-size: cover;
+    }
+
+    &:hover .hover-buttons {
+      opacity: 1;
+    }
+
+    .hover-buttons {
+      // position: absolute;
+      // top: 15px;
+      // right: 15px;
+      // display: flex;
+      // align-items: center;
+      // z-index: 1;
+      // transition: opacity 0.3s;
+      position: absolute;
+      top: 50%;
+      right: 50%;
+      transform: translate(50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+
+      button {
+        background: white;
+        border: white;
+
+        .wishlist-hov-button,
+        .cart-hov-button {
+          // background: white;
+          // border: 0.2px solid rgba(128, 128, 128, 0.151);
+          // cursor: pointer;
+          // color: gray;
+          // font-size: 20px;
+          // padding: 0.2rem;
+          // transition: all 0.3s linear;
+          // &:hover {
+          //   color: orange;
+          //   transform: scale(1.01);
+          // }
+          width: 15px;
+          height: 15px;
+          color: gray;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          cursor: pointer;
+          margin: 10px;
+          transition: background-color 0.3s, transform 0.3s, color 0.4s;
+
+          &:hover {
+            transform: scale(1.1);
+            color: $orangeTextColor;
+          }
+        }
+      }
+    }
+  }
+
+  .product-titles {
+    .title {
+      text-align: center;
+      color: $secondaryTextColor;
+      cursor: pointer;
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-top: 0.5rem;
+      transition: color 0.4s ease-in-out;
+
+      &:hover {
+        color: $orangeTextColor;
+      }
+    }
+  }
+  .detailsBlock-2-span{
+      text-decoration: none;
+      color: $textColor;
+  }
+
+  .ratings {
+    display: flex;
+    opacity: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+
+    .rating-options {
+      color: orange;
+
+      .MuiRating-iconEmpty {
+        color: orange;
+      }
+
+      .MuiRating-iconHover {
+        color: gold;
+      }
+
+      .MuiSvgIcon-root {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .prices-container {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    span {
+      margin: 0 0.3rem;
+      color: $secondaryTextColor;
+    }
+    .price-1{
+      font-weight: 600;
+    }
+    .price-2 {
+      text-decoration: line-through;
+    }
+  }
+
+  // .carddown-div {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   width: 100%;
+  //   padding: 0.5rem;
+  //   background-color: rgba(255, 255, 255, 0.9);
+  //   transition: all 0.3s ease-in-out;
+  //   opacity: 0;
+  //   z-index: 1;
+  //   transform: translateY(20px);
+
+  //   .cart {
+  //     font-size: 2rem;
+  //     cursor: pointer;
+
+  //     &:hover {
+  //       color: $orangeTextColor;
+  //     }
+  //   }
+
+  //   .prices-container {
+  //     width: 65%;
+  //     display: flex;
+  //     flex-direction: column;
+  //     align-items: center;
+  //     justify-content: space-between;
+  //     font-size: 20px;
+  //     font-weight: 400;
+  //     line-height: 30px;
+  //   }
+
+  //   .price1 {
+  //     font-weight: 500;
+  //   }
+
+  //   .price2 {
+  //     color: #777777;
+  //     text-decoration: line-through;
+  //   }
+
+  //   .wishlist {
+  //     font-size: 1.8rem;
+  //     cursor: pointer;
+
+  //     &:hover {
+  //       color: $orangeTextColor;
+  //     }
+  //   }
+  // }
+
+  // &:hover .carddown-div {
+  //   opacity: 1;
+  //   transform: translateY(0);
+  // }
+}
+
+@media screen and (max-width: 1400px) {
+  .card-container {
+    .card-layout-container {
+      .ratings {
+        font-size: 0.8rem !important;
+
+        .detailsBlock-2-span {
+          font-size: 0.7rem;
+        }
+      }
+
+      .product-titles {
+        .title {
+          font-size: 0.8rem;
+        }
+      }
+
+      .prices-container {
+        span {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .card-container {
+    .card-layout-container {
+      .prices-container {
+        margin-top: -0.09rem;
+        margin-bottom: -0.09rem;
+      }
+      .ratings {
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+

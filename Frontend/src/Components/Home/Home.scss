@@ -1,0 +1,374 @@
+// *{
+//    border: 1px solid red;
+// }
+$categoriText: white;
+
+.home-container {
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s ease-out forwards;
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .carousel-container {
+    width: 100vmax;
+    margin: 0 auto;
+  }
+
+  .logo-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .category-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .top-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+
+      .top1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+        background-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.23),
+            rgba(0, 0, 0, 0.452)
+          ),
+          url("../../assets/Images/Home/top1.jpg");
+        // background-size: 48rem 30rem;
+        background-size: cover;
+        background-position: center;
+        height: 50vh;
+        border-radius: 8px;
+        transition: all 0.5s ease-in-out;
+        box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+          6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+          12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+          22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+          41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+          100px 100px 80px rgba(0, 0, 0, 0.07);
+
+        &:hover {
+          filter: grayscale(30);
+        }
+
+        .top1-text {
+          color: $categoriText;
+          font-size: 2rem;
+          font-weight: 600;
+          margin: 1rem;
+        }
+
+        .top1-button {
+          background-color: transparent;
+          color: $categoriText;
+          border: 2px solid $categoriText;
+          padding: 0.5rem 1rem;
+          font-size: 1.5rem;
+          font-weight: 300;
+          // border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.5s ease-in-out;
+
+          &:hover {
+            background-color: $categoriText;
+            color: black;
+          }
+        }
+      }
+
+      .top2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+        background-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.23),
+            rgba(0, 0, 0, 0.452)
+          ),
+          url("../../assets/Images/Home/top2.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 50vh;
+        border-radius: 8px;
+        transition: all 0.5s ease-in-out;
+        box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+          6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+          12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+          22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+          41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+          100px 100px 80px rgba(0, 0, 0, 0.07);
+
+        &:hover {
+          filter: grayscale(30);
+        }
+
+        .top2-text {
+          color: $categoriText;
+          font-size: 2rem;
+          font-weight: 600;
+          margin: 1rem;
+        }
+
+        .top2-button {
+          background-color: transparent;
+          color: $categoriText;
+          border: 2px solid $categoriText;
+          padding: 0.5rem 1rem;
+          font-size: 1.5rem;
+          font-weight: 300;
+          // border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.5s ease-in-out;
+
+          &:hover {
+            background-color: $categoriText;
+            color: black;
+          }
+        }
+      }
+    }
+
+    .bottom-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+
+      .bottom1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+        background-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.23),
+            rgba(0, 0, 0, 0.452)
+          ),
+          url("../../assets/Images/Home/bottom1.jpeg");
+        background-size: cover;
+        background-position: center;
+        height: 50vh;
+        border-radius: 8px;
+        transition: all 0.5s ease-in-out;
+        box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+          6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+          12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+          22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+          41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+          100px 100px 80px rgba(0, 0, 0, 0.07);
+
+        &:hover {
+          filter: grayscale(30);
+        }
+
+        .bottom1-text {
+          color: $categoriText;
+          font-size: 2rem;
+          font-weight: 600;
+          margin: 1rem;
+        }
+
+        .bottom1-button {
+          background-color: transparent;
+          color: $categoriText;
+          border: 2px solid $categoriText;
+          padding: 0.5rem 1rem;
+          font-size: 1.5rem;
+          font-weight: 300;
+          // border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.5s ease-in-out;
+
+          &:hover {
+            background-color: $categoriText;
+            color: black;
+          }
+        }
+      }
+
+      .bottom2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+        background-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.23),
+            rgba(0, 0, 0, 0.452)
+          ),
+          url("../../assets/Images/Home/bottom2.jpg");
+        background-position: center;
+        background-size: cover;
+        height: 50vh;
+        border-radius: 8px;
+        transition: all 0.5s ease-in-out;
+        box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+          6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+          12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+          22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+          41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+          100px 100px 80px rgba(0, 0, 0, 0.07);
+
+        &:hover {
+          filter: grayscale(30);
+        }
+
+        .bottom2-text {
+          color: $categoriText;
+          font-size: 2rem;
+          font-weight: 600;
+          margin: 1rem;
+        }
+
+        .bottom2-button {
+          background-color: transparent;
+          color: $categoriText;
+          border: 2px solid $categoriText;
+          padding: 0.5rem 1rem;
+          font-size: 1.5rem;
+          font-weight: 300;
+          // border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.5s ease-in-out;
+
+          &:hover {
+            background-color: $categoriText;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+
+  .product-row-container {
+    margin-left: 1rem;
+    .row {
+
+      h1 {
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+        margin-top: 3rem;
+      }
+
+      .row-products {
+        // border: 2px solid red;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 5rem;
+        align-self: start;
+        width: 80%;
+        animation: fadeInUp 1.5s ease-out forwards;
+      }
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+.loading::after {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  border-top: 2px solid #3498db;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.explore-more-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+
+  .explore {
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.514),
+        rgba(6, 6, 6, 0.463)
+      ),
+      url("../../assets/Images/Carousel/AdobeStock_482937679_Preview_Editorial_Use_Only.jpeg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 5rem 15rem;
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 300;
+      letter-spacing: 0.09rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      letter-spacing: 0.19rem;
+      text-shadow: 0 0 0.11rem 0.3rem black, 0.2rem 0.1rem 0.01rem 0.3rem black;
+    }
+
+    h2,
+    h3,
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-explore {
+      button {
+        padding: 0.7rem 1rem;
+        color: black;
+        background-color: white;
+        font-size: 0.8rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.4s linear;
+
+        &:hover {
+          color: white;
+          background-color: orange;
+        }
+      }
+    }
+  }
+}

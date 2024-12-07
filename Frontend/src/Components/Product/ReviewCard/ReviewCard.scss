@@ -1,0 +1,38 @@
+.reviews{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 90%;
+    .bar{
+        height: 2px;
+        background-color: rgb(196, 196, 196);
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+
+    }
+    .review{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        padding: 1rem;
+        .user{
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            img{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+            .name{
+                font-size: 1.5rem;
+                font-weight: 600;
+            }
+        }
+        .reviewtext{
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+    }
+}

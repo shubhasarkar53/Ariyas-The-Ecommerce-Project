@@ -1,0 +1,174 @@
+$textColor: #212121;
+$textWhite: #fafafa;
+$secondaryTextColor: #4d4d4d;
+$orangeTextColor: #d47f0092;
+
+.become-seller-container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .become-seller-card {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.34),
+        rgba(0, 0, 0, 0.33)
+      ),
+      url("../../assets/Images/Carousel/AdobeStock_641861492_Preview.jpeg");
+    background-position: center;
+    background-size: cover;
+    width: 40%;
+    height: fit-content;
+    padding: 4rem 1rem;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    box-shadow: 9.7px 15.4px 3.1px -12px rgba(0, 0, 0, 0.021),
+      16.8px 26.6px 7.4px -12px rgba(0, 0, 0, 0.03),
+      22.5px 35.6px 14px -12px rgba(0, 0, 0, 0.037),
+      28.3px 44.9px 25px -12px rgba(0, 0, 0, 0.044),
+      37.4px 59.2px 46.8px -12px rgba(0, 0, 0, 0.053),
+      65px 103px 112px -12px rgba(0, 0, 0, 0.07);
+    h2 {
+      font-size: 1.6rem;
+    }
+    .btn-auth- {
+      margin-top: 3rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      button {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        color: white;
+        background-color: $orangeTextColor;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 1rem;
+        width: 60%;
+        border: 1px solid $orangeTextColor;
+        border-radius: 9px;
+        cursor: pointer;
+        transition: all 0.4s ease-in-out;
+        &:hover {
+          background-color: rgba(255, 166, 0, 0.793);
+          border: 1px solid orange;
+        }
+        .loading-spinner {
+          border: 4px solid rgba(255, 255, 255, 0.3);
+          border-radius: 50%;
+          border-top: 4px solid #ffffff;
+          width: 20px;
+          height: 20px;
+          animation: spin 1s linear infinite;
+          margin: 0 auto;
+          color: white;
+        }
+      }
+    }
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .become-seller-container {
+    .become-seller-card {
+      h2 {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .become-seller-container {
+    .become-seller-card {
+      padding: 3.5rem 1rem;
+      width: 45%;
+      h2 {
+        font-size: 1.1rem;
+      }
+      .btn-auth- {
+        margin-top: 2.5rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .become-seller-container {
+    .become-seller-card {
+      padding: 3rem 1rem;
+      width: 50%;
+      h2 {
+        font-size: 1rem;
+      }
+      .btn-auth- {
+        margin-top: 2rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .become-seller-container {
+    .become-seller-card {
+      h2 {
+        font-size: 0.85rem;
+      }
+      width: 60%;
+      margin-top: 3.5rem;
+      margin-bottom: 3.5rem;
+      .btn-auth- {
+        button {
+          padding: 0.8rem 1.2rem;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .become-seller-container {
+    .become-seller-card {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+      width: 80%;
+      padding: 2.5rem 0.7rem;
+      .btn-auth- {
+        margin-top: 1.5rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .become-seller-container {
+    .become-seller-card {
+      width: 90%;
+      padding: 1.7rem 0.4rem;
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+      .btn-auth- {
+        margin-top: 1rem;
+        button {
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+}

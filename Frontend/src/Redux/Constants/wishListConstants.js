@@ -1,0 +1,4 @@
+export const ADD_TO_WISH_LIST = "ADD_TO_WISH_LIST";
+export const REMOVE_WISH_LIST_ITEM = "REMOVE_WISH_LIST_ITEM";
+export const MOVE_TO_CART = "MOVE_TO_CART";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";

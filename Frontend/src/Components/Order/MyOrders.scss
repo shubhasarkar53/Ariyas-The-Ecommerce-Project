@@ -1,0 +1,237 @@
+.orders-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  margin: 2rem;transform: translateY(20px);
+  animation: fadeInUp 1.5s ease-out forwards;
+  @keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+  .myOrdersHeading {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+  .myOrdersContainer {
+    width: 60%;
+  }
+  .myOrderItems {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+    margin: 1.2rem;
+    padding: 1.5rem;
+    // background:#E4E4E4;
+    background: rgba(255, 255, 255, 0.645);
+    box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+      6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+      12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+      22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+      41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+      100px 100px 80px rgba(0, 0, 0, 0.07);
+    border-radius: 1.2rem;
+    .leftDiv {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      h3 {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+      .btnSec {
+        display: flex;
+        gap: 1rem;
+        .btN {
+          padding: 0.5rem 1rem;
+          font-size: 1rem;
+          font-weight: 500;
+          border-radius: 0.5rem;
+          cursor: pointer;
+          background: #bd6639;
+          color: white;
+          border: none;
+          transition: all 0.3s ease;
+          &:hover {
+            background: #bc7305;
+          }
+        }
+      }
+    }
+    .rightDiv {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      h3 {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+      .orderID {
+        color: #bd6639;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .orders-container {
+    .myOrdersHeading {
+      font-size: 1.7rem;
+    }
+    .myOrderItems {
+      .leftDiv {
+        h3 {
+          font-size: 0.9rem;
+        }
+        .btnSec {
+          .btN {
+            font-size: 0.9rem;
+          }
+        }
+      }
+      .rightDiv {
+        h3 {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1130px) {
+  .orders-container {
+    .myOrdersContainer {
+      width: 80%;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .orders-container {
+    margin: 1.5rem;
+    padding: 1.5rem;
+    .myOrdersContainer {
+      width: 90%;
+    }
+    .myOrderItems {
+      .leftDiv {
+        h3 {
+          font-size: 0.8rem;
+        }
+        .btnSec {
+          .btN {
+            font-size: 0.8rem;
+          }
+        }
+      }
+      .rightDiv {
+        h3 {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .orders-container {
+    margin: 1rem;
+    padding: 1rem;
+    .myOrdersHeading {
+      font-size: 1.3rem;
+    }
+    .myOrdersContainer {
+      width: 70%;
+    }
+    .myOrderItems {
+      .leftDiv {
+        gap: 0.6rem;
+        h3 {
+          font-size: 0.7rem;
+          span {
+            display: block;
+          }
+        }
+        .btnSec {
+          display: flex;
+          flex-direction: column;
+          .btN {
+            font-size: 0.7rem;
+            padding: 0.5rem 0.8rem;
+          }
+        }
+      }
+      .rightDiv {
+        gap: 0.6rem;
+        h3 {
+          font-size: 0.7rem;
+          span {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .orders-container {
+    .myOrdersContainer {
+      width: 90%;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .orders-container {
+    .myOrdersContainer {
+      width: 100%;
+    }
+    .myOrderItems {
+      margin: 0.5rem;
+      padding: 0.5rem;
+      .leftDiv {
+        .btnSec {
+          gap: 0.7rem;
+          .btN {
+            font-size: 0.6rem;
+            padding: 0.3rem 0.6rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .orders-container {
+    .myOrdersHeading {
+      font-size: 1.1rem;
+    }
+    .myOrderItems {
+      .leftDiv {
+        .btnSec {
+          gap: 0.5rem;
+          .btN {
+            font-size: 0.5rem;
+            padding: 0.25rem 0.55rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .orders-container {
+    .myOrdersContainer {
+      width: 110%;
+    }
+  }
+}

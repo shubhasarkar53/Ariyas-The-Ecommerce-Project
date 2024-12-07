@@ -1,0 +1,157 @@
+.terms-conditions-container {
+  width: 100%;
+  height: fit-content;
+  background-color: rgba(213, 208, 208, 0.233);
+  padding: 0 13rem;
+  .terms-conditions {
+    .terms-title {
+      text-align: center;
+      padding-top: 3rem;
+      letter-spacing: 0.2rem;
+    }
+
+    .title-bar {
+      height: 0.15rem;
+      background-color: black;
+      border: 1px solid black;
+      border-radius: 3rem;
+      width: 100%;
+      margin-bottom: 1.9rem;
+      margin-top: 0.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .terms-para {
+      .intro-terms {
+        margin-bottom: 1.2rem !important;
+        letter-spacing: 0.09rem;
+      }
+      .terms-span-title {
+        font-weight: bold;
+        margin-left: 2.5rem;
+        padding-top: 1.2rem;
+        padding-bottom: 0.5rem;
+        display: block;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      .term-details-para {
+        letter-spacing: 0.09rem;
+        font-size: 0.85rem;
+        margin-left: 2.5rem;
+      }
+    }
+  }
+  h3 {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.1rem;
+  }
+  .btn-back {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+    margin-top: 1rem;
+    button {
+      color: orange;
+      background-color: white;
+      border: 1.5px solid orange;
+      cursor: pointer;
+      padding: 0.7rem 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.4s linear;
+      &:hover {
+        color: white;
+        background-color: orange;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .terms-conditions-container {
+    .terms-conditions {
+      .terms-title {
+        font-size: 1.4rem;
+      }
+      .terms-para {
+        .intro-terms {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .terms-conditions-container {
+    padding: 0 13rem;
+    .terms-title {
+      font-size: 1.2rem;
+    }
+    .terms-para {
+      .intro-terms {
+        font-size: 0.8rem !important;
+      }
+      .terms-span-title {
+        font-size: 0.9rem;
+      }
+      .term-details-para {
+        font-size: 0.75rem !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .terms-conditions-container {
+    padding: 0 10rem;
+    .terms-conditions {
+      .terms-title {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .terms-conditions-container {
+    padding: 0 7rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .terms-conditions-container {
+    padding: 0 3rem;
+    .terms-conditions {
+      .terms-title {
+        font-size: 0.9rem;
+      }
+      .title-bar {
+        height: 0.1rem !important;
+      }
+      .terms-para {
+        .intro-terms {
+          font-size: 0.7rem !important;
+        }
+        .terms-span-title {
+          font-size: 0.7rem !important;
+        }
+        .term-details-para {
+          font-size: 0.65rem !important;
+        }
+      }
+      h3 {
+        font-size: 0.9rem;
+      }
+      .btn-back {
+        button {
+          padding: 0.4rem 0.7rem;
+        }
+      }
+    }
+  }
+}
